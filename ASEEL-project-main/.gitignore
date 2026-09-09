@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+data/vector_store/
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/WEST.csv
+!data/raw/SOUTH.csv
+!data/raw/NORTH.csv
+!data/raw/GENERAL.csv
+!data/raw/EAST.csv
+!data/raw/CENTERAL.csv
