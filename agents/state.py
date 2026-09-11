@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 from typing import Literal, TypedDict
+
 
 class AseelState(TypedDict, total=False):
     query: str
@@ -15,6 +17,7 @@ class AseelState(TypedDict, total=False):
     raw_semantic_results: list[dict]
     validated: list[dict]
     validation_reason: str
+    confidence_score: float
     status: Literal["pending", "grounded", "fallback"]
     answer: str
     sources: list[dict]
