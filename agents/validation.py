@@ -78,57 +78,14 @@ def validate_cultural_knowledge(state: AseelState) -> dict:
     records = state.get("retrieved", [])
     region = state.get("region") or ""
 
-    result = validation_agent.invoke(
-        {
-            "messages": [
-                {
-                    "role": "user",
-                    "content": f"""
-Validate the following retrieved cultural evidence.
-
-Requested region: {region}
-
-Retrieved evidence:
-{records}
-
-Call the validation tool exactly once.
-""",
-                }
-            ]
-        }
+    # Deterministic validation.
+    # Region matching must never depend on the LLM.
+    validated, reason, confidence_score = validate_evidence(
+        records,
+        region or None,
     )
 
-    messages = result.get("messages", [])
-
-    validated: list[dict] = []
-    reason = ""
-    confidence_score = 0.0
-    passed = False
-
-    # Take the FIRST tool result only.
-    for message in messages:
-        if getattr(message, "type", None) != "tool":
-            continue
-
-        content = message.content
-
-        if isinstance(content, dict):
-            tool_result = content
-        else:
-            try:
-                tool_result = json.loads(content)
-            except (TypeError, ValueError):
-                continue
-
-        validated = tool_result.get("valid", [])
-        reason = tool_result.get("reason", "")
-        confidence_score = float(
-            tool_result.get("confidence_score", 0.0)
-        )
-        passed = bool(tool_result.get("passed", False))
-
-        # Stop after the first tool result.
-        break
+    passed = confidence_score >= 0.50
 
     return {
         "validated": validated,

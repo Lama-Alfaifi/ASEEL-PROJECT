@@ -11,11 +11,19 @@ from agents.response import generate_response
 
 def route_after_validation(state: AseelState) -> str:
     confidence = state.get("confidence_score", 0.0)
+    attempts = state.get("attempts", 0)
 
+    #passed
     if confidence >= 0.5:
         return "respond"
 
-    return "refine" if state.get("attempts", 0) < 1 else "respond"
+    # First failure:retry retrieval
+    if attempts < 1:
+        return "refine"
+
+    # Second failure:go to response node,
+    # which will trigger its safety fallback
+    return "respond"
 
 
 def build_workflow():

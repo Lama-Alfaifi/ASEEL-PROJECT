@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from retrieval.vector_store import CulturalVectorStore
+
 
 def filter_by_metadata(
     records: list[dict],
@@ -11,10 +13,16 @@ def filter_by_metadata(
     filtered = records
 
     if region:
+        normalized_region = CulturalVectorStore.normalize_region(region)
+
         filtered = [
             record
             for record in filtered
-            if record["region"] == region or record["region"] == "General"
+            if (
+                CulturalVectorStore.normalize_region(record.get("region"))
+                == normalized_region
+                or record.get("region") == "General"
+            )
         ]
 
     if category:
