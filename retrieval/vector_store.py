@@ -143,7 +143,7 @@ class CulturalVectorStore:
         region: str | None = None,
         limit: int = 5,
     ) -> list[RetrievedKnowledge]:
-
+########################################################################ٍ
         # Normalize region before searching Chroma.
         normalized_region = self.normalize_region(region)
 
