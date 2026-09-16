@@ -1,0 +1,358 @@
+﻿question,expected_region,file,question_type,domain,category,top_score,max_score,average_score,num_results
+What is the most common dish in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Food,0.8689,0.8689,0.821,5
+What is the most common sweet in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Food,0.8599,0.8599,0.7725,5
+What is the common traditional street food in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Food,0.8326,0.8326,0.7723,5
+What is the most common breakfast dish in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Food,0.8266,0.8266,0.7993,5
+What is the common traditional drink in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Food,0.8308,0.8308,0.732,5
+What is the traditional clothing for men in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Clothes,0.8704,0.8704,0.8133,5
+What is the traditional clothing for women in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Clothes,0.8745,0.8745,0.8072,5
+What is the traditional breakfast dish during Eid in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Celebration,0.8699,0.8699,0.7706,5
+What are the common traditional dances in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Celebration,0.8684,0.8684,0.7833,5
+What is the common traditional music in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Entertainment,0.8784,0.8784,0.7943,5
+What is the common traditional craft in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Crafts and Work,0.8494,0.8494,0.7863,5
+What is the name of the items the bride buys for her wedding in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Dating,0.7589,0.7589,0.6582,5
+What is the average amount of dowry presented to the wife in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Common,Dating,0.8574,0.8574,0.6387,5
+What is the traditional winter dish made from dates and brown bread in Al-Qassim?,Central,CENTERAL.csv,Open-ended,Specialized,Food,0.8477,0.8477,0.661,5
+What is the main traditional sweet in the Al-Qassim region?,Central,CENTERAL.csv,Open-ended,Specialized,Food,0.8609,0.8609,0.7482,5
+"What is the name of the traditional Saudi food made from dried yogurt, shaped into white solid pieces?",Central,CENTERAL.csv,Open-ended,Specialized,Food,0.8734,0.8734,0.7196,5
+In which region of Saudi Arabia is “Al-Marqooq” considered a regional dish?,Central,CENTERAL.csv,Open-ended,Specialized,Food,0.926,0.926,0.841,5
+In which region of Saudi Arabia is “Al-Marasee’” a main traditional dish?,Central,CENTERAL.csv,Open-ended,Specialized,Food,0.8783,0.8783,0.7918,5
+What areas in central Saudi Arabia were historically known for making jewelry?,Central,CENTERAL.csv,Open-ended,Specialized,Crafts and Work,0.9059,0.9059,0.7808,5
+How many stages does the process of producing oud oil in Saudi Arabia go through?,Central,CENTERAL.csv,Open-ended,Specialized,Crafts and Work,0.8748,0.8748,0.6083,5
+What is “Al-Kummar” in the context of traditional Najdi houses in Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Specialized,Architecture,0.7596,0.7596,0.658,5
+What is “Al-Liwan” in traditional Najdi houses in Riyadh?,Central,CENTERAL.csv,Open-ended,Specialized,Architecture,0.8467,0.8467,0.6786,5
+What are the traditional architectural styles in the Al-Qassim region?,Central,CENTERAL.csv,Open-ended,Specialized,Architecture,0.8117,0.8117,0.6666,5
+How many rows are formed in the Saudi Ardah dance?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8506,0.8506,0.7463,5
+In which musical mode are most Saudi Ardah poems composed and performed?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8735,0.8735,0.7226,5
+Where do people in Riyadh usually go when the weather turns cold?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8495,0.8495,0.5985,5
+What is the name given to a single strike of the large drum in the Saudi Ardah dance?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8319,0.8319,0.691,5
+What does the term “Al-Ta’leelah” refer to in Saudi culture?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8063,0.8063,0.6373,5
+What is the name of the famous festival in Riyadh for arts and crafts?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8378,0.8378,0.6506,5
+Where is the “Al-La’ybouli” dance popular in Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Specialized,Entertainment,0.8974,0.8974,0.7828,5
+What are the most common welcoming phrases in Central Saudi Arabia?,Central,CENTERAL.csv,Open-ended,Specialized,Languages and Communication,0.8689,0.8689,0.688,5
+What is the most common dish in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Food,0.8689,0.8689,0.821,5
+What is the most popular sweet in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Food,0.8594,0.8594,0.7598,5
+What is the most common traditional street food in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Food,0.8443,0.8443,0.7822,5
+What is the most common breakfast dish in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Food,0.8266,0.8266,0.7993,5
+What is the most common traditional drink in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Food,0.8294,0.8294,0.7427,5
+What is the traditional breakfast dish during Eid-al-Fitr in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Celebration,0.8893,0.8893,0.7859,5
+What are the common traditional dances in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Celebration,0.8684,0.8684,0.7833,5
+What is the traditional clothing for women in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Clothes,0.8745,0.8745,0.8072,5
+What is the traditional clothing for men in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Clothes,0.8704,0.8704,0.8133,5
+What is the common traditional music in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Entertainment,0.8784,0.8784,0.7943,5
+What is the common traditional craft in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Crafts and Work,0.8494,0.8494,0.7863,5
+What is the name of the items the bride buys for her wedding in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Dating,0.7589,0.7589,0.6582,5
+What is the average amount of dowry presented to the wife in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Common,Dating,0.8574,0.8574,0.6387,5
+What is the traditional winter dish made from dates and brown bread in Al-Qassim?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.8477,0.8477,0.661,5
+What is the main traditional sweet in the Al-Qassim region?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.8609,0.8609,0.7482,5
+"What is the traditional Saudi food made from dried yogurt, shaped into white solid pieces?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.8731,0.8731,0.7092,5
+"In which region of Saudi Arabia is ""Al-Marqooq"" considered a traditional dish?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.9169,0.9169,0.8072,5
+"In which region of Saudi Arabia is ""Al-Marasee’"" a main traditional dish?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.8833,0.8833,0.7996,5
+What areas in central Saudi Arabia were historically known for making jewelry?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Crafts and Work,0.9059,0.9059,0.7808,5
+How many stages are involved in oud oil production in Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Crafts and Work,0.8756,0.8756,0.6309,5
+"What is ""Al-Kummar"" in traditional Najdi houses in Saudi Arabia?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Architecture,0.7637,0.7637,0.6686,5
+"What is ""Al-Liwan"" in traditional Najdi houses in Riyadh?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Architecture,0.8429,0.8429,0.676,5
+What describes traditional building styles in Al-Qassim?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Architecture,0.7639,0.7639,0.6204,5
+How many rows are formed in the Saudi Ardah dance?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8506,0.8506,0.7463,5
+In which musical mode are most Saudi Ardah poems composed and performed?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8735,0.8735,0.7226,5
+What is the name of the famous festival in Riyadh for arts and crafts?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8378,0.8378,0.6506,5
+Where do people in Riyadh usually go when the weather turns cold?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8495,0.8495,0.5985,5
+What is the name of a single beat of the large drum in the Saudi Ardah dance?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8348,0.8348,0.6676,5
+"Where is the ""Al-La’ybouli"" dance popular in Saudi Arabia?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.893,0.893,0.7781,5
+"What does the term ""Al-Ta’leelah"" mean in Saudi culture?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.7914,0.7914,0.6261,5
+What are the most common welcoming phrases in Central Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Languages and Communication,0.8689,0.8689,0.688,5
+Which of the following traditional dishes are associated with Riyadh?,Central,CENTERAL.csv,MCQ (multiple correct),Specialized,Food,0.8126,0.8126,0.7108,5
+What is the name of the traditional Saudi dessert made of crispy biscuits filled with date molasses and black lime?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.8941,0.8941,0.6606,5
+"What are the essential ingredients used in preparing ""Al-Haneeni,"" a dish known for its connection to traditional Saudi cuisine?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Food,0.9005,0.9005,0.6557,5
+"How can the traditional Saudi dish ""Mathlootha"" be classified?",Central,CENTERAL.csv,MCQ (multiple correct),Specialized,Food,0.8434,0.8434,0.7196,5
+Which of the following traditional crafts are practiced in the Qassim region?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Crafts and Work,0.8368,0.8368,0.6906,5
+Which of the following are traditional crafts in the Riyadh region of Saudi Arabia?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Crafts and Work,0.8631,0.8631,0.7924,5
+"Who traditionally prepares ""Maamoul Al-Dawasir"" in Saudi culture?",Central,CENTERAL.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8508,0.8508,0.6305,5
+What are the traditional crafts famous in the Qassim region?,Central,CENTERAL.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8176,0.8176,0.6664,5
+What colors are commonly used in Sadu weaving?,Central,CENTERAL.csv,MCQ (one correct),Specialized,Crafts and Work,0.8348,0.8348,0.4409,5
+"How is the ""Al-Fann Al-Houti"" dance traditionally performed in terms of formation?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8936,0.8936,0.5932,5
+"Where did the ""Naqoos"" or ""Najooz"" dance, a traditional dance and artistic singing style, originate in Saudi Arabia?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.9338,0.9338,0.6865,5
+What is the main musical characteristic of the Saudi Ardah?,Central,CENTERAL.csv,MCQ (multiple correct),Specialized,Entertainment,0.8256,0.8256,0.7535,5
+What is the primary role of the poet in the Saudi Ardah?,Central,CENTERAL.csv,MCQ (multiple correct),Specialized,Entertainment,0.7672,0.7672,0.6507,5
+"Where did the traditional Saudi art of ""Samri"" originate before spreading to other regions?",Central,CENTERAL.csv,MCQ (one correct),Specialized,Entertainment,0.8916,0.8916,0.6349,5
+What is the most common dish in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Food,0.8595,0.8595,0.8008,5
+What is the most common sweet in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Food,0.859,0.859,0.7724,5
+What is the common traditional street food in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Food,0.8341,0.8341,0.7726,5
+What is the most common breakfast dish in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Food,0.8317,0.8317,0.7922,5
+What is the common traditional drink in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Food,0.8177,0.8177,0.7212,5
+What is the traditional clothing for men in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Clothes,0.8641,0.8641,0.8065,5
+What is the traditional clothing for women in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Clothes,0.8734,0.8734,0.7981,5
+What is the traditional breakfast dish during Eid Al-Fitr in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Celebration,0.9,0.9,0.8094,5
+What are the common traditional dances in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Celebration,0.8843,0.8843,0.79,5
+What is the common traditional music in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Entertainment,0.8321,0.8321,0.7468,5
+What is the common traditional craft in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Crafts and Work,0.8494,0.8494,0.7981,5
+What is the name of the items the bride buys for her wedding in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Dating,0.7915,0.7915,0.6603,5
+What is the average amount of dowry presented to the wife in East Saudi Arabia?,East,EAST.csv,Open-ended,Common,Dating,0.8611,0.8611,0.6364,5
+"What type of dessert dish in the Eastern Province of Saudi Arabia is made from starchy granules, water, sugar, and ghee?",East,EAST.csv,Open-ended,Specialized,Food,0.8803,0.8803,0.7707,5
+"What is a traditional dish of the Eastern Province, eaten on the first day of Eid Al-Fitr, made of mashed dates, ghee, and flour?",East,EAST.csv,Open-ended,Specialized,Food,0.9166,0.9166,0.7184,5
+What is Harees soup made of in the east of Saudi Arabia?,East,EAST.csv,Open-ended,Specialized,Food,0.8501,0.8501,0.6873,5
+What is the dish from the east that relies on rice cooked with sugar and served with fried fish?,East,EAST.csv,Open-ended,Specialized,Food,0.8195,0.8195,0.6281,5
+"What is the name of the striped fabric worn by men around the lower body, especially by divers in the east?",East,EAST.csv,Open-ended,Specialized,Clothes,0.8394,0.8394,0.6091,5
+"What is the name of the traditional sea folklore of Saudi Arabia, common in the east, especially in Qatif?",East,EAST.csv,Open-ended,Specialized,Entertainment,0.8705,0.8705,0.6814,5
+What is the name of the traditional game popular in Darin Center in the Eastern Region of Saudi Arabia?,East,EAST.csv,Open-ended,Specialized,Entertainment,0.8903,0.8903,0.7579,5
+"What is the name of the traditional dance performed in the east, considered an ancient heritage, particularly in the Al-Ahsa region?",East,EAST.csv,Open-ended,Specialized,Entertainment,0.9111,0.9111,0.7511,5
+What is the name of the celebration observed in the east during Sha’ban or Ramadan?,East,EAST.csv,Open-ended,Specialized,Celebration,0.8595,0.8595,0.6259,5
+The craft of making Mishlahs (traditional cloaks) is an inherited profession in which families?,East,EAST.csv,Open-ended,Specialized,Crafts and Work,0.8724,0.8724,0.581,5
+There is a similarity between the jewelry in the eastern and northern regions of Saudi Arabia and the jewelry of which other region?,East,EAST.csv,Open-ended,Specialized,Crafts and Work,0.9234,0.9234,0.7603,5
+“Al-Frisi” is a traditional performing art in Saudi Arabia that originated in which region?,East,EAST.csv,Open-ended,Specialized,Crafts and Work,0.895,0.895,0.7367,5
+What is the traditional craft referred to as “Al-Qallafa” in Saudi culture?,East,EAST.csv,Open-ended,Specialized,Crafts and Work,0.8793,0.8793,0.7614,5
+"What handicraft, common in the east, is primarily made by women using palm tree products?",East,EAST.csv,Open-ended,Specialized,Crafts and Work,0.9003,0.9003,0.6407,5
+What material is used for building ships in the east of Saudi Arabia?,East,EAST.csv,Open-ended,Specialized,Crafts and Work,0.8727,0.8727,0.7326,5
+What are the three main architectural planning styles in the Eastern Region of Saudi Arabia?,East,EAST.csv,Open-ended,Specialized,Architecture,0.9041,0.9041,0.7526,5
+What is the most common dish in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Food,0.8595,0.8595,0.8008,5
+What is the most popular sweet in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Food,0.8591,0.8591,0.7578,5
+Which of the following is a common traditional street food in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Food,0.8621,0.8621,0.7926,5
+What is the traditional breakfast dish in Eid Al-Fitr in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Food,0.9076,0.9076,0.8148,5
+Which of the following is a common traditional drink in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Food,0.8338,0.8338,0.7483,5
+Which of the following is a traditional breakfast dish enjoyed during Eid Al-Fitr in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Celebration,0.9078,0.9078,0.8271,5
+Which of the following are common traditional dances in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Celebration,0.8971,0.8971,0.8035,5
+What is the traditional clothing for men in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Clothes,0.8641,0.8641,0.8065,5
+What is the traditional clothing for women in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Clothes,0.8734,0.8734,0.7981,5
+What are the common traditional dances in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Entertainment,0.8843,0.8843,0.79,5
+What is the name of the items the bride buys for her wedding in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Dating,0.7915,0.7915,0.6603,5
+What is the average amount of dowry presented to the wife in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Dating,0.8611,0.8611,0.6364,5
+What is the common traditional craft in East Saudi Arabia?,East,EAST.csv,MCQ (one correct),Common,Crafts and Work,0.8494,0.8494,0.7981,5
+Which Saudi dessert is known for its starchy granules?,East,EAST.csv,MCQ (one correct),Specialized,Food,0.8775,0.8775,0.6693,5
+"What is the main traditional dessert in the Eastern region of Saudi Arabia, also known as “Masabeeb” or “Marageesh”?",East,EAST.csv,MCQ (one correct),Specialized,Food,0.9363,0.9363,0.7557,5
+What is the name of the dish in East Saudi Arabia that is prepared using rice cooked with sugar and served with fried fish?,East,EAST.csv,MCQ (one correct),Specialized,Food,0.9003,0.9003,0.7318,5
+What is Harees soup made of?,East,EAST.csv,MCQ (one correct),Specialized,Food,0.7871,0.7871,0.5104,5
+"What is the name of the striped fabric traditionally worn by men around the lower body, especially by divers in East Saudi Arabia?",East,EAST.csv,MCQ (one correct),Specialized,Clothes,0.9027,0.9027,0.7427,5
+The craft of making Mishlahs (traditional cloaks) is an inherited profession in which families?,East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8724,0.8724,0.581,5
+What is the traditional craft referred to as “Al-Qallafa” in Saudi culture?,East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8793,0.8793,0.7614,5
+"What handicraft, common in the East, is primarily made by women using palm tree products?",East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.9003,0.9003,0.6407,5
+There is a similarity between the jewelry in the eastern and northern regions of Saudi Arabia and the jewelry of which other region?,East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.9234,0.9234,0.7603,5
+“Al-Frisi” is a traditional performing art in Saudi Arabia that originated in which region?,East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.895,0.895,0.7367,5
+What material is used for building ships in the east side of Saudi Arabia?,East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8728,0.8728,0.7335,5
+What is the name of the traditional game popular in Darin Center in the Eastern Region of Saudi Arabia?,East,EAST.csv,MCQ (one correct),Specialized,Entertainment,0.8903,0.8903,0.7579,5
+"What is the name of the traditional dance performed in the east, considered an ancient heritage, particularly in the Al-Ahsa region?",East,EAST.csv,MCQ (one correct),Specialized,Entertainment,0.9111,0.9111,0.7511,5
+“Al-Sankali” is a type of maritime art associated with:,East,EAST.csv,MCQ (one correct),Specialized,Entertainment,0.8709,0.8709,0.5783,5
+What is the name of the celebration observed in the east during Sha’ban or Ramadan?,East,EAST.csv,MCQ (one correct),Specialized,Celebration,0.8595,0.8595,0.6259,5
+What are the three main architectural planning styles in the Eastern Region of Saudi Arabia?,East,EAST.csv,MCQ (one correct),Specialized,Architecture,0.9041,0.9041,0.7526,5
+What is Hassawi rice locally and regionally known as?,East,EAST.csv,MCQ (one correct),Specialized,Food,0.8469,0.8469,0.6289,5
+"What are the traditional jobs practiced in the coastal areas of Saudi Arabia, deeply rooted in cultural heritage and economic history?",East,EAST.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.9016,0.9016,0.7031,5
+What was the Nu’ayriyah market in Saudi Arabia specialized in selling?,East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8305,0.8305,0.5618,5
+In which regions of Saudi Arabia was the traditional craft of making “Midad” (woven mats) previously popular?,East,EAST.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.9188,0.9188,0.7275,5
+Which of the following are traditional crafts in the Eastern Region of Saudi Arabia?,East,EAST.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8801,0.8801,0.8392,5
+How is traditional gypsum (“Juss”) produced in Saudi Arabia?,East,EAST.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8639,0.8639,0.6241,5
+"Which Saudi region is known for its distinct types of gypsum, including “Al-Arabi,” “Al-Khikri,” and “Al-Dhikri”?",East,EAST.csv,MCQ (one correct),Specialized,Crafts and Work,0.9275,0.9275,0.7366,5
+The “Hida Dance” is a traditional dance performed by the people of which region in Saudi Arabia?,East,EAST.csv,MCQ (one correct),Specialized,Entertainment,0.9233,0.9233,0.6917,5
+Which of the following are styles of the “Laybooni” art form in Saudi Arabia?,East,EAST.csv,MCQ (multiple correct),Specialized,Entertainment,0.8826,0.8826,0.6947,5
+What is the most common dish in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Food,0.8705,0.8705,0.8284,5
+What is the most common dessert in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Food,0.8695,0.8695,0.8035,5
+What is the most popular street food in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Food,0.8429,0.8429,0.7876,5
+What is the most common breakfast dish in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Food,0.867,0.867,0.8282,5
+What is the most popular traditional drink in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Food,0.8385,0.8385,0.7397,5
+What is the traditional men’s clothing in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Clothes,0.878,0.878,0.8146,5
+What is the traditional women’s clothing in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Clothes,0.8638,0.8638,0.8084,5
+What is the traditional dish for breakfast on Eid Al-Fitr in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Celebration,0.8887,0.8887,0.8347,5
+What are the traditional dances common in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Entertainment,0.8827,0.8827,0.7878,5
+What is the traditional musical style common in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Entertainment,0.891,0.891,0.8052,5
+What are the traditional crafts common in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Crafts and Work,0.8728,0.8728,0.7687,5
+What are the items a bride buys for her wedding in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Dating,0.8043,0.8043,0.6804,5
+What is the average dowry given to the bride in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Common,Dating,0.8392,0.8392,0.6619,5
+What are some traditional meals associated with Eid Al-Adha in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Specialized,Food,0.9249,0.9249,0.7959,5
+What are the most common greetings in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Specialized,Languages and Communication,0.883,0.883,0.7465,5
+What does placing your hand over a coffee cup mean in Northern Saudi culture?,North,NORTH.csv,Open-ended,Specialized,Food,0.8737,0.8737,0.6933,5
+What is the typical amount of coffee served to guests in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Specialized,Food,0.8398,0.8398,0.7014,5
+Is it acceptable for the host to eat with the guests in Northern Saudi hospitality?,North,NORTH.csv,Open-ended,Specialized,Food,0.8922,0.8922,0.7085,5
+Is it acceptable to serve coffee before dates in Northern Saudi hospitality?,North,NORTH.csv,Open-ended,Specialized,Food,0.9045,0.9045,0.6997,5
+What is the name of the night before Eid in the Northern region of Saudi Arabia?,North,NORTH.csv,Open-ended,Specialized,Dating,0.826,0.826,0.6932,5
+"Where is the traditional game ""Al-Fashaq"" popular in Saudi Arabia?",North,NORTH.csv,Open-ended,Specialized,Entertainment,0.9046,0.9046,0.7946,5
+What is the Saudi traditional game similar to bowling in Northern Saudi Arabia?,North,NORTH.csv,Open-ended,Specialized,Entertainment,0.8978,0.8978,0.7468,5
+"Where is the dance ""Al-Ashouri"" famous in Saudi Arabia?",North,NORTH.csv,Open-ended,Specialized,Entertainment,0.8733,0.8733,0.7328,5
+"When is the game ""Adheem Lah Wayn Gada Wayn Rah"" played in Northern Saudi Arabia?",North,NORTH.csv,Open-ended,Specialized,Entertainment,0.8948,0.8948,0.7054,5
+What is the most common dish in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Food,0.8705,0.8705,0.8284,5
+What is the most common dessert in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Food,0.8695,0.8695,0.8035,5
+What is the most popular street food in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Food,0.8429,0.8429,0.7876,5
+What is the most common breakfast dish in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Food,0.867,0.867,0.8282,5
+What is the most popular traditional drink in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Food,0.8385,0.8385,0.7397,5
+What is the traditional men’s clothing in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Clothes,0.878,0.878,0.8146,5
+What is the traditional women’s clothing in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Clothes,0.8638,0.8638,0.8084,5
+What is the traditional musical style common in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Entertainment,0.891,0.891,0.8052,5
+What are the traditional dances common in Northern Saudi Arabia?,North,NORTH.csv,MCQ (multiple correct),Common,Entertainment,0.8827,0.8827,0.7878,5
+What is the traditional dish for breakfast on Eid Al-Fitr in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Celebration,0.8887,0.8887,0.8347,5
+What are the traditional crafts common in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Crafts and Work,0.8728,0.8728,0.7687,5
+What are the items a bride buys for her wedding in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Dating,0.8043,0.8043,0.6804,5
+What is the average dowry given to a bride in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Common,Dating,0.8362,0.8362,0.6599,5
+What are some traditional meals associated with Eid Al-Adha in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Specialized,Food,0.9249,0.9249,0.7959,5
+What are the most common greetings in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Specialized,Languages and Communication,0.883,0.883,0.7465,5
+What is the name of the night before Eid in the Northern region of Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Specialized,Dating,0.826,0.826,0.6932,5
+"Where is the traditional game ""Al-Fashaq"" popular in Saudi Arabia?",North,NORTH.csv,MCQ (one correct),Specialized,Entertainment,0.9046,0.9046,0.7946,5
+What is the Saudi traditional game similar to bowling?,North,NORTH.csv,MCQ (one correct),Specialized,Entertainment,0.8676,0.8676,0.6916,5
+"Where is the dance ""Al-Ashouri"" famous in Saudi Arabia?",North,NORTH.csv,MCQ (one correct),Specialized,Entertainment,0.8733,0.8733,0.7328,5
+"When is the game ""Adheem Lah Wayn Gada Wayn Rah"" played in Northern Saudi Arabia?",North,NORTH.csv,MCQ (one correct),Specialized,Entertainment,0.8948,0.8948,0.7054,5
+What does placing your hand over a coffee cup mean in Northern Saudi culture?,North,NORTH.csv,MCQ (one correct),Specialized,Food,0.8737,0.8737,0.6933,5
+What is the typical amount of coffee served to guests in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Specialized,Food,0.8398,0.8398,0.7014,5
+What are the unique hospitality traditions in Northern Saudi Arabia?,North,NORTH.csv,MCQ (one correct),Specialized,Food,0.7774,0.7774,0.6942,5
+Is it acceptable for the host to eat with the guests in Northern Saudi hospitality?,North,NORTH.csv,MCQ (one correct),Specialized,Food,0.8922,0.8922,0.7085,5
+What architectural planning system does traditional architecture in Al-Jouf rely on?,North,NORTH.csv,MCQ (one correct),Specialized,Architecture,0.8906,0.8906,0.3932,5
+"What happens during ""Al-Shabbat"" in Northern Saudi Arabia?",North,NORTH.csv,MCQ (multiple correct),Specialized,Entertainment,0.8372,0.8372,0.5881,5
+"What is ""Khashrat Al-Eid"" in Hail, and how is it celebrated?",North,NORTH.csv,MCQ (multiple correct),Specialized,Entertainment,0.8767,0.8767,0.5035,5
+"What is a common dish served in Hail during Eid, showcasing housewives’ cooking skills?",North,NORTH.csv,MCQ (one correct),Specialized,Food,0.8562,0.8562,0.5933,5
+How do families in Hail ensure everyone in the neighborhood tastes each other’s food during Eid breakfast?,North,NORTH.csv,MCQ (one correct),Specialized,Food,0.8652,0.8652,0.502,5
+What are common gathering places in Northern Saudi Arabia?,North,NORTH.csv,MCQ (multiple correct),Specialized,Food,0.808,0.808,0.7228,5
+What is the most common dish in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Food,0.8663,0.8663,0.8218,5
+What is the most common sweet in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Food,0.8605,0.8605,0.7772,5
+What is the common traditional street food in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Food,0.8571,0.8571,0.7873,5
+What is the most common breakfast dish in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Food,0.869,0.869,0.8153,5
+What is the common traditional drink in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Food,0.8521,0.8521,0.7418,5
+What is the traditional clothing for men in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Clothes,0.8852,0.8852,0.8283,5
+What is the traditional clothing for women in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Clothes,0.8771,0.8771,0.8304,5
+What is the traditional breakfast dish during Eid Al-Fitr in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Celebration,0.8735,0.8735,0.8004,5
+What are the common traditional dances in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Celebration,0.8698,0.8698,0.7741,5
+What is the common traditional music in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Entertainment,0.873,0.873,0.7973,5
+What is the common traditional craft in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Crafts and Work,0.8647,0.8647,0.7799,5
+What is the name of the items the bride buys for her wedding in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Dating,0.7869,0.7869,0.692,5
+What is the average amount of dowry presented to the wife in Saudi Arabia?,South,SOUTH.csv,Open-ended,Common,Dating,0.8389,0.8389,0.6261,5
+What is the name of the traditional butter dish served in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Specialized,Food,0.8737,0.8737,0.7918,5
+"What is a popular dish known in the southern region of Saudi Arabia, served hot with honey, ghee, and dates?",South,SOUTH.csv,Open-ended,Specialized,Food,0.892,0.892,0.8098,5
+In which regions of Saudi Arabia is the traditional dish “Haneeth” popular?,South,SOUTH.csv,Open-ended,Specialized,Food,0.8999,0.8999,0.8293,5
+What is the name of the traditional food served to guests in the afternoon in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Specialized,Food,0.8664,0.8664,0.7941,5
+What is the traditional oven or pot used for baking in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Specialized,Food,0.9214,0.9214,0.7781,5
+In which region of Saudi Arabia is “Al-Maghsh” considered a traditional dish?,South,SOUTH.csv,Open-ended,Specialized,Food,0.9104,0.9104,0.8291,5
+What is the name of the traditional clothes in Tehama in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Specialized,Clothes,0.8685,0.8685,0.8112,5
+What are the most common greeting phrases in Al-Baha?,South,SOUTH.csv,Open-ended,Specialized,Languages and Communication,0.8564,0.8564,0.628,5
+What is the name of the traditional folklore performed at weddings and for greeting guests from different tribes in South Saudi Arabia?,South,SOUTH.csv,Open-ended,Specialized,Dating,0.8837,0.8837,0.7268,5
+“Beit Al-Esha” is a traditional architectural style. Which region in Saudi Arabia is known for this style?,South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.9274,0.9274,0.738,5
+"In which area is the “vegetative style” architecture, known as “Al-Ishash,” commonly found in the Asir region due to its ease of construction?",South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.9212,0.9212,0.7432,5
+In which region of Saudi Arabia is juniper wood (“Arar”) traditionally used in architecture?,South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.9307,0.9307,0.736,5
+"What does the guest room consist of in Jazan, Saudi Arabia?",South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.8115,0.8115,0.6979,5
+In which region of Saudi Arabia do traditional sitting rooms (majalis) include a stone fireplace used for cooking and preparing coffee in front of guests?,South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.9351,0.9351,0.7643,5
+The “Sword Dance” is a traditional folk dance in Saudi Arabia associated with which region?,South,SOUTH.csv,Open-ended,Specialized,Entertainment,0.9075,0.9075,0.7761,5
+"What is the form of singing performed individually in South Saudi Arabia, relying on creative embellishments, often during travels?",South,SOUTH.csv,Open-ended,Specialized,Entertainment,0.9228,0.9228,0.7603,5
+The “Del’a Dance” is a traditional dance in Saudi Arabia associated with which region?,South,SOUTH.csv,Open-ended,Specialized,Entertainment,0.8996,0.8996,0.7814,5
+The “Janbiya Dance” is a traditional folk dance popular in which region of Saudi Arabia?,South,SOUTH.csv,Open-ended,Specialized,Entertainment,0.8951,0.8951,0.7503,5
+In which region of Saudi Arabia is the “Al-Azawi Dance” primarily performed?,South,SOUTH.csv,Open-ended,Specialized,Entertainment,0.8926,0.8926,0.7846,5
+Is it acceptable in South Saudi Arabia for the host to ask the guest about his updates before serving coffee?,South,SOUTH.csv,Open-ended,Specialized,Languages and Communication,0.9144,0.9144,0.642,5
+"What is the name given to the artist who paints Al-Qatt Al-Asiri, the traditional Asiri wall art?",South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.9103,0.9103,0.7641,5
+What is the most expensive part of a traditional Saudi Janbiya (dagger) that determines its price?,South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.9291,0.9291,0.7462,5
+What material is traditionally used to make the “Janbiya” dagger in Najran?,South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.8831,0.8831,0.7351,5
+"What describes “Al-Qatt Al-Asiri,” a traditional art form in the Asir region?",South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.8853,0.8853,0.8028,5
+What is the most common traditional craft in Najran city?,South,SOUTH.csv,Open-ended,Specialized,Crafts and Work,0.8244,0.8244,0.6863,5
+What is the most common dish in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Food,0.8663,0.8663,0.8218,5
+What is the most popular sweet in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Food,0.8619,0.8619,0.7683,5
+What is the most common traditional street food in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Food,0.8587,0.8587,0.7999,5
+What is the most common breakfast dish in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Food,0.869,0.869,0.8153,5
+What is the most common traditional drink in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Food,0.8649,0.8649,0.7505,5
+What is the traditional clothing for men in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Clothes,0.8852,0.8852,0.8283,5
+What is the traditional clothing for women in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Clothes,0.8771,0.8771,0.8304,5
+What is the traditional breakfast dish during Eid Al-Fitr in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Celebration,0.8735,0.8735,0.8004,5
+What are the common traditional dances in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Celebration,0.8698,0.8698,0.7741,5
+What is the common traditional music in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Entertainment,0.873,0.873,0.7973,5
+What is the common traditional craft in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Crafts and Work,0.8647,0.8647,0.7799,5
+What is the name of the items the bride buys for her wedding in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Dating,0.7869,0.7869,0.692,5
+What is the average amount of dowry presented to the wife in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Common,Dating,0.8668,0.8668,0.6546,5
+In which region of Saudi Arabia is “Al-Maghsh” considered a traditional dish?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.9104,0.9104,0.8291,5
+“Al-Mashghoutha” is a traditional Saudi dish. Which region is known for preparing it?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.9527,0.9527,0.8387,5
+In which regions of Saudi Arabia is the traditional dish “Haneeth” popular?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.8999,0.8999,0.8293,5
+“Al-Haneeth” is a dish famous in which region of Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.898,0.898,0.7973,5
+What is the name of the traditional butter dish served in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.8737,0.8737,0.7918,5
+In which region of Saudi Arabia is juniper wood (“Arar”) traditionally used in architecture?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.9307,0.9307,0.736,5
+What is the most expensive part of a traditional Saudi Janbiya (dagger) that determines its price?,South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.9291,0.9291,0.7462,5
+What is the most common traditional craft in Najran city?,South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.8244,0.8244,0.6863,5
+What material is traditionally used to make the “Janbiya” dagger in Najran?,South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.8831,0.8831,0.7351,5
+"What is the name given to the artist who paints Al-Qatt Al-Asiri, the traditional Asiri wall art?",South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.9103,0.9103,0.7641,5
+"What describes “Al-Qatt Al-Asiri,” a traditional art form in the Asir region?",South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.8853,0.8853,0.8028,5
+What are the most common greeting phrases in Al-Baha?,South,SOUTH.csv,MCQ (one correct),Specialized,Languages and Communication,0.8564,0.8564,0.628,5
+“Beit Al-Esha” is a traditional architectural style. Which region in Saudi Arabia is known for this style?,South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.9274,0.9274,0.738,5
+In which region of Saudi Arabia do traditional sitting rooms (majalis) include a stone fireplace used for cooking and preparing coffee in front of guests?,South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.9351,0.9351,0.7643,5
+"In which area is the “vegetative style” architecture, known as “Al-Ishash,” commonly found in the Asir region due to its ease of construction?",South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.9212,0.9212,0.7432,5
+The “Del’a Dance” is a traditional dance in Saudi Arabia. It is associated with which region?,South,SOUTH.csv,MCQ (one correct),Specialized,Entertainment,0.9163,0.9163,0.7759,5
+"What is the form of singing performed individually, relying on creative embellishments, and usually performed during travels in South Saudi Arabia?",South,SOUTH.csv,MCQ (one correct),Specialized,Entertainment,0.9066,0.9066,0.7242,5
+The “Sword Dance” is a traditional folk dance in Saudi Arabia associated with the people of which region?,South,SOUTH.csv,MCQ (one correct),Specialized,Entertainment,0.9047,0.9047,0.7666,5
+The “Janabi Dance” is a traditional folk dance popular in which region of Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Specialized,Entertainment,0.9105,0.9105,0.7605,5
+In which region of Saudi Arabia is the “Al-Azawi Dance” primarily performed?,South,SOUTH.csv,MCQ (one correct),Specialized,Entertainment,0.8926,0.8926,0.7846,5
+What is the name of the traditional food served to guests in the afternoon in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.8664,0.8664,0.7941,5
+What is the traditional oven or pot used for baking in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Specialized,Food,0.9214,0.9214,0.7781,5
+What is the name of the traditional folklore for weddings and greeting guests from different tribes in South Saudi Arabia?,South,SOUTH.csv,MCQ (one correct),Specialized,Dating,0.9032,0.9032,0.7298,5
+"What does the guest room consist of in Jazan, Saudi Arabia?",South,SOUTH.csv,MCQ (one correct),Specialized,Crafts and Work,0.8115,0.8115,0.6979,5
+Is it acceptable in South Saudi Arabia for the host to ask the guest about his updates before serving coffee?,South,SOUTH.csv,MCQ (one correct),Specialized,Languages and Communication,0.9144,0.9144,0.642,5
+What is correct about Al-Masoub and Al-Areeqa?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Food,0.5804,0.5804,0.4355,5
+What are the other names for “Al-Mashghootha” in Saudi culture?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Food,0.8182,0.8182,0.6868,5
+What are the distinctive features of traditional jewelry from the southern region of Saudi Arabia?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8962,0.8962,0.7381,5
+Which of the following are traditional crafts known in the Al-Baha region?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8471,0.8471,0.693,5
+Which of the following are traditional crafts known in the Asir region?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8202,0.8202,0.7022,5
+"Traditional Saudi Arabian daggers, known as “Janabi,” come in various forms. Which of the following are considered authentic Saudi types?",South,SOUTH.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.9198,0.9198,0.6745,5
+In which region of Saudi Arabia is “Al-Mukammam” considered a traditional women’s garment?,South,SOUTH.csv,MCQ (one correct),Specialized,Clothes,0.936,0.936,0.7992,5
+The “Zamil” is an ancient folk singing art traditionally known in which regions of Saudi Arabia?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Entertainment,0.8998,0.8998,0.6899,5
+The “Southern Ardah” is a traditional dance performed in which regions of southwestern Saudi Arabia?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Entertainment,0.8994,0.8994,0.7685,5
+What is the “Al-Azawi Dance” known for?,South,SOUTH.csv,MCQ (multiple correct),Specialized,Entertainment,0.747,0.747,0.6085,5
+What is the most common dish in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Food,0.86,0.86,0.8235,5
+What is the most common sweet in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Food,0.8502,0.8502,0.7791,5
+What is the common traditional street food in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Food,0.8417,0.8417,0.794,5
+What is the most common breakfast dish in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Food,0.8427,0.8427,0.8092,5
+What is the common traditional drink in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Food,0.8443,0.8443,0.803,5
+What is the traditional clothing for men in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Clothes,0.8644,0.8644,0.8317,5
+What is the traditional clothing for women in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Clothes,0.8841,0.8841,0.8293,5
+What is the traditional breakfast dish eaten after Eid in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Celebration,0.8927,0.8927,0.7884,5
+What are the common traditional dances in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Entertainment,0.8921,0.8921,0.8157,5
+What is the common traditional music in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Entertainment,0.8801,0.8801,0.8277,5
+What is the common traditional craft in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Crafts and Work,0.8632,0.8632,0.8069,5
+What is the name of the items the bride buys for her wedding in West Saudi Arabia?,West,WEST.csv,Open-ended,Common,Dating,0.785,0.785,0.7027,5
+What is the average amount of dowry presented to the wife in Saudi Arabia?,West,WEST.csv,Open-ended,Common,Dating,0.8766,0.8766,0.6614,5
+"How can ""Hubb Soup"" be classified as a traditional Saudi stew, and what complementary foods are served with it?",West,WEST.csv,Open-ended,Specialized,Food,0.934,0.934,0.7355,5
+What is the name of a common drink in Western Saudi Arabia during Ramadan?,West,WEST.csv,Open-ended,Specialized,Food,0.8382,0.8382,0.7796,5
+What type of rice turns brown and is always served with fried or grilled fish in West Saudi Arabia?,West,WEST.csv,Open-ended,Specialized,Food,0.9058,0.9058,0.7078,5
+What are the most famous pastries in the Western region of Saudi Arabia?,West,WEST.csv,Open-ended,Specialized,Food,0.8937,0.8937,0.7875,5
+"What is the name of a famous spice blend in Madinah, Saudi Arabia, known for its distinctive flavor and essential use in local dishes?",West,WEST.csv,Open-ended,Specialized,Food,0.9157,0.9157,0.7423,5
+What is the name of a common drink in Western Saudi Arabia in winter?,West,WEST.csv,Open-ended,Specialized,Food,0.8326,0.8326,0.7903,5
+What is the method of greeting a guest in the Western region?,West,WEST.csv,Open-ended,Specialized,Languages and Communication,0.7791,0.7791,0.5993,5
+What is the financial amount that the mother of the bride receives upon the marriage contract?,West,WEST.csv,Open-ended,Specialized,Dating,0.7747,0.7747,0.53,5
+What is the name of the surah in the Quran that is read to declare engagement in West Saudi Arabia?,West,WEST.csv,Open-ended,Specialized,Dating,0.7932,0.7932,0.6207,5
+What is the name of the event that happens to the bride before the wedding in West Saudi Arabia?,West,WEST.csv,Open-ended,Specialized,Dating,0.835,0.835,0.6891,5
+What popular drink is usually served to celebrate the Islamic New Year in West Saudi Arabia?,West,WEST.csv,Open-ended,Specialized,Celebration,0.8497,0.8497,0.7634,5
+What is the traditional breakfast dish in Eid Al-Adha?,West,WEST.csv,Open-ended,Specialized,Celebration,0.8219,0.8219,0.7549,5
+What is the name of a family gathering that happens before Ramadan?,West,WEST.csv,Open-ended,Specialized,Celebration,0.8253,0.8253,0.6106,5
+Where do the people of Mecca usually go the night the pilgrims spend the night at Arafat?,West,WEST.csv,Open-ended,Specialized,Celebration,0.839,0.839,0.6382,5
+Which Saudi province is famous for rose distillation and producing rose water?,West,WEST.csv,Open-ended,Specialized,Crafts and Work,0.8643,0.8643,0.6529,5
+"What is the name of the person responsible for assisting pilgrims coming from outside Saudi Arabia, guiding them from their arrival in Mecca until their departure?",West,WEST.csv,Open-ended,Specialized,Crafts and Work,0.8721,0.8721,0.6833,5
+What is the name of the traditional job in Mecca that involved providing water to pilgrims and worshippers?,West,WEST.csv,Open-ended,Specialized,Crafts and Work,0.8833,0.8833,0.6977,5
+Which regions of Saudi Arabia is the game of Carrom specifically known?,West,WEST.csv,Open-ended,Specialized,Entertainment,0.8929,0.8929,0.7404,5
+"What is the ""Kasrah"" in the context of the ""Harabi Dance""?",West,WEST.csv,Open-ended,Specialized,Entertainment,0.8728,0.8728,0.6215,5
+"In which region of Saudi Arabia is the ""Al-Majroor"" dance a popular folkloric tradition?",West,WEST.csv,Open-ended,Specialized,Entertainment,0.9081,0.9081,0.8283,5
+"Where is the dance ""Al-Ashouri"" famous in Saudi Arabia?",West,WEST.csv,Open-ended,Specialized,Entertainment,0.8561,0.8561,0.7742,5
+What is the most common dish in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Food,0.869,0.869,0.8304,5
+What is the most popular sweet in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Food,0.8521,0.8521,0.7684,5
+What is the most common traditional street food in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Food,0.8506,0.8506,0.8094,5
+What is the most common breakfast dish in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Food,0.8488,0.8488,0.8149,5
+What is the most common traditional drink in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Food,0.8609,0.8609,0.8068,5
+What is the traditional breakfast dish during Eid Al-Fitr in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Celebration,0.905,0.905,0.7946,5
+What is the traditional clothing for men in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Clothes,0.8712,0.8712,0.8371,5
+What is the traditional clothing for women in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Clothes,0.8886,0.8886,0.8332,5
+What are the common traditional dances in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Entertainment,0.9005,0.9005,0.8269,5
+What is the common traditional music in central Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Entertainment,0.8794,0.8794,0.8043,5
+What is the common traditional craft in the west of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Crafts and Work,0.8691,0.8691,0.8121,5
+What is the name of the items the bride buys for her wedding in west Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Dating,0.785,0.785,0.7027,5
+What is the average amount of dowry presented to the wife in Saudi Arabia?,West,WEST.csv,MCQ (one correct),Common,Dating,0.8766,0.8766,0.6614,5
+What type of rice turns brown and is always served with fried or grilled fish in West Saudi Arabia?,West,WEST.csv,MCQ (one correct),Specialized,Food,0.9058,0.9058,0.7078,5
+What is the name of a common drink in Western Saudi Arabia during Ramadan?,West,WEST.csv,MCQ (one correct),Specialized,Food,0.8382,0.8382,0.7796,5
+"What is the name of a famous spice blend in Madinah, Saudi Arabia, known for its distinctive flavor and essential use in local dishes?",West,WEST.csv,MCQ (one correct),Specialized,Food,0.9157,0.9157,0.7423,5
+What is the name of a common drink in Western Saudi Arabia in winter?,West,WEST.csv,MCQ (one correct),Specialized,Food,0.8326,0.8326,0.7903,5
+"How can “Hubb Soup” be classified as a traditional Saudi stew, and what complementary foods are served with it?",West,WEST.csv,MCQ (one correct),Specialized,Food,0.9327,0.9327,0.7304,5
+What are the most famous pastries in the Western region of Saudi Arabia?,West,WEST.csv,MCQ (one correct),Specialized,Food,0.8937,0.8937,0.7875,5
+What popular drink is usually served to celebrate the Islamic New Year in West Saudi Arabia?,West,WEST.csv,MCQ (one correct),Specialized,Celebration,0.8497,0.8497,0.7634,5
+What is the name of a family gathering that happens before Ramadan?,West,WEST.csv,MCQ (one correct),Specialized,Celebration,0.8253,0.8253,0.6106,5
+What is the traditional breakfast dish in Eid Al-Adha?,West,WEST.csv,MCQ (one correct),Specialized,Celebration,0.8219,0.8219,0.7549,5
+What is the name of the traditional job in Mecca that involved providing water to pilgrims and worshippers?,West,WEST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8833,0.8833,0.6977,5
+Which Saudi province is famous for rose distillation and producing rose water?,West,WEST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8643,0.8643,0.6529,5
+"What is the name of the person responsible for assisting pilgrims coming from outside Saudi Arabia, guiding them from their arrival in Mecca until their departure?",West,WEST.csv,MCQ (one correct),Specialized,Crafts and Work,0.8721,0.8721,0.6833,5
+Which regions of Saudi Arabia is the game of Carrom specifically known?,West,WEST.csv,MCQ (one correct),Specialized,Entertainment,0.8929,0.8929,0.7404,5
+What is the “Kasrah” in the context of the “Harabi Dance”?,West,WEST.csv,MCQ (one correct),Specialized,Entertainment,0.8765,0.8765,0.6279,5
+In which region of Saudi Arabia is the “Al-Majroor” dance a popular folkloric tradition?,West,WEST.csv,MCQ (one correct),Specialized,Entertainment,0.9088,0.9088,0.8289,5
+Where is the dance “Al-Ashouri” famous in Saudi Arabia?,West,WEST.csv,MCQ (one correct),Specialized,Entertainment,0.8617,0.8617,0.7798,5
+What is the method of greeting a guest in the Western region?,West,WEST.csv,MCQ (one correct),Specialized,Languages and Communication,0.7791,0.7791,0.5993,5
+What is the name of the event that happens to the bride before the wedding in West Saudi Arabia?,West,WEST.csv,MCQ (one correct),Specialized,Dating,0.835,0.835,0.6891,5
+What is the name of the surah in the Quran that is read to declare engagement in West Saudi Arabia?,West,WEST.csv,MCQ (one correct),Specialized,Dating,0.7932,0.7932,0.6207,5
+What is the financial amount that the mother of the bride receives upon the marriage contract?,West,WEST.csv,MCQ (one correct),Specialized,Dating,0.7747,0.7747,0.53,5
+Where do the people of Mecca usually go the night the pilgrims spend the night at Arafat during the Hajj days?,West,WEST.csv,MCQ (one correct),Specialized,Celebration,0.8623,0.8623,0.636,5
+What color does the red “Mabroom” date tend to?,West,WEST.csv,MCQ (one correct),Specialized,Food,0.7592,0.7592,0.3635,5
+What is the name of the dish prepared by the people of Medina for Eid breakfast?,West,WEST.csv,MCQ (one correct),Specialized,Food,0.8305,0.8305,0.6769,5
+What accompanies the “Harabi Dance”?,West,WEST.csv,MCQ (multiple correct),Specialized,Entertainment,0.7323,0.7323,0.5885,5
+The “Yalli Dance” is a traditional group folk dance known in the western region of Saudi Arabia. In which areas is it performed?,West,WEST.csv,MCQ (multiple correct),Specialized,Entertainment,0.9345,0.9345,0.7545,5
+What is the traditional attire worn by the “Jassis” in Saudi Arabia?,West,WEST.csv,MCQ (multiple correct),Specialized,Clothes,0.866,0.866,0.7095,5
+What is the common traditional craft in the west of Saudi Arabia?,West,WEST.csv,MCQ (multiple correct),Specialized,Crafts and Work,0.8691,0.8691,0.8121,5
