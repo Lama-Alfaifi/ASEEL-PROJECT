@@ -1,0 +1,659 @@
+question,actual_output,expected_output,Faithfulness,Answer Relevancy,Contextual Relevancy,Contextual Recall
+What is the most common dish in Central Saudi Arabia?,"In Central Saudi Arabia, the most common dish is Jareesh. This traditional dish is well-known within the region.",Jareesh,1.0,1.0,0.75,1.0
+What is the most common sweet in Central Saudi Arabia?,"In Central Saudi Arabia, the most common sweet is Kleija. This is supported by multiple pieces of evidence indicating its popularity in the region.",Kleija,1.0,1.0,0.6666666666666666,1.0
+What is the common traditional street food in Central Saudi Arabia?,"Central Saudi Arabia features several common traditional street foods. Based on the available evidence, some of the most popular options include grilled corn and fried potatoes. Corn is specifically highlighted as a common street food in this region.","Grilled Corn, Fried Potatoes",1.0,0.6666666666666666,0.75,1.0
+What is the most common breakfast dish in Central Saudi Arabia?,"Central Saudi Arabia is known for a couple of common breakfast dishes. Based on the available regional evidence, the most common breakfast dishes include Liver (Kibdah) and Shakshouka. Additionally, Liver (Kebda) is also noted as a common choice for breakfast in this region.","Liver (Kibdah), Shakshouka",0.6666666666666666,1.0,1.0,0.5
+What is the common traditional drink in Central Saudi Arabia?,"Central Saudi Arabia is known for its traditional drink, which is Saudi Coffee (Gahwa). This beverage holds cultural significance in the region and is commonly enjoyed.",Saudi Coffee (Gahwa),1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for men in Central Saudi Arabia?,"Central Saudi Arabia's traditional clothing for men includes ""Al-Mirwaden"" and ""Al-Murudan, Al-Mukammam."" These garments reflect the cultural heritage of the region.","Al-Murudan, Al-Mukammam",1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for women in Central Saudi Arabia?,"Central Saudi Arabia is known for the traditional women's clothing known as ""Al-Nashl Al-Najdi."" This clothing is characterized by its cultural significance within the region.",Al-Nashl Al-Najdi,1.0,1.0,0.6666666666666666,1.0
+What is the traditional breakfast dish during Eid in Central Saudi Arabia?,"Central Saudi Arabia is known for its traditional breakfast dishes, particularly during festive occasions like Eid. Based on regional evidence, common breakfast dishes include Liver (Kibdah) and Shakshouka. These dishes are staple choices in the Central region, reflecting the local culinary traditions.","Jareesh, Qursan, Meat with Rice",1.0,1.0,0.6666666666666666,0.0
+What are the common traditional dances in Central Saudi Arabia?,Central Saudi Arabia has notable traditional dance forms that include Al-Ardah and Al-Ardha. These dances are commonly performed during celebrations and highlight the cultural heritage of the region.,Al-Ardah,1.0,1.0,0.6666666666666666,1.0
+What is the common traditional music in Central Saudi Arabia?,"Central Saudi Arabia is known for its traditional music, particularly ""Al-Samri."" This form of music plays an important role in the cultural entertainment of the region.",Al-Samri,1.0,1.0,0.6666666666666666,1.0
+What is the common traditional craft in Central Saudi Arabia?,"Central Saudi Arabia is known for several traditional crafts. Based on the available regional evidence, the common traditional crafts include:
+
+1. Mud Building
+2. Sadu Weaving
+3. Palm-Frond Weaving (Khoos)
+
+Additionally, in the Riyadh region, traditional crafts also encompass making cloaks (Bishoot) and headbands (Iqal), crafting handmade weapons, and creating heritage wooden boxes.","Sadu Weaving, Palm-Frond Weaving (Khoos), Mud-Building",1.0,1.0,0.6,0.3333333333333333
+What is the name of the items the bride buys for her wedding in Central Saudi Arabia?,"In Central Saudi Arabia, the items that the bride buys for her wedding are referred to as ""Al-Jihaz"" or ""Bridal Set."" This information is specific to the cultural practices in the Central region.",Al-Jihaz (Bridal Set),1.0,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in Central Saudi Arabia?,"In Central Saudi Arabia, the average amount of dowry presented to the wife is typically between 50,000 and 100,000 SAR. This information reflects general cultural practices in the Central region.","50,000–100,000 SAR",1.0,1.0,0.6666666666666666,1.0
+What is the traditional winter dish made from dates and brown bread in Al-Qassim?,"Al-Qassim is in the Central Region of Saudi Arabia. Based on the available regional evidence, the traditional winter dish made from dates and brown bread in Al-Qassim is called Al-Hanini.",Al-Hanini,1.0,1.0,0.6666666666666666,1.0
+What is the main traditional sweet in the Al-Qassim region?,"Al-Qassim is in the Central Region of Saudi Arabia. Based on the available regional evidence, the main traditional sweet in this region is Al-Kleijah. Additionally, Al-Marasee’ is also noted as a significant sweet within the Central Region.",Al-Kleijah,1.0,0.6666666666666666,0.6666666666666666,1.0
+"What is the name of the traditional Saudi food made from dried yogurt, shaped into white solid pieces?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Al-Aqit,1.0,0.5,0.0,0.0
+In which region of Saudi Arabia is “Al-Marqooq” considered a regional dish?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Riyadh,1.0,0.0,0.0,0.0
+In which region of Saudi Arabia is “Al-Marasee’” a main traditional dish?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Riyadh,1.0,0.0,0.0,0.0
+What areas in central Saudi Arabia were historically known for making jewelry?,"Central Saudi Arabia is historically known for making jewelry in several areas, specifically Al-Diriyah, Sudair, and Buraidah.","Al-Diriyah, Sudair ,Buraidah",1.0,1.0,0.3333333333333333,1.0
+How many stages does the process of producing oud oil in Saudi Arabia go through?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Seven stages,1.0,0.0,0.0,0.0
+What is “Al-Kummar” in the context of traditional Najdi houses in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,An architectural feature for storing tea and coffee utensils,1.0,0.0,0.0,0.0
+What is “Al-Liwan” in traditional Najdi houses in Riyadh?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, ""Al-Liwan"" in traditional Najdi houses refers to an open seating area.",An open seating area,1.0,0.5,0.6666666666666666,1.0
+What are the traditional architectural styles in the Al-Qassim region?,"The Al-Qassim region is part of the Central Region of Saudi Arabia. Based on the available evidence, traditional architectural styles in this region include building residential clusters along trade and pilgrimage caravan routes.",Building residential clusters along trade and pilgrimage caravan routes,1.0,1.0,0.6666666666666666,1.0
+How many rows are formed in the Saudi Ardah dance?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Two rows,1.0,0.0,0.0,0.0
+In which musical mode are most Saudi Ardah poems composed and performed?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Sika (Al-Sika),1.0,0.0,0.0,0.0
+Where do people in Riyadh usually go when the weather turns cold?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, when the weather turns cold, people in Riyadh usually go to the desert (Al-Barr). This is a popular choice among the locals during colder months.",To the desert (Al-Barr),1.0,0.6666666666666666,0.6666666666666666,1.0
+What is the name given to a single strike of the large drum in the Saudi Ardah dance?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Al-Tafreedah,1.0,0.0,0.0,0.0
+What does the term “Al-Ta’leelah” refer to in Saudi culture?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Evening storytelling,1.0,0.5,0.0,0.0
+What is the name of the famous festival in Riyadh for arts and crafts?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, the cultural celebration known for its traditional significance is called Al-Ardah. However, the validated evidence does not specifically mention a famous festival dedicated to arts and crafts in Riyadh. Therefore, the knowledge base does not contain enough information to identify such a festival.",Al-Janadriyah,1.0,0.25,0.0,0.0
+Where is the “Al-La’ybouli” dance popular in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Central Saudi Arabia,1.0,0.0,0.0,0.0
+What are the most common welcoming phrases in Central Saudi Arabia?,"Central Saudi Arabia is known for various welcoming phrases. Based on the available regional evidence, the most common welcoming phrases include:
+
+1. **Marhaba Alf**
+2. **Marhaban Alf**
+
+These phrases reflect the warm and hospitable nature of the culture in this region.",Marhaban Alf,1.0,1.0,0.6666666666666666,0.5
+What is the most common dish in Central Saudi Arabia?,"Central Saudi Arabia is known for its common dish, Jareesh. This dish is widely recognized in the region and forms a significant part of its culinary identity.",Jareesh,1.0,1.0,0.75,1.0
+What is the most popular sweet in Central Saudi Arabia?,"In Central Saudi Arabia, the most popular sweet is Kleija. This information is supported by regional evidence that identifies Kleija as a significant sweet in the area.",A. Kleija,1.0,1.0,0.6666666666666666,1.0
+What is the most common traditional street food in Central Saudi Arabia?,"Central Saudi Arabia is known for its traditional street foods, which include **corn** and **grilled corn**. Additionally, **fried potatoes** are also commonly sold as street food in this region.",A. Corn,1.0,1.0,1.0,1.0
+What is the most common breakfast dish in Central Saudi Arabia?,Central Saudi Arabia is known for common breakfast dishes such as Liver (Kibdah) and Shakshouka. These dishes are popular choices for breakfast in the region.,"Liver (Kibdah), Shakshouka",1.0,1.0,1.0,0.5
+What is the most common traditional drink in Central Saudi Arabia?,"In Central Saudi Arabia, the most common traditional drink is Saudi Coffee, also known as Gahwa. This drink is a significant cultural beverage in the region.",A. Saudi Coffee (Qahwa),1.0,1.0,0.6666666666666666,1.0
+What is the traditional breakfast dish during Eid-al-Fitr in Central Saudi Arabia?,"Central Saudi Arabia is known for traditional breakfast dishes such as Liver (Kibdah) and Shakshouka. These dishes are commonly enjoyed during various occasions, including Eid-al-Fitr. While the specific practices may vary, these items represent the typical breakfast offerings in the region.",A. Jareesh and Qursan,1.0,1.0,0.5,0.0
+What are the common traditional dances in Central Saudi Arabia?,"Central Saudi Arabia is known for several common traditional dances. Notably, two significant dances are:
+
+1. **Al-Ardah** - This dance is associated with celebrations and is a prominent cultural expression in the region.
+2. **Al-Ardha** - This is another traditional dance recognized as part of the local cultural heritage.
+
+These dances are integral to the celebrations in Central Saudi Arabia.",Al-Ardah,0.75,1.0,0.6666666666666666,1.0
+What is the traditional clothing for women in Central Saudi Arabia?,"Central Saudi Arabia features traditional women's clothing known as ""Al-Nashl Al-Najdi"". This outfit is noted within the regional cultural context.",Al-Nashl Al-Najdi,1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for men in Central Saudi Arabia?,"Central Saudi Arabia has traditional clothing for men that includes items such as Al-Mirwaden, Al-Murudan, and Al-Mukammam. These garments are part of the cultural attire recognized in this region.","Al-Murudan, Al-Mukammam",0.0,1.0,0.6666666666666666,1.0
+What is the common traditional music in Central Saudi Arabia?,"In Central Saudi Arabia, the common traditional music is known as Al-Samri. This style is recognized within the cultural practices of the region.",Al-Samri,1.0,1.0,0.6666666666666666,1.0
+What is the common traditional craft in Central Saudi Arabia?,"Central Saudi Arabia is known for several traditional crafts. Common crafts in this region include:
+
+1. **Mud Building** - This is a prominent craft, reflecting traditional architectural methods.
+2. **Sadu Weaving** - This craft involves weaving using goat hair, creating beautiful textiles.
+3. **Palm-Frond Weaving (Khoos)** - This utilizes leaves from palm trees to make various products.
+
+These practices highlight the rich cultural heritage of the Central region in Saudi Arabia.","Sadu Weaving, Palm-Frond Weaving (Khoos), Mud-Building",1.0,1.0,0.6,0.3333333333333333
+What is the name of the items the bride buys for her wedding in Central Saudi Arabia?,"In Central Saudi Arabia, the items that the bride buys for her wedding are known as ""Al-Jihaz"" or ""Bridal Set."" This information reflects the cultural practices specific to the Central region.",Al-Jihaz (Bridal Set),1.0,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in Central Saudi Arabia?,"Central Saudi Arabia has an average amount of dowry presented to the wife that ranges from 50,000 to 100,000 SAR. This information is consistent across the available evidence from the region.","50,000–100,000 SAR",1.0,1.0,0.6666666666666666,1.0
+What is the traditional winter dish made from dates and brown bread in Al-Qassim?,"Al-Qassim is in the Central Region of Saudi Arabia. Based on the available regional evidence, the traditional winter dish made from dates and brown bread is called Al-Hanini.",Al-Hanini,1.0,0.5,0.6666666666666666,1.0
+What is the main traditional sweet in the Al-Qassim region?,"Al-Qassim is in the Central Region of Saudi Arabia. Based on the available regional evidence, the main traditional sweets are Al-Kleijah and Al-Marasee’. These are popular sweets in the Central Region.",Al-Kleijah,1.0,0.6666666666666666,0.6666666666666666,1.0
+"What is the traditional Saudi food made from dried yogurt, shaped into white solid pieces?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Al-Aqit,1.0,0.0,0.0,0.0
+"In which region of Saudi Arabia is ""Al-Marqooq"" considered a traditional dish?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,D. Riyadh,1.0,0.5,0.0,0.0
+"In which region of Saudi Arabia is ""Al-Marasee’"" a main traditional dish?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Riyadh,1.0,0.5,0.0,0.0
+What areas in central Saudi Arabia were historically known for making jewelry?,"Central Saudi Arabia includes areas historically known for making jewelry such as Al-Diriyah, Sudair, and Buraidah. These regions have a rich tradition in jewelry craftsmanship.","Al-Diriyah, Sudair ,Buraidah",1.0,1.0,0.3333333333333333,1.0
+How many stages are involved in oud oil production in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,C. 7 stages,1.0,0.0,0.0,0.0
+"What is ""Al-Kummar"" in traditional Najdi houses in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B. Architectural feature for storing tea and coffee utensils,1.0,0.0,0.0,0.0
+"What is ""Al-Liwan"" in traditional Najdi houses in Riyadh?","Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, ""Al-Liwan"" in traditional Najdi houses refers to an open seating area. This architectural feature is significant in the design and functionality of these houses.",A. Open seating area,0.5,0.6666666666666666,0.6666666666666666,1.0
+What describes traditional building styles in Al-Qassim?,"Al-Qassim is in the Central Region of Saudi Arabia. Based on the available regional evidence, traditional building styles in Al-Qassim are characterized by ""building residential clusters along trade and pilgrimage caravan routes."" This reflects the historical context of the area, where architecture was influenced by economic and social activities.",A. Building residential clusters along trade and pilgrimage caravan routes,1.0,0.75,0.6666666666666666,1.0
+How many rows are formed in the Saudi Ardah dance?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Two rows,1.0,0.5,0.0,0.0
+In which musical mode are most Saudi Ardah poems composed and performed?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Sika (Al-Sika),1.0,0.0,0.0,0.0
+What is the name of the famous festival in Riyadh for arts and crafts?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, I do not have specific information regarding the name of a famous festival in Riyadh for arts and crafts. The evidence primarily addresses common traditional dances, such as Al-Ardah, in the Central Region, but does not mention specific festivals related to arts and crafts. Therefore, the knowledge base does not contain enough information to answer your question.",Al-Janadriyah,1.0,0.2,0.0,0.0
+Where do people in Riyadh usually go when the weather turns cold?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, when the weather turns cold, people in Riyadh usually go to the desert (known as Al-Barr).",To the desert (Al-Barr),1.0,0.3333333333333333,0.6666666666666666,1.0
+What is the name of a single beat of the large drum in the Saudi Ardah dance?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,C. Al-Tafreedah,1.0,0.0,0.0,0.0
+"Where is the ""Al-La’ybouli"" dance popular in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B. Central Saudi Arabia,1.0,0.5,0.0,0.0
+"What does the term ""Al-Ta’leelah"" mean in Saudi culture?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B. Evening storytelling,1.0,0.0,0.0,0.0
+What are the most common welcoming phrases in Central Saudi Arabia?,"Central Saudi Arabia is known for its warm hospitality, and common welcoming phrases include:
+
+1. **Marhaba Alf** 
+2. **Marhaban Alf**
+
+These phrases reflect the friendly nature of the people in the Central region.",Marhaban Alf,1.0,1.0,0.6666666666666666,0.5
+Which of the following traditional dishes are associated with Riyadh?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, two traditional dishes associated with Riyadh are:
+
+1. **Al-Maraqooq**
+2. **Al-Maras’ee**
+
+These dishes are recognized as part of the culinary heritage of the Central Region.",A and B,0.6666666666666666,0.8,1.0,1.0
+What is the name of the traditional Saudi dessert made of crispy biscuits filled with date molasses and black lime?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A,1.0,0.5,0.0,0.0
+"What are the essential ingredients used in preparing ""Al-Haneeni,"" a dish known for its connection to traditional Saudi cuisine?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,C,1.0,0.0,0.0,0.0
+"How can the traditional Saudi dish ""Mathlootha"" be classified?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and C,1.0,0.5,0.0,0.0
+Which of the following traditional crafts are practiced in the Qassim region?,"Qassim is in the Central Region of Saudi Arabia. Based on the available regional evidence, the traditional crafts practiced in the Qassim region include:
+
+1. Sadu weaving
+2. Embroidery
+3. Perfume and incense making (including Oud oil)
+4. Making heritage doors
+5. Crafting traditional utensils
+6. Designing heritage windows
+
+In summary, a variety of traditional crafts are renowned in the Qassim region, showcasing its rich cultural heritage.",D,1.0,0.8888888888888888,0.4,1.0
+Which of the following are traditional crafts in the Riyadh region of Saudi Arabia?,"Riyadh is in the Central Region of Saudi Arabia. Based on the available regional evidence, traditional crafts in this region include:
+
+1. Making traditional cloaks (Bishoot) and headbands (Iqal)
+2. Crafting handmade weapons
+3. Creating heritage wooden boxes
+4. Sadu weaving
+5. Palm-frond weaving (Khoos)
+6. Mud building
+
+Therefore, the answer to the question would be ""All of the above"" regarding the traditional crafts in the Riyadh region.",D,1.0,0.875,0.75,1.0
+"Who traditionally prepares ""Maamoul Al-Dawasir"" in Saudi culture?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and B,1.0,0.5,0.0,0.0
+What are the traditional crafts famous in the Qassim region?,"Qassim is located in the Central Region of Saudi Arabia. Based on the available regional evidence, some traditional crafts famous in the Qassim region include:
+
+1. **Making heritage doors**
+2. **Crafting traditional utensils**
+3. **Designing heritage windows**
+4. **Sadu weaving**
+5. **Embroidery**
+6. **Perfume and incense making (including Oud oil)**
+
+These crafts reflect the cultural heritage and artisanal skills prevalent in the Central Region.","A, B, and C",1.0,0.875,0.4,1.0
+What colors are commonly used in Sadu weaving?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,D,1.0,0.0,0.0,0.0
+"How is the ""Al-Fann Al-Houti"" dance traditionally performed in terms of formation?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A,1.0,0.0,0.0,0.0
+"Where did the ""Naqoos"" or ""Najooz"" dance, a traditional dance and artistic singing style, originate in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A,1.0,0.0,0.0,0.0
+What is the main musical characteristic of the Saudi Ardah?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and B,1.0,0.0,0.0,0.0
+What is the primary role of the poet in the Saudi Ardah?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,C and D,1.0,0.0,0.0,1.0
+"Where did the traditional Saudi art of ""Samri"" originate before spreading to other regions?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A,1.0,0.0,0.0,0.0
+What is the most common dish in East Saudi Arabia?,"The Eastern Region of Saudi Arabia is known for several common dishes. Among them, **Al-Thareed** is a notable dish, often identified as the most common. Other popular dishes in the region include **Al-Mahammar**, **Al-Mufallaq Al-Hasawi**, and **Al-Makbous**.","Al-Mahammar, Al-Thareed, Al-Mufallaq Al-Hasawi, Al-Makbous",0.75,1.0,0.6666666666666666,1.0
+What is the most common sweet in East Saudi Arabia?,"Based on available evidence, East Saudi Arabia has several popular sweets. The most common sweets include Al-Sago, Al-Mafrouka, and Al-Hanini. Al-Sago is particularly noted as one of the most popular options in the region.","Al-Mafrouka, Al-Hanini, Al-Sago",1.0,1.0,0.6666666666666666,0.3333333333333333
+What is the common traditional street food in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, common traditional street foods include Mutabbaq, Samosa, and Falafel. These dishes are widely enjoyed and are part of the local culinary culture.","Samosa, Falafel, Mutabbaq",1.0,1.0,1.0,1.0
+What is the most common breakfast dish in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the most common breakfast dish is Balaleet, which is made of sweet vermicelli with egg.",Balaleet (sweet vermicelli with egg),1.0,1.0,1.0,1.0
+What is the common traditional drink in East Saudi Arabia?,"The Eastern Region of Saudi Arabia is known for its common traditional drinks, which include tea and tea with rose. These beverages are widely enjoyed within this region.",Tea,1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for men in East Saudi Arabia?,"East Saudi Arabia has its own traditional clothing for men, primarily identified as the Al-Dishdasha or Dishdasha (also referred to as Thobe). This attire is culturally significant and widely worn in the region.",Dishdasha (Thobe),1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for women in East Saudi Arabia?,"The Eastern Region of Saudi Arabia has various traditional clothing styles for women. Based on the available evidence, these include:
+
+1. Dara’aah 
+2. Thobe Hashemi 
+3. Masrah 
+4. Manthour 
+5. Thobe Al-Thuraya 
+6. Abaya 
+7. Sheilah 
+8. Nafnaf 
+
+These garments reflect the cultural heritage and traditions of women in this region.","Daraa, Thobe Hashemi, Masrah, Manthour, Thobe Al-Thuraya, Abaya, Sheilah, Nafnaf",1.0,1.0,0.6666666666666666,1.0
+What is the traditional breakfast dish during Eid Al-Fitr in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the traditional breakfast dish during Eid Al-Fitr is Balaleet, which is a sweet vermicelli dish often served with egg. This dish is also recognized as the most common breakfast in this region.","Balaleet, Aseeda, Fateet, Liver, Zalabia",0.6666666666666666,1.0,0.6666666666666666,0.2
+What are the common traditional dances in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, common traditional dances include:
+
+1. **Al-Fajri**
+2. **Saifiya**
+3. **Ardah Saifiyah (Sword Dance)**
+4. **Fijri Art (Hasawi Style)**
+5. **Daq Al-Hubb**
+6. **Harvest Dance**
+7. **Freisa Dance**
+
+These dances are part of the region's cultural entertainment and celebration traditions.","Ardah Saifiyah (Sword Dance), Fijri Art (Hasawi Style), Daq Al-Hubb, Harvest Dance, Freisa Dance",1.0,1.0,0.75,1.0
+What is the common traditional music in East Saudi Arabia?,"The Eastern Region of Saudi Arabia is known for its traditional music, which includes Fijri, Nahhamah (sea chant), and Liwa. These forms of music reflect the cultural heritage of the region.","Fijri, Nahhamah (sea chant), Liwa",1.0,1.0,0.3333333333333333,1.0
+What is the common traditional craft in East Saudi Arabia?,"The Eastern Region of Saudi Arabia is known for several common traditional crafts. These include:
+
+- Pottery
+- Palm-Frond Weaving (Khoos)
+- Cloak Weaving (Mishlah)
+- Rope Making
+- Leatherwork
+- Sword Making
+- Basket Weaving
+- Metalwork
+- Fish Trap Making (Gargoor)
+- Bisht Making (traditional cloaks)
+
+These crafts reflect the region's rich cultural heritage and artisanal skills.","Pottery, Palm-Frond Weaving (Khoos), Cloak Weaving (Mishlah), Rope Making, Leatherwork, Sword Making, Basket Weaving, Metalwork, Fish Traps (Gargoor)",1.0,1.0,0.75,1.0
+What is the name of the items the bride buys for her wedding in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the items that a bride typically buys for her wedding are referred to as ""Al-Shabka"" or ""Shabkah,"" which translates to the Bridal Jewelry Set. These items play a significant role in wedding preparations.",Shabkah (Bridal Jewelry Set),1.0,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in East Saudi Arabia?,"The average amount of dowry presented to the wife in the Eastern Region of Saudi Arabia is between 25,000 and 60,000 SAR. This information is based on the regional cultural evidence available.","25,000–60,000 SAR",1.0,1.0,0.6666666666666666,1.0
+"What type of dessert dish in the Eastern Province of Saudi Arabia is made from starchy granules, water, sugar, and ghee?","The Eastern Province of Saudi Arabia is known for a dessert called Sago (Al-Sago), which is made from starchy granules, water, sugar, and ghee. This dessert is characterized by its starchy texture and is a popular choice in the region.",Sago (Al-Sago),0.75,1.0,1.0,1.0
+"What is a traditional dish of the Eastern Province, eaten on the first day of Eid Al-Fitr, made of mashed dates, ghee, and flour?","The Eastern Province of Saudi Arabia features a traditional dish known as Al-Mamroos, which is enjoyed on the first day of Eid Al-Fitr. This dish is made of mashed dates, ghee, and flour.",Al-Mamroos,1.0,1.0,0.3333333333333333,1.0
+What is Harees soup made of in the east of Saudi Arabia?,"In the Eastern Region of Saudi Arabia, Harees soup is made of Hassawi wheat. This specific ingredient is commonly used in preparing the dish in this area.",Hassawi wheat,1.0,1.0,0.6666666666666666,0.6666666666666666
+What is the dish from the east that relies on rice cooked with sugar and served with fried fish?,"In the Eastern Region of Saudi Arabia, the dish that relies on rice cooked with sugar and is served with fried fish is called ""Al-Mahammar."" This information is based on available cultural evidence specific to the region.",Al-Mahammar,1.0,0.75,0.6666666666666666,1.0
+"What is the name of the striped fabric worn by men around the lower body, especially by divers in the east?","The city you are asking about is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, the name of the striped fabric worn by men around the lower body, especially by divers in the East, is ""Izar.""",Izar,1.0,0.6666666666666666,0.75,1.0
+"What is the name of the traditional sea folklore of Saudi Arabia, common in the east, especially in Qatif?","Dammam is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, the traditional sea folklore common in the East, especially in Qatif, is called ""Sanakli Art.""",Sanakli Art,1.0,0.6666666666666666,0.3333333333333333,1.0
+What is the name of the traditional game popular in Darin Center in the Eastern Region of Saudi Arabia?,"Darin Center is located in the Eastern Region of Saudi Arabia. Based on the available regional evidence, a traditional game popular in this area is called ""Jidir,"" which is also referred to as ""Jadeer.""",Jadeer,1.0,1.0,0.6666666666666666,1.0
+"What is the name of the traditional dance performed in the east, considered an ancient heritage, particularly in the Al-Ahsa region?","The Eastern Region of Saudi Arabia, which includes the Al-Ahsa region, is known for the traditional dance called ""Al-Heyda"" or ""Al-Haida Dance."" This dance is considered an ancient heritage of the area.",Al-Haida Dance,1.0,1.0,0.75,1.0
+What is the name of the celebration observed in the east during Sha’ban or Ramadan?,"The Eastern Region of Saudi Arabia observes celebrations during Sha’ban or Ramadan, notably ""Al-Qarqiaan"" and ""Garangao (Al-Garqee’an)."" These celebrations are characterized by communal events and traditions linked to the holy months.",Garangao (Al-Garqee’an),1.0,1.0,0.6666666666666666,1.0
+The craft of making Mishlahs (traditional cloaks) is an inherited profession in which families?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Al-Ahsa families,1.0,0.0,0.0,0.0
+There is a similarity between the jewelry in the eastern and northern regions of Saudi Arabia and the jewelry of which other region?,The Eastern Region of Saudi Arabia has jewelry that shows similarities to that of the Riyadh region. This connection highlights a shared cultural aspect in craftsmanship within these regions.,Riyadh,1.0,1.0,0.6666666666666666,1.0
+“Al-Frisi” is a traditional performing art in Saudi Arabia that originated in which region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Eastern Region,1.0,0.0,0.0,0.0
+What is the traditional craft referred to as “Al-Qallafa” in Saudi culture?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Shipbuilding,1.0,0.0,0.0,0.0
+"What handicraft, common in the east, is primarily made by women using palm tree products?","In the Eastern Region of Saudi Arabia, a common handicraft primarily made by women using palm tree products is known as ""Khos,"" also referred to as ""Palm-Frond Weaving (Khoos)."" These traditional crafts highlight the skills and creativity of women in the region.",Palm-Frond Weaving (Khoos),1.0,1.0,0.75,1.0
+What material is used for building ships in the east of Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the material used for building ships is wood. This information is supported by the available regional evidence.",Wood,1.0,1.0,0.5,1.0
+What are the three main architectural planning styles in the Eastern Region of Saudi Arabia?,"The Eastern Region of Saudi Arabia is characterized by three main architectural planning styles: Coastal architecture, Desert architecture, and Agricultural (Oasis) architecture. These styles reflect the diverse environments present in the region.","Coastal architecture, Desert architecture, Agricultural (Oasis) architecture",,,,0.6666666666666666
+What is the most common dish in East Saudi Arabia?,"Based on the cultural evidence from the Eastern Region of Saudi Arabia, the most common dishes include Al-Thareed, Al-Mahammar, Al-Mufallaq Al-Hasawi, and Al-Makbous. Al-Thareed is specifically noted as a well-known dish in this region.","Al-Mahammar, Al-Thareed, Al-Mufallaq Al-Hasawi, Al-Makbous",1.0,1.0,0.6666666666666666,1.0
+What is the most popular sweet in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the most popular sweet is Al-Sago. Other common sweets in the region include Al-Mafrouka and Al-Hanini.",C. Al-Sago,1.0,1.0,0.6666666666666666,1.0
+Which of the following is a common traditional street food in East Saudi Arabia?,"Based on the available cultural evidence for the Eastern Region of Saudi Arabia, common traditional street foods include:
+
+1. **Mutabbaq**
+2. **Samosa**
+3. **Falafel**
+
+These dishes are popular street foods in the region.",B. Mutabbaq,1.0,1.0,1.0,1.0
+What is the traditional breakfast dish in Eid Al-Fitr in East Saudi Arabia?,"Dammam is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, the traditional breakfast dish during Eid Al-Fitr in East Saudi Arabia is Balaleet, which is sweet vermicelli with egg. This dish is also noted as the most common breakfast item in the region.",D. Balaleet,0.6666666666666666,0.75,0.75,1.0
+Which of the following is a common traditional drink in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, a common traditional drink is tea. Additionally, ""Tea with Rose"" is also recognized as a traditional drink in this region.",A. Tea with Rose,1.0,1.0,0.6666666666666666,1.0
+Which of the following is a traditional breakfast dish enjoyed during Eid Al-Fitr in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, a traditional breakfast dish enjoyed during Eid Al-Fitr is Balaleet, which is sweet vermicelli with egg. This dish is also recognized as the most common breakfast in the region.",B. Zalabiya,0.6666666666666666,1.0,0.75,0.0
+Which of the following are common traditional dances in East Saudi Arabia?,"East Saudi Arabia has a rich tradition of dance. Common traditional dances in this region include:
+
+1. Al-Fajri
+2. Saifiya
+3. Ardah Saifiyah (Sword Dance)
+4. Fijri Art (Hasawi Style)
+5. Daq Al-Hubb
+6. Harvest Dance
+7. Freisa Dance
+
+These dances are part of the cultural heritage celebrated during various occasions in the Eastern Region.",B. Saifiya,1.0,1.0,0.75,1.0
+What is the traditional clothing for men in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the traditional clothing for men includes the Al-Dishdasha and Dishdasha (Thobe). These garments are commonly worn and are part of the regional cultural attire.",Dishdasha (Thobe),1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for women in East Saudi Arabia?,"The city in question is located in the Eastern Region of Saudi Arabia. Based on the available regional evidence, traditional clothing for women in this region includes:
+
+1. **Dara'aah**
+2. **Thobe Hashemi**
+3. **Masrah**
+4. **Manthour**
+5. **Thobe Al-Thuraya**
+6. **Abaya**
+7. **Sheilah**
+8. **Nafnaf**
+
+These garments represent the traditional attire common among women in the Eastern Region of Saudi Arabia.","Daraa, Thobe Hashemi, Masrah, Manthour, Thobe Al-Thuraya, Abaya, Sheilah, Nafnaf",1.0,1.0,0.6666666666666666,1.0
+What are the common traditional dances in East Saudi Arabia?,"The Eastern Region of Saudi Arabia has several common traditional dances. These include:
+
+1. **Al-Fajri** - a notable traditional dance.
+2. **Saifiya** - another popular dance often performed during celebrations.
+3. A variety of other dances including:
+   - **Ardah Saifiyah (Sword Dance)**
+   - **Fijri Art (Hasawi Style)**
+   - **Daq Al-Hubb**
+   - **Harvest Dance**
+   - **Freisa Dance**
+
+These dances represent the rich cultural heritage of the Eastern Region.","Ardah Saifiyah (Sword Dance), Fijri Art (Hasawi Style), Daq Al-Hubb, Harvest Dance, Freisa Dance",1.0,0.9,0.75,1.0
+What is the name of the items the bride buys for her wedding in East Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the items that the bride typically buys for her wedding are known as ""Al-Shabka"" or ""Shabkah,"" which refers to bridal jewelry sets.",Shabkah (Bridal Jewelry Set),1.0,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in East Saudi Arabia?,"East Saudi Arabia has an average amount of dowry presented to the wife ranging from 25,000 to 60,000 SAR. This information comes from broader regional cultural practices.","25,000–60,000 SAR",1.0,1.0,0.6666666666666666,1.0
+What is the common traditional craft in East Saudi Arabia?,"The Eastern Region of Saudi Arabia is known for several traditional crafts. Common crafts include:
+
+- Pottery
+- Palm-Frond Weaving (Khoos)
+- Cloak Weaving (Mishlah)
+- Rope Making
+- Leatherwork
+- Sword Making
+- Basket Weaving
+- Metalwork
+- Fish Traps (Gargoor)
+- Bisht Making (a type of traditional cloak)
+
+These crafts reflect the rich cultural heritage of the region.","Pottery, Palm-Frond Weaving (Khoos), Cloak Weaving (Mishlah), Rope Making, Leatherwork, Sword Making, Basket Weaving, Metalwork, Fish Traps (Gargoor)",0.75,1.0,0.75,1.0
+Which Saudi dessert is known for its starchy granules?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B. Al-Sago,1.0,0.5,0.0,0.0
+"What is the main traditional dessert in the Eastern region of Saudi Arabia, also known as “Masabeeb” or “Marageesh”?","The Eastern Region of Saudi Arabia features a traditional dessert known as ""Al-Mamroos,"" which is also referred to as ""Masabeeb"" or ""Marageesh."" This is the primary traditional dessert in that region.",C. Al-Mamroos,1.0,1.0,0.5,1.0
+What is the name of the dish in East Saudi Arabia that is prepared using rice cooked with sugar and served with fried fish?,"Dammam is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, the dish prepared using rice cooked with sugar and served with fried fish is known as ""Muhammar."" Another name for this dish is ""Al-Mahammar.""",D. Muhammar,0.5,0.6666666666666666,0.6666666666666666,1.0
+What is Harees soup made of?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Hassawi Wheat,1.0,0.5,0.0,0.0
+"What is the name of the striped fabric traditionally worn by men around the lower body, especially by divers in East Saudi Arabia?","In the Eastern Region of Saudi Arabia, the striped fabric traditionally worn by men around the lower body, especially by divers, is called ""Izaar.""",A. Izaar,1.0,1.0,0.6666666666666666,1.0
+The craft of making Mishlahs (traditional cloaks) is an inherited profession in which families?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Al-Ahsa families,1.0,0.5,0.0,0.0
+What is the traditional craft referred to as “Al-Qallafa” in Saudi culture?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Shipbuilding,1.0,0.0,0.0,0.0
+"What handicraft, common in the East, is primarily made by women using palm tree products?","In the Eastern Region of Saudi Arabia, a common handicraft primarily made by women using palm tree products is known as ""Khos"" or ""Khoos,"" which refers to palm-frond weaving. This craft showcases the skills and artistry of women in the region.",Palm-Frond Weaving (Khoos),1.0,1.0,0.6,1.0
+There is a similarity between the jewelry in the eastern and northern regions of Saudi Arabia and the jewelry of which other region?,"Dammam is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, there is a similarity between the jewelry in the eastern and northern regions and the jewelry of the Riyadh region.",Riyadh,1.0,1.0,0.6666666666666666,1.0
+“Al-Frisi” is a traditional performing art in Saudi Arabia that originated in which region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Eastern Region,1.0,0.5,0.0,0.0
+What material is used for building ships in the east side of Saudi Arabia?,"In the Eastern Region of Saudi Arabia, the material used for building ships is primarily wood. This traditional practice has been documented and is significant within the region's crafts and work culture.",A. Wood,0.3333333333333333,1.0,0.5,1.0
+What is the name of the traditional game popular in Darin Center in the Eastern Region of Saudi Arabia?,"Darin Center is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, the traditional game popular in that area is known as ""Jidir"" or ""Jadeer.""",Jadeer,1.0,1.0,0.6666666666666666,1.0
+"What is the name of the traditional dance performed in the east, considered an ancient heritage, particularly in the Al-Ahsa region?","Dammam is in the Eastern Region of Saudi Arabia. Based on the available regional evidence, the traditional dance performed in the East and considered an ancient heritage, particularly in the Al-Ahsa region, is known as ""Al-Heyda"" or ""Al-Haida Dance.""",Al-Haida Dance,1.0,0.6666666666666666,0.75,1.0
+“Al-Sankali” is a type of maritime art associated with:,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Sailors of the Eastern Region,1.0,0.5,0.0,0.0
+What is the name of the celebration observed in the east during Sha’ban or Ramadan?,"In the Eastern Region of Saudi Arabia, celebrations observed during Sha’ban or Ramadan include Al-Qarqiaan and Garangao (Al-Garqee’an). These traditions are culturally significant during this period.",Garangao (Al-Garqee’an),1.0,1.0,0.6666666666666666,1.0
+What are the three main architectural planning styles in the Eastern Region of Saudi Arabia?,"The Eastern Region of Saudi Arabia is characterized by three main architectural planning styles: Coastal architecture, Desert architecture, and Agricultural (Oasis) architecture. These styles reflect the region's environmental and cultural contexts.","Coastal architecture, Desert architecture, Agricultural (Oasis) architecture",,,,0.6666666666666666
+What is Hassawi rice locally and regionally known as?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,C. Red Aish,1.0,0.0,0.0,0.0
+"What are the traditional jobs practiced in the coastal areas of Saudi Arabia, deeply rooted in cultural heritage and economic history?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"A, B, and C",1.0,0.0,0.0,0.0
+What was the Nu’ayriyah market in Saudi Arabia specialized in selling?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Livestock,1.0,0.0,0.0,0.0
+In which regions of Saudi Arabia was the traditional craft of making “Midad” (woven mats) previously popular?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,C and D,1.0,0.0,0.0,0.0
+Which of the following are traditional crafts in the Eastern Region of Saudi Arabia?,"The Eastern Region of Saudi Arabia is known for a variety of traditional crafts. Based on the available evidence, these include:
+
+1. Making Traditional Cloaks (Bishoot) and Headbands (Iqal)
+2. Crafting Handmade Weapons
+3. Creating Heritage Wooden Boxes
+4. Pottery
+5. Palm-Frond Weaving (Khoos)
+6. Cloak Weaving (Mishlah)
+7. Rope Making
+8. Leatherwork
+9. Sword Making
+10. Basket Weaving
+11. Metalwork
+12. Fish Traps (Gargoor)
+13. Bisht Making
+
+Thus, the crafts identified can be summarized as A, B, and C from the options provided, along with several other traditional activities prevalent in the region.","A, B, and C",0.9285714285714286,0.9285714285714286,0.75,1.0
+How is traditional gypsum (“Juss”) produced in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"A, B, and C",1.0,0.0,0.0,0.0
+"Which Saudi region is known for its distinct types of gypsum, including “Al-Arabi,” “Al-Khikri,” and “Al-Dhikri”?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B. Al-Ahsa,1.0,0.0,0.0,0.0
+The “Hida Dance” is a traditional dance performed by the people of which region in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B. Eastern Region,1.0,0.5,0.0,0.0
+Which of the following are styles of the “Laybooni” art form in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"A, B, and C",1.0,0.0,0.0,0.0
+What is the most common dish in Northern Saudi Arabia?,"The Northern Region of Saudi Arabia is known for several common dishes. Based on the available evidence, the most common dish in this region is **Al-Marqooq**. Additionally, other notable dishes mentioned include **Al-Mansaf**, **Al-Saliq**, **Al-Mandi**, and **Al-Haneeth**. For breakfast, a common option is **Mrees Al-Tamr**.",Al-Marqooq,1.0,1.0,1.0,1.0
+What is the most common dessert in Northern Saudi Arabia?,Northern Saudi Arabia is known for the dessert called Al-Bakliyah. This information is derived from the broader regional evidence regarding common food in this area.,Al-Bakliyah,1.0,1.0,0.6666666666666666,1.0
+What is the most popular street food in Northern Saudi Arabia?,"Northern Saudi Arabia is known for its popular street food, which includes ""Foul and Hummus."" This dish has been highlighted as a prominent choice among locals and visitors alike.",Foul and Hummus,1.0,1.0,0.5,1.0
+What is the most common breakfast dish in Northern Saudi Arabia?,"Northern Saudi Arabia is known for the breakfast dish ""Mrees Al-Tamr."" This dish is commonly enjoyed in this region.",Mrees Al-Tamr,1.0,1.0,1.0,1.0
+What is the most popular traditional drink in Northern Saudi Arabia?,Northern Saudi Arabia is known for popular traditional drinks such as Bitter Orange Juice. This information reflects the broader cultural practices of the North region.,Bitter Orange Juice,1.0,1.0,0.6666666666666666,1.0
+What is the traditional men’s clothing in Northern Saudi Arabia?,"Northern Saudi Arabia has traditional men's clothing known as ""Al-Sidriyah."" Additionally, the clothing may also include items like the Thobe. This information is based on cultural practices within the Northern region.",Al-Sidriyah,1.0,1.0,0.3333333333333333,1.0
+What is the traditional women’s clothing in Northern Saudi Arabia?,Northern Saudi Arabia features traditional women's clothing that includes **Al-Sharsh** and **Al-Madraqah**. This information is based on regional cultural insights specifically from the North.,Al-Sharsh and Al-Madraqah,1.0,1.0,0.6666666666666666,1.0
+What is the traditional dish for breakfast on Eid Al-Fitr in Northern Saudi Arabia?,"In Northern Saudi Arabia, the traditional breakfast dish is Mrees Al-Tamr. This information is specific to the Northern region's culinary preferences.",Hamisat Al-Lahm Wal-Kibdah,1.0,1.0,0.2,0.0
+What are the traditional dances common in Northern Saudi Arabia?,Northern Saudi Arabia is known for traditional dances including Al-Samri and Al-Dhahha. These dances are significant aspects of the cultural entertainment in the region.,Al-Samri and Al-Dhahha,1.0,1.0,0.5,1.0
+What is the traditional musical style common in Northern Saudi Arabia?,"In Northern Saudi Arabia, the traditional musical style is called Al-Rababah. This regional information reflects the cultural practices related to entertainment in the North.",Al-Rababah,1.0,1.0,0.3333333333333333,1.0
+What are the traditional crafts common in Northern Saudi Arabia?,"Northern Saudi Arabia is known for several traditional crafts, including:
+
+1. **Al-Sadu**: A traditional weaving craft often used to create patterned textiles.
+2. **Dairy Products**: The production of various dairy products, which is an important craft in the region.
+3. **Soap Making**: Crafting soap, traditionally made with local ingredients.
+4. **Olive Pressing**: The process of extracting oil from olives, which is culturally significant in the area.
+5. **Embroidery and Tailoring**: Craft practices that involve creating decorative designs on textiles and making garments.
+
+These crafts are reflective of the cultural heritage and skills of the people in the North of Saudi Arabia.","Al-Sadu, dairy products, soap, and olive pressing",0.8571428571428571,0.8571428571428571,0.3333333333333333,1.0
+What are the items a bride buys for her wedding in Northern Saudi Arabia?,"Northern Saudi Arabia has specific items that a bride typically purchases for her wedding. According to the available evidence, these items include:
+
+1. **Al-Jihaz** - This refers to the bride's wedding trousseau or belongings.
+2. **Al-Zeena** - This typically denotes adornments or decorations.
+3. **Henna** - Often used for body art and decoration during the wedding celebrations.
+4. **Gold** - Commonly gifted or worn as jewelry.
+
+These items are an integral part of the wedding customs in the Northern region of Saudi Arabia.",Al-Jihaz,1.0,1.0,0.3333333333333333,1.0
+What is the average dowry given to the bride in Northern Saudi Arabia?,"Northern Saudi Arabia has an average dowry of 50,000 SAR given to the bride. This information is based on cultural evidence specific to the North region.","50,000 SAR",1.0,1.0,0.5,1.0
+What are some traditional meals associated with Eid Al-Adha in Northern Saudi Arabia?,"Northern Saudi Arabia is known for several traditional meals associated with Eid Al-Adha. The culturally significant dishes include:
+
+- Mansaf
+- Kabsa
+- Haneeth
+- Mufatah
+- Jareesh
+- Qursan
+
+These meals are typically enjoyed as part of the festive celebrations during Eid Al-Adha in the Northern region.","Mansaf, Kabsa, Haneeth, Mufatah, Jareesh, Qursan",1.0,1.0,0.6666666666666666,1.0
+What are the most common greetings in Northern Saudi Arabia?,"In Northern Saudi Arabia, common greetings include ""Yallah Haywah"" and ""Haywah."" These expressions are frequently used in communication within the region.","Haywah, Yallah Haywah",1.0,1.0,0.6666666666666666,1.0
+What does placing your hand over a coffee cup mean in Northern Saudi culture?,"In Northern Saudi culture, placing your hand over a coffee cup can indicate two things: it may signify that you are content and have had enough, or it could be a refusal of more coffee.",Enough (contentment),0.5,1.0,0.6666666666666666,1.0
+What is the typical amount of coffee served to guests in Northern Saudi Arabia?,"Northern Saudi Arabia is known for its hospitality customs regarding coffee. According to the available regional evidence, the typical amount of coffee served to guests in this region is one-third of the cup.",One-third of the cup,1.0,1.0,0.6666666666666666,1.0
+Is it acceptable for the host to eat with the guests in Northern Saudi hospitality?,"In Northern Saudi Arabia, it is not acceptable for the host to eat with the guests when serving food. This cultural practice emphasizes the role of the host as one who serves and accommodates guests rather than sharing the meal with them.",Not acceptable,1.0,0.5,0.6666666666666666,1.0
+Is it acceptable to serve coffee before dates in Northern Saudi hospitality?,"Northern Saudi Arabia has specific hospitality traditions regarding the serving of coffee and dates. According to the available evidence, it is not acceptable to serve coffee before dates. Instead, dates are served first, and coffee is poured after finishing the dates.",Not acceptable,1.0,1.0,0.6666666666666666,1.0
+What is the name of the night before Eid in the Northern region of Saudi Arabia?,"In the Northern region of Saudi Arabia, the night before Eid is known as ""Laylat Al-Khidhab,"" also referred to as Henna Night.",Laylat Al-Khidhab (Henna Night),1.0,1.0,0.6666666666666666,1.0
+"Where is the traditional game ""Al-Fashaq"" popular in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Northern Saudi Arabia,1.0,0.5,0.0,0.0
+What is the Saudi traditional game similar to bowling in Northern Saudi Arabia?,"In Northern Saudi Arabia, the traditional game similar to bowling is called Al-Fashaq. This game is a part of the entertainment culture in the region.",Al-Fashaq,1.0,1.0,0.6666666666666666,1.0
+"Where is the dance ""Al-Ashouri"" famous in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Northern Saudi Arabia,1.0,0.5,0.0,0.0
+"When is the game ""Adheem Lah Wayn Gada Wayn Rah"" played in Northern Saudi Arabia?","In Northern Saudi Arabia, the game ""Adheem Lah Wayn Gada Wayn Rah"" is played during full moon nights. This regional tradition is a part of the entertainment culture in the area.",During full moon nights,1.0,1.0,0.6666666666666666,1.0
+What is the most common dish in Northern Saudi Arabia?,"Northern Saudi Arabia is known for its culinary traditions. Based on the available evidence, one of the most common dishes is **Al-Marqooq**. Additionally, other popular dishes mentioned include options like Al-Mansaf, Al-Saliq, Al-Mandi, and Al-Haneeth, which may also be common in this region. For breakfast, **Mrees Al-Tamr** is a notable dish.",Al-Marqooq,1.0,1.0,1.0,1.0
+What is the most common dessert in Northern Saudi Arabia?,"Northern Saudi Arabia is known for its cultural traditions related to food. Based on the available regional evidence, the most common dessert in this region is Al-Bakliyah.",Al-Bakliyah,1.0,1.0,0.5,1.0
+What is the most popular street food in Northern Saudi Arabia?,"Northern Saudi Arabia is known for its popular street food, particularly ""Foul and Hummus."" This dish stands out as a favored choice among locals and visitors in the region.",Foul and Hummus,1.0,1.0,0.3333333333333333,1.0
+What is the most common breakfast dish in Northern Saudi Arabia?,Northern Saudi Arabia is known for its common breakfast dish called Mrees Al-Tamr. This information is based on the cultural evidence available for the North region.,Mrees Al-Tamr,1.0,1.0,1.0,1.0
+What is the most popular traditional drink in Northern Saudi Arabia?,Northern Saudi Arabia has a popular traditional drink known as Bitter Orange Juice. This drink is recognized in the region as a favored choice among the local populace.,Bitter Orange Juice,1.0,1.0,0.6666666666666666,1.0
+What is the traditional men’s clothing in Northern Saudi Arabia?,"Northern Saudi Arabia features traditional men's clothing such as the ""Al-Sidriyah"" and the ""Thobe."" This reflects the cultural attire of the region based on the available evidence.",Al-Sidriyah,0.5,1.0,0.3333333333333333,1.0
+What is the traditional women’s clothing in Northern Saudi Arabia?,Northern Saudi Arabia is characterized by traditional women's clothing that includes Al-Sharsh and Al-Madraqah. This information comes from the broader cultural context of the North region.,Al-Sharsh and Al-Madraqah,1.0,1.0,0.6666666666666666,1.0
+What is the traditional musical style common in Northern Saudi Arabia?,"Northern Saudi Arabia is known for the traditional musical style called **Al-Rababah**. This style reflects the cultural heritage of the region and is an important aspect of its entertainment traditions. Additionally, traditional dances in Northern Saudi Arabia include **Al-Samri** and **Al-Dhahha**.",Al-Rababah,1.0,1.0,0.3333333333333333,1.0
+What are the traditional dances common in Northern Saudi Arabia?,Northern Saudi Arabia features traditional dances such as Al-Samri and Al-Dhahha. These dances are part of the cultural entertainment practices in the region.,Al-Samri and Al-Dhahha,1.0,1.0,0.5,1.0
+What is the traditional dish for breakfast on Eid Al-Fitr in Northern Saudi Arabia?,"In Northern Saudi Arabia, the traditional breakfast dish is Mrees Al-Tamr. This information is based on evidence specific to the Northern region.",Hamisat Al-Lahm Wal-Kibdah,1.0,1.0,0.2,0.0
+What are the traditional crafts common in Northern Saudi Arabia?,"Northern Saudi Arabia is known for several traditional crafts. Based on the available regional evidence, common crafts include:
+
+1. **Al-Sadu** - A traditional weaving craft.
+2. **Dairy products** - The art of producing various dairy items.
+3. **Soap making** - Crafting soap using traditional methods.
+4. **Olive pressing** - The process of extracting oil from olives.
+5. **Embroidery and Tailoring** - Decorative stitching and garment creation.
+
+These crafts reflect the cultural heritage and skills of the region.","Al-Sadu, dairy products, soap, and olive pressing",1.0,1.0,0.3333333333333333,1.0
+What are the items a bride buys for her wedding in Northern Saudi Arabia?,"In Northern Saudi Arabia, the cultural practices surrounding weddings involve several key items that a bride typically buys. These include:
+
+1. **Al-Jihaz**: This refers to the dowry or bridal gift items that are prepared for the bride by her family.
+2. Other common items associated with brides in the region often encompass various traditional adornments and gifts, although specific items like ""Al-Zeena"" (beauty items), ""Henna,"" and ""Gold"" were mentioned in the broader context but not specifically validated in the evidence.
+
+This information reflects the cultural practices in the Northern region of Saudi Arabia regarding wedding preparations.",Al-Jihaz,0.8,1.0,0.3333333333333333,1.0
+What is the average dowry given to a bride in Northern Saudi Arabia?,"Northern Saudi Arabia has a cultural practice regarding dowries, where the average dowry given to a bride is around 50,000 SAR. This information reflects the broader regional traditions and customs concerning marriage in the North.",C,1.0,1.0,0.3333333333333333,0.0
+What are some traditional meals associated with Eid Al-Adha in Northern Saudi Arabia?,"Northern Saudi Arabia celebrates Eid Al-Adha with several traditional meals. The traditional meals associated with this occasion include:
+
+- Mansaf
+- Kabsa
+- Haneeth
+- Mufatah
+- Jareesh
+- Qursan
+
+These dishes reflect the culinary heritage of the Northern region during this festive time.","Mansaf, Kabsa, Haneeth, Mufatah, Jareesh, Qursan",1.0,1.0,0.6666666666666666,1.0
+What are the most common greetings in Northern Saudi Arabia?,"Northern Saudi Arabia has several common greetings. Based on the available regional evidence, these include:
+
+1. **Yallah Haywah**
+2. **Haywah, Yallah Haywah**
+
+These greetings reflect the local customs of communication in the Northern region.","Haywah, Yallah Haywah",1.0,1.0,0.6666666666666666,1.0
+What is the name of the night before Eid in the Northern region of Saudi Arabia?,"In the Northern region of Saudi Arabia, the night before Eid is known as ""Laylat Al-Khidhab"" (Henna Night). This name is specifically associated with cultural practices in that region.",Laylat Al-Khidhab (Henna Night),1.0,1.0,0.6666666666666666,1.0
+"Where is the traditional game ""Al-Fashaq"" popular in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Northern Saudi Arabia,1.0,0.0,0.0,0.0
+What is the Saudi traditional game similar to bowling?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Al-Fashaq,1.0,0.0,0.0,0.0
+"Where is the dance ""Al-Ashouri"" famous in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Northern Saudi Arabia,1.0,0.5,0.0,0.0
+"When is the game ""Adheem Lah Wayn Gada Wayn Rah"" played in Northern Saudi Arabia?","In Northern Saudi Arabia, the game ""Adheem Lah Wayn Gada Wayn Rah"" is played during full moon nights. This cultural tradition reflects the significance of natural events in local entertainment practices.",During full moon nights,0.6666666666666666,1.0,0.6666666666666666,1.0
+What does placing your hand over a coffee cup mean in Northern Saudi culture?,"In Northern Saudi culture, placing your hand over a coffee cup can have two meanings. It can signify ""enough"" or contentment, indicating that you are satisfied with the amount of coffee you have received. Alternatively, it can also mean a refusal of more coffee, signaling that you do not wish for additional servings.",Enough (contentment),1.0,1.0,0.6666666666666666,1.0
+What is the typical amount of coffee served to guests in Northern Saudi Arabia?,Northern Saudi Arabia has a cultural practice regarding coffee serving. The typical amount of coffee served to guests in this region is one-third of the cup.,One-third of the cup,1.0,1.0,0.6666666666666666,1.0
+What are the unique hospitality traditions in Northern Saudi Arabia?,"Northern Saudi Arabia has unique hospitality traditions that include serving dates first to guests, followed by pouring coffee after they have finished the dates. This practice is a significant part of the hospitality culture in the region. 
+
+Additionally, traditional dances such as Al-Samri and Al-Dhahha are common, contributing to the region's cultural identity. Common gathering places include the Majlis and Qahwa, which are integral to social interactions in the area.","A. Dates are served first, then coffee is poured after finishing the dates.",1.0,1.0,0.3333333333333333,1.0
+Is it acceptable for the host to eat with the guests in Northern Saudi hospitality?,"In Northern Saudi Arabia, it is not acceptable for the host to eat with the guests when serving food. The cultural practice indicates that the host does not partake in the meal alongside the guests.",Not acceptable,1.0,0.5,0.6666666666666666,1.0
+What architectural planning system does traditional architecture in Al-Jouf rely on?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A,1.0,0.5,0.0,0.0
+"What happens during ""Al-Shabbat"" in Northern Saudi Arabia?","Northern Saudi Arabia observes ""Al-Shabbat"" as a cultural occasion where several activities take place. A person typically opens their home after the Asr, Maghrib, or Isha prayer. Guests are served traditional meals like Jareesh and Hamees, along with coffee, tea, and desserts. This gathering provides an opportunity for neighbors and friends to socialize and connect.","A, B, C, and D",1.0,1.0,0.3333333333333333,0.25
+"What is ""Khashrat Al-Eid"" in Hail, and how is it celebrated?","Khashrat Al-Eid is a cultural celebration in Hail, which is part of the Northern Region of Saudi Arabia. Based on the available regional evidence, Khashrat Al-Eid includes:
+
+A. Preparing competition games for children.  
+B. A gathering of women and children in one home.  
+C. Enjoying light traditional foods, sweets, and nuts.  
+
+This event fosters community spirit and enjoyment among families and friends during the Eid celebration.","A, B, and C",1.0,1.0,0.2,1.0
+"What is a common dish served in Hail during Eid, showcasing housewives’ cooking skills?","Hail is in the Northern Region of Saudi Arabia. Based on the available regional evidence, a common dish served in Hail during Eid, showcasing housewives' cooking skills, is Kabsa decorated with truffles and vegetables.",A,0.6666666666666666,0.75,0.0,1.0
+How do families in Hail ensure everyone in the neighborhood tastes each other’s food during Eid breakfast?,"Hail is in the Northern Region of Saudi Arabia. Based on the cultural evidence, families in Hail ensure everyone in the neighborhood tastes each other’s food during Eid breakfast by rotating between plates and tables. This practice allows for a communal sharing of dishes among neighbors.",D,1.0,0.75,0.2,1.0
+What are common gathering places in Northern Saudi Arabia?,"In Northern Saudi Arabia, common gathering places include the Majlis and Qahwa. The Majlis often serves as a place for socializing and discussing important matters, while Qahwa, which refers to coffee houses, provides a casual atmosphere for gatherings. This information is based on regional cultural evidence.",B and C,0.75,1.0,0.3333333333333333,1.0
+What is the most common dish in South Saudi Arabia?,"In the South region of Saudi Arabia, a common dish is Areeka. Other notable dishes include Mashghoutha, Raksh dish, Khameer, Lahoh, Haneeth, and Aseedah. Areeka is also highlighted as a popular breakfast dish in this region.","Areeka, Mashghoutha, Raksh dish, Khameer, Lahoh, Haneeth, Aseedah",1.0,1.0,0.6,1.0
+What is the most common sweet in South Saudi Arabia?,"The most common sweet in South Saudi Arabia is Marsa. Additionally, dates are also noted as a common sweet in the region. This information reflects cultural traditions from the broader South region, including areas like Jazan.","Marsa (Jazan), Dates",1.0,1.0,0.6666666666666666,0.5
+What is the common traditional street food in South Saudi Arabia?,"In South Saudi Arabia, common traditional street foods include Tanoor Bread, Barbary Fig (Prickly Pear), Corn, and Tea. Among these, Tanoor Bread is noted as the most common traditional street food in the region.","Tanoor Bread, Barbary Fig (Prickly Pear), Corn, Tea",0.5,1.0,0.75,1.0
+What is the most common breakfast dish in South Saudi Arabia?,"In South Saudi Arabia, the most common breakfast dish is Areeka. It is often served with Tanoor bread, ghee, and honey. This information is based on the regional cultural evidence.","Areeka, Tanoor Bread, Ghee, Honey",1.0,1.0,1.0,1.0
+What is the common traditional drink in South Saudi Arabia?,"In the South region of Saudi Arabia, the common traditional drink is Qishr, which is made from coffee husks. Another related drink is coffee, which can also refer to Qishr. These beverages are an integral part of the cultural heritage in the South.","Coffee, Qishr (Coffee Husk Drink)",1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for men in South Saudi Arabia?,"In South Saudi Arabia, the traditional clothing for men is called ""Al-Mufraj."" This information is based on the cultural evidence from the region.","Mofraj, Izar (also called Ma’awiz, Maqtab, Fouta, or Musanaf) — a lower-body wrap garment worn by men",1.0,1.0,0.3333333333333333,0.0
+What is the traditional clothing for women in South Saudi Arabia?,"In South Saudi Arabia, the traditional clothing for women is the ""Thobe Asiri."" This information is based on the broader cultural practices of the region.",Thobe Asiri,1.0,0.5,0.6666666666666666,1.0
+What is the traditional breakfast dish during Eid Al-Fitr in South Saudi Arabia?,"In South Saudi Arabia, the traditional breakfast dish during Eid Al-Fitr is Areeka. This dish is often served with Tanoor bread, Ghee, and Honey.","Wheat with Ghee and Honey, Mashghoutha, Areeka, Marsa, and Salted Fish",1.0,1.0,0.6666666666666666,0.5
+What are the common traditional dances in South Saudi Arabia?,"South Saudi Arabia is known for several traditional dances. Based on the available evidence, some common traditional dances in this region include:
+
+1. Al-Qazoui
+2. Gazwai
+3. Ardah Janoubiyah
+4. La’b Shahri
+5. Khatwah Janoubiyah
+6. Dammah
+
+Additionally, the ""Sword Dance"" is also a prominent traditional folk dance associated with the people of Jazan in the South.","Gazwai, Ardah Janoubiyah, La’b Shahri, Khatwah Janoubiyah, Dammah",1.0,1.0,0.75,1.0
+What is the common traditional music in South Saudi Arabia?,"In South Saudi Arabia, the common traditional music is known as Al-Damma. This regional cultural information reflects the musical tradition prevalent in the area.",Al-Damma,1.0,1.0,0.6666666666666666,1.0
+What is the common traditional craft in South Saudi Arabia?,"The Southern Region of Saudi Arabia is known for several traditional crafts. Based on the available regional evidence, common traditional crafts include:
+
+1. Wood Dish Crafting (Sihaf)
+2. Al-Qatt Al-Asiri Art
+3. Aromatic Plant Decoration (garlands, headbands, bouquets)
+4. Land Plowing Tools (Sabt)
+5. Al-Qatt Painting
+
+These crafts reflect the rich cultural heritage of the South.","Wood Dish Crafting (Sihaf), Al-Qatt Al-Asiri Art, Aromatic Plant Decoration (garlands, headbands, bouquets), Land Plowing Tools (Sabt)",1.0,1.0,0.5,1.0
+What is the name of the items the bride buys for her wedding in South Saudi Arabia?,"In South Saudi Arabia, the items that the bride buys for her wedding are known as ""Mirwah"" and ""Marwah,"" which refers to a traditional bridal set. This cultural information comes from the broader southern region and reflects the customs associated with weddings in that area.",Marwah (traditional bridal set),0.5,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"40,000 SAR",1.0,0.0,0.0,0.0
+What is the name of the traditional butter dish served in South Saudi Arabia?,"In the Southern region of Saudi Arabia, the traditional butter dish is called ""Radifah.""",Radifah,,,,1.0
+"What is a popular dish known in the southern region of Saudi Arabia, served hot with honey, ghee, and dates?","In the Southern Region of Saudi Arabia, a popular dish known for being served hot with honey, ghee, and dates is called ""Mashghoutha."" Additionally, the traditional dish ""Haneeth"" is also popular in this region.",Mashghoutha,1.0,0.6666666666666666,1.0,1.0
+In which regions of Saudi Arabia is the traditional dish “Haneeth” popular?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Southern Region,1.0,0.5,0.0,0.0
+What is the name of the traditional food served to guests in the afternoon in South Saudi Arabia?,"In South Saudi Arabia, the traditional food served to guests in the afternoon is referred to as ""Wasl"" or ""Wasel."" This reflects the cultural practices of hospitality in the region.",Wasel,1.0,0.5,0.6666666666666666,1.0
+What is the traditional oven or pot used for baking in South Saudi Arabia?,"In South Saudi Arabia, traditional ovens or pots used for baking include the ""Mifah"" and the ""Tannour."" These ovens play a significant role in the region's culinary practices.",Tannour,1.0,1.0,0.5,1.0
+In which region of Saudi Arabia is “Al-Maghsh” considered a traditional dish?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.5,0.0,0.0
+What is the name of the traditional clothes in Tehama in South Saudi Arabia?,"The city of Tehama is located in the Southern Region of Saudi Arabia. Based on the available regional evidence, the traditional clothes in Tehama are called ""Wizra."" Additionally, for women in the Southern Region, the traditional clothing includes ""Thobe Asiri.""",Wizra,1.0,0.6666666666666666,1.0,1.0
+What are the most common greeting phrases in Al-Baha?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"“Marhaban Heel… Ad Al-Seel” (Welcome countless times, like the floodwaters)",1.0,0.0,0.0,0.0
+What is the name of the traditional folklore performed at weddings and for greeting guests from different tribes in South Saudi Arabia?,"In the Southern Region of Saudi Arabia, the traditional folklore performed at weddings and for greeting guests from different tribes is called ""Medgal.""",Medgal,1.0,1.0,0.75,1.0
+“Beit Al-Esha” is a traditional architectural style. Which region in Saudi Arabia is known for this style?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.0,0.0,0.0
+"In which area is the “vegetative style” architecture, known as “Al-Ishash,” commonly found in the Asir region due to its ease of construction?","Tihama is a region in the South of Saudi Arabia where the “vegetative style” architecture, known as “Al-Ishash,” is commonly found due to its ease of construction. This information is based on the cultural evidence related to the Asir region.",Tihama,0.75,0.75,0.5,1.0
+In which region of Saudi Arabia is juniper wood (“Arar”) traditionally used in architecture?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"Baha, Asir, South",1.0,0.0,0.0,0.0
+"What does the guest room consist of in Jazan, Saudi Arabia?","Jazan is in the Southern Region of Saudi Arabia. Based on the available regional evidence, the guest room in Jazan consists of beds.",Beds,1.0,0.5,0.6666666666666666,1.0
+In which region of Saudi Arabia do traditional sitting rooms (majalis) include a stone fireplace used for cooking and preparing coffee in front of guests?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Asir,1.0,0.5,0.0,0.0
+The “Sword Dance” is a traditional folk dance in Saudi Arabia associated with which region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.5,0.0,0.0
+"What is the form of singing performed individually in South Saudi Arabia, relying on creative embellishments, often during travels?","In South Saudi Arabia, the form of singing performed individually and relying on creative embellishments, often during travels, is called **Tarq**. This tradition highlights the unique cultural expression found in the region.",Tarq,1.0,1.0,0.6666666666666666,1.0
+The “Del’a Dance” is a traditional dance in Saudi Arabia associated with which region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Southern Region,1.0,0.0,0.0,0.0
+The “Janbiya Dance” is a traditional folk dance popular in which region of Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"Jazan, South",1.0,0.5,0.0,0.0
+In which region of Saudi Arabia is the “Al-Azawi Dance” primarily performed?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.0,0.0,0.0
+Is it acceptable in South Saudi Arabia for the host to ask the guest about his updates before serving coffee?,"In South Saudi Arabia, it is not acceptable for the host to ask the guest about his updates before serving coffee. This cultural practice emphasizes the importance of serving coffee without prior inquiries about the guest's personal matters.",Not acceptable,1.0,0.5,0.6666666666666666,1.0
+"What is the name given to the artist who paints Al-Qatt Al-Asiri, the traditional Asiri wall art?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Al-Qattatah,1.0,0.0,0.0,0.0
+What is the most expensive part of a traditional Saudi Janbiya (dagger) that determines its price?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Hilt,1.0,0.0,0.0,0.0
+What material is traditionally used to make the “Janbiya” dagger in Najran?,"Najran is in the Southern Region of Saudi Arabia. Based on the available regional evidence, the material traditionally used to make the “Janbiya” dagger in this region is iron.",Iron,1.0,0.5,0.6666666666666666,1.0
+"What describes “Al-Qatt Al-Asiri,” a traditional art form in the Asir region?","Al-Qatt Al-Asiri is a traditional art form in the Asir region of Saudi Arabia. It is described as ""a women’s art of decoration and engraving,"" highlighting its cultural significance within the regional crafts.",A women’s art of decoration and engraving,1.0,1.0,1.0,1.0
+What is the most common traditional craft in Najran city?,"Najran is in the Southern Region of Saudi Arabia. Based on the available regional evidence, the most common traditional craft in Najran city is dagger making. Additionally, in the broader Southern Region, Al-Qatt Painting is also recognized as a common traditional craft.",Dagger making,1.0,0.6666666666666666,1.0,1.0
+What is the most common dish in South Saudi Arabia?,"The Southern Region of Saudi Arabia is known for its diverse culinary offerings. Based on the available evidence, one of the most common dishes in South Saudi Arabia is Areeka. Other notable dishes include Mashghoutha, Raksh dish, Khameer, Lahoh, Haneeth, and Aseedah. Areeka is also mentioned as a common breakfast dish in this region.","Areeka, Mashghoutha, Raksh dish, Khameer, Lahoh, Haneeth, Aseedah",0.75,1.0,0.75,1.0
+What is the most popular sweet in South Saudi Arabia?,"In South Saudi Arabia, the most popular sweet is Marsa. Additionally, dates are also noted as a common sweet in the region.",Marsa,1.0,1.0,0.5,1.0
+What is the most common traditional street food in South Saudi Arabia?,"In South Saudi Arabia, the most common traditional street food is Tanoor Bread. Other popular street food items in the region include Barbary Fig (Prickly Pear), Corn, and Tea. This information reflects the culinary traditions of the broader South region.",Tanoor Bread,0.6666666666666666,1.0,0.6,1.0
+What is the most common breakfast dish in South Saudi Arabia?,"In the Southern Region of Saudi Arabia, the most common breakfast dish is Areeka. This dish is often served with Tanoor Bread, Ghee, and Honey.","Areeka, Tanoor Bread, Ghee, Honey",1.0,1.0,1.0,1.0
+What is the most common traditional drink in South Saudi Arabia?,"In the Southern Region of Saudi Arabia, the most common traditional drink is Qishr, which is often made from coffee husks. This drink is a significant part of the local culture and reflects the traditional practices in South Saudi Arabia.",Qishr,1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for men in South Saudi Arabia?,"In South Saudi Arabia, the traditional clothing for men is known as ""Al-Mufraj."" This information is specific to the South region's cultural practices regarding men's attire.","Mofraj, Izar (also called Ma’awiz, Maqtab, Fouta, or Musanaf) — a lower-body wrap garment worn by men",1.0,1.0,0.3333333333333333,0.0
+What is the traditional clothing for women in South Saudi Arabia?,"In South Saudi Arabia, the traditional clothing for women is the ""Thobe Asiri."" This is a recognized traditional garment in the region.",Thobe Asiri,1.0,1.0,0.6666666666666666,1.0
+What is the traditional breakfast dish during Eid Al-Fitr in South Saudi Arabia?,"In the Southern region of Saudi Arabia, the traditional breakfast dish is Areeka. It is often served with Tanoor bread, ghee, and honey. These dishes are common in the region, especially during celebrations like Eid Al-Fitr.","Wheat with Ghee and Honey, Mashghoutha, Areeka, Marsa, and Salted Fish",1.0,1.0,0.5,0.2
+What are the common traditional dances in South Saudi Arabia?,"In the Southern Region of Saudi Arabia, common traditional dances include:
+
+1. **Al-Qazoui**
+2. **Gazwai**
+3. **Ardah Janoubiyah**
+4. **La’b Shahri**
+5. **Khatwah Janoubiyah**
+6. **Dammah**
+
+Additionally, the ""Southern Ardah"" is a traditional dance performed across various regions within the South, including Najran, Asir, Al-Baha, and Jazan.","Gazwai, Ardah Janoubiyah, La’b Shahri, Khatwah Janoubiyah, Dammah",0.5,1.0,1.0,1.0
+What is the common traditional music in South Saudi Arabia?,"The city you are asking about is in the Southern Region of Saudi Arabia. Based on the available regional evidence, the common traditional music in South Saudi Arabia is ""Al-Damma.""",Al-Damma,1.0,0.5,0.6666666666666666,1.0
+What is the common traditional craft in South Saudi Arabia?,"In the Southern Region of Saudi Arabia, some common traditional crafts include Wood Dish Crafting (Sihaf), Al-Qatt Al-Asiri Art, Aromatic Plant Decoration (such as garlands, headbands, and bouquets), and Land Plowing Tools (Sabt). Additionally, Al-Qatt Painting is also recognized as a traditional craft in this region.","Wood Dish Crafting (Sihaf), Al-Qatt Al-Asiri Art, Aromatic Plant Decoration (garlands, headbands, bouquets), Land Plowing Tools (Sabt)",1.0,0.6,0.5,1.0
+What is the name of the items the bride buys for her wedding in South Saudi Arabia?,"In South Saudi Arabia, the items that a bride typically buys for her wedding include ""Mirwah"" and ""Marwah,"" which refers to a traditional bridal set. This information reflects the cultural practices within the South region of Saudi Arabia.",Marwah (traditional bridal set),0.75,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in South Saudi Arabia?,"In South Saudi Arabia, the average amount of dowry presented to the wife ranges from 40,000 to 60,000 SAR. This information pertains to the cultural practices regarding marriage in the broader Southern region of Saudi Arabia.","40,000–60,000 SAR",1.0,1.0,0.6666666666666666,1.0
+In which region of Saudi Arabia is “Al-Maghsh” considered a traditional dish?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.0,0.0,0.0
+“Al-Mashghoutha” is a traditional Saudi dish. Which region is known for preparing it?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Asir,1.0,0.0,0.0,0.0
+In which regions of Saudi Arabia is the traditional dish “Haneeth” popular?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Southern Region,1.0,0.0,0.0,0.0
+“Al-Haneeth” is a dish famous in which region of Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Asir,1.0,0.0,0.0,0.0
+What is the name of the traditional butter dish served in South Saudi Arabia?,"The traditional butter dish served in South Saudi Arabia is called ""Radifah."" This information is based on cultural evidence from the South region.",Radifah,1.0,1.0,0.6666666666666666,1.0
+In which region of Saudi Arabia is juniper wood (“Arar”) traditionally used in architecture?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"Baha, Asir, South",1.0,0.0,0.0,0.0
+What is the most expensive part of a traditional Saudi Janbiya (dagger) that determines its price?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Hilt,1.0,0.0,0.0,0.0
+What is the most common traditional craft in Najran city?,"Najran is in the Southern Region of Saudi Arabia. Based on the available regional evidence, the most common traditional craft in Najran city is dagger making. Additionally, making traditional white weapons is also recognized as a common craft in the region. Moreover, Al-Qatt Painting is noted as a traditional craft in South Saudi Arabia.",Dagger making,1.0,0.75,0.6666666666666666,1.0
+What material is traditionally used to make the “Janbiya” dagger in Najran?,"Najran is in the Southern Region of Saudi Arabia. Based on the available regional evidence, the material traditionally used to make the “Janbiya” dagger is iron.",Iron,1.0,0.5,0.6666666666666666,1.0
+"What is the name given to the artist who paints Al-Qatt Al-Asiri, the traditional Asiri wall art?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Al-Qattatah,1.0,0.0,0.0,0.0
+"What describes “Al-Qatt Al-Asiri,” a traditional art form in the Asir region?","Al-Qatt Al-Asiri is a traditional art form found in the Asir region of Saudi Arabia. It is described as a women’s art of decoration and engraving. Additionally, the artists who create this wall art are referred to as ""Al-Qattatah."" This cultural practice is part of the broader crafts and work traditions in the South region.",A women’s art of decoration and engraving,1.0,1.0,1.0,1.0
+What are the most common greeting phrases in Al-Baha?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"“Marhaban Heel… Ad Al-Seel” (Welcome countless times, like the floodwaters)",1.0,0.0,0.0,0.0
+“Beit Al-Esha” is a traditional architectural style. Which region in Saudi Arabia is known for this style?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.0,0.0,0.0
+In which region of Saudi Arabia do traditional sitting rooms (majalis) include a stone fireplace used for cooking and preparing coffee in front of guests?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Asir,1.0,0.5,0.0,0.0
+"In which area is the “vegetative style” architecture, known as “Al-Ishash,” commonly found in the Asir region due to its ease of construction?","The Asir region of Saudi Arabia is associated with the “vegetative style” architecture known as “Al-Ishash,” which is commonly found in the Tihama area. This architectural style is noted for its ease of construction.",Tihama,1.0,0.6666666666666666,0.6666666666666666,1.0
+The “Del’a Dance” is a traditional dance in Saudi Arabia. It is associated with which region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Southern Region,1.0,0.0,0.0,0.0
+"What is the form of singing performed individually, relying on creative embellishments, and usually performed during travels in South Saudi Arabia?","In the Southern Region of Saudi Arabia, the form of singing performed individually, which relies on creative embellishments and is usually done during travels, is called ""Tarq.""",A. Tarq,1.0,1.0,0.6666666666666666,1.0
+The “Sword Dance” is a traditional folk dance in Saudi Arabia associated with the people of which region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,D. Jazan,1.0,0.5,0.0,0.0
+The “Janabi Dance” is a traditional folk dance popular in which region of Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,D. Jazan,1.0,0.5,0.0,0.0
+In which region of Saudi Arabia is the “Al-Azawi Dance” primarily performed?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Jazan,1.0,0.5,0.0,0.0
+What is the name of the traditional food served to guests in the afternoon in South Saudi Arabia?,"In South Saudi Arabia, the traditional food served to guests in the afternoon is known as ""Wasl."" Additionally, another term related to this tradition is ""Wasel."" This cultural information pertains specifically to the South region of Saudi Arabia.",Wasel,0.6666666666666666,1.0,0.6666666666666666,1.0
+What is the traditional oven or pot used for baking in South Saudi Arabia?,"In South Saudi Arabia, two traditional ovens or pots used for baking are the ""Mifah"" and the ""Tannour."" These cooking implements are an integral part of the regional culinary practices.",Tannour,1.0,1.0,0.5,1.0
+What is the name of the traditional folklore for weddings and greeting guests from different tribes in South Saudi Arabia?,"In the Southern region of Saudi Arabia, the traditional folklore for weddings and greeting guests from different tribes is known as ""Medgal."" This cultural practice plays an important role in showcasing hospitality and celebrating union during weddings.",A. Medgal,1.0,1.0,0.6666666666666666,1.0
+"What does the guest room consist of in Jazan, Saudi Arabia?","Jazan is in the Southern Region of Saudi Arabia. Based on the available regional evidence, guest rooms in Jazan typically consist of beds. Some additional options mentioned in the evidence include floor cushions, wooden seats, and sofas, but the primary feature noted is beds.",Beds,1.0,1.0,0.6666666666666666,1.0
+Is it acceptable in South Saudi Arabia for the host to ask the guest about his updates before serving coffee?,"In South Saudi Arabia, it is not acceptable for the host to ask the guest about his updates before serving coffee. This cultural norm is important in maintaining the proper etiquette during hospitality.",Not acceptable,1.0,0.5,0.6666666666666666,1.0
+What is correct about Al-Masoub and Al-Areeqa?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and B,1.0,0.5,0.0,0.0
+What are the other names for “Al-Mashghootha” in Saudi culture?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and B,1.0,0.5,0.0,0.0
+What are the distinctive features of traditional jewelry from the southern region of Saudi Arabia?,"The southern region of Saudi Arabia is known for distinctive features in traditional jewelry. Based on the available cultural evidence, two notable characteristics are:
+
+1. Large size
+2. Minimal use of gemstones
+
+These features define the traditional jewelry style in this region.",A and B,1.0,1.0,0.3333333333333333,1.0
+Which of the following are traditional crafts known in the Al-Baha region?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"A, B, and C",1.0,0.0,0.0,0.0
+Which of the following are traditional crafts known in the Asir region?,"The Asir region is in the Southern part of Saudi Arabia. Based on the available evidence, traditional crafts known in the Asir region include:
+
+- A. Making traditional white weapons
+- C. Weaving and carpet making
+- D. Palm-frond crafts (Khoos) 
+
+These crafts are part of the cultural heritage of the South region.","A, C, and D",1.0,0.8,0.4,1.0
+"Traditional Saudi Arabian daggers, known as “Janabi,” come in various forms. Which of the following are considered authentic Saudi types?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and B,1.0,0.0,0.0,0.0
+In which region of Saudi Arabia is “Al-Mukammam” considered a traditional women’s garment?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A. Najran,1.0,0.5,0.0,0.0
+The “Zamil” is an ancient folk singing art traditionally known in which regions of Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,B and D,1.0,0.5,0.0,0.0
+The “Southern Ardah” is a traditional dance performed in which regions of southwestern Saudi Arabia?,"The “Southern Ardah” is a traditional dance performed in the Southern region of Saudi Arabia, specifically in Najran, Asir, Al-Baha, and Jazan. This information indicates that it is a cultural practice shared across these regions in the southwest.","A, B, C, and D (All)",0.0,1.0,0.3333333333333333,1.0
+What is the “Al-Azawi Dance” known for?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"A, B, and C",1.0,0.5,0.0,0.0
+What is the most common dish in West Saudi Arabia?,"The West region of Saudi Arabia has several well-known dishes. According to the available evidence, some of the most common dishes include:
+
+- Saleeg
+- Sayadiyah
+- Kebab Al-Mirwa
+- Bukhari
+- Al-Ma’adousah
+- Salatat
+
+For breakfast, the common dish is Foul and Tamees. These dishes reflect the culinary traditions of the West region.","Saleeg, Sayadiyah, Kebab Al-Mirwa, Bukhari, Al-Ma’adousah, Salatat",0.75,1.0,0.75,1.0
+What is the most common sweet in West Saudi Arabia?,"The West region of Saudi Arabia includes several popular sweets. Based on the available cultural evidence, some of the most common sweets include:
+
+- Qamar Al-Din
+- Al-Ladu
+- Al-Labiyah
+- Al-Ghraibah
+- Al-Hareesah
+- Al-Dubayzah
+- Al-Masiyyah
+- Al-Saqdanah
+
+Additionally, Labniah is noted as a popular sweet in the West.","Qamar Al-Din, Al-Ladu, Al-Labiyah, Al-Ghraibah, Al-Hareesah, Al-Dubayzah, Al-Masiyyah, Al-Saqdanah",0.6666666666666666,1.0,0.6666666666666666,1.0
+What is the common traditional street food in West Saudi Arabia?,"The Western Region of Saudi Arabia features traditional street foods such as Balila and Potatoes. Balila, in particular, is noted as a common traditional street food in this region.","Balila, Potatoes",1.0,1.0,0.5,0.5
+What is the most common breakfast dish in West Saudi Arabia?,"Based on the cultural information from the Western Region of Saudi Arabia, the most common breakfast dish is ""Foul and Tamees.""",Foul and Tamees,,,,1.0
+What is the common traditional drink in West Saudi Arabia?,"The West region of Saudi Arabia is known for several traditional drinks. Based on the available cultural evidence, the most common traditional drink is **Sobiah**. Additionally, drinks like **Sobia**, **Raspberry Juice**, and **Qamar Al-Din** are also popular in this region. For celebrations such as the Islamic New Year, **Almond Coffee (White Coffee)** is typically served.","Sobia, Raspberry Juice, Qamar Al-Din",1.0,1.0,1.0,0.6666666666666666
+What is the traditional clothing for men in West Saudi Arabia?,"In the West region of Saudi Arabia, the traditional clothing for men includes Al-Thobe and Al-Sudairi. Additionally, men may also wear the Al-Muharid, which is a long-sleeved robe, and Al-Aqal Al-Muqasab.","Al-Thobe and Al-Sudairi, Al-Muharid (long-sleeved robe), Al-Aqal Al-Muqasab",1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for women in West Saudi Arabia?,"In West Saudi Arabia, the traditional clothing for women includes the Al-Kurta. This garment is recognized as part of the regional attire for women in that area.",Al-Kurta,1.0,1.0,0.6666666666666666,1.0
+What is the traditional breakfast dish eaten after Eid in West Saudi Arabia?,"The city you are asking about is in the Western Region of Saudi Arabia. Based on the available regional evidence, a traditional breakfast dish commonly enjoyed after Eid in West Saudi Arabia, particularly in Medina, is known as ""Al-Dibiyaza."" Additionally, ""Foul and Tamees"" is a prevalent breakfast dish in this region.",Nowashif,1.0,0.6666666666666666,1.0,0.0
+What are the common traditional dances in West Saudi Arabia?,"In the West region of Saudi Arabia, a common traditional dance is known as ""Al-Mizmar."" Additionally, the ""Al-Majroor"" dance is also noted as a popular folkloric tradition in this region.",Al-Mizmar,1.0,1.0,1.0,1.0
+What is the common traditional music in West Saudi Arabia?,"In the Western Region of Saudi Arabia, the common traditional music is known as Al-Majroor. Additionally, a common traditional dance in this region is called Al-Mizmar. These cultural elements reflect the rich entertainment heritage found in the West.",Al-Majroor,1.0,0.6666666666666666,0.3333333333333333,1.0
+What is the common traditional craft in West Saudi Arabia?,"The Western Region of Saudi Arabia is known for several traditional crafts. Based on the available evidence, some of the common traditional crafts include:
+
+1. **Sadu Weaving** - A prominent textile craft characterized by intricate geometric patterns.
+2. **Taif Rose Perfume Production** - Utilizing the local Taif roses to create aromatic perfumes.
+3. Other crafts mentioned include pottery products, leather tanning, and the making of rosaries.
+
+These crafts reflect the cultural heritage and artisanal skills of the region.","Rosaries and Taif rose perfume, Sadu, pottery products, leather tanning, Al-Dalw, Al-Sabt (land plowing)",1.0,1.0,1.0,1.0
+What is the name of the items the bride buys for her wedding in West Saudi Arabia?,"In West Saudi Arabia, the items the bride buys for her wedding are called ""Dabish."" This information is derived from evidence pertaining to the broader cultural practices in the region.",Dabish,1.0,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"40,000 SAR",1.0,0.0,0.0,0.0
+"How can ""Hubb Soup"" be classified as a traditional Saudi stew, and what complementary foods are served with it?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Meat,1.0,0.5,0.0,0.0
+What is the name of a common drink in Western Saudi Arabia during Ramadan?,"In the Western Region of Saudi Arabia, a common drink during Ramadan is Qamar Al-Din. This information is based on the available regional evidence.",Qamar Al-Din,1.0,0.5,0.6666666666666666,1.0
+What type of rice turns brown and is always served with fried or grilled fish in West Saudi Arabia?,"In the Western Region of Saudi Arabia, the type of rice that turns brown and is commonly served with fried or grilled fish is known as Sayadiyah (or Sayyadiah). This dish is specifically associated with the culinary traditions of the West.",Sayadiyah,1.0,1.0,0.6666666666666666,1.0
+What are the most famous pastries in the Western region of Saudi Arabia?,"The Western region of Saudi Arabia is known for its famous pastries, which include Al-Sharik, Al-Kaak, and Al-Fetout. These pastries reflect the culinary traditions of the area.","Al-Sharik, Al-Kaak, Al-Fetout",1.0,1.0,0.3333333333333333,1.0
+"What is the name of a famous spice blend in Madinah, Saudi Arabia, known for its distinctive flavor and essential use in local dishes?","Madinah is in the Western Region of Saudi Arabia. Based on the available regional evidence, a famous spice blend known for its distinctive flavor and essential use in local dishes is called ""Daqah Al-Madinah."" Another name for it is ""Al-Daq Al-Madani.""",Al-Daq Al-Madani,1.0,0.6666666666666666,0.6666666666666666,1.0
+What is the name of a common drink in Western Saudi Arabia in winter?,"The Western Region of Saudi Arabia includes various cultural practices. Based on the available evidence, a common drink in winter is ""Sahlab."" Additionally, another traditional drink in the West is ""Sobiah.""",Sahlab,0.5,0.6666666666666666,1.0,1.0
+What is the method of greeting a guest in the Western region?,"In the Western Region of Saudi Arabia, the method of greeting a guest traditionally involves ""touching the nose and cheeks."" This gesture is an important aspect of communication and hospitality in this region.",Touching the nose and cheeks,1.0,1.0,0.6666666666666666,1.0
+What is the financial amount that the mother of the bride receives upon the marriage contract?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"5,000 SAR",1.0,0.5,0.0,0.0
+What is the name of the surah in the Quran that is read to declare engagement in West Saudi Arabia?,"In the context of West Saudi Arabia, the surah in the Quran that is read to declare engagement is called ""Surat Al-Fatiha."" This practice is culturally significant in the region as part of the engagement tradition.",Surat Al-Fatiha,0.5,0.5,0.6666666666666666,1.0
+What is the name of the event that happens to the bride before the wedding in West Saudi Arabia?,"In the Western Region of Saudi Arabia, the cultural knowledge base does not contain specific information about an event that happens to the bride before the wedding. The only available evidence pertains to a family gathering called ""Shabna,"" which occurs before Ramadan, but it does not relate to wedding customs. Therefore, I cannot provide the name of the event for brides before the wedding in this region.",Ghumrah (bride’s dressing ceremony),0.75,0.2,0.0,0.0
+What popular drink is usually served to celebrate the Islamic New Year in West Saudi Arabia?,"The Islamic New Year is celebrated in the West region of Saudi Arabia with Almond Coffee (also known as White Coffee). This drink is popular during the celebrations, reflecting the regional cultural traditions.",Almond Coffee (White Coffee),1.0,0.75,1.0,1.0
+What is the traditional breakfast dish in Eid Al-Adha?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Liver (Mgalgal),1.0,0.0,0.0,0.0
+What is the name of a family gathering that happens before Ramadan?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Shabna,1.0,0.0,0.0,0.0
+Where do the people of Mecca usually go the night the pilgrims spend the night at Arafat?,"Mecca is in the Western Region of Saudi Arabia. Based on the available regional evidence, the people of Mecca usually go to the Holy Mosque the night the pilgrims spend the night at Arafat.",The Holy Mosque,1.0,0.5,0.6666666666666666,1.0
+Which Saudi province is famous for rose distillation and producing rose water?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Taif,1.0,0.0,0.0,0.0
+"What is the name of the person responsible for assisting pilgrims coming from outside Saudi Arabia, guiding them from their arrival in Mecca until their departure?","In the Western Region of Saudi Arabia, the person responsible for assisting pilgrims from outside the country, guiding them from their arrival in Mecca until their departure, is referred to as ""Al-Mutawwif"" or simply ""Mutawwif.""",Mutawwif,1.0,1.0,0.6666666666666666,1.0
+What is the name of the traditional job in Mecca that involved providing water to pilgrims and worshippers?,"Mecca is in the Western Region of Saudi Arabia. Based on the available regional evidence, the traditional job that involved providing water to pilgrims and worshippers is referred to as either ""Al-Siqayah"" or ""Al-Saqaya.""",Al-Siqayah,1.0,0.5,0.6666666666666666,1.0
+Which regions of Saudi Arabia is the game of Carrom specifically known?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,The regions of Mecca and Medina,1.0,0.0,0.0,0.0
+"What is the ""Kasrah"" in the context of the ""Harabi Dance""?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A poetic form consisting of one or two couplets with a consistent rhythm,1.0,0.5,0.0,0.0
+"In which region of Saudi Arabia is the ""Al-Majroor"" dance a popular folkloric tradition?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Western Region,1.0,0.0,0.0,0.0
+"Where is the dance ""Al-Ashouri"" famous in Saudi Arabia?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Northern Saudi Arabia,1.0,0.0,0.0,0.0
+What is the most common dish in the west of Saudi Arabia?,"The West region of Saudi Arabia is known for a variety of common dishes. One of the most prominent dishes is **Saleeg**. Additionally, other popular dishes include **Sayadiyah**, **Kebab Al-Mirwa**, **Bukhari**, **Al-Ma’adousah**, and **Salatat**. For breakfast, **Foul and Tamees** are common choices in this region.",Saleeg,0.75,1.0,0.75,1.0
+What is the most popular sweet in the west of Saudi Arabia?,"The West region of Saudi Arabia is known for its popular sweet, Labniah. Additionally, common sweets in this region include Qamar Al-Din, Al-Ladu, Al-Labiyah, Al-Ghraibah, Al-Hareesah, Al-Dubayzah, Al-Masiyyah, and Al-Saqdanah.",Labniah,1.0,1.0,0.5,1.0
+What is the most common traditional street food in the west of Saudi Arabia?,"In the Western region of Saudi Arabia, the most common traditional street food is Balila. Other typical street foods include potatoes.",Balila,0.5,0.5,0.4,1.0
+What is the most common breakfast dish in the west of Saudi Arabia?,"The city in question is located in the Western Region of Saudi Arabia. Based on the available regional evidence, the most common breakfast dish in the West of Saudi Arabia is ""Foul and Tamees.""",Foul and Tamees,1.0,1.0,1.0,1.0
+What is the most common traditional drink in the west of Saudi Arabia?,"The West region of Saudi Arabia has several traditional drinks. Based on the available evidence, some of the most common traditional drinks include:
+
+1. **Sobiah** - This is highlighted as a common traditional drink.
+2. **Sobia** - Often mentioned alongside Sobiah.
+3. **Raspberry Juice** and **Qamar Al-Din** - These are also considered common drinks in the region.
+4. Additionally, **Almond Coffee (White Coffee)** is popular and is typically served during celebrations, such as the Islamic New Year.
+
+These drinks reflect the cultural diversity and culinary practices of the West region of Saudi Arabia.",Sobiah,1.0,1.0,1.0,1.0
+What is the traditional breakfast dish during Eid Al-Fitr in the west of Saudi Arabia?,"In the Western Region of Saudi Arabia, traditional breakfast dishes during Eid Al-Fitr include ""Foul and Tamees,"" which are common breakfast items, and ""Al-Dibiyaza,"" which is specifically prepared by the people of Medina for Eid breakfast.",Nowashif,1.0,1.0,0.6666666666666666,0.0
+What is the traditional clothing for men in the west of Saudi Arabia?,"The Western Region of Saudi Arabia features traditional clothing for men that includes ""Al-Thobe"" and ""Al-Sudairi."" Additionally, men may also wear ""Al-Muharid,"" which is a long-sleeved robe, and ""Al-Aqal Al-Muqasab."" These garments represent the cultural attire in this region.",Al-Thobe and Al-Sudairi,1.0,1.0,0.6666666666666666,1.0
+What is the traditional clothing for women in the west of Saudi Arabia?,"In the Western Region of Saudi Arabia, the traditional clothing for women is known as ""Al-Kurta."" This information comes from the cultural evidence for the region.",Al-Kurta,1.0,1.0,0.6666666666666666,1.0
+What are the common traditional dances in the west of Saudi Arabia?,"The West region of Saudi Arabia is known for traditional dances, particularly the ""Al-Mizmar,"" which is highlighted as a common dance in this area. Additionally, the ""Al-Majroor"" dance is also recognized as a folkloric tradition in the Western Region.",Al-Mizmar,1.0,1.0,1.0,1.0
+What is the common traditional music in central Saudi Arabia?,Central Saudi Arabia is known for its common traditional music called Al-Samri. This music style is significant in the region's entertainment culture.,Al-Samri,1.0,1.0,0.6666666666666666,1.0
+What is the common traditional craft in the west of Saudi Arabia?,"The Western Region of Saudi Arabia is known for several traditional crafts. Common traditional crafts include:
+
+- **Sadu Weaving**: This is a well-known craft in the region, involving the weaving of bedouin tents and decorative items.
+- **Rose Perfume Production**: Particularly from the Taif region, rose perfume is a significant craft known for its high-quality essence.
+- Additional crafts mentioned include pottery products, leather tanning, and rosaries.
+
+These crafts reflect the rich cultural heritage of the West of Saudi Arabia.",Sadu Weaving,1.0,0.8333333333333334,0.6,1.0
+What is the name of the items the bride buys for her wedding in west Saudi Arabia?,"In West Saudi Arabia, the name of the items the bride buys for her wedding is ""Dabish."" This term is associated with the cultural practices surrounding weddings in the region.",Dabish,1.0,1.0,0.6666666666666666,1.0
+What is the average amount of dowry presented to the wife in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"40,000 SAR",1.0,0.0,0.0,0.0
+What type of rice turns brown and is always served with fried or grilled fish in West Saudi Arabia?,"In West Saudi Arabia, the type of rice that turns brown and is commonly served with fried or grilled fish is known as Sayadiyah (also spelled Sayyadiah).",Sayadiyah,,,,1.0
+What is the name of a common drink in Western Saudi Arabia during Ramadan?,Western Saudi Arabia has a popular drink during Ramadan known as **Qamar Al-Din**. This drink is commonly enjoyed by people in the region throughout the holy month.,Qamar Al-Din,1.0,1.0,0.6666666666666666,1.0
+"What is the name of a famous spice blend in Madinah, Saudi Arabia, known for its distinctive flavor and essential use in local dishes?","Madinah is in the Western Region of Saudi Arabia. Based on the available regional evidence, a famous spice blend known for its distinctive flavor and essential use in local dishes is called ""Daqah Al-Madinah."" Another name associated with this spice blend is ""Al-Daq Al-Madani.""",Al-Daq Al-Madani,1.0,0.6666666666666666,0.6666666666666666,1.0
+What is the name of a common drink in Western Saudi Arabia in winter?,"In the Western Region of Saudi Arabia, a common drink during winter is called **Sahlab**. Additionally, another traditional drink in this region is **Sobiah**. You can enjoy these beverages as part of the local culture and cuisine.",Sahlab,1.0,1.0,1.0,1.0
+"How can “Hubb Soup” be classified as a traditional Saudi stew, and what complementary foods are served with it?",I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Meat,1.0,0.5,0.0,0.0
+What are the most famous pastries in the Western region of Saudi Arabia?,"The Western region of Saudi Arabia is known for its famous pastries, which include Al-Sharik, Al-Kaak, and Al-Fetout. These pastries are part of the culinary traditions in this region.","Al-Sharik, Al-Kaak, Al-Fetout",1.0,1.0,0.5,1.0
+What popular drink is usually served to celebrate the Islamic New Year in West Saudi Arabia?,"In the Western Region of Saudi Arabia, a popular drink that is usually served to celebrate the Islamic New Year is Almond Coffee (often referred to as White Coffee). This drink is a common part of the celebration.",Almond Coffee (White Coffee),1.0,0.5,1.0,1.0
+What is the name of a family gathering that happens before Ramadan?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Shabna,1.0,0.0,0.0,0.0
+What is the traditional breakfast dish in Eid Al-Adha?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Liver (Mgalgal),1.0,0.0,0.0,0.0
+What is the name of the traditional job in Mecca that involved providing water to pilgrims and worshippers?,"Mecca is in the Western Region of Saudi Arabia. Based on the available regional evidence, the traditional job involved in providing water to pilgrims and worshippers is known as ""Al-Siqayah"" or ""Al-Saqaya."" ",Al-Siqayah,1.0,0.5,0.6666666666666666,1.0
+Which Saudi province is famous for rose distillation and producing rose water?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Taif,1.0,0.0,0.0,0.0
+"What is the name of the person responsible for assisting pilgrims coming from outside Saudi Arabia, guiding them from their arrival in Mecca until their departure?","Mecca is in the Western Region of Saudi Arabia. Based on the available regional evidence, the person responsible for assisting pilgrims coming from outside Saudi Arabia, guiding them from their arrival in Mecca until their departure, is known as ""Al-Mutawwif"" or simply ""Mutawwif.""",Mutawwif,1.0,0.6666666666666666,0.6666666666666666,1.0
+Which regions of Saudi Arabia is the game of Carrom specifically known?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,The regions of Mecca and Medina,1.0,0.0,0.0,0.0
+What is the “Kasrah” in the context of the “Harabi Dance”?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A poetic form consisting of one or two couplets with a consistent rhythm,1.0,0.5,0.0,0.0
+In which region of Saudi Arabia is the “Al-Majroor” dance a popular folkloric tradition?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,Western Region,1.0,0.0,0.0,0.0
+Where is the dance “Al-Ashouri” famous in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,West Saudi Arabia,1.0,0.5,0.0,0.0
+What is the method of greeting a guest in the Western region?,"The Western region of Saudi Arabia has a unique method of greeting a guest, which involves touching the nose and cheeks. This practice is significant in the local culture and reflects the hospitality values held in this region.",Touching the nose and cheeks,1.0,1.0,0.6666666666666666,1.0
+What is the name of the event that happens to the bride before the wedding in West Saudi Arabia?,"The city you are asking about is located in the Western Region of Saudi Arabia. However, the available evidence does not provide information about a specific event that happens to the bride before the wedding in this region. The only related cultural information pertains to a gathering called ""Shabna,"" which occurs before Ramadan. Unfortunately, there is not enough evidence regarding pre-wedding events for brides in the West.",Ghumrah (bride’s dressing ceremony),1.0,0.25,0.0,0.0
+What is the name of the surah in the Quran that is read to declare engagement in West Saudi Arabia?,"In the West region of Saudi Arabia, the surah in the Quran that is read to declare engagement is Surat Al-Fatiha.",Surat Al-Fatiha,,,,1.0
+What is the financial amount that the mother of the bride receives upon the marriage contract?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"5,000 SAR",1.0,0.0,0.0,0.0
+Where do the people of Mecca usually go the night the pilgrims spend the night at Arafat during the Hajj days?,"Mecca is in the Western Region of Saudi Arabia. Based on the available regional evidence, the people of Mecca usually go to the Holy Mosque the night the pilgrims spend the night at Arafat during the Hajj days.",Holy Mosque,1.0,0.5,0.6666666666666666,1.0
+What color does the red “Mabroom” date tend to?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,D. Black,1.0,0.0,0.0,1.0
+What is the name of the dish prepared by the people of Medina for Eid breakfast?,"Medina is in the Western Region of Saudi Arabia. Based on the available regional evidence, the dish prepared by the people of Medina for Eid breakfast is called Al-Dibiyaza.",D. Al-Dibiyaza,1.0,0.5,1.0,1.0
+What accompanies the “Harabi Dance”?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,A and B,1.0,0.5,0.0,0.0
+The “Yalli Dance” is a traditional group folk dance known in the western region of Saudi Arabia. In which areas is it performed?,"The “Yalli Dance” is known in the western region of Saudi Arabia, specifically performed in two areas: Makkah and Madinah.",A and B,0.5,1.0,0.25,1.0
+What is the traditional attire worn by the “Jassis” in Saudi Arabia?,I could not find enough reliable cultural evidence in the ASEEL knowledge base to answer this question confidently.,"A, B, and C",1.0,0.5,0.0,0.0
+What is the common traditional craft in the west of Saudi Arabia?,"The West region of Saudi Arabia is known for several traditional crafts. Based on the available evidence, common traditional crafts in this region include:
+
+1. **Sadu Weaving** - A prominent craft known for its intricate designs and patterns.
+2. **Rose Perfume Production** - Particularly associated with the Taif region, where the famous Taif rose is cultivated.
+3. Other crafts include pottery products, leather tanning, rosaries, and agricultural practices like Al-Dalw and Al-Sabt (land plowing). 
+
+These crafts reflect the rich cultural heritage of the West region.",Sadu Weaving,0.8,1.0,0.5,1.0

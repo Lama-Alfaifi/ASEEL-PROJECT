@@ -1,0 +1,8 @@
+=== ASEEL DeepEval Summary ===
+
+Questions evaluated: 357
+
+Faithfulness: 0.958 (n=351)
+Answer Relevancy: 0.676 (n=351)
+Contextual Relevancy: 0.441 (n=351)
+Contextual Recall: 0.633 (n=357)

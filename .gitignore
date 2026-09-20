@@ -1,0 +1,7 @@
+.env
+.deepeval/
+__pycache__/
+*.pyc
+.vscode/
+node_modules/
+dist/
