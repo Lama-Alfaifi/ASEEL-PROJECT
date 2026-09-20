@@ -233,7 +233,18 @@ SELECTED: NONE
         for index in selected_indices
         if 0 <= index < len(filtered_records)
     ]
+    # Remove duplicate knowledge records from the final selection
+    unique_selected_records = []
+    seen_questions = set()
 
+    for record in selected_records:
+        question_key = record.get("question", "").strip().lower()
+
+        if question_key and question_key not in seen_questions:
+            seen_questions.add(question_key)
+            unique_selected_records.append(record)
+
+    selected_records = unique_selected_records
     return {
         "raw_semantic_results": records,
         "retrieved": selected_records,
