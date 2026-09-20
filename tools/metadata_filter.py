@@ -7,6 +7,7 @@ def filter_by_metadata(
     records: list[dict],
     region: str | None,
     category: str | None = None,
+    city: str | None = None,
 ) -> list[dict]:
     """Apply deterministic region/category filtering after semantic search."""
 
