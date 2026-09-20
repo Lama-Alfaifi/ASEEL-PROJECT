@@ -1,0 +1,333 @@
+city_id,planning_region,administrative_region,governorate,city
+1,Central,Riyadh,Riyadh,Riyadh City
+2,Central,Riyadh,Riyadh,Al Ha'ir
+3,Central,Riyadh,Riyadh,Banban
+4,Central,Riyadh,Riyadh,Al Uyaynah
+5,Central,Riyadh,Diriyah,Diriyah
+6,Central,Riyadh,Diriyah,Al Jubailah
+7,Central,Riyadh,Diriyah,Al Ammariah
+8,Central,Riyadh,Diriyah,Sultanah
+9,Central,Riyadh,Al Kharj,Al Saih
+10,Central,Riyadh,Al Kharj,Al Hayathim
+11,Central,Riyadh,Al Kharj,Al Yamamah
+12,Central,Riyadh,Al Dilam,Al Dilam
+13,Central,Riyadh,Al Dilam,Al Dhabiah
+14,Central,Riyadh,Al Dilam,Na'jan
+15,Central,Riyadh,Al Dawadmi,Al Dawadmi
+16,Central,Riyadh,Al Dawadmi,Al Bijadiyah
+17,Central,Riyadh,Al Dawadmi,Nifi
+18,Central,Riyadh,Al Dawadmi,Sajer
+19,Central,Riyadh,Al Dawadmi,Al Jamsh
+20,Central,Riyadh,Al Majma'ah,Al Majma'ah
+21,Central,Riyadh,Al Majma'ah,Haramah
+22,Central,Riyadh,Al Majma'ah,Jalajil
+23,Central,Riyadh,Al Majma'ah,Al Artawiyah
+24,Central,Riyadh,Al Majma'ah,Tamir
+25,Central,Riyadh,Al Majma'ah,Hawtat Sudair
+26,Central,Riyadh,Al Majma'ah,Rawdat Sudair
+27,Central,Riyadh,Al Zulfi,Al Zulfi
+28,Central,Riyadh,Al Zulfi,Al Rawdah
+29,Central,Riyadh,Al Zulfi,Al Alaqah
+30,Central,Riyadh,Shaqra,Shaqra
+31,Central,Riyadh,Shaqra,Ushaiqer
+32,Central,Riyadh,Shaqra,Al Qasab
+33,Central,Riyadh,Hotat Bani Tamim,Hotat Bani Tamim
+34,Central,Riyadh,Hotat Bani Tamim,Al Hilwah
+35,Central,Riyadh,Hotat Bani Tamim,Al Quwai
+36,Central,Riyadh,Afif,Afif
+37,Central,Riyadh,Afif,Al Badrah
+38,Central,Riyadh,Al Quway'iyah,Al Quway'iyah
+39,Central,Riyadh,Al Quway'iyah,Al Ruwaidah
+40,Central,Riyadh,Al Quway'iyah,Halban
+41,Central,Riyadh,Wadi Ad Dawasir,Al Khamasin
+42,Central,Riyadh,Wadi Ad Dawasir,Al Lidam
+43,Central,Riyadh,Wadi Ad Dawasir,Al Nuwaymah
+44,Central,Riyadh,Al Sulayyil,Al Sulayyil
+45,Central,Riyadh,Al Sulayyil,Tamarah
+46,Central,Riyadh,Al Aflaj,Layla
+47,Central,Riyadh,Al Aflaj,Al Badi
+48,Central,Riyadh,Al Aflaj,Al Ahmar
+49,Central,Riyadh,Al Muzahimiyah,Al Muzahimiyah
+50,Central,Riyadh,Al Muzahimiyah,Al Ghattghat
+51,Central,Riyadh,Dhurma,Dhurma
+52,Central,Riyadh,Dhurma,Qusoor Al Muqbil
+53,Central,Riyadh,Rumah,Rumah
+54,Central,Riyadh,Rumah,Shawyah
+55,Central,Riyadh,Thadiq,Thadiq
+56,Central,Riyadh,Thadiq,Raghabah
+57,Central,Riyadh,Huraymila,Huraymila
+58,Central,Riyadh,Huraymila,Al Qrainah
+59,Central,Riyadh,Huraymila,Mulham
+60,Central,Riyadh,Al Hariq,Al Hariq
+61,Central,Riyadh,Al Hariq,Al Mufijer
+62,Central,Riyadh,Al Ghat,Al Ghat
+63,Central,Riyadh,Marat,Marat
+64,Central,Riyadh,Marat,Uthal
+65,Central,Riyadh,Al Rain,Al Rain
+66,Central,Qassim,Buraidah,Buraidah
+67,Central,Qassim,Buraidah,Al Butain
+68,Central,Qassim,Buraidah,Al Basr
+69,Central,Qassim,Buraidah,Dhuriyyah
+70,Central,Qassim,Unaizah,Unaizah
+71,Central,Qassim,Unaizah,Wadi Al Janah
+72,Central,Qassim,Ar Rass,Ar Rass
+73,Central,Qassim,Ar Rass,Qasr Ibn Uqayyil
+74,Central,Qassim,Ar Rass,Dukhnah
+75,Central,Qassim,Al Mithnab,Al Mithnab
+76,Central,Qassim,Al Mithnab,Ain Al Uqayli
+77,Central,Qassim,Al Bukayriyah,Al Bukayriyah
+78,Central,Qassim,Al Bukayriyah,Al Khabra
+79,Central,Qassim,Al Bukayriyah,Al Hilaliyah
+80,Central,Qassim,Al Badayea,Al Badayea
+81,Central,Qassim,Asyah,Ain Ibn Fuhayd
+82,Central,Qassim,Asyah,Qubba
+83,Central,Qassim,Asyah,Aba Al Wurud
+84,Central,Qassim,Al Nabhaniyah,Al Nabhaniyah
+85,Central,Qassim,Al Nabhaniyah,Abtan
+86,Central,Qassim,Uyun Al Jiwa,Uyun Al Jiwa
+87,Central,Qassim,Uyun Al Jiwa,Ghafal
+88,Central,Qassim,Uyun Al Jiwa,Al Qarah
+89,Central,Qassim,Riyadh Al Khabra,Riyadh Al Khabra
+90,Central,Qassim,Al Shimasiyah,Al Shimasiyah
+91,Central,Qassim,Al Shimasiyah,Al Nabqiyah
+92,Central,Qassim,Uqlat As Suqur,Uqlat As Suqur
+93,Central,Qassim,Dhariyah,Dhariyah
+94,Western,Makkah,Holy Capital,Makkah
+95,Western,Makkah,Holy Capital,Mina
+96,Western,Makkah,Holy Capital,Arafat
+97,Western,Makkah,Holy Capital,Muzdalifah
+98,Western,Makkah,Holy Capital,Al Shara'i
+99,Western,Makkah,Jeddah,Jeddah
+100,Western,Makkah,Jeddah,Thuwal
+101,Western,Makkah,Jeddah,Dhahban
+102,Western,Makkah,Jeddah,Usfan
+103,Western,Makkah,Taif,Taif
+104,Western,Makkah,Taif,Al Hada
+105,Western,Makkah,Taif,Al Shafa
+106,Western,Makkah,Taif,Al Sail Al Kabeer
+107,Western,Makkah,Taif,Ash Shafa
+108,Western,Makkah,Al Qunfudhah,Al Qunfudhah
+109,Western,Makkah,Al Qunfudhah,Al Qouz
+110,Western,Makkah,Al Qunfudhah,Hali
+111,Western,Makkah,Al Qunfudhah,Al Muzaylif
+112,Western,Makkah,Al Lith,Al Lith
+113,Western,Makkah,Al Lith,Ghamika
+114,Western,Makkah,Rabigh,Rabigh
+115,Western,Makkah,Rabigh,Mastoorah
+116,Western,Makkah,Rabigh,King Abdullah Economic City
+117,Western,Makkah,Rabigh,Al Abwa
+118,Western,Makkah,Khulais,Khulais
+119,Western,Makkah,Khulais,Gharan
+120,Western,Makkah,Khulais,Wadi Qudaid
+121,Western,Makkah,Al Jamoom,Al Jamoom
+122,Western,Makkah,Al Jamoom,Ain Shams
+123,Western,Makkah,Al Jamoom,Huda Al Sham
+124,Western,Makkah,Bahrah,Bahrah
+125,Western,Makkah,Ranyah,Ranyah
+126,Western,Makkah,Ranyah,Al Amalh
+127,Western,Makkah,Turubah,Turubah
+128,Western,Makkah,Turubah,Al Gharabah
+129,Western,Makkah,Al Khurmah,Al Khurmah
+130,Western,Makkah,Al Khurmah,Al Ghadan
+131,Western,Makkah,Al Kamil,Al Kamil
+132,Western,Makkah,Al Muwayh,Al Muwayh
+133,Western,Makkah,Al Muwayh,Zalm
+134,Western,Makkah,Maysan,Maysan
+135,Western,Makkah,Maysan,Bani Malik
+136,Western,Makkah,Maysan,Thaqif
+137,Western,Makkah,Adham,Adham
+138,Western,Makkah,Adham,Al Jaizah
+139,Western,Makkah,Al Ardiyat,Al Ardiyyah Al Shamaliyah
+140,Western,Makkah,Al Ardiyat,Al Ardiyyah Al Janubiyah
+141,Western,Makkah,Al Ardiyat,Nimrah
+142,Western,Madinah,Madinah,Madinah
+143,Western,Madinah,Madinah,Abyar Ali
+144,Western,Madinah,Yanbu,Yanbu Al Bahr
+145,Western,Madinah,Yanbu,Yanbu Al Sinaiyah
+146,Western,Madinah,Yanbu,Yanbu Al Nakhl
+147,Western,Madinah,Al Ula,Al Ula
+148,Western,Madinah,Al Ula,Mada'in Saleh (Hegra)
+149,Western,Madinah,Al Ula,Mughayra
+150,Western,Madinah,Badr,Badr
+151,Western,Madinah,Badr,Al Wasitah
+152,Western,Madinah,Badr,Al Rayis
+153,Western,Madinah,Khaybar,Khaybar
+154,Western,Madinah,Khaybar,Al Salsalah
+155,Western,Madinah,Al Mahd,Mahd Al Dhahab
+156,Western,Madinah,Al Mahd,Al Suwayriqiyah
+157,Western,Madinah,Al Hinakiyah,Al Hinakiyah
+158,Western,Madinah,Al Hinakiyah,Al Nakhil
+159,Western,Madinah,Wadi Al Fara,Al Faqir
+160,Western,Madinah,Wadi Al Fara,Al Yutamah
+161,Western,Madinah,Al Ais,Al Ais
+162,Western,Madinah,Al Ais,Al Muraba
+163,Eastern,Eastern Province,Dammam,Dammam
+164,Eastern,Eastern Province,Al Khobar,Al Khobar
+165,Eastern,Eastern Province,Al Khobar,Dhahran
+166,Eastern,Eastern Province,Al Khobar,Al Thuqbah
+167,Eastern,Eastern Province,Al Khobar,Al Aziziyah
+168,Eastern,Eastern Province,Al Ahsa,Al Hofuf
+169,Eastern,Eastern Province,Al Ahsa,Al Mubarraz
+170,Eastern,Eastern Province,Al Ahsa,Al Oyun
+171,Eastern,Eastern Province,Al Ahsa,Al Umran
+172,Eastern,Eastern Province,Al Ahsa,Al Jafr
+173,Eastern,Eastern Province,Al Ahsa,Salwa
+174,Eastern,Eastern Province,Al Ahsa,Al Batha
+175,Eastern,Eastern Province,Al Ahsa,Haradh
+176,Eastern,Eastern Province,Al Qatif,Qatif
+177,Eastern,Eastern Province,Al Qatif,Saihat
+178,Eastern,Eastern Province,Al Qatif,Safwa
+179,Eastern,Eastern Province,Al Qatif,Tarout
+180,Eastern,Eastern Province,Al Qatif,Anak
+181,Eastern,Eastern Province,Al Qatif,Al Awamiyah
+182,Eastern,Eastern Province,Al Qatif,Al Qudaih
+183,Eastern,Eastern Province,Al Qatif,Umm Al Sahik
+184,Eastern,Eastern Province,Al Jubail,Jubail City
+185,Eastern,Eastern Province,Al Jubail,Jubail Industrial City
+186,Eastern,Eastern Province,Hafr Al Batin,Hafr Al Batin
+187,Eastern,Eastern Province,Hafr Al Batin,Al Qaysumah
+188,Eastern,Eastern Province,Hafr Al Batin,Al Dhibiyah
+189,Eastern,Eastern Province,Khafji,Khafji
+190,Eastern,Eastern Province,Khafji,Al Mishab
+191,Eastern,Eastern Province,Ras Tanura,Ras Tanura
+192,Eastern,Eastern Province,Ras Tanura,Najmah
+193,Eastern,Eastern Province,Buqayq,Buqayq
+194,Eastern,Eastern Province,Buqayq,Ain Dar
+195,Eastern,Eastern Province,Al Nairyah,Al Nairyah
+196,Eastern,Eastern Province,Al Nairyah,Malijah
+197,Eastern,Eastern Province,Qaryat Al Ulya,Qaryat Al Ulya
+198,Eastern,Eastern Province,Qaryat Al Ulya,Al Rufaia
+199,Eastern,Eastern Province,Al Bayda,Al Bayda
+200,Eastern,Eastern Province,Al Adeed,Al Adeed
+201,Northern,Tabuk,Tabuk,Tabuk
+202,Northern,Tabuk,Tabuk,Bir Ibn Hirmas
+203,Northern,Tabuk,Tabuk,Halat Ammar
+204,Northern,Tabuk,Al Wajh,Al Wajh
+205,Northern,Tabuk,Duba,Duba
+206,Northern,Tabuk,Duba,Al Muwailih
+207,Northern,Tabuk,Duba,Sharma
+208,Northern,Tabuk,Umluj,Umluj
+209,Northern,Tabuk,Umluj,Al Shabaan
+210,Northern,Tabuk,Haql,Haql
+211,Northern,Tabuk,Haql,Al Humaydha
+212,Northern,Tabuk,Tayma,Tayma
+213,Northern,Tabuk,Tayma,Al Qulaibah
+214,Northern,Tabuk,Al Bad,Al Bad
+215,Northern,Tabuk,Al Bad,Magha'er Shu'ayb
+216,Northern,Hail,Hail,Hail
+217,Northern,Hail,Hail,Jubbah
+218,Northern,Hail,Hail,Qina
+219,Northern,Hail,Baqaa,Baqaa
+220,Northern,Hail,Baqaa,Al Shu'aybah
+221,Northern,Hail,Al Ghazalah,Al Ghazalah
+222,Northern,Hail,Al Shinan,Al Shinan
+223,Northern,Hail,Al Shinan,Tabah
+224,Northern,Hail,Al Shamli,Al Shamli
+225,Northern,Hail,Al Sulaimi,Al Sulaimi
+226,Northern,Hail,Al Hayit,Al Hayit
+227,Northern,Hail,Al Hayit,Al Huwayet
+228,Northern,Hail,Moqaq,Moqaq
+229,Northern,Hail,Sumayrah,Sumayrah
+230,Northern,Northern Borders,Arar,Arar
+231,Northern,Northern Borders,Arar,Jadidat Arar
+232,Northern,Northern Borders,Rafha,Rafha
+233,Northern,Northern Borders,Rafha,Lina
+234,Northern,Northern Borders,Rafha,Rawdat Habbas
+235,Northern,Northern Borders,Turaif,Turaif
+236,Northern,Northern Borders,Turaif,Wa'ad Al Shamal
+237,Northern,Northern Borders,Al Uwayqilah,Al Uwayqilah
+238,Northern,Al Jouf,Sakaka,Sakaka
+239,Northern,Al Jouf,Sakaka,Sawer
+240,Northern,Al Jouf,Sakaka,Qarah
+241,Northern,Al Jouf,Al Qurayyat,Al Qurayyat
+242,Northern,Al Jouf,Al Qurayyat,Al Isawiyah
+243,Northern,Al Jouf,Al Qurayyat,Al Hadithah
+244,Northern,Al Jouf,Dumat Al Jandal,Dumat Al Jandal
+245,Northern,Al Jouf,Dumat Al Jandal,Abu Ajram
+246,Northern,Al Jouf,Tabarjal,Tabarjal
+247,Northern,Al Jouf,Tabarjal,Al Nabak Abu Qasr
+248,Southern,Asir,Abha,Abha
+249,Southern,Asir,Abha,Al Souda
+250,Southern,Asir,Abha,Marbah
+251,Southern,Asir,Khamis Mushait,Khamis Mushait
+252,Southern,Asir,Khamis Mushait,Wadi Bin Hashbal
+253,Southern,Asir,Khamis Mushait,Tandaha
+254,Southern,Asir,Bisha,Bisha
+255,Southern,Asir,Bisha,Tabalah
+256,Southern,Asir,Bisha,Al Naqie
+257,Southern,Asir,Al Namas,Al Namas
+258,Southern,Asir,Al Namas,Bani Bakr
+259,Southern,Asir,Muhayil Asir,Muhayil Asir
+260,Southern,Asir,Muhayil Asir,Bahr Abu Sukaynah
+261,Southern,Asir,Sarat Abidah,Sarat Abidah
+262,Southern,Asir,Sarat Abidah,Al Farshah
+263,Southern,Asir,Tathlith,Tathlith
+264,Southern,Asir,Tathlith,Al Ain
+265,Southern,Asir,Rijal Almaa,Rijal Almaa
+266,Southern,Asir,Rijal Almaa,Al Hussayyah
+267,Southern,Asir,Ahad Rafidah,Ahad Rafidah
+268,Southern,Asir,Ahad Rafidah,Al Wadiein
+269,Southern,Asir,Dhahran Al Janub,Dhahran Al Janub
+270,Southern,Asir,Dhahran Al Janub,Al Hajar
+271,Southern,Asir,Balqarn,Sabt Al Alayah
+272,Southern,Asir,Balqarn,Al Bashayer
+273,Southern,Asir,Al Majardah,Al Majardah
+274,Southern,Asir,Al Majardah,Khatibah
+275,Southern,Asir,Tanomah,Tanomah
+276,Southern,Asir,Al Birk,Al Birk
+277,Southern,Asir,Bareq,Bareq
+278,Southern,Asir,Bareq,Thamran
+279,Southern,Asir,Al Harajah,Al Harajah
+280,Southern,Asir,Tarib,Tarib
+281,Southern,Al Baha,Al Baha,Al Baha
+282,Southern,Al Baha,Al Baha,Bani Sar
+283,Southern,Al Baha,Baljurashi,Baljurashi
+284,Southern,Al Baha,Baljurashi,Bani Kabeer
+285,Southern,Al Baha,Al Mandaq,Al Mandaq
+286,Southern,Al Baha,Al Mandaq,Barhrah
+287,Southern,Al Baha,Al Makhwah,Al Makhwah
+288,Southern,Al Baha,Al Makhwah,Nayrash
+289,Southern,Al Baha,Al Aqiq,Al Aqiq
+290,Southern,Al Baha,Al Aqiq,Jarab
+291,Southern,Al Baha,Qilwah,Qilwah
+292,Southern,Al Baha,Qilwah,Al Shoara
+293,Southern,Al Baha,Al Qara,Al Atawlah
+294,Southern,Al Baha,Al Qara,Bani Adwan
+295,Southern,Al Baha,Ghamid Al Zanad,Ghamid Al Zanad
+296,Southern,Al Baha,Al Hajrah,Al Hajrah
+297,Southern,Al Baha,Bani Hasan,Bani Hasan
+298,Southern,Jazan,Jazan,Jazan
+299,Southern,Jazan,Jazan,Jazan Economic City
+300,Southern,Jazan,Sabya,Sabya
+301,Southern,Jazan,Sabya,Al Qouz
+302,Southern,Jazan,Sabya,Qoz Al Ja'afrah
+303,Southern,Jazan,Abu Arish,Abu Arish
+304,Southern,Jazan,Samtah,Samtah
+305,Southern,Jazan,Samtah,Al Sahi
+306,Southern,Jazan,Baish,Baish
+307,Southern,Jazan,Baish,Al Madaya
+308,Southern,Jazan,Ahad Al Masarihah,Ahad Al Masarihah
+309,Southern,Jazan,Al Darb,Al Darb
+310,Southern,Jazan,Al Darb,Al Shuqaiq
+311,Southern,Jazan,Farasan,Farasan
+312,Southern,Jazan,Farasan,Sira Island
+313,Southern,Jazan,Al Tuwal,Al Tuwal
+314,Southern,Jazan,Al Harth,Al Khubah
+315,Southern,Jazan,Damad,Damad
+316,Southern,Jazan,Damad,Al Shuqayri
+317,Southern,Jazan,Al Reeth,Al Reeth
+318,Southern,Jazan,Al Daer,Al Daer Bani Malik
+319,Southern,Jazan,Al Edabi,Al Edabi
+320,Southern,Jazan,Al Aridha,Al Aridha
+321,Southern,Jazan,Faifa,Faifa
+322,Southern,Jazan,Harub,Harub
+323,Southern,Najran,Najran,Najran
+324,Southern,Najran,Najran,Aba Al Saood
+325,Southern,Najran,Sharurah,Sharurah
+326,Southern,Najran,Sharurah,Al Wadee'ah
+327,Southern,Najran,Hubuna,Hubuna
+328,Southern,Najran,Badr Al Janub,Badr Al Janub
+329,Southern,Najran,Yadamah,Yadamah
+330,Southern,Najran,Thar,Thar
+331,Southern,Najran,Khubash,Khubash
+332,Southern,Najran,Al Kharkhir,Al Kharkhir
