@@ -1,0 +1,8 @@
+{
+    "test_cases": 10,
+    "answer_relevancy": 1.0,
+    "answer_relevancy_pass_rate": 1.0,
+    "faithfulness": 1.0,
+    "faithfulness_pass_rate": 1.0,
+    "threshold": 0.7
+}

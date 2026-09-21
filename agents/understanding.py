@@ -5,14 +5,14 @@ import json
 from langchain.agents import create_agent
 
 from agents.state import AseelState
-from config.settings import OPENAI_MODEL
+from config.settings import OPENAI_MODEL_UNDERSTANDING
 from tools.context_extraction import extract_context
 from tools.region_resolution import resolve_region
 from utils.location_resolver import location_resolver
 
 
 understanding_agent = create_agent(
-    model=OPENAI_MODEL,
+    model=OPENAI_MODEL_UNDERSTANDING,
     tools=[],
     system_prompt="""
 You are ASEEL's Understanding Agent.
@@ -96,12 +96,29 @@ def _clean_json(content: str) -> str:
 
 
 def _parse_memory(conversation_context: str) -> dict:
+    """
+    Parse the structured "Conversation memory:" section produced by
+    ConversationMemory.to_prompt_context() into a key/value dict.
+
+    Only that section is scanned — not the "Recent conversation:" section
+    that may follow it in the combined context built by workflow/graph.py.
+    That section is free-form dialogue text, not key/value memory; scanning
+    it line-by-line would misread a transcript line like
+    "user: What about women?" as a memory field named "user".
+    """
+
     memory = {}
 
     if not conversation_context:
         return memory
 
-    for line in conversation_context.splitlines():
+    if "Conversation memory:" in conversation_context:
+        section = conversation_context.split("Conversation memory:", 1)[1]
+        section = section.split("Recent conversation:", 1)[0]
+    else:
+        section = conversation_context
+
+    for line in section.splitlines():
         if ":" not in line:
             continue
 
@@ -169,6 +186,40 @@ def _get_value(
     memory: dict,
     key: str,
 ):
+    """
+    Resolve one context field, preferring the deterministic source when
+    one exists for that field.
+
+    For fields context_extraction.py can actually detect (category,
+    occasion, user_role), the regex-based basic_context is the source of
+    truth — it can only return a value that is literally present as a
+    keyword in the text, so it can't hallucinate. The LLM's own guess for
+    these fields is used only as a fallback, when the deterministic
+    extractor found nothing (e.g. the keyword is implied but not literally
+    present in the current query or memory text).
+
+    For fields with no deterministic extractor at all (situation,
+    relationship, first_time, generation, formality,
+    historical_or_contemporary, language), the LLM is the only source
+    available, so its output is used directly.
+    """
+
+    deterministic_fields = {"category", "occasion", "user_role"}
+
+    if key in deterministic_fields:
+        value = basic_context.get(key)
+
+        if value not in (None, "", []):
+            return value
+
+        value = extracted.get(key)
+
+        if value not in (None, "", []):
+            return value
+
+        return memory.get(key)
+
+    # No deterministic extractor for this field — trust the LLM first.
     value = extracted.get(key)
 
     if value not in (None, "", []):
@@ -416,6 +467,15 @@ Important:
 
 
 understand_query = understand_context
+
+
+
+
+
+
+
+
+
 
 # from __future__ import annotations
 

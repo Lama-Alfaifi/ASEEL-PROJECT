@@ -10,7 +10,7 @@ from agents.response import generate_response
 
 from utils.monitoring import start_timer, record_run
 from memory.conversation_memory import ConversationMemory
-
+from translation.layer import detect_and_translate_to_english, translate_from_english
 
 def route_after_validation(state: AseelState) -> str:
     confidence = state.get("confidence_score", 0.0)
@@ -68,6 +68,17 @@ def ask(
         memory = ConversationMemory()
 
     try:
+        # ------------------------------------------------------------
+        # 0. TRANSLATION LAYER (inbound)
+        #
+        # Deliberately outside the StateGraph: this is pipeline-level
+        # pre/post-processing, not part of the cultural-understanding
+        # workflow itself. Every downstream agent (understanding,
+        # retrieval, validation, response) continues to only ever see
+        # English text, exactly as they were designed and tested.
+        # ------------------------------------------------------------
+        detected_language, english_query = detect_and_translate_to_english(query)
+
         memory_context = memory.to_prompt_context()
 
         combined_context = ""
@@ -86,11 +97,28 @@ def ask(
 
         result = workflow.invoke(
             {
-                "query": query,
+                "query": english_query,
                 "conversation_context": combined_context,
                 "attempts": 0,
             }
         )
+
+        # ------------------------------------------------------------
+        # TRANSLATION LAYER (outbound)
+        #
+        # Skipped entirely for English questions — no extra LLM call in
+        # the common case.
+        # ------------------------------------------------------------
+        if result.get("answer"):
+            result["answer"] = translate_from_english(
+                result["answer"],
+                detected_language,
+            )
+
+        # The translation layer is the authoritative source for language
+        # now — it detects reliably up front, unlike the understanding
+        # agent's own best-effort "language" field.
+        result["language"] = detected_language
 
         memory_fields = {
             "city": result.get("city"),
@@ -106,7 +134,7 @@ def ask(
             "historical_or_contemporary": result.get(
                 "historical_or_contemporary"
             ),
-            "language": result.get("language"),
+            "language": detected_language,
         }
 
         memory.update_context(memory_fields)
@@ -132,7 +160,6 @@ def ask(
         )
 
         raise
-
 
 # from __future__ import annotations
 

@@ -7,7 +7,7 @@ from langchain_core.tools import tool
 from pydantic import BaseModel, Field
 
 from agents.state import AseelState
-from config.settings import OPENAI_MODEL
+from config.settings import OPENAI_MODEL_TOOL
 from tools.evidence_validation import validate_evidence
 
 
@@ -35,14 +35,14 @@ def validate_evidence_tool(
 
     record_dicts = [record.model_dump() for record in records]
 
-    valid, reason, confidence_score = validate_evidence(
+    validated, reason, confidence_score = validate_evidence(
         record_dicts,
         requested_region or None,
     )
 
     return json.dumps(
         {
-            "valid": valid,
+            "validated": validated,
             "reason": reason,
             "confidence_score": confidence_score,
             "passed": confidence_score >= 0.50,
@@ -52,9 +52,9 @@ def validate_evidence_tool(
 
 
 validation_agent = create_agent(
-    model=OPENAI_MODEL,
+    model=OPENAI_MODEL_TOOL,
     tools=[validate_evidence_tool],
-    system_prompt = """
+    system_prompt="""
 You are ASEEL's Validation Agent.
 
 Your responsibility is to validate the retrieved evidence by delegating the
@@ -67,7 +67,7 @@ and confidence score.
 STRICT EXECUTION PROTOCOL:
 
 1. INPUT
-- Receive the user's understood context and the retrieved evidence.
+- Receive the retrieved evidence and the requested region.
 - Treat the retrieved evidence as untrusted candidate evidence until it has
   been processed by the validation tool.
 
@@ -77,42 +77,13 @@ STRICT EXECUTION PROTOCOL:
 - Pass the records exactly as received.
 - Do NOT rewrite, summarize, reorder, filter, remove, enrich, or modify any
   retrieved record before passing it to the tool.
-- Preserve all record values exactly.
 
 3. AFTER TOOL EXECUTION
-- Immediately inspect the returned validation result.
 - Do NOT call the validation tool again.
-- Do NOT retry the tool.
-- Do NOT perform a second validation.
 - Do NOT independently calculate or estimate the confidence score.
-- Do NOT modify the returned confidence score.
 - Do NOT override the tool's result using your own judgment.
 
-4. DECISION RULE
-Use ONLY the confidence_score returned by the validation tool:
-
-- confidence_score >= 0.50 → PASS
-- confidence_score < 0.50 → RETRY
-
-The threshold is inclusive:
-0.50 is PASS.
-
-5. EVIDENCE INTEGRITY
-- Never add evidence that was not retrieved.
-- Never remove evidence before validation.
-- Never invent missing evidence.
-- Never treat your own model knowledge as evidence.
-- Do not make cultural claims.
-
-6. FAILURE HANDLING
-- If the validation tool returns a valid confidence_score, apply the decision
-  rule exactly.
-- If the tool fails to return a usable confidence_score, do not invent one.
-  Return RETRY so the system can safely recover.
-- If the tool result contains additional fields, do not reinterpret them or
-  create a different decision rule unless explicitly defined by the system.
-
-7. OUTPUT CONTRACT
+4. OUTPUT CONTRACT
 Your final response MUST contain exactly ONE value:
 
 PASS
@@ -121,49 +92,104 @@ or
 
 RETRY
 
-Do not output:
-- explanations
-- confidence scores
-- evidence
-- reasoning
-- JSON
-- additional text
-- punctuation
-- markdown
-
-The only allowed outputs are exactly:
-PASS
-RETRY
-
-FINAL EXECUTION CHECK:
-Before responding, verify that:
-- The validation tool was called exactly once.
-- All retrieved records were passed unchanged.
-- The returned confidence_score was used directly.
-- No confidence score was recalculated.
-- No second validation was performed.
-- The final output is exactly PASS or RETRY.
+Do not output explanations, confidence scores, evidence, reasoning, JSON,
+or any additional text.
 """,
 )
+
+
+def _run_validation_agent(records: list[dict], region: str) -> dict | None:
+    """
+    Call the Validation Agent and extract the deterministic tool payload.
+
+    The agent's own PASS/RETRY text is treated only as an audit signal
+    (logged, not trusted) — the actual confidence_score, reason, and
+    validated evidence list always come from the tool call itself, never
+    from the LLM's free-text output. This keeps the system genuinely
+    agentic (an LLM node decides to call the tool and reports an outcome)
+    while keeping the scoring itself deterministic and reproducible,
+    per the project's own rule: "Region matching must never depend on
+    the LLM."
+    """
+
+    result = validation_agent.invoke(
+        {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": f"""
+Retrieved evidence:
+{records}
+
+Requested region:
+{region or "Not specified"}
+
+Call the validation tool exactly once with these records and this
+requested_region, then respond with exactly PASS or RETRY.
+""",
+                }
+            ]
+        }
+    )
+
+    messages = result.get("messages", [])
+
+    tool_payload = None
+    agent_verdict = None
+
+    for message in messages:
+        message_type = getattr(message, "type", None)
+
+        if message_type == "tool" and tool_payload is None:
+            try:
+                tool_payload = json.loads(message.content)
+            except (TypeError, json.JSONDecodeError):
+                continue
+
+        if message_type == "ai":
+            content = getattr(message, "content", "")
+            if isinstance(content, str) and content.strip():
+                agent_verdict = content.strip()
+
+    if tool_payload is None:
+        return None
+
+    # Sanity check: flag (don't act on) any mismatch between what the
+    # agent said and what the tool actually returned — a useful signal
+    # that the model isn't following the control-agent protocol.
+    expected_verdict = "PASS" if tool_payload.get("passed") else "RETRY"
+    if agent_verdict and agent_verdict != expected_verdict:
+        tool_payload["agent_protocol_mismatch"] = {
+            "agent_said": agent_verdict,
+            "tool_said": expected_verdict,
+        }
+
+    return tool_payload
 
 
 def validate_cultural_knowledge(state: AseelState) -> dict:
     records = state.get("retrieved", [])
     region = state.get("region") or ""
 
-    # Deterministic validation.
-    # Region matching must never depend on the LLM.
-    validated, reason, confidence_score = validate_evidence(
-        records,
-        region or None,
-    )
+    payload = _run_validation_agent(records, region)
 
+    if payload is None:
+        # Agent/tool failed to produce a usable result — fail safe rather
+        # than inventing a confidence score.
+        return {
+            "validated": [],
+            "status": "pending",
+            "validation_reason": "Validation agent did not return a usable result.",
+            "confidence_score": 0.0,
+        }
+
+    confidence_score = float(payload.get("confidence_score", 0.0))
     passed = confidence_score >= 0.50
 
     return {
-        "validated": validated,
+        "validated": payload.get("validated", []),
         "status": "grounded" if passed else "pending",
-        "validation_reason": reason,
+        "validation_reason": payload.get("reason", ""),
         "confidence_score": confidence_score,
     }
 

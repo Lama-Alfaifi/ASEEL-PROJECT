@@ -6,7 +6,9 @@ from langchain.agents import create_agent
 from langchain_core.tools import tool
 
 from agents.state import AseelState
-from config.settings import OPENAI_MODEL
+from config.settings import OPENAI_MODEL_RESPONSE
+from prompts.response import SYSTEM_PROMPT
+from retrieval.vector_store import CulturalVectorStore
 
 
 @tool
@@ -27,11 +29,20 @@ def prepare_cultural_evidence(
 
     # Final region safety check.
     # Never pass evidence from another region to the response model.
+    # Normalized before comparing — the same defensive fix applied in
+    # tools/evidence_validation.py and tools/cultural_search.py, so a
+    # differently-spelled but equivalent region (e.g. "Eastern" vs "East")
+    # can never silently empty out valid evidence here.
     if requested_region:
+        normalized_requested_region = CulturalVectorStore.normalize_region(
+            requested_region
+        )
+
         records = [
             record
             for record in records
-            if record.get("region") == requested_region
+            if CulturalVectorStore.normalize_region(record.get("region"))
+            == normalized_requested_region
         ]
 
     if not records:
@@ -67,51 +78,9 @@ def prepare_cultural_evidence(
 
 
 response_agent = create_agent(
-    model=OPENAI_MODEL,
+    model=OPENAI_MODEL_RESPONSE,
     tools=[prepare_cultural_evidence],
-    system_prompt="""
-You are ASEEL's Response Agent.
-
-Answer the user's Saudi cultural question using ONLY the validated evidence.
-
-RULES:
-- Use the prepare_cultural_evidence tool exactly once.
-- Do not invent, assume, or use outside knowledge.
-- Every cultural claim must be supported by the evidence.
-- Do not transfer customs between regions.
-- If evidence is insufficient, clearly say so.
-- Keep the answer concise.
-- Do not make absolute claims such as "always" or "never".
-
-CITY-TO-REGION RULE:
-- ASEEL's cultural knowledge base is organized by regional scope, not by
-  individual cities.
-- When the user asks about a specific city, use the resolved region provided
-  in the context.
-- You may use evidence from the city's broader region if it is relevant.
-- If the evidence is regional only, do not mention the city in the same sentence
-  as a cultural claim.
-- City context may be used to identify the relevant region, but it must not be
-  treated as evidence that the practice is specific to that city.
-- Clearly mention the city and its corresponding region in the answer.
-- Clearly state that the available cultural information comes from the broader
-  region rather than city-specific data.
-- Do NOT present regional evidence as if it were specifically practiced in,
-  unique to, or characteristic of the requested city.
-- Do NOT claim that a tradition is unique to or specifically practiced in the
-  city unless the provided evidence explicitly mentions that city.
-- Do NOT infer that a regional practice applies specifically to the city.
-- When only regional evidence is available, use wording such as:
-  "Based on the available regional evidence..."
-  or
-  "These practices are associated with the broader Southern Region and are not
-  necessarily specific to Faifa."
-- If the user asks for customs specifically associated with the city and the
-  evidence is only regional, clearly state that the knowledge base does not
-  provide city-specific evidence.
-
-"""
-
+    system_prompt=SYSTEM_PROMPT,
 )
 
 
@@ -122,11 +91,17 @@ def generate_response(state: AseelState) -> dict:
 
     # Final safety check before calling the LLM.
     # Only validated evidence from the requested region may reach the model.
+    # Normalized for the same reason as in prepare_cultural_evidence above.
     if requested_region:
+        normalized_requested_region = CulturalVectorStore.normalize_region(
+            requested_region
+        )
+
         facts = [
             record
             for record in facts
-            if record.get("region") == requested_region
+            if CulturalVectorStore.normalize_region(record.get("region"))
+            == normalized_requested_region
         ]
 
     if not facts or confidence < 0.50:

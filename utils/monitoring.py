@@ -42,7 +42,10 @@ def detect_failure_pattern(
     if confidence_score < 0.50:
         return "low_confidence"
 
-    return "unknown"
+    # confidence_score >= 0.50 but the run still wasn't classified as
+    # success — e.g. the response agent's own region re-filter emptied
+    # the evidence after validation already passed.
+    return "evidence_dropped_after_validation"
 
 
 def record_run(
@@ -64,9 +67,18 @@ def record_run(
         result.get("attempts", 0) or 0
     )
 
+    # The final answer's actual status ("grounded" or "fallback"), as set
+    # by agents/response.py, is the source of truth for whether the run
+    # succeeded. confidence_score alone is NOT enough: response.py applies
+    # its own region re-filter on top of validated evidence, so a run can
+    # have a passing confidence_score and still end up as a fallback answer
+    # if that second filter empties the evidence. Classifying purely on
+    # confidence_score would silently log that as "success".
+    validation_status = result.get("status", "")
+
     if error:
         status = "error"
-    elif confidence_score >= 0.50:
+    elif validation_status == "grounded":
         status = "success"
     else:
         status = "retry_or_insufficient"
@@ -84,7 +96,7 @@ def record_run(
         "language": result.get("language", ""),
         "confidence_score": confidence_score,
         "attempts": attempts,
-        "validation_status": result.get("status", ""),
+        "validation_status": validation_status,
         "latency_seconds": round(latency_seconds, 3),
         "status": status,
         "failure_pattern": failure_pattern,

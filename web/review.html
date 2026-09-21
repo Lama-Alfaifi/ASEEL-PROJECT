@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ASEEL | Feedback Review (Admin)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f4ecdd; --card: #f8f2e6; --ink: #2b2b25; --muted: #6f6a5c;
+    --green: #2f5233; --green-dark: #203c26; --gold: #b98a3e; --border: #ddd0b3;
+    --red: #8a3a3a; --shadow: 0 6px 16px rgba(43,43,37,0.08);
+    font-family: "Inter", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); }
+  header {
+    background: var(--green-dark); color: #f4ecdd; padding: 14px 24px;
+    font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 700;
+  }
+  header span { font-size: 0.7rem; opacity: 0.7; font-family: "Inter", sans-serif; display: block; margin-top: 2px; }
+ 
+  main { max-width: 900px; margin: 20px auto; padding: 0 20px; }
+ 
+  .filters { display: flex; gap: 8px; margin-bottom: 16px; }
+  .filter-btn {
+    background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; font-size: 0.78rem; cursor: pointer; color: var(--ink);
+  }
+  .filter-btn.active { background: var(--green); color: white; border-color: var(--green); }
+ 
+  .item {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow);
+  }
+  .item-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .tag {
+    display: inline-block; font-size: 0.65rem; padding: 2px 9px; border-radius: 999px;
+    font-weight: 600; margin-right: 6px;
+  }
+  .tag.pending { background: #f0e6cf; color: var(--gold); }
+  .tag.needs_review { background: #f4e0c8; color: #a06a1a; }
+  .tag.approved { background: #d9ecd9; color: var(--green-dark); }
+  .tag.rejected { background: #f4dede; color: var(--red); }
+ 
+  .item-message { font-size: 0.88rem; margin: 10px 0; line-height: 1.5; }
+  .item-meta { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+  .item-meta b { color: var(--ink); }
+ 
+  .validation-box {
+    background: #fbf7ec; border: 1px dashed var(--border); border-radius: 8px;
+    padding: 8px 10px; margin-top: 8px; font-size: 0.72rem; color: var(--muted);
+  }
+ 
+  .actions { display: flex; gap: 8px; margin-top: 12px; }
+  .btn { border: none; border-radius: 8px; padding: 7px 16px; font-size: 0.8rem; cursor: pointer; }
+  .btn.approve { background: var(--green); color: white; }
+  .btn.reject { background: var(--red); color: white; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+ 
+  .empty { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 40px 0; }
+</style>
+</head>
+<body>
+ 
+<header>
+  ASEEL — Feedback Review
+  <span>Admin only · not linked from the public app · no authentication</span>
+</header>
+ 
+<main>
+  <div class="filters" id="filters"></div>
+  <div id="list"></div>
+</main>
+ 
+<script>
+  const STATUSES = ["pending", "needs_review", "approved", "rejected"];
+  let currentFilter = "pending";
+ 
+  function renderFilters() {
+    const el = document.getElementById("filters");
+    el.innerHTML = STATUSES.map(
+      (s) => `<button class="filter-btn ${s === currentFilter ? "active" : ""}" onclick="setFilter('${s}')">${s.replace("_", " ")}</button>`
+    ).join("") + `<button class="filter-btn ${currentFilter === "all" ? "active" : ""}" onclick="setFilter('all')">all</button>`;
+  }
+ 
+  function setFilter(status) {
+    currentFilter = status;
+    renderFilters();
+    loadFeedback();
+  }
+ 
+  async function loadFeedback() {
+    const url = currentFilter === "all" ? "/feedback" : `/feedback?status=${currentFilter}`;
+    const res = await fetch(url);
+    const items = await res.json();
+    renderList(items);
+  }
+ 
+  function renderList(items) {
+    const listEl = document.getElementById("list");
+ 
+    if (!items || items.length === 0) {
+      listEl.innerHTML = `<div class="empty">No feedback items in this view.</div>`;
+      return;
+    }
+ 
+    listEl.innerHTML = items.map((item) => {
+      const v = item.validation;
+      const canAct = item.status === "pending" || item.status === "needs_review";
+ 
+      return `
+        <div class="item">
+          <div class="item-top">
+            <div>
+              <span class="tag ${item.status}">${item.status.replace("_", " ")}</span>
+              <span class="tag pending" style="background:#eee; color:#555;">${item.type}</span>
+            </div>
+            <span style="font-size:0.7rem; color:var(--muted);">${new Date(item.timestamp).toLocaleString()}</span>
+          </div>
+ 
+          <div class="item-message">${escapeHtml(item.message)}</div>
+ 
+          <div class="item-meta">
+            <b>City:</b> ${item.city || "—"} &nbsp; <b>Region:</b> ${item.region || "—"} &nbsp; <b>Category:</b> ${item.category || "—"}<br/>
+            <b>Original question:</b> ${item.original_query ? escapeHtml(item.original_query) : "—"}<br/>
+            <b>ASEEL's original answer:</b> ${item.original_answer ? escapeHtml(item.original_answer) : "—"}
+          </div>
+ 
+          ${v ? `
+            <div class="validation-box">
+              <b>Agent classification (recommendation only — not a decision):</b>
+              ${v.classification} · relevance ${v.relevance?.toFixed?.(2) ?? v.relevance}
+              · cultural claim: ${v.contains_cultural_claim ? "yes" : "no"}
+              · needs source: ${v.needs_source_verification ? "yes" : "no"}
+            </div>
+          ` : ""}
+ 
+          <div class="actions">
+            <button class="btn approve" ${canAct ? "" : "disabled"} onclick="act('${item.id}', 'approve')">Approve</button>
+            <button class="btn reject" ${canAct ? "" : "disabled"} onclick="act('${item.id}', 'reject')">Reject</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+ 
+  async function act(id, action) {
+    await fetch(`/feedback/${id}/${action}`, { method: "POST" });
+    loadFeedback();
+  }
+ 
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+ 
+  renderFilters();
+  loadFeedback();
+</script>
+ 
+</body>
+</html>
+ 

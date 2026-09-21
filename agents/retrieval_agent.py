@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from langchain.agents import create_agent
 from agents.state import AseelState
-from config.settings import OPENAI_MODEL
+from config.settings import OPENAI_MODEL_TOOL
 from tools.cultural_search import search_cultural_knowledge
 from tools.metadata_filter import filter_by_metadata
 import json
 
 
 retrieval_agent = create_agent(
-    model=OPENAI_MODEL,
+    model=OPENAI_MODEL_TOOL,
     tools=[search_cultural_knowledge],
     system_prompt = """
 You are ASEEL's Retrieval Agent, responsible for finding the most relevant
