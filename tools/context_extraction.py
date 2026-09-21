@@ -111,7 +111,7 @@ def extract_context(
         "user_role": _match(ROLES, text),
         "occasion": _match(OCCASIONS, text),
         "category": _extract_category(text),
-        "intent": "cultural guidance",
+        "intent": "cultural etiquette guidance",
         "retrieval_query": query,
     }
 

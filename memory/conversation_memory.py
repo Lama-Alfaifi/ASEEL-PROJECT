@@ -9,7 +9,8 @@ class ConversationMemory:
     """
     Stores adaptive context from the current conversation.
 
-    The memory keeps useful trip context such as destination,
+    This is not a full chat-history store.
+    It keeps useful trip context such as destination,
     region, occasion, current topic, and topics discussed.
     """
 
@@ -34,8 +35,8 @@ class ConversationMemory:
         new_context: dict[str, Any],
     ) -> None:
         """
-        Update adaptive trip memory while preserving
-        useful existing context.
+        Update memory without overwriting useful existing values
+        with empty or None values.
         """
 
         for key, value in new_context.items():
@@ -71,9 +72,7 @@ class ConversationMemory:
                 elif value not in existing_topics:
                     existing_topics.append(value)
 
-                self.context["topics_discussed"] = (
-                    existing_topics
-                )
+                self.context["topics_discussed"] = existing_topics
 
             else:
                 self.context[key] = value
@@ -81,9 +80,7 @@ class ConversationMemory:
         # Keep the current topic synchronized
         # with the latest category.
         if new_context.get("category"):
-            self.context["current_topic"] = (
-                new_context["category"]
-            )
+            self.context["current_topic"] = new_context["category"]
 
     def clear_context(self) -> None:
         """Clear the conversation memory."""
@@ -119,8 +116,6 @@ class ConversationMemory:
             if value == []:
                 continue
 
-            parts.append(
-                f"{key}: {value}"
-            )
+            parts.append(f"{key}: {value}")
 
         return "\n".join(parts)

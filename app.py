@@ -1,42 +1,113 @@
 from __future__ import annotations
-import streamlit as st
-from config.settings import VECTOR_DB_DIR
+
+import uuid
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
 from workflow.graph import ask
+from memory.conversation_memory import ConversationMemory
+from utils.monitoring import (
+    get_metrics,
+    get_failure_patterns,
+)
 
-st.set_page_config(page_title="ASEEL | Saudi Cultural Etiquette", page_icon="🌿", layout="centered")
-st.title("ASEEL")
-st.caption("Saudi cultural etiquette guidance grounded only in the supplied regional knowledge base.")
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+app = FastAPI(
+    title="ASEEL API",
+    description="Saudi cultural etiquette guidance API",
+    version="1.0.0",
+)
 
-left, right = st.columns([5, 1])
-with right:
-    if st.button("Reset", use_container_width=True):
-        st.session_state.messages = []
-        st.rerun()
 
-prompt = st.chat_input("Ask about a visit, meal, occasion, or regional custom…")
-if prompt:
-    if not VECTOR_DB_DIR.exists() or not any(VECTOR_DB_DIR.iterdir()):
-        st.error("Knowledge index not found. Add CSVs to data/raw and run `python scripts/build_index.py`.")
-    else:
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"): st.markdown(prompt)
-        history = "\n".join(f"{m['role']}: {m['content']}" for m in st.session_state.messages[-6:-1])
-        with st.chat_message("assistant"):
-            with st.spinner("ASEEL is understanding, retrieving, and validating…"):
-                try:
-                    result = ask(prompt, history)
-                except Exception as exc:
-                    st.error(f"ASEEL could not process that request: {exc}")
-                    result = {"answer": "Please confirm the knowledge index is built and try again."}
-            st.markdown(result["answer"])
-            if result.get("sources"):
-                with st.expander("Knowledge-base sources"):
-                    for source in result["sources"]:
-                        st.write(f"**{source['region']} · {source['category']}** — {source['question']}")
-        st.session_state.messages.append({"role": "assistant", "content": result["answer"]})
+_session_memories: dict[str, ConversationMemory] = {}
+
+
+class ChatRequest(BaseModel):
+    message: str
+    conversation_context: str = ""
+    session_id: str | None = None
+
+
+class ChatResponse(BaseModel):
+    answer: str
+    status: str
+    confidence_score: float
+    sources: list[dict]
+    session_id: str
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "ASEEL API is running"
+    }
+
+
+@app.post(
+    "/chat",
+    response_model=ChatResponse,
+)
+def chat(request: ChatRequest):
+
+    session_id = (
+        request.session_id
+        or str(uuid.uuid4())
+    )
+
+    memory = _session_memories.setdefault(
+        session_id,
+        ConversationMemory(),
+    )
+
+    result = ask(
+        request.message,
+        request.conversation_context,
+        memory=memory,
+    )
+
+    return {
+        "answer": result.get(
+            "answer",
+            "",
+        ),
+        "status": result.get(
+            "status",
+            "fallback",
+        ),
+        "confidence_score": result.get(
+            "confidence_score",
+            0.0,
+        ),
+        "sources": result.get(
+            "sources",
+            [],
+        ),
+        "session_id": session_id,
+    }
+
+
+@app.delete(
+    "/chat/{session_id}"
+)
+def reset_session(session_id: str):
+
+    if session_id in _session_memories:
+        _session_memories[
+            session_id
+        ].clear_context()
+
+    return {
+        "message": "Session memory cleared",
+        "session_id": session_id,
+    }
+
+
+@app.get("/metrics")
+def metrics():
+    return get_metrics()
+
+
+@app.get("/metrics/failures")
+def failure_patterns():
+    return get_failure_patterns()

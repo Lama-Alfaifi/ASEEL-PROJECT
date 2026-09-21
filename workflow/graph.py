@@ -91,7 +91,6 @@ def ask(
                 "attempts": 0,
             }
         )
-
         confidence = result.get(
             "confidence_score",
             0.0,
@@ -136,11 +135,18 @@ def ask(
             "region": result.get("region"),
             "user_role": result.get("user_role"),
             "occasion": result.get("occasion"),
-            "first_time": result.get("first_time"),
             "category": result.get("category"),
+            "situation": result.get("situation"),
+            "relationship": result.get("relationship"),
+            "first_time": result.get("first_time"),
+            "generation": result.get("generation"),
+            "formality": result.get("formality"),
+            "historical_or_contemporary": result.get(
+                "historical_or_contemporary"
+            ),
+            "language": result.get("language"),
             "topics_discussed": result.get("category"),
         }
-
         memory.update_context(memory_fields)
 
         latency = start_timer() - start_time

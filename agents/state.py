@@ -26,7 +26,7 @@ class AseelState(TypedDict, total=False):
 
     attempts: int
     decision: str
-    
+
     retrieved: list[dict]
     raw_semantic_results: list[dict]
 

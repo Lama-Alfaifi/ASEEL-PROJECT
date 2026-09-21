@@ -199,48 +199,48 @@ with st.sidebar:
 
     st.subheader("🧠 Trip Memory")
 
-current_memory = (
-    st.session_state.memory.get_context()
-)
-
-if current_memory:
-
-    destination = current_memory.get("destination")
-    region = current_memory.get("region")
-    first_time = current_memory.get("first_time")
-    current_topic = current_memory.get("current_topic")
-    topics = current_memory.get("topics_discussed", [])
-
-    if destination:
-        st.markdown(
-            f"📍 **Destination:** {destination}"
-        )
-
-    if region:
-        st.markdown(
-            f"🗺️ **Region:** {region}"
-        )
-
-    if first_time:
-        st.markdown(
-            f"🧳 **First visit:** {first_time}"
-        )
-
-    if current_topic:
-        st.markdown(
-            f"🎯 **Current topic:** {current_topic}"
-        )
-
-    if topics:
-        st.markdown(
-            f"💬 **Topics discussed:** "
-            f"{', '.join(topics)}"
-        )
-
-else:
-    st.caption(
-        "No trip context stored yet."
+    current_memory = (
+        st.session_state.memory.get_context()
     )
+
+    if current_memory:
+
+        destination = current_memory.get("destination")
+        region = current_memory.get("region")
+        first_time = current_memory.get("first_time")
+        current_topic = current_memory.get("current_topic")
+        topics = current_memory.get("topics_discussed", [])
+
+        if destination:
+            st.markdown(
+                f"📍 **Destination:** {destination}"
+            )
+
+        if region:
+            st.markdown(
+                f"🗺️ **Region:** {region}"
+            )
+
+        if first_time:
+            st.markdown(
+                f"🧳 **First visit:** {first_time}"
+            )
+
+        if current_topic:
+            st.markdown(
+                f"🎯 **Current topic:** {current_topic}"
+            )
+
+        if topics:
+            st.markdown(
+                f"💬 **Topics discussed:** "
+                f"{', '.join(topics)}"
+            )
+
+    else:
+        st.caption(
+            "No trip context stored yet."
+        )
 
 
 for message in st.session_state.messages:
@@ -336,8 +336,6 @@ if prompt:
                 "No response was generated.",
             )
 
-          
-
             st.markdown(answer)
 
             decision = result.get("decision_summary")
@@ -359,7 +357,7 @@ if prompt:
                         )
 
                         st.markdown(
-                         "🤖 **ASEEL Role:** Smart Saudi Culture Guide"
+                            "🤖 **ASEEL Role:** Smart Saudi Culture Guide"
                         )
 
                     with col2:
@@ -382,6 +380,7 @@ if prompt:
                             f"🛡️ **Validation:** "
                             f"{status}"
                         )
+
                         agent_decision = decision.get(
                             "decision",
                             "unknown",
@@ -423,4 +422,3 @@ if prompt:
                 "content": answer,
             }
         )
-

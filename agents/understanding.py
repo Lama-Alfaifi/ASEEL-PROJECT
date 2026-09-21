@@ -389,6 +389,7 @@ Important:
             situation=situation,
             user_role=user_role,
         )
+
     print("UNDERSTANDING RESULT:")
     print({
         "retrieval_query": retrieval_query,
