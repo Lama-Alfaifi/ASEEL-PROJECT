@@ -195,6 +195,10 @@ const en = {
   'settings.about': 'About ASEEL',
   'settings.aboutBody': 'ASEEL is a multi-agent system for reliable Saudi cultural knowledge. It understands your question, retrieves regional evidence, validates it, and answers only from what it found. This interface adds exploration, saving and source review on top of the same API.',
 
+  'loc.prompt': 'Allow ASEEL to use your location to provide more relevant regional cultural information?',
+  'loc.allow': 'Allow Location',
+  'loc.notNow': 'Not Now',
+
   'pal.placeholder': 'Search pages, regions, cities, topics… or ask a question',
   'pal.ask': 'Ask ASEEL',
   'pal.askHint': 'Send as a question',
@@ -406,6 +410,10 @@ const ar: Record<TKey, string> = {
   'settings.confirm': 'لا يمكن التراجع عن هذا. هل تريد المتابعة؟',
   'settings.about': 'عن أصيل',
   'settings.aboutBody': 'أصيل نظام متعدد الوكلاء لمعرفة ثقافية سعودية موثوقة. يفهم سؤالك، ويسترجع أدلة إقليمية، ويتحقق منها، ولا يجيب إلا مما وجده. تضيف هذه الواجهة الاستكشاف والحفظ ومراجعة المصادر فوق الواجهة البرمجية نفسها.',
+
+  'loc.prompt': 'هل تسمح لأصيل باستخدام موقعك لتقديم معلومات ثقافية إقليمية أكثر صلة؟',
+  'loc.allow': 'السماح بالموقع',
+  'loc.notNow': 'ليس الآن',
 
   'pal.placeholder': 'ابحث في الصفحات والمناطق والمدن والمواضيع… أو اطرح سؤالاً',
   'pal.ask': 'اسأل أصيل',

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ASEEL | Saudi Cultural &amp; Heritage Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    --cream: #f4ecdd;
+    --cream-dark: #ebe0cb;
+    --card: #f8f2e6;
+    --ink: #2b2b25;
+    --muted: #6f6a5c;
+    --green: #2f5233;
+    --green-dark: #203c26;
+    --green-soft: #6f9773;
+    --gold: #b98a3e;
+    --border: #ddd0b3;
+    --shadow: 0 6px 16px rgba(43, 43, 37, 0.08);
+    font-family: "Inter", sans-serif;
+  }
+ 
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+ 
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+ 
+  h1, h2, h3 { font-family: "Cormorant Garamond", serif; margin: 0; }
+ 
+  header.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+    background: var(--green-dark);
+    color: #f4ecdd;
+    flex-shrink: 0;
+  }
+ 
+  .brand { display: flex; align-items: center; gap: 8px; }
+  .brand .logo { font-size: 1.3rem; }
+  .brand-text .title { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; }
+  .brand-text .subtitle { font-size: 0.62rem; opacity: 0.75; }
+ 
+  nav.links { display: flex; gap: 20px; font-size: 0.8rem; }
+  nav.links a { color: #eee4cf; text-decoration: none; opacity: 0.85; }
+  nav.links a:hover { opacity: 1; }
+ 
+  .lang-toggle {
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.72rem;
+    cursor: pointer;
+  }
+ 
+  .hero { padding: 14px 24px 8px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .hero h1 { font-size: 1.5rem; color: var(--green-dark); }
+  .hero .hero-accent { color: var(--gold); }
+  .hero p.tagline { color: var(--muted); margin: 3px 0 0; font-size: 0.8rem; }
+ 
+  .search-bar {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 999px; padding: 4px 6px 4px 16px;
+    margin-top: 10px; box-shadow: var(--shadow);
+  }
+ 
+  .search-bar input {
+    flex: 1; border: none; background: transparent; outline: none;
+    font-size: 0.85rem; padding: 7px 0; font-family: "Inter", sans-serif;
+  }
+ 
+  .search-bar button {
+    background: var(--green); color: white; border: none;
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 0.9rem;
+  }
+  .search-bar button:disabled { opacity: 0.6; cursor: not-allowed; }
+ 
+  .suggestions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .chip {
+    background: var(--cream-dark); border: 1px solid var(--border);
+    border-radius: 999px; padding: 4px 12px; font-size: 0.72rem; cursor: pointer;
+  }
+  .chip:hover { background: var(--border); }
+ 
+  .spinner { display: none; font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+ 
+  .layout {
+    flex: 1;
+    max-width: 1200px; margin: 10px auto 14px; padding: 0 24px;
+    display: grid; grid-template-columns: 2.1fr 1fr; gap: 14px;
+    min-height: 0;
+    width: 100%;
+  }
+ 
+  .col { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+ 
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow);
+  }
+ 
+  .card h2 {
+    font-size: 0.92rem; color: var(--green-dark);
+    display: flex; align-items: center; gap: 6px; margin-bottom: 6px;
+  }
+ 
+  #map { height: 190px; border-radius: 10px; margin-top: 6px; }
+ 
+  .context-line { font-size: 0.78rem; margin: 2px 0; }
+  .context-line b { color: var(--green-dark); }
+  .context-empty { color: var(--muted); font-size: 0.78rem; }
+ 
+  #answer-text { line-height: 1.5; font-size: 0.82rem; white-space: pre-wrap; max-height: 140px; overflow-y: auto; }
+  #answer-placeholder { color: var(--muted); font-style: italic; }
+ 
+  .status-pill {
+    display: inline-block; font-size: 0.65rem; padding: 2px 9px;
+    border-radius: 999px; margin-bottom: 6px; font-weight: 600;
+  }
+  .status-pill.grounded { background: #d9ecd9; color: #2f5233; }
+  .status-pill.fallback { background: #f4dede; color: #8a3a3a; }
+ 
+  .sources-list { margin-top: 8px; border-top: 1px solid var(--border); padding-top: 6px; }
+  .sources-list summary { cursor: pointer; font-size: 0.72rem; color: var(--muted); }
+  .source-item { font-size: 0.72rem; margin: 5px 0; padding-left: 8px; border-left: 2px solid var(--green-soft); }
+  .source-item b { color: var(--green-dark); }
+ 
+  .sidebar-note { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+ 
+  .feedback-btn {
+    width: 100%; background: var(--green); color: white; border: none;
+    border-radius: 8px; padding: 7px; font-size: 0.78rem; cursor: pointer; margin-top: 6px;
+  }
+ 
+  .status-row {
+    display: flex; justify-content: space-between; font-size: 0.72rem;
+    padding: 3px 0; border-bottom: 1px dashed var(--border);
+  }
+  .status-row:last-child { border-bottom: none; }
+  .status-dot { color: var(--green-soft); }
+ 
+  .placeholder-tag {
+    display: inline-block; font-size: 0.58rem; background: #f0e6cf; color: var(--gold);
+    padding: 1px 7px; border-radius: 999px; margin-left: 4px;
+  }
+ 
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(43,43,37,0.45);
+    display: flex; align-items: center; justify-content: center; z-index: 999;
+  }
+  .modal-box {
+    background: var(--card); border-radius: 14px; padding: 20px;
+    width: 380px; max-width: 90vw; max-height: 85vh; overflow-y: auto;
+    box-shadow: var(--shadow);
+  }
+  .modal-label { display: block; font-size: 0.72rem; color: var(--muted); margin: 10px 0 3px; }
+  .modal-input {
+    width: 100%; padding: 7px 10px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 0.8rem; font-family: "Inter", sans-serif;
+    background: white; box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+ 
+<header class="topnav">
+  <div class="brand">
+    <span class="logo">🌿</span>
+    <div class="brand-text">
+      <div class="title">ASEEL</div>
+      <div class="subtitle">Saudi Cultural &amp; Heritage Agent</div>
+    </div>
+  </div>
+  <nav class="links">
+    <a href="#">Home</a><a href="#">About</a><a href="#">History</a><a href="#">Settings</a>
+  </nav>
+  <div class="lang-toggle">العربية / EN</div>
+</header>
+ 
+<section class="hero">
+  <h1>Hello, I'm <span class="hero-accent">ASEEL</span></h1>
+  <p class="tagline">Your trusted guide to Saudi culture, heritage and traditions</p>
+ 
+  <div class="search-bar">
+    <input id="question-input" type="text" placeholder="Ask me anything about Saudi culture, heritage, traditions and more..." />
+    <button id="ask-btn" onclick="askQuestion()">➤</button>
+  </div>
+  <div class="suggestions">
+    <div class="chip" onclick="askSuggested(this)">What is the traditional clothing in Riyadh?</div>
+    <div class="chip" onclick="askSuggested(this)">Tell me about Saudi hospitality</div>
+    <div class="chip" onclick="askSuggested(this)">What are the traditions in the Western Region?</div>
+  </div>
+  <div class="spinner" id="spinner">ASEEL is understanding, retrieving, and validating…</div>
+</section>
+ 
+<div class="layout">
+  <div class="col">
+    <div class="card">
+      <h2>📍 Cultural Context</h2>
+      <div id="context-info">
+        <div class="context-empty">Ask a question naming a Saudi city or region to see it highlighted on the map.</div>
+      </div>
+      <div id="map"></div>
+    </div>
+ 
+    <div class="card">
+      <h2>💬 The Answer</h2>
+      <div id="status-pill-wrap"></div>
+      <div id="answer-text"><span id="answer-placeholder">Your answer will appear here once you ask a question.</span></div>
+      <details class="sources-list" id="sources-wrap" style="display:none;">
+        <summary>Sources &amp; evidence</summary>
+        <div id="sources-content"></div>
+      </details>
+    </div>
+  </div>
+ 
+  <div class="col">
+    <div class="card">
+      <h2>✨ Suggested Improvement</h2>
+      <p class="sidebar-note">Help us make ASEEL better.</p>
+      <button class="feedback-btn" onclick="openFeedbackModal()">Give Feedback</button>
+    </div>
+ 
+    <div class="card">
+      <h2>⚙️ System Status</h2>
+      <div class="status-row"><span>Knowledge Base</span><span class="status-dot">● Active</span></div>
+      <div class="status-row"><span>Agents</span><span class="status-dot">● Online</span></div>
+      <div class="status-row"><span>Monitoring</span><span class="status-dot">● Active</span></div>
+      <div class="status-row"><span>Evaluation</span><span class="status-dot">● Active</span></div>
+      <p class="sidebar-note" style="margin-top:6px;"><span class="placeholder-tag">static</span></p>
+    </div>
+  </div>
+</div>
+ 
+<div id="feedback-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-box">
+    <h2 style="margin-bottom:10px;">Suggest an Improvement</h2>
+ 
+    <label class="modal-label">Feedback type</label>
+    <select id="fb-type" class="modal-input">
+      <option value="correction">Correction</option>
+      <option value="clarification">Clarification</option>
+      <option value="missing_information">Missing cultural information</option>
+      <option value="additional_information">Additional cultural information</option>
+      <option value="wrong_region">Wrong region/city</option>
+      <option value="other">Other</option>
+    </select>
+ 
+    <label class="modal-label">Your message</label>
+    <textarea id="fb-message" class="modal-input" rows="4" placeholder="e.g. The answer should also mention that this tradition may differ between families."></textarea>
+ 
+    <label class="modal-label">City (optional)</label>
+    <input id="fb-city" class="modal-input" type="text" placeholder="e.g. Jeddah" />
+ 
+    <label class="modal-label">Region (optional)</label>
+    <input id="fb-region" class="modal-input" type="text" placeholder="e.g. West" />
+ 
+    <label class="modal-label">Category (optional)</label>
+    <select id="fb-category" class="modal-input">
+      <option value="">Not specified</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Food">Food</option>
+      <option value="Weddings">Weddings</option>
+      <option value="Hospitality">Hospitality</option>
+      <option value="Social etiquette">Social etiquette</option>
+      <option value="Architecture">Architecture</option>
+      <option value="Traditions">Traditions</option>
+      <option value="Heritage">Heritage</option>
+      <option value="Other">Other</option>
+    </select>
+ 
+    <div id="fb-status" style="font-size:0.75rem; margin-top:8px;"></div>
+ 
+    <div style="display:flex; gap:8px; margin-top:14px;">
+      <button class="feedback-btn" onclick="submitFeedback()">Submit Feedback</button>
+      <button class="feedback-btn" style="background:#8a8370;" onclick="closeFeedbackModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+ 
+<script>
+  let sessionId = localStorage.getItem("aseel_session_id") || null;
+  let map = null, geoLayer = null, regionMapping = {};
+ 
+  let lastQuestion = "";
+  let lastAnswer = "";
+ 
+   
+ 
+  let userMarker = null;
+
+  async function initMap() {
+    map = L.map("map", { scrollWheelZoom: false, zoomControl: false }).setView([24.0, 45.0], 5);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+      maxZoom: 9,
+    }).addTo(map);
+
+    try {
+      const [geojsonRes, mappingRes] = await Promise.all([
+        fetch("/regions-geojson"),
+        fetch("/regions-mapping"),
+      ]);
+      const geojson = await geojsonRes.json();
+      regionMapping = await mappingRes.json();
+
+      geoLayer = L.geoJSON(geojson, {
+        style: (feature) => styleForFeature(feature, null),
+        onEachFeature: (feature, layer) => {
+          const name = feature.properties && feature.properties.name_en;
+          if (name) layer.bindTooltip(name);
+        },
+      }).addTo(map);
+
+      map.fitBounds(geoLayer.getBounds(), { padding: [4, 4] });
+    } catch (err) {
+      document.getElementById("map").innerHTML =
+        '<div style="padding:10px;color:#6f6a5c;font-size:0.72rem;">Map data unavailable.</div>';
+    }
+
+    // Center the map on the user's own location if the browser allows it.
+    // This never blocks map setup — the region-colored map above is
+    // already fully usable on its own, so a denied/unavailable location
+    // permission just means we quietly keep the default full-Saudi view
+    // instead of showing an error.
+    locateUser();
+  }
+
+  function locateUser() {
+    if (!navigator.geolocation) return;
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        map.setView([lat, lng], 9);
+
+        if (userMarker) {
+          map.removeLayer(userMarker);
+        }
+
+        userMarker = L.circleMarker([lat, lng], {
+          radius: 7,
+          color: "#2f5233",
+          fillColor: "#4a8f52",
+          fillOpacity: 0.9,
+          weight: 2,
+        })
+          .addTo(map)
+          .bindTooltip("Your location");
+      },
+      () => {
+        // Permission denied, unavailable, or timed out — silently keep
+        // the default full-map view. Nothing to show the user; this is
+        // an optional convenience, not a required feature.
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 6000,
+        maximumAge: 300000,
+      }
+    );
+  }
+ 
+  function styleForFeature(feature, highlightedRegion) {
+    const name = feature.properties && feature.properties.name_en;
+    const planningRegion = regionMapping[name];
+    const isHighlighted = highlightedRegion && planningRegion === highlightedRegion;
+    return {
+      fillColor: isHighlighted ? "#2f5233" : "#ded2b4",
+      color: isHighlighted ? "#2f5233" : "#b9ac8a",
+      weight: isHighlighted ? 2.5 : 1,
+      fillOpacity: isHighlighted ? 0.6 : 0.35,
+    };
+  }
+ 
+  function highlightRegion(planningRegion) {
+    if (!geoLayer) return;
+    geoLayer.eachLayer((layer) => layer.setStyle(styleForFeature(layer.feature, planningRegion)));
+  }
+ 
+  function askSuggested(el) {
+    document.getElementById("question-input").value = el.textContent;
+    askQuestion();
+  }
+ 
+  async function askQuestion() {
+    const input = document.getElementById("question-input");
+    const question = input.value.trim();
+    if (!question) return;
+ 
+    lastQuestion = question;
+ 
+    const btn = document.getElementById("ask-btn");
+    const spinner = document.getElementById("spinner");
+    btn.disabled = true;
+    spinner.style.display = "block";
+ 
+    try {
+      const response = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: question, session_id: sessionId }),
+      });
+      if (!response.ok) throw new Error("Request failed: " + response.status);
+      const data = await response.json();
+      sessionId = data.session_id;
+      localStorage.setItem("aseel_session_id", sessionId);
+      renderAnswer(data);
+      renderContext(data);
+    } catch (err) {
+      document.getElementById("answer-text").innerHTML =
+        '<span style="color:#8a3a3a;">ASEEL could not process that request. Confirm the backend is running.</span>';
+    } finally {
+      btn.disabled = false;
+      spinner.style.display = "none";
+    }
+  }
+ 
+  function renderAnswer(data) {
+    document.getElementById("answer-text").textContent = data.answer || "No response was generated.";
+    lastAnswer = data.answer || "";
+ 
+    document.getElementById("status-pill-wrap").innerHTML =
+      `<span class="status-pill ${data.status}">${data.status} · confidence ${data.confidence_score.toFixed(2)}</span>`;
+ 
+    const sourcesWrap = document.getElementById("sources-wrap");
+    const sourcesContent = document.getElementById("sources-content");
+    if (data.sources && data.sources.length > 0) {
+      sourcesContent.innerHTML = data.sources
+        .map((s) => `<div class="source-item"><b>${s.region || ""} · ${s.category || ""}</b><br/>${s.question || ""}</div>`)
+        .join("");
+      sourcesWrap.style.display = "block";
+    } else {
+      sourcesWrap.style.display = "none";
+    }
+  }
+ 
+  function renderContext(data) {
+    const infoEl = document.getElementById("context-info");
+    if (data.region) {
+      infoEl.innerHTML = `<div class="context-line"><b>Location:</b> ${data.city || "Not specified"}</div><div class="context-line"><b>Region:</b> ${data.region}</div>`;
+      highlightRegion(data.region);
+    } else {
+      infoEl.innerHTML = `<div class="context-empty">No specific region detected for this question.</div>`;
+      highlightRegion(null);
+    }
+  }
+ 
+  document.getElementById("question-input").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") askQuestion();
+  });
+ 
+  function openFeedbackModal() {
+    document.getElementById("fb-status").textContent = "";
+    document.getElementById("feedback-modal").style.display = "flex";
+  }
+ 
+  function closeFeedbackModal() {
+    document.getElementById("feedback-modal").style.display = "none";
+  }
+ 
+  async function submitFeedback() {
+    const message = document.getElementById("fb-message").value.trim();
+    const statusEl = document.getElementById("fb-status");
+ 
+    if (!message) {
+      statusEl.style.color = "#8a3a3a";
+      statusEl.textContent = "Please write a message before submitting.";
+      return;
+    }
+ 
+    statusEl.style.color = "var(--muted)";
+    statusEl.textContent = "Submitting…";
+ 
+    try {
+      const response = await fetch("/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: document.getElementById("fb-type").value,
+          message: message,
+          city: document.getElementById("fb-city").value || null,
+          region: document.getElementById("fb-region").value || null,
+          category: document.getElementById("fb-category").value || null,
+          original_query: lastQuestion || null,
+          original_answer: lastAnswer || null,
+        }),
+      });
+ 
+      if (!response.ok) throw new Error("Request failed");
+ 
+      statusEl.style.color = "#2f5233";
+      statusEl.textContent = "Thank you — your feedback was submitted for review.";
+ 
+      setTimeout(() => {
+        closeFeedbackModal();
+        document.getElementById("fb-message").value = "";
+      }, 1200);
+    } catch (err) {
+      statusEl.style.color = "#8a3a3a";
+      statusEl.textContent = "Could not submit feedback. Please try again.";
+    }
+  }
+ 
+  initMap();
+</script>
+ 
+</body>
+</html>
+ 

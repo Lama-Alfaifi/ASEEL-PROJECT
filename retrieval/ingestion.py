@@ -22,6 +22,47 @@ STATEMENT_REGION_ALIASES = {
     "northern": "North",
     "southern": "South",
 }
+
+
+_MCQ_CHOICE_PATTERN = re.compile(r"([A-D])\.\s*(.*?)(?=(?:\s[A-D]\.\s)|$)")
+_BARE_LETTER_PATTERN = re.compile(r"^[A-D]\.?$")
+
+
+def _resolve_mcq_answer(answer: str, choices: str) -> str:
+    """
+    Some regional CSVs (e.g. NORTH.csv) store only the correct option's
+    letter in the Answer column (e.g. "A"), leaving the actual answer
+    text only inside the Choices column. Others (e.g. EAST.csv) already
+    write the letter plus its text (e.g. "C. Al-Dishdasha"). Left as a
+    bare letter, "A" becomes the entire knowledge-base answer record —
+    meaningless on its own to both retrieval and the response LLM, which
+    is exactly what caused a faithfulness failure on a NORTH-region
+    question during DeepEval evaluation (the model had to reason from an
+    answer field containing nothing but "A").
+
+    Resolves a bare-letter answer to "Letter. Choice text" using the
+    Choices column, so every regional file ends up with a genuinely
+    informative answer regardless of which convention its source file
+    used. Already-informative answers are left untouched (idempotent —
+    running this on EAST.csv's "C. Al-Dishdasha" changes nothing).
+    """
+    stripped = answer.strip()
+
+    if not _BARE_LETTER_PATTERN.match(stripped):
+        return answer
+
+    letter = stripped[0]
+
+    for match_letter, text in _MCQ_CHOICE_PATTERN.findall(choices):
+        if match_letter == letter:
+            text = text.strip()
+            if text:
+                return f"{letter}. {text}"
+
+    # Couldn't resolve from choices — fail safe, keep the original value
+    # rather than guessing or dropping the row.
+    return answer
+
  
 def clean(value: str | None) -> str:
     value = (value or "").replace("\ufeff", "").strip()
@@ -48,6 +89,7 @@ def _load_qa_rows(path: Path, rows: list[dict]) -> list[KnowledgeRecord]:
         question, answer = normalized.get("question", ""), normalized.get("answer", "")
         if not question or not answer:
             continue
+        answer = _resolve_mcq_answer(answer, normalized.get("choices", ""))
         stable_key = f"{path.name}:{row_number}:{question}:{answer}"
         result.append(KnowledgeRecord(
             id=str(uuid5(NAMESPACE_URL, stable_key)), question=question, answer=answer,

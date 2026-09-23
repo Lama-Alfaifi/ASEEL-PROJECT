@@ -214,6 +214,22 @@ details > summary { cursor: pointer; color: var(--brand); }
   .hero-search .btn { padding-inline: 16px; }
 }
 
+/* ---------- location prompt ---------- */
+.loc-prompt {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin: .75rem 1rem 0;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, var(--line));
+  border-radius: 12px;
+  background: var(--surface);
+}
+.loc-prompt p { margin: 0; flex: 1 1 16rem; }
+.loc-actions { display: flex; gap: .5rem; }
+.loc-chip { margin-inline-start: auto; white-space: nowrap; }
+
 /* ---------- print (etiquette brief) ---------- */
 @media print {
   .sidebar, .topbar, .mobile-nav, .no-print, .toasts, .answer-foot, .palette-backdrop { display: none !important; }

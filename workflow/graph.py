@@ -10,7 +10,8 @@ from agents.response import generate_response
 
 from utils.monitoring import start_timer, record_run
 from memory.conversation_memory import ConversationMemory
-
+from translation.layer import detect_and_translate_to_english, translate_from_english
+from utils.region_override import GENERAL, normalize_region_override
 
 def route_after_validation(state: AseelState) -> str:
     confidence = state.get("confidence_score", 0.0)
@@ -60,6 +61,8 @@ def ask(
     query: str,
     conversation_context: str = "",
     memory: ConversationMemory | None = None,
+    user_location: dict | None = None,
+    region_override: str | None = None,
 ) -> dict:
 
     start_time = start_timer()
@@ -67,7 +70,25 @@ def ask(
     if memory is None:
         memory = ConversationMemory()
 
+    # Explicit UI region (incl. "General"). None = Auto.
+    region_override = normalize_region_override(region_override)
+
+    if region_override:
+        # An explicit choice always beats the detected location.
+        user_location = None
+
     try:
+        # ------------------------------------------------------------
+        # 0. TRANSLATION LAYER (inbound)
+        #
+        # Deliberately outside the StateGraph: this is pipeline-level
+        # pre/post-processing, not part of the cultural-understanding
+        # workflow itself. Every downstream agent (understanding,
+        # retrieval, validation, response) continues to only ever see
+        # English text, exactly as they were designed and tested.
+        # ------------------------------------------------------------
+        detected_language, english_query = detect_and_translate_to_english(query)
+
         memory_context = memory.to_prompt_context()
 
         combined_context = ""
@@ -84,54 +105,37 @@ def ask(
                 f"{conversation_context}"
             )
 
+
         result = workflow.invoke(
             {
-                "query": query,
+                "query": english_query,
                 "conversation_context": combined_context,
+                "user_location": user_location,
+                "region_override": region_override,
+                "language": detected_language,
                 "attempts": 0,
             }
         )
-        confidence = result.get(
-            "confidence_score",
-            0.0,
-        )
 
-        attempts = result.get(
-            "attempts",
-            0,
-        )
+        # ------------------------------------------------------------
+        # TRANSLATION LAYER (outbound)
+        #
+        # Skipped entirely for English questions — no extra LLM call in
+        # the common case.
+        # ------------------------------------------------------------
+        if result.get("answer"):
+            result["answer"] = translate_from_english(
+                result["answer"],
+                detected_language,
+            )
 
-        if confidence >= 0.50:
-            agent_decision = "respond"
-
-        elif attempts < 1:
-            agent_decision = "refine"
-
-        else:
-            agent_decision = "fallback"
-
-        result["decision_summary"] = {
-            "region": result.get("region"),
-            "city": result.get("city"),
-            "intent": result.get("intent"),
-            "occasion": result.get("occasion"),
-            "retrieved_evidence": len(
-                result.get("retrieved", [])
-            ),
-            "validated_evidence": len(
-                result.get("validated", [])
-            ),
-            "confidence_score": confidence,
-            "validation_status": result.get(
-                "status",
-                "pending",
-            ),
-            "decision": agent_decision,
-        }
+        # The translation layer is the authoritative source for language
+        # now — it detects reliably up front, unlike the understanding
+        # agent's own best-effort "language" field.
+        result["language"] = detected_language
 
         memory_fields = {
             "city": result.get("city"),
-            "destination": result.get("city"),
             "region": result.get("region"),
             "user_role": result.get("user_role"),
             "occasion": result.get("occasion"),
@@ -144,9 +148,16 @@ def ask(
             "historical_or_contemporary": result.get(
                 "historical_or_contemporary"
             ),
-            "language": result.get("language"),
-            "topics_discussed": result.get("category"),
+            "language": detected_language,
         }
+
+        if region_override == GENERAL:
+            # "General" is a one-off scope choice, not a place. Don't let it
+            # overwrite the remembered city/region, so switching back to Auto
+            # (or to a follow-up) still works from the real remembered location.
+            memory_fields.pop("city", None)
+            memory_fields.pop("region", None)
+
         memory.update_context(memory_fields)
 
         latency = start_timer() - start_time
@@ -170,7 +181,6 @@ def ask(
         )
 
         raise
-
 
 # from __future__ import annotations
 
@@ -349,4 +359,3 @@ def ask(
 #         )
 
 #         raise
-

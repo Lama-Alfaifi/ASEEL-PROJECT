@@ -9,6 +9,17 @@ class AseelState(TypedDict, total=False):
 
     city: str | None
     region: str | None
+    # Explicit UI region selection (canonical: Central/West/East/South/North/General).
+    # None means "Auto". "General" is an explicit choice (nationwide records), NOT
+    # "no region": like any other explicit selection it ignores memory, the
+    # remembered city and the detected location for that request.
+    region_override: str | None
+
+    # Automatically detected user location, {"city", "region"} only (never
+    # coordinates). Used by the Understanding Agent as the LOWEST-priority fallback.
+    user_location: dict | None
+    # Where city/region came from: "ui_selection" | "query" | "memory" | "user_location" | None
+    location_source: str | None
 
     user_role: str | None
     occasion: str | None

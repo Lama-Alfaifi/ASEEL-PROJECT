@@ -86,6 +86,24 @@ export interface SavedItem {
   tags: string[];
 }
 
+/** User location as exchanged with the API. Coordinates are optional and are never persisted. */
+export interface UserLocation {
+  latitude?: number;
+  longitude?: number;
+  city: string | null;
+  region: string | null;
+}
+
+export type LocationPermission = 'unknown' | 'granted' | 'denied' | 'dismissed';
+
+/** What the app remembers about the user's location: city + region only, never coordinates. */
+export interface DetectedLocation {
+  permission: LocationPermission;
+  city: string | null;
+  region: RegionOrGeneral | null;
+  detectedAt: number | null;
+}
+
 export interface Settings {
   lang: Lang;
   theme: ThemePref;

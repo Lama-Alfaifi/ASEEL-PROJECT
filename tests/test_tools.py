@@ -43,4 +43,10 @@ def test_cultural_search_resolves_dammam_to_eastern(monkeypatch):
     )
 
     assert captured["query"] == "What are the traditions in Dammam?"
-    assert captured["region"] == "Eastern"
+    # "East" is the canonical region name used everywhere else in the
+    # system (evidence_validation.py, metadata_filter.py, the CSV data
+    # itself). cultural_search.py now normalizes location_resolver's raw
+    # "Eastern" through CulturalVectorStore.normalize_region() before
+    # passing it on, so downstream region comparisons never silently
+    # fail due to spelling differences between region sources.
+    assert captured["region"] == "East"

@@ -143,15 +143,24 @@ class CulturalVectorStore:
         region: str | None = None,
         limit: int = 5,
     ) -> list[RetrievedKnowledge]:
-########################################################################ٍ
+
         # Normalize region before searching Chroma.
         normalized_region = self.normalize_region(region)
 
-        where = (
-            {"region": normalized_region}
-            if normalized_region and normalized_region != "General"
-            else None
-        )
+        if normalized_region == "General":
+            # General is nationwide: only General records are relevant.
+            where = {"region": "General"}
+        elif normalized_region:
+            # Regional queries may use both region-specific and nationwide evidence.
+            where = {
+                "$or": [
+                    {"region": normalized_region},
+                    {"region": "General"},
+                ]
+            }
+        else:
+            # Auto / no resolved region: search the whole KB.
+            where = None
 
         # Chroma raises when n_results exceeds the collection size.
         count = self.collection.count()
@@ -218,8 +227,6 @@ class CulturalVectorStore:
             )
 
         return found
-
-
 
 
 

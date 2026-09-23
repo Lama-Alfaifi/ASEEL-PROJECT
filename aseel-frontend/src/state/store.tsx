@@ -1,11 +1,11 @@
 import {
   createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode,
 } from 'react';
-import { ApiError, DEFAULT_API_BASE, askAseel, pingApi } from '../lib/api';
+import { ApiError, DEFAULT_API_BASE, askAseel, locateUser, pingApi } from '../lib/api';
 import { normalizeRegion, regionEnglish } from '../lib/regions';
 import { translate, type TKey } from '../lib/i18n';
 import type {
-  ApiFailure, ChatResult, Discovery, DiscoveryKind, IndexedSource, Lang, Message, RegionOrGeneral,
+  ApiFailure, ChatResult, DetectedLocation, Discovery, DiscoveryKind, IndexedSource, Lang, Message, RegionOrGeneral,
   SavedItem, Settings, Source, Thread,
 } from '../lib/types';
 import { sourceKey, truncate, uid } from '../lib/utils';
@@ -43,6 +43,9 @@ const DEFAULT_SETTINGS: Settings = {
 
 const MAX_THREADS = 30;
 const MAX_DISCOVERIES = 80;
+
+/** Only city + region are ever persisted. Coordinates live for one function call. */
+const INITIAL_LOCATION: DetectedLocation = { permission: 'unknown', city: null, region: null, detectedAt: null };
 
 /* ---------------- helpers ---------------- */
 
@@ -106,6 +109,11 @@ interface Ctx {
   api: ApiState;
   checkApi: () => Promise<void>;
 
+  location: DetectedLocation;
+  allowLocation: () => Promise<void>;
+  dismissLocation: () => void;
+  forgetLocation: () => void;
+
   toast: (text: string) => void;
   toasts: { id: string; text: string }[];
 
@@ -130,6 +138,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [api, setApi] = useState<ApiState>({ state: 'checking' });
   const [toasts, setToasts] = useState<{ id: string; text: string }[]>([]);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [location, setLocation] = usePersisted<DetectedLocation>('location', INITIAL_LOCATION, true);
+  /* threadId -> backend session id, so follow-ups keep server-side memory (city/region/topic). */
+  const [sessions, setSessions] = usePersisted<Record<string, string>>('sessions', {});
 
   const lang = settings.lang;
   const t = useCallback(
@@ -164,6 +175,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   discRef.current = discoveries;
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
+  const locationRef = useRef(location);
+  locationRef.current = location;
+  const sessionsRef = useRef(sessions);
+  sessionsRef.current = sessions;
   const controllers = useRef<Record<string, AbortController>>({});
 
   /* ---- toasts ---- */
@@ -186,6 +201,70 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return () => window.clearInterval(id);
   }, [checkApi, settings.apiBase]);
 
+  /* ---- location ---- */
+  const detectLocation = useCallback(
+    () =>
+      new Promise<void>((resolve) => {
+        if (!('geolocation' in navigator)) {
+          setLocation((l) => ({ ...l, permission: 'dismissed' }));
+          resolve();
+          return;
+        }
+        navigator.geolocation.getCurrentPosition(
+          async (pos) => {
+            try {
+              // Coordinates are used only for this call; only city/region are kept.
+              const r = await locateUser(pos.coords.latitude, pos.coords.longitude, settingsRef.current.apiBase);
+              const region = r.region ? normalizeRegion(r.region) : null;
+              setLocation({
+                permission: 'granted',
+                city: r.city,
+                region: region && region !== 'general' ? region : null,
+                detectedAt: Date.now(),
+              });
+            } catch {
+              // Allowed, but the API could not resolve it right now: keep whatever we had.
+              setLocation((l) => ({ ...l, permission: 'granted' }));
+            }
+            resolve();
+          },
+          (err) => {
+            if (err.code === err.PERMISSION_DENIED) setLocation({ ...INITIAL_LOCATION, permission: 'denied' });
+            else setLocation((l) => ({ ...l, permission: 'granted' }));
+            resolve();
+          },
+          { enableHighAccuracy: false, timeout: 20_000, maximumAge: 10 * 60_000 },
+        );
+      }),
+    [setLocation],
+  );
+
+  const allowLocation = useCallback(() => detectLocation(), [detectLocation]);
+  const dismissLocation = useCallback(() => setLocation((l) => ({ ...l, permission: 'dismissed' })), [setLocation]);
+  const forgetLocation = useCallback(() => setLocation({ ...INITIAL_LOCATION, permission: 'dismissed' }), [setLocation]);
+
+  /* silently refresh once per visit if the user already allowed it (never triggers a new browser prompt) */
+  useEffect(() => {
+    if (locationRef.current.permission !== 'granted' || !('geolocation' in navigator)) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const st = await navigator.permissions?.query({ name: 'geolocation' as PermissionName });
+        if (st?.state === 'denied') {
+          setLocation({ ...INITIAL_LOCATION, permission: 'denied' });
+          return;
+        }
+        if (st?.state === 'prompt') return;
+      } catch {
+        /* Permissions API unavailable: fall through */
+      }
+      if (!cancelled) void detectLocation();
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [detectLocation, setLocation]);
+
   /* ---- chat ---- */
   const updateThread = useCallback(
     (id: string, fn: (t: Thread) => Thread) =>
@@ -199,10 +278,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
       controllers.current[threadId] = ctrl;
       setPending((p) => ({ ...p, [threadId]: Date.now() }));
       try {
+        /* Detected location is the last-resort fallback: only sent when the user left the region on "Auto".
+           An explicit region (or "General") is already part of the message text and must win. */
+        const loc = locationRef.current;
+        const userLocation =
+          userMsg.regionHint == null && (loc.city || loc.region)
+            ? { city: loc.city, region: loc.region ? regionEnglish(loc.region) : null }
+            : null;
         const res = await askAseel(userMsg.sent ?? userMsg.content, buildContext(prior), {
           baseUrl: settingsRef.current.apiBase,
           signal: ctrl.signal,
+          userLocation,
+          region: userMsg.regionHint,
+          sessionId: sessionsRef.current[threadId] ?? null,
         });
+        if (res.sessionId && sessionsRef.current[threadId] !== res.sessionId) {
+          const sid = res.sessionId;
+          setSessions((m) => ({ ...m, [threadId]: sid }));
+        }
         const reply: Message = {
           id: uid(),
           role: 'assistant',
@@ -230,7 +323,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         });
       }
     },
-    [updateThread],
+    [updateThread, setSessions],
   );
 
   const send: Ctx['send'] = useCallback(
@@ -278,8 +371,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     (id: string) => {
       controllers.current[id]?.abort();
       setThreads((all) => all.filter((th) => th.id !== id));
+      setSessions((m) => {
+        const { [id]: _drop, ...rest } = m;
+        return rest;
+      });
     },
-    [setThreads],
+    [setThreads, setSessions],
   );
 
   /* ---- discoveries (map topics, cities, briefs) ---- */
@@ -380,11 +477,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
       if (what === 'threads' || what === 'all') {
         Object.values(controllers.current).forEach((c) => c.abort());
         setThreads([]);
+        setSessions({});
       }
       if (what === 'saved' || what === 'all') setSaved([]);
       if (what === 'discoveries' || what === 'all') setDiscoveries({});
+      if (what === 'all') setLocation(INITIAL_LOCATION);
     },
-    [setDiscoveries, setSaved, setThreads],
+    [setDiscoveries, setLocation, setSaved, setSessions, setThreads],
   );
 
   const value: Ctx = {
@@ -392,6 +491,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     threads, send, retry, cancel, deleteThread, pending,
     discoveries, discover, discoveryLoading, discoveryError, removeDiscovery,
     saved, isSaved, toggleSave, updateSaved, removeSaved,
+    location, allowLocation, dismissLocation, forgetLocation,
     sourceIndex, api, checkApi, toast, toasts, paletteOpen, setPaletteOpen, exportAll, clearData,
   };
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;

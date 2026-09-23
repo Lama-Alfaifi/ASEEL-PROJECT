@@ -1,146 +1,137 @@
 from __future__ import annotations
 
-import json
-
 from langchain.agents import create_agent
-
 from agents.state import AseelState
-from config.settings import OPENAI_MODEL
+from config.settings import OPENAI_MODEL_TOOL
 from tools.cultural_search import search_cultural_knowledge
 from tools.metadata_filter import filter_by_metadata
+from utils.region_override import normalize_region_override
+from retrieval.vector_store import CulturalVectorStore
+import json
 
 
 retrieval_agent = create_agent(
-    model=OPENAI_MODEL,
+    model=OPENAI_MODEL_TOOL,
     tools=[search_cultural_knowledge],
     system_prompt = """
 You are ASEEL's Retrieval Agent, responsible for finding the most relevant
 and reliable Saudi cultural knowledge from the provided knowledge base.
 
 Your goal is NOT to answer the user's question.
-
-Your job is to retrieve and select the best supporting evidence for downstream
-validation and response generation.
-
-You must NOT answer the user's question.
+Your goal is to retrieve the best supporting evidence for downstream validation
+and response generation.
 
 RETRIEVAL WORKFLOW:
 
 1. Understand the Query
-
 - Identify the user's main intent, topic, situation, and cultural context.
 - Identify any explicit location such as city, governorate, administrative region,
   or planning region.
 - Identify relevant entities such as occasion, relationship, role, generation,
   or social context when present.
-- Pay attention to city-specific information.
 - Preserve the original meaning of the user's question.
 
 2. Location Awareness
-
-- Respect the requested city and region.
 - If a city or location is provided, prioritize evidence associated with that
   location or its corresponding region.
-- If city-specific evidence is unavailable, relevant evidence from the
-  corresponding region may be used.
-- General Saudi evidence may be used when the records explicitly indicate
-  general or nationwide scope.
 - Do not assume that a practice from one Saudi region applies to another region.
+- If the query specifies a city, use city-specific evidence when available.
+- If city-specific evidence is unavailable, broader regional evidence may be
+  retrieved only when it is relevant.
+- General Saudi evidence may be used when the records explicitly indicate
+  general/nationwide scope.
 - Never silently replace the user's requested location with another location.
-- Do not use evidence from an unrelated region.
 
 3. Search Strategy
-
-- ALWAYS use the search_cultural_knowledge tool.
-- Use the provided user query as the search query.
+- ALWAYS use the search_cultural_knowledge tool to retrieve evidence.
 - Search using the user's actual intent, not just individual keywords.
+- Prefer specific, semantically relevant records over broad or loosely related
+  records.
 - When the query contains a city, region, occasion, or specific cultural topic,
   ensure these concepts are represented in the search.
-- Search up to TWO times.
-- If the first search results are insufficient or unrelated, refine the query and
-  perform one additional search.
-- Review all results returned by the tool.
-- Do not retrieve records merely because they share a few keywords with the query.
+- Retrieve multiple relevant records when necessary to provide sufficient
+  evidence.
+- Do not retrieve records merely because they share a few keywords with the
+  query.
 
-4. Evidence Selection and Relevance
-
-After receiving the search results, select the results that are relevant
-to the user's question.
-
-A result can be selected when:
-- It directly answers the question, OR
-- It provides useful supporting evidence for the question.
-
+4. Relevance
 - Prioritize evidence that directly answers the user's question.
-- Prefer evidence with matching topic, location, and context.
 - Reject obviously unrelated results conceptually, even if they contain similar
   words.
-- Regional relevance alone is not enough to select an evidence record.
-- Do not select a result only because it belongs to the same region.
-- Do not select a result only because it contains a similar word.
+- Prefer evidence with matching topic, location, and context.
+- Do not treat keyword overlap as sufficient relevance.
+
+5. Evidence Quality
 - Prefer specific and informative records over vague records.
-
-For hospitality questions:
-- Prefer evidence explicitly related to hospitality, guests, hosting,
-  serving food, coffee, greetings, majalis, or etiquette.
-- Do NOT select clothing, crafts, tools, or other unrelated categories unless
-  the user explicitly asks about them.
-- Do NOT select unrelated clothing, crafts, food, or other records unless they
-  meaningfully support the user's question.
-
-If multiple records support the same point, retain the strongest relevant
-evidence.
-
-If retrieved records conflict, return the conflicting evidence rather than
-deciding which claim is true.
-
-5. Query Refinement
-
-If the first search results are insufficient:
-- Create a more specific query using important concepts from the user's question.
-- Preserve the original intent, city, and region.
-- For hospitality questions, concepts such as guests, serving food, coffee,
-  greetings, hosting, or majalis may be used.
-- Do not introduce unsupported cultural facts.
+- Prefer records whose geographic scope matches the user's requested location.
+- If multiple records support the same point, retain the strongest relevant
+  evidence.
+- If retrieved records conflict, return the conflicting evidence rather than
+  deciding which claim is true.
 
 6. Grounding
-
-- Use only evidence returned by the search tool.
 - NEVER invent, infer, complete, or paraphrase a cultural fact that is not
   supported by retrieved evidence.
-- Never use outside knowledge.
+- Do not use the model's general knowledge to fill missing information.
 - Do not assume that a culturally plausible answer is a correct answer.
-- Never create a new cultural claim by combining unrelated records.
 
 7. Insufficient Evidence
-
-- If the search does not provide relevant evidence, return SELECTED: NONE.
+- If the search does not provide relevant evidence, clearly indicate that
+  sufficient evidence was not found.
 - Do not manufacture an answer from weak or unrelated records.
 - Distinguish between relevant evidence that is limited and evidence that is
   completely unavailable.
 
 8. Output
+Return the retrieved evidence in a structured and concise form.
+For each result, preserve:
+- the relevant cultural information
+- geographic scope when available
+- source or record metadata when available
+- relevance information when available
 
-Return ONLY the selected result numbers.
+Do NOT generate the final user-facing answer.
+Do NOT provide cultural recommendations based on your own knowledge.
+The downstream validation and response agents will determine whether the
+retrieved evidence is sufficient and how it should be presented.
 
-Use 1-based numbering according to the order of the search results.
+FINAL CHECK:
+Before returning the results, ask:
+- Does this evidence actually address the user's question?
+- Does the geographic scope match the requested location?
+- Am I relying only on retrieved records?
+- Did I avoid unrelated evidence?
+- Is there enough evidence for downstream validation?
 
-Example:
+If the answer to these checks is no, return the relevant evidence that was found
+and clearly indicate the limitation.
 
-SELECTED: 1,3
+Return evidence for downstream processing, not a final answer.
+"""
+)
 
-If no result is relevant:
 
-SELECTED: NONE
+def _region_used_by_agent(messages) -> str | None:
+    """Region argument the agent actually passed to the search tool.
 
-Do not return explanations.
-Do not return the evidence.
-Do not answer the user's question. """ )
+    None means the agent never called the tool.
+    """
+    for message in messages:
+        for call in getattr(message, "tool_calls", None) or []:
+            if call.get("name") == "search_cultural_knowledge":
+                return (call.get("args") or {}).get("region") or ""
+
+    return None
 
 
 def retrieve_knowledge(state: AseelState) -> dict:
     query = state["retrieval_query"]
-    region = state.get("region") or ""
+    # An explicit UI selection (including "General") is authoritative.
+    region = (
+        normalize_region_override(state.get("region_override"))
+        or state.get("region")
+        or ""
+    )
     category = state.get("category")
 
     agent_input = f"""
@@ -151,55 +142,25 @@ Category: {category or "Not specified"}
 Use the search_cultural_knowledge tool.
 
 IMPORTANT:
-- Search the knowledge base using the provided query.
-- You may perform a second search only if the first search does not
-  provide relevant evidence.
-- Keep the original topic, city, and region.
-
-First search query:
-{query}
-
-If the first search results are insufficient:
-- Refine the query using important concepts from the user's question.
-- Keep the city and region.
-- Do not change the topic.
-- Search again using the refined query.
-
-After receiving the results:
-- Review every result.
-- Select results that directly answer the question OR provide meaningful
-  supporting evidence.
-- If the question is about hospitality, relevant evidence about guests,
-  serving food, coffee, greetings, majalis, or etiquette may be selected.
-- Do not select results merely because they belong to the same region.
-- Do not select unrelated clothing or other cultural topics.
-- Do not invent information.
-
-Return ONLY:
-
-SELECTED: 1,3
-
-or:
-
-SELECTED: NONE
+- Use the User query EXACTLY as the search query.
+- Do not rewrite or summarize the query.
+- Pass the region exactly as provided.
+- Search the knowledge base once.
+- Return the retrieved evidence.
 """
 
     result = retrieval_agent.invoke(
         {
             "messages": [
-                {
-                    "role": "user",
-                    "content": agent_input,
-                }
+                {"role": "user", "content": agent_input}
             ]
         }
     )
-   
+
     messages = result.get("messages", [])
 
     records = []
 
-    # Collect results returned by the search tool
     for message in messages:
         if getattr(message, "type", None) == "tool":
             try:
@@ -208,69 +169,31 @@ SELECTED: NONE
             except (json.JSONDecodeError, TypeError):
                 continue
 
-    # Apply existing deterministic metadata filtering
+    # Region matching must never depend on the LLM. If the agent dropped or
+    # changed the region argument (e.g. searched without "General"), redo the
+    # search deterministically with the region the workflow resolved.
+    expected_region = CulturalVectorStore.normalize_region(region)
+    used_region = _region_used_by_agent(messages)
+
+    if expected_region and (
+        used_region is None
+        or CulturalVectorStore.normalize_region(used_region) != expected_region
+    ):
+        try:
+            payload = json.loads(
+                search_cultural_knowledge.invoke({"query": query, "region": region})
+            )
+            records = payload.get("results", [])
+        except (json.JSONDecodeError, TypeError):
+            pass
+
     filtered_records = filter_by_metadata(
         records,
         state.get("region"),
         state.get("category"),
-        state.get("city"),
     )
-
-    # Read the Retrieval Agent's selection
-    selected_indices = None
-
-    for message in reversed(messages):
-        if getattr(message, "type", None) == "tool":
-            continue
-
-        content = getattr(message, "content", "")
-
-        if not content:
-            continue
-
-        if isinstance(content, list):
-            content = "".join(
-                item.get("text", "")
-                for item in content
-                if isinstance(item, dict)
-            )
-
-        content = str(content).strip()
-
-        if "SELECTED:" not in content:
-            continue
-
-        selected_part = content.split(
-            "SELECTED:",
-            1,
-        )[1].strip()
-
-        if selected_part.upper() == "NONE":
-            selected_indices = []
-        else:
-            try:
-                selected_indices = [
-                    int(index.strip()) - 1
-                    for index in selected_part.split(",")
-                    if index.strip().isdigit()
-                ]
-            except ValueError:
-                selected_indices = []
-
-        break
-
-    # If the agent returned no selection, keep no records.
-    if selected_indices is None:
-        selected_indices = []
-
-    # Keep only the records selected by the Retrieval Agent
-    selected_records = [
-        filtered_records[index]
-        for index in selected_indices
-        if 0 <= index < len(filtered_records)
-    ]
 
     return {
         "raw_semantic_results": records,
-        "retrieved": selected_records,
+        "retrieved": filtered_records,
     }
