@@ -79,6 +79,8 @@ def _region_from_statement_value(value: str, path: Path) -> str:
     if key not in STATEMENT_REGION_ALIASES:
         raise ValueError(f"Unknown region '{value}' in {path.name}")
     return STATEMENT_REGION_ALIASES[key]
+
+
  
 def _load_qa_rows(path: Path, rows: list[dict]) -> list[KnowledgeRecord]:
     # Original question/answer schema: region comes from the filename.
@@ -99,6 +101,8 @@ def _load_qa_rows(path: Path, rows: list[dict]) -> list[KnowledgeRecord]:
             question_type=normalized.get("question type", "") or "Unspecified",
         ))
     return result
+
+
  
 def _load_statement_rows(path: Path, rows: list[dict]) -> list[KnowledgeRecord]:
     # New "cultural statement" schema (id, source, region, region_areas,
@@ -121,6 +125,8 @@ def _load_statement_rows(path: Path, rows: list[dict]) -> list[KnowledgeRecord]:
             question_type=normalized.get("statement_type", "") or "Unspecified",
         ))
     return result
+
+
  
 def load_csv(path: Path) -> list[KnowledgeRecord]:
     with path.open(encoding="utf-8-sig", newline="") as stream:
@@ -133,6 +139,8 @@ def load_csv(path: Path) -> list[KnowledgeRecord]:
     if {"topic", "content", "region"}.issubset(headers):
         return _load_statement_rows(path, rows)
     return _load_qa_rows(path, rows)
+
+
  
 def load_directory(directory: Path) -> list[KnowledgeRecord]:
     records: list[KnowledgeRecord] = []
@@ -147,6 +155,8 @@ def load_directory(directory: Path) -> list[KnowledgeRecord]:
     if not records:
         raise ValueError(f"No usable CSV rows found in {directory}")
     return records
+
+
  
 def stage_sources(source_dir: Path, destination: Path = RAW_DATA_DIR) -> list[Path]:
     destination.mkdir(parents=True, exist_ok=True)

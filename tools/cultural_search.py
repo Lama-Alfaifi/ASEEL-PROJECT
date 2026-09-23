@@ -18,32 +18,40 @@ def search_cultural_knowledge(query: str, region: str = "") -> str:
 
     location = location_resolver.find_in_query(query)
 
-    # An explicitly-provided region (e.g. resolved earlier by the
-    # Understanding Agent from conversation memory on a follow-up question)
-    # always wins. We only fall back to a city detected in THIS query's
-    # text when no region was provided at all. Previously a detected city
-    # silently overwrote an already-correct region, and on follow-ups with
-    # no city mention ("What about women?") the region could end up unset,
-    # causing an unfiltered, noisy search.
+    # An explicitly-provided region always wins over a city detected in
+    # this query's text — see cultural_search.py history: a detected city
+    # silently overwriting an already-correct region (e.g. from memory on
+    # a follow-up question) was the root cause of the original retrieval
+    # inconsistency bug.
     resolved_region = region or ""
 
     if not resolved_region and location:
         resolved_region = location["planning_region"]
 
-    # Normalize once, here, so every downstream comparison (metadata
-    # filter, evidence validation) works against the same canonical
-    # region names regardless of whether the region came from the
-    # regex-based resolver ("East") or the CSV-based one ("Eastern").
     resolved_region = CulturalVectorStore.normalize_region(resolved_region) or ""
 
-    # 3. Search the existing cultural knowledge base
     results = store.search(
         query=query,
         region=resolved_region or None,
         limit=TOP_K,
     )
 
-    # 4. No results
+    # Remove duplicate knowledge records (same underlying question
+    # appearing more than once in the source CSVs) so the top-K passed to
+    # validation stays as diverse as possible instead of wasting slots on
+    # near-identical repeats.
+    unique_results = []
+    seen_questions = set()
+
+    for result in results:
+        question_key = result.record.question.strip().lower()
+
+        if question_key not in seen_questions:
+            seen_questions.add(question_key)
+            unique_results.append(result)
+
+    results = unique_results
+
     if not results:
         return json.dumps(
             {
@@ -55,7 +63,6 @@ def search_cultural_knowledge(query: str, region: str = "") -> str:
             ensure_ascii=False,
         )
 
-    # 5. Format retrieved knowledge
     records = [
         {
             "question": result.record.question,
