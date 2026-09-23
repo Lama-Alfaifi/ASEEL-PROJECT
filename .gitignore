@@ -1,4 +1,5 @@
 .env
+<<<<<<< HEAD
 .venv/
 __pycache__/
 .pytest_cache/
@@ -11,3 +12,11 @@ data/raw/*
 !data/raw/GENERAL.csv
 !data/raw/EAST.csv
 !data/raw/CENTERAL.csv
+=======
+.deepeval/
+__pycache__/
+*.pyc
+.vscode/
+node_modules/
+dist/
+>>>>>>> origin/fatima
