@@ -1,6 +1,7 @@
 import { ArrowUp, MessageSquare, Plus, Trash2 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnswerCard } from '../components/AnswerCard';
+import { LocationPrompt } from '../components/LocationPrompt';
 import { PipelineLoader } from '../components/PipelineLoader';
 import { EmptyState, ErrorNotice } from '../components/States';
 import { RegionTag } from '../components/Trust';
@@ -27,7 +28,7 @@ function hash(s: string) {
 }
 
 export default function Ask({ threadId }: { threadId?: string }) {
-  const { t, lang, threads, pending, send, retry, cancel, deleteThread } = useApp();
+  const { t, lang, threads, pending, send, retry, cancel, deleteThread, location: userLoc } = useApp();
   const { params } = useRoute();
   const thread: Thread | undefined = threads.find((x) => x.id === threadId);
   const busy = threadId ? pending[threadId] != null : false;
@@ -107,6 +108,7 @@ export default function Ask({ threadId }: { threadId?: string }) {
       </aside>
 
       <section className="chat">
+        <LocationPrompt />
         <div className="chat-scroll">
           {!thread ? (
             <div className="chat-empty">
@@ -185,6 +187,13 @@ export default function Ask({ threadId }: { threadId?: string }) {
                 {r === null ? t('ask.auto') : regionName(r, lang)}
               </button>
             ))}
+            {(userLoc.city || userLoc.region) && (
+              <span className="muted small loc-chip">
+                📍 {[userLoc.city?.replace(/\s+City$/i, ''), userLoc.region ? regionName(userLoc.region, lang) : null]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </span>
+            )}
           </div>
           <div className="composer-box">
             <MessageSquare size={18} aria-hidden="true" className="composer-icon" />

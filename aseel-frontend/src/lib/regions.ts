@@ -124,10 +124,10 @@ export const optionName = (o: Option, lang: Lang) => o[lang];
 
 /** Starter questions shown on Home and in the empty chat. */
 export const SAMPLE_QUESTIONS = [
-  'What should I bring when invited to a home in Riyadh?',
-  'How is Arabic coffee served and how should I accept it?',
-  'What are wedding customs in the South region?',
+  'What is the traditional dish in Riyadh?',
+  'What does shaking a coffee cup mean?',
+  'How is rice traditionally eaten?',
   'How do people greet each other in the West region?',
-  'What is the dining etiquette in the East region?',
-  'How should I dress for a business meeting in Jeddah?',
+  'What is the traditional clothing for women in the South?',
+  'What is the most common sweet in West Saudi Arabia?',
 ];

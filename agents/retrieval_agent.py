@@ -5,6 +5,8 @@ from agents.state import AseelState
 from config.settings import OPENAI_MODEL_TOOL
 from tools.cultural_search import search_cultural_knowledge
 from tools.metadata_filter import filter_by_metadata
+from utils.region_override import normalize_region_override
+from retrieval.vector_store import CulturalVectorStore
 import json
 
 
@@ -109,9 +111,27 @@ Return evidence for downstream processing, not a final answer.
 )
 
 
+def _region_used_by_agent(messages) -> str | None:
+    """Region argument the agent actually passed to the search tool.
+
+    None means the agent never called the tool.
+    """
+    for message in messages:
+        for call in getattr(message, "tool_calls", None) or []:
+            if call.get("name") == "search_cultural_knowledge":
+                return (call.get("args") or {}).get("region") or ""
+
+    return None
+
+
 def retrieve_knowledge(state: AseelState) -> dict:
     query = state["retrieval_query"]
-    region = state.get("region") or ""
+    # An explicit UI selection (including "General") is authoritative.
+    region = (
+        normalize_region_override(state.get("region_override"))
+        or state.get("region")
+        or ""
+    )
     category = state.get("category")
 
     agent_input = f"""
@@ -148,6 +168,24 @@ IMPORTANT:
                 records.extend(tool_data.get("results", []))
             except (json.JSONDecodeError, TypeError):
                 continue
+
+    # Region matching must never depend on the LLM. If the agent dropped or
+    # changed the region argument (e.g. searched without "General"), redo the
+    # search deterministically with the region the workflow resolved.
+    expected_region = CulturalVectorStore.normalize_region(region)
+    used_region = _region_used_by_agent(messages)
+
+    if expected_region and (
+        used_region is None
+        or CulturalVectorStore.normalize_region(used_region) != expected_region
+    ):
+        try:
+            payload = json.loads(
+                search_cultural_knowledge.invoke({"query": query, "region": region})
+            )
+            records = payload.get("results", [])
+        except (json.JSONDecodeError, TypeError):
+            pass
 
     filtered_records = filter_by_metadata(
         records,

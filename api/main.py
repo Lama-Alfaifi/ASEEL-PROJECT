@@ -3,7 +3,7 @@ from __future__ import annotations
 import uuid
 
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from workflow.graph import ask
 from memory.conversation_memory import ConversationMemory
@@ -14,15 +14,15 @@ from fastapi.responses import FileResponse
 
 from config.settings import ROOT_DIR
 from utils.region_geography import load_regions
+from utils.user_location import normalize_user_location, resolve_coordinates
 
 from utils.feedback_store import (
     save_feedback,
     list_feedback,
     get_feedback,
-    set_validation_result,
     set_status,
 )
-from agents.feedback_validation import validate_feedback
+
 
 
 app = FastAPI(
@@ -48,10 +48,25 @@ app = FastAPI(
 _session_memories: dict[str, ConversationMemory] = {}
 
 
+class UserLocation(BaseModel):
+    # Coordinates are optional: the web client resolves them via POST /locate and
+    # then sends only city/region. If coordinates ARE sent they are resolved and
+    # discarded before the workflow runs.
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    city: str | None = None
+    region: str | None = None
+
+
 class ChatRequest(BaseModel):
     message: str
     conversation_context: str = ""
     session_id: str | None = None
+    user_location: UserLocation | None = None
+    # Explicit region chip from the UI (central/west/east/south/north/general).
+    # Omitted / null = "Auto". Without this field FastAPI silently dropped the
+    # `region` the frontend sends, so the selection never reached the workflow.
+    region: str | None = None
 
 
 class ChatResponse(BaseModel):
@@ -79,10 +94,19 @@ def chat(request: ChatRequest):
 
     memory = _session_memories.setdefault(session_id, ConversationMemory())
 
+    # Lowest-priority location fallback. Reduced to {city, region}; coordinates
+    # never reach the workflow state or monitoring.
+    raw_location = None
+    if request.user_location is not None:
+        loc = request.user_location
+        raw_location = loc.model_dump() if hasattr(loc, "model_dump") else loc.dict()
+
     result = ask(
         request.message,
         request.conversation_context,
         memory=memory,
+        user_location=normalize_user_location(raw_location),
+        region_override=request.region,
     )
 
     return {
@@ -94,6 +118,21 @@ def chat(request: ChatRequest):
         "city": result.get("city"),
         "region": result.get("region"),
     }
+
+
+class LocateRequest(BaseModel):
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
+
+
+@app.post("/locate")
+def locate(request: LocateRequest):
+    """
+    Browser coordinates -> {"city", "region"} using the project's own region
+    data. Coordinates are used for this lookup only: not stored, not logged,
+    not echoed back. Both fields are null outside Saudi Arabia.
+    """
+    return resolve_coordinates(request.latitude, request.longitude)
 
 
 @app.delete("/chat/{session_id}")
@@ -165,15 +204,6 @@ def submit_feedback(request: FeedbackRequest):
         original_query=request.original_query,
         original_answer=request.original_answer,
     )
-
-    # Classify immediately so the reviewer sees it annotated. A
-    # classification failure must never lose the feedback itself — it
-    # stays saved as "pending" either way.
-    try:
-        validation = validate_feedback(record)
-        record = set_validation_result(record["id"], validation) or record
-    except Exception:
-        pass
 
     return record
 

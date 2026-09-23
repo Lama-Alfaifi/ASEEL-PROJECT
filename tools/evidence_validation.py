@@ -29,7 +29,7 @@ def validate_evidence(
     Validate retrieved cultural evidence.
 
     Rules:
-    - Evidence must match the requested region when a region is provided,
+    - Evidence must match the requested region OR be General/nationwide when a region is provided,
       after normalization (see module docstring in cultural_search.py for
       why raw string comparison is unsafe here).
     - Evidence must clear MIN_RELEVANCE when a region was resolved (the
@@ -61,7 +61,7 @@ def validate_evidence(
             and (
                 not normalized_requested_region
                 or CulturalVectorStore.normalize_region(record.get("region"))
-                == normalized_requested_region
+                in (normalized_requested_region, "General")
             )
         )
     ]
@@ -69,7 +69,7 @@ def validate_evidence(
     if not valid:
         return (
             [],
-            "No sufficiently relevant, region-specific knowledge record was found.",
+            "No sufficiently relevant, region-compatible knowledge record was found.",
             0.0,
         )
 

@@ -9,6 +9,12 @@ from config.settings import OPENAI_MODEL_UNDERSTANDING
 from tools.context_extraction import extract_context
 from tools.region_resolution import resolve_region
 from utils.location_resolver import location_resolver
+from utils.region_override import GENERAL, normalize_region_override
+from utils.user_location import (
+    canonical_region,
+    describe_location,
+    normalize_user_location,
+)
 
 
 understanding_agent = create_agent(
@@ -58,6 +64,30 @@ Current question:
 
 Correct retrieval_query:
 "Traditional breakfast foods in Jeddah, Western Saudi Arabia"
+
+LOCATION PRIORITY:
+
+0. If the prompt contains a "Region selection" section, it is the user's explicit
+   choice and overrides everything below. Never use any earlier city or region,
+   and never add a location the selection does not allow.
+1. A city or region explicitly mentioned in the current question always wins.
+2. Otherwise, use the location from conversation memory.
+3. Only when both are absent, and the prompt contains a "Fallback user location"
+   section, use that location.
+
+Never blend the fallback user location with an explicit or remembered location,
+and never replace one with it. Never mention that a location was detected or inferred.
+
+Example:
+
+Fallback user location:
+Riyadh, Central Saudi Arabia
+
+Current question:
+"What is the traditional clothing for women?"
+
+Correct retrieval_query:
+"Traditional clothing for women in Riyadh, Central Saudi Arabia"
 
 Return ONLY valid JSON:
 
@@ -136,13 +166,20 @@ def _parse_memory(conversation_context: str) -> dict:
 def _resolve_city(
     query: str,
     memory: dict,
+    fallback_location: dict | None = None,
 ) -> str | None:
     location = location_resolver.find_in_query(query)
 
     if location:
         return location.get("city")
 
-    return memory.get("city")
+    if memory.get("city"):
+        return memory.get("city")
+
+    if fallback_location:
+        return fallback_location.get("city")
+
+    return None
 
 
 def _resolve_region(
@@ -150,6 +187,7 @@ def _resolve_region(
     city: str | None,
     memory: dict,
     extracted_region: str | None,
+    fallback_region: str | None = None,
 ) -> str | None:
 
     direct_region = resolve_region(query)
@@ -162,6 +200,12 @@ def _resolve_region(
 
         if city_region:
             return city_region
+
+    # Detected user location: only ever set when the question and memory
+    # carry no location (see _select_fallback_location), so it is safe to
+    # prefer it over the LLM's own guess.
+    if fallback_region:
+        return fallback_region
 
     if extracted_region:
         resolved = resolve_region(extracted_region)
@@ -178,6 +222,222 @@ def _resolve_region(
             return resolved
 
     return None
+
+
+def _select_fallback_location(
+    query: str,
+    memory: dict,
+    user_location: dict | None,
+) -> dict | None:
+    """
+    The detected user location is the LAST resort. It is used only when
+    (A) the current question names no city/region, and
+    (B) conversation memory holds no city/region either.
+    (A UI-selected region is appended to the question text by the frontend,
+    so it is caught by (A).)
+    """
+    if not user_location:
+        return None
+
+    if location_resolver.find_in_query(query) or resolve_region(query):
+        return None
+
+    memory_region = (memory.get("region") or "").strip().lower()
+
+    if memory.get("city") or (memory_region and memory_region != "general"):
+        return None
+
+    return user_location
+
+
+def _drop_stale_city(
+    query: str,
+    city: str | None,
+    memory: dict,
+) -> str | None:
+    """
+    A remembered city must not survive when the current question explicitly
+    names a different region (e.g. memory holds a detected Riyadh, then the
+    user picks East in the UI). Without this, city and region would disagree.
+    """
+    if not city or location_resolver.find_in_query(query):
+        return city
+
+    explicit_region = canonical_region(resolve_region(query))
+
+    if not explicit_region:
+        return city
+
+    known = location_resolver.resolve(city)
+    city_region = canonical_region(known.get("planning_region")) if known else None
+
+    if city_region and city_region != explicit_region:
+        return None
+
+    return city
+
+
+def _ensure_location_in_query(
+    retrieval_query: str,
+    fallback_location: dict | None,
+) -> str:
+    """
+    Deterministic backstop: if the fallback location is active but the LLM did
+    not put it into retrieval_query, append it.
+    """
+    if not fallback_location:
+        return retrieval_query
+
+    lowered = retrieval_query.lower()
+    tokens = []
+
+    city = (fallback_location.get("city") or "").lower()
+    if city:
+        tokens.append(city)
+        if city.endswith(" city"):
+            tokens.append(city[:-5])
+
+    region = (fallback_location.get("region") or "").lower()
+    if region:
+        tokens.append(region)
+
+    if any(token and token in lowered for token in tokens):
+        return retrieval_query
+
+    return f"{retrieval_query} in {describe_location(fallback_location)}"
+
+
+def _strip_location_from_context(conversation_context: str) -> str:
+    """
+    Drop the remembered city/region lines from the "Conversation memory:"
+    section. Used when the user made an explicit region selection in the UI,
+    so remembered locations cannot leak into that request. Other memory fields
+    (category, occasion, role, ...) and the "Recent conversation:" text stay.
+    """
+    if not conversation_context or "Conversation memory:" not in conversation_context:
+        return conversation_context
+
+    head, rest = conversation_context.split("Conversation memory:", 1)
+
+    if "Recent conversation:" in rest:
+        memory_section, tail = rest.split("Recent conversation:", 1)
+        tail = "Recent conversation:" + tail
+    else:
+        memory_section, tail = rest, ""
+
+    kept = [
+        line
+        for line in memory_section.splitlines()
+        if line.split(":", 1)[0].strip().lower() not in {"city", "region"}
+    ]
+
+    return f"{head}Conversation memory:" + "\n".join(kept) + "\n" + tail
+
+
+def _city_for_override(query: str, region_override: str) -> str | None:
+    """
+    City under an explicit UI region selection. Only a city typed in the CURRENT
+    question can survive, and only if it belongs to the selected region.
+    Memory and detected locations never contribute. General has no city.
+    """
+    if region_override == GENERAL:
+        return None
+
+    found = location_resolver.find_in_query(query)
+
+    if not found:
+        return None
+
+    city = found.get("city")
+    known = location_resolver.resolve(city) if city else None
+    city_region = (
+        canonical_region(known.get("planning_region")) if known else None
+    )
+
+    if city_region and city_region == canonical_region(region_override):
+        return city
+
+    return None
+
+
+def _specific_region(text: str) -> str | None:
+    """Canonical region named in text, ignoring nationwide/'General' wording."""
+    region = canonical_region(resolve_region(text))
+
+    if region and str(region).strip().lower() != "general":
+        return region
+
+    return None
+
+
+def _apply_override_to_query(
+    retrieval_query: str,
+    query: str,
+    region_override: str,
+    category,
+    occasion,
+    situation,
+    user_role,
+) -> str:
+    """
+    Deterministic backstop for an explicit UI region selection. The LLM builds
+    retrieval_query from conversation context and can drag in an old city or
+    region; region matching must never depend on the LLM.
+    """
+    if region_override == GENERAL:
+        names_location = (
+            location_resolver.find_in_query(retrieval_query)
+            or _specific_region(retrieval_query)
+        )
+        user_named_location = (
+            location_resolver.find_in_query(query) or _specific_region(query)
+        )
+
+        if names_location and not user_named_location:
+            return _build_fallback_query(
+                query=query,
+                city=None,
+                region=None,
+                category=category,
+                occasion=occasion,
+                situation=situation,
+                user_role=user_role,
+            )
+
+        return retrieval_query
+
+    target = canonical_region(region_override)
+
+    named = set()
+
+    mentioned = _specific_region(retrieval_query)
+    if mentioned:
+        named.add(mentioned)
+
+    found = location_resolver.find_in_query(retrieval_query)
+    if found:
+        known = location_resolver.resolve(found.get("city"))
+        found_region = (
+            canonical_region(known.get("planning_region")) if known else None
+        )
+        if found_region:
+            named.add(found_region)
+
+    if named - {target}:
+        return _build_fallback_query(
+            query=query,
+            city=None,
+            region=region_override,
+            category=category,
+            occasion=occasion,
+            situation=situation,
+            user_role=user_role,
+        )
+
+    if not named:
+        return f"{retrieval_query} in the {region_override} region of Saudi Arabia"
+
+    return retrieval_query
 
 
 def _get_value(
@@ -265,6 +525,9 @@ def understand_context(state: AseelState) -> dict:
 
     query = state.get("query", "")
 
+    # Explicit UI region selection (including "General"); None = Auto.
+    region_override = normalize_region_override(state.get("region_override"))
+
     conversation_context = state.get(
         "conversation_context",
         "",
@@ -274,10 +537,67 @@ def understand_context(state: AseelState) -> dict:
         conversation_context,
     )
 
+    # An explicit region overrides a conflicting remembered location,
+    # but keeps a remembered city when it belongs to the selected region.
+    # Example: memory=Riyadh/Central + UI=Central -> keep Riyadh.
+    if region_override:
+        remembered_region = canonical_region(memory.get("region"))
+
+        if region_override == GENERAL:
+            conversation_context = _strip_location_from_context(
+                conversation_context
+            )
+            memory = _parse_memory(conversation_context)
+        elif remembered_region and remembered_region != region_override:
+            conversation_context = _strip_location_from_context(
+                conversation_context
+            )
+            memory = _parse_memory(conversation_context)
+
     basic_context = extract_context(
         query=query,
         conversation_context=conversation_context,
     )
+
+    # An explicit selection (a region OR General) beats the detected location.
+    user_location = (
+        None
+        if region_override
+        else normalize_user_location(state.get("user_location"))
+    )
+
+    fallback_location = _select_fallback_location(
+        query,
+        memory,
+        user_location,
+    )
+
+    location_block = ""
+
+    if fallback_location:
+        location_block = (
+            "\nFallback user location (automatically detected):\n"
+            f"{describe_location(fallback_location)}\n\n"
+            "The current question and the conversation memory contain no location.\n"
+            "Use this location in retrieval_query. Do not mention that it was detected.\n"
+        )
+
+    override_block = ""
+
+    if region_override == GENERAL:
+        override_block = (
+            "\nRegion selection (explicit user choice, overrides everything else):\n"
+            "GENERAL - nationwide scope.\n"
+            "Do NOT add any city or region to retrieval_query and ignore any city "
+            "or region mentioned earlier. Set city and region to null.\n"
+        )
+    elif region_override:
+        override_block = (
+            "\nRegion selection (explicit user choice, overrides everything else):\n"
+            f"{region_override} region of Saudi Arabia.\n"
+            "Use only this region in retrieval_query and ignore any other city "
+            "or region mentioned earlier.\n"
+        )
 
     user_prompt = f"""
 Conversation memory:
@@ -285,7 +605,7 @@ Conversation memory:
 
 Current user question:
 {query}
-
+{location_block}{override_block}
 Basic extracted context:
 {json.dumps(basic_context, ensure_ascii=False)}
 
@@ -341,10 +661,20 @@ Important:
     except Exception:
         extracted = {}
 
-    city = _resolve_city(
-        query,
-        memory,
-    )
+    if region_override:
+        city = _city_for_override(query, region_override)
+    else:
+        city = _resolve_city(
+            query,
+            memory,
+            fallback_location,
+        )
+
+        city = _drop_stale_city(
+            query,
+            city,
+            memory,
+        )
 
     category = _get_value(
         extracted,
@@ -416,11 +746,15 @@ Important:
         "language",
     )
 
-    region = _resolve_region(
+    # Explicit UI selection wins outright; otherwise the normal priority applies.
+    region = region_override or _resolve_region(
         query=query,
         city=city,
         memory=memory,
         extracted_region=extracted.get("region"),
+        fallback_region=(
+            fallback_location.get("region") if fallback_location else None
+        ),
     )
 
     retrieval_query = str(
@@ -441,6 +775,33 @@ Important:
             user_role=user_role,
         )
 
+    retrieval_query = _ensure_location_in_query(
+        retrieval_query,
+        fallback_location,
+    )
+
+    if region_override:
+        retrieval_query = _apply_override_to_query(
+            retrieval_query,
+            query,
+            region_override,
+            category=category,
+            occasion=occasion,
+            situation=situation,
+            user_role=user_role,
+        )
+
+    if region_override:
+        location_source = "ui_selection"
+    elif fallback_location:
+        location_source = "user_location"
+    elif location_resolver.find_in_query(query) or resolve_region(query):
+        location_source = "query"
+    elif city or region:
+        location_source = "memory"
+    else:
+        location_source = None
+
     return {
         "retrieval_query": retrieval_query,
         "city": city,
@@ -459,6 +820,8 @@ Important:
             "intent",
             basic_context.get("intent"),
         ),
+        "location_source": location_source,
+        "region_override": region_override,
         "attempts": state.get(
             "attempts",
             0,

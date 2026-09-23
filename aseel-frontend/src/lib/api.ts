@@ -43,14 +43,23 @@ export function normalizeResult(data: unknown): ChatResult {
   };
 }
 
+/** ChatResult plus the backend session id (used to keep server-side conversation memory). */
+export type AskResult = ChatResult & { sessionId: string | null };
+
 interface AskOptions {
   baseUrl: string;
+  /** Backend session id from a previous reply in this thread. Omit on the first message. */
+  sessionId?: string | null;
   signal?: AbortSignal;
   timeoutMs?: number;
+  /** Detected location fallback (city/region only). Omit when the user chose a region explicitly. */
+  userLocation?: { city: string | null; region: string | null } | null;
+  /** Explicit UI region selection. "general" disables regional filtering. */
+  region?: string | null;
 }
 
-/** POST {base}/chat  { message, conversation_context } */
-export async function askAseel(message: string, context: string, opts: AskOptions): Promise<ChatResult> {
+/** POST {base}/chat  { message, conversation_context, user_location? } */
+export async function askAseel(message: string, context: string, opts: AskOptions): Promise<AskResult> {
   const controller = new AbortController();
   let timedOut = false;
   const timer = window.setTimeout(() => {
@@ -64,7 +73,13 @@ export async function askAseel(message: string, context: string, opts: AskOption
     const res = await fetch(`${normalizeBase(opts.baseUrl)}/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ message, conversation_context: context }),
+      body: JSON.stringify({
+        message,
+        conversation_context: context,
+        ...(opts.sessionId ? { session_id: opts.sessionId } : {}),
+        ...(opts.userLocation ? { user_location: opts.userLocation } : {}),
+        ...(opts.region ? { region: opts.region } : {}),
+      }),
       signal: controller.signal,
     });
 
@@ -85,7 +100,8 @@ export async function askAseel(message: string, context: string, opts: AskOption
     } catch {
       throw new ApiError('parse', 'The server returned an unreadable response.');
     }
-    return normalizeResult(json);
+    const sessionId = str((json as Record<string, unknown> | null)?.session_id) || null;
+    return { ...normalizeResult(json), sessionId };
   } catch (e) {
     if (e instanceof ApiError) throw e;
     if ((e as Error)?.name === 'AbortError') {
@@ -95,6 +111,35 @@ export async function askAseel(message: string, context: string, opts: AskOption
   } finally {
     window.clearTimeout(timer);
     opts.signal?.removeEventListener('abort', onAbort);
+  }
+}
+
+/**
+ * POST {base}/locate  { latitude, longitude } -> { city, region }
+ * The coordinates are sent once for this lookup and are not kept by the caller.
+ */
+export async function locateUser(
+  latitude: number,
+  longitude: number,
+  baseUrl: string,
+): Promise<{ city: string | null; region: string | null }> {
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), 10_000);
+  try {
+    const res = await fetch(`${normalizeBase(baseUrl)}/locate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ latitude, longitude }),
+      signal: controller.signal,
+    });
+    if (!res.ok) throw new ApiError('http', `Server responded with ${res.status}`, res.status);
+    const d = (await res.json()) as Record<string, unknown>;
+    return { city: str(d.city) || null, region: str(d.region) || null };
+  } catch (e) {
+    if (e instanceof ApiError) throw e;
+    throw new ApiError('network', 'Could not resolve your location.');
+  } finally {
+    window.clearTimeout(timer);
   }
 }
 
