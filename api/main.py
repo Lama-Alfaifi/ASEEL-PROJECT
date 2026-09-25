@@ -77,7 +77,7 @@ class ChatResponse(BaseModel):
     session_id: str
     city: str | None = None
     region: str | None = None
-
+    decision_summary: dict | None = None
 
 @app.get("/")
 def root():
@@ -117,6 +117,7 @@ def chat(request: ChatRequest):
         "session_id": session_id,
         "city": result.get("city"),
         "region": result.get("region"),
+        "decision_summary": result.get("decision_summary"),
     }
 
 

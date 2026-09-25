@@ -27,8 +27,8 @@ export default function Home() {
     <div className="page home">
       <section className="hero">
         <div className="hero-copy">
-          <h1>{t('home.title')}</h1>
-          <p className="lead">{t('home.sub')}</p>
+  <h1>{t('home.title')}</h1>
+
 
           <form
             className="hero-search"

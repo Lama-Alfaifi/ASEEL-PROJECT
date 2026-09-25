@@ -12,6 +12,7 @@ from utils.monitoring import start_timer, record_run
 from memory.conversation_memory import ConversationMemory
 from translation.layer import detect_and_translate_to_english, translate_from_english
 from utils.region_override import GENERAL, normalize_region_override
+from utils.decision_summary import build_decision_summary
 
 def route_after_validation(state: AseelState) -> str:
     confidence = state.get("confidence_score", 0.0)
@@ -133,6 +134,7 @@ def ask(
         # now — it detects reliably up front, unlike the understanding
         # agent's own best-effort "language" field.
         result["language"] = detected_language
+        result["decision_summary"] = build_decision_summary(result)
 
         memory_fields = {
             "city": result.get("city"),

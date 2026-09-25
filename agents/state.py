@@ -48,3 +48,5 @@ class AseelState(TypedDict, total=False):
 
     answer: str
     sources: list[dict]
+       # Displayable summary of how the answer was reached (no raw reasoning)
+    decision_summary: dict

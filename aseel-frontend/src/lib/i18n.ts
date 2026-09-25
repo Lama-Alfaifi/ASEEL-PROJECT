@@ -18,7 +18,7 @@ const en = {
   'api.recheck': 'Check the connection again',
   'map.label': 'Map of Saudi Arabia by ASEEL region',
 
-  'home.title': 'Saudi customs, explained from real sources',
+  'home.title': 'Your Smart Guide to Saudi Culture & Traditions',
   'home.sub': 'ASEEL answers only from its regional knowledge base, checks the evidence, and shows you exactly where each answer comes from.',
   'home.placeholder': 'Ask about a visit, a meal, an occasion or a regional custom…',
   'home.placeholderShort': 'Ask about a custom, a meal or an occasion…',

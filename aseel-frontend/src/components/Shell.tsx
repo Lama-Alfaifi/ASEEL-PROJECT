@@ -1,5 +1,5 @@
 import {
-  Bookmark, Command, Compass, Languages, Library, ListChecks, MessageSquare, Moon, Search, Settings2, Sun, House,
+  Bookmark, Command, Compass, Languages, ListChecks, MessageSquare, Moon, Search, Settings2, Sun, House,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useRoute } from '../lib/router';
@@ -13,7 +13,6 @@ export const NAV: { to: string; key: TKey; icon: typeof House }[] = [
   { to: '/ask', key: 'nav.ask', icon: MessageSquare },
   { to: '/explore', key: 'nav.explore', icon: Compass },
   { to: '/plan', key: 'nav.plan', icon: ListChecks },
-  { to: '/sources', key: 'nav.sources', icon: Library },
   { to: '/saved', key: 'nav.saved', icon: Bookmark },
   { to: '/settings', key: 'nav.settings', icon: Settings2 },
 ];
