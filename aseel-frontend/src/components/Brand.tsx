@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { useApp } from '../state/store';
 
 /** Two interlocked squares (an eight-pointed star) — a common motif in Saudi geometric ornament. */
 export function LogoMark({ size = 30 }: { size?: number }) {
@@ -14,10 +15,24 @@ export function LogoMark({ size = 30 }: { size?: number }) {
 }
 
 export function Wordmark() {
+  const { theme } = useApp();
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || theme === 'dark';
+  const textColor = isDark ? '#FFFFFF' : '#0e3b2e';
+
   return (
     <span className="wordmark">
-      <span className="wordmark-latin">ASEEL</span>
-      <span className="wordmark-ar" lang="ar">أصيل</span>
+      <span 
+        className="wordmark-latin" 
+        style={{ color: textColor, WebkitTextFillColor: textColor }}
+      >
+        ASEEL
+      </span>{' '}
+      <span 
+        lang="ar" 
+        style={{ color: textColor, WebkitTextFillColor: textColor }}
+      >
+        أصيل
+      </span>
     </span>
   );
 }
