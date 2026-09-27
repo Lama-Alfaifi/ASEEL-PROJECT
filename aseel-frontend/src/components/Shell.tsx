@@ -1,19 +1,18 @@
 import {
-  Bookmark, Command, Compass, Languages, Library, ListChecks, MessageSquare, Moon, Search, Settings2, Sun, House,
+  Bookmark, Command, Compass, Languages, ListChecks, MessageSquare, Moon, Search, Settings2, Sun, House,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useRoute } from '../lib/router';
 import { clsx } from '../lib/utils';
 import { useApp } from '../state/store';
 import type { TKey } from '../lib/i18n';
-import { LogoMark, SaduBand, Wordmark } from './Brand';
+import { SaduBand, Wordmark } from './Brand';
 
 export const NAV: { to: string; key: TKey; icon: typeof House }[] = [
   { to: '/', key: 'nav.home', icon: House },
   { to: '/ask', key: 'nav.ask', icon: MessageSquare },
   { to: '/explore', key: 'nav.explore', icon: Compass },
   { to: '/plan', key: 'nav.plan', icon: ListChecks },
-  { to: '/sources', key: 'nav.sources', icon: Library },
   { to: '/saved', key: 'nav.saved', icon: Bookmark },
   { to: '/settings', key: 'nav.settings', icon: Settings2 },
 ];
@@ -32,15 +31,47 @@ function ApiPill() {
 }
 
 export function Sidebar() {
-  const { t, saved, threads } = useApp();
+  const { t, saved, threads, theme } = useApp();
   const { parts } = useRoute();
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || theme === 'dark';
+
   return (
-    <aside className="sidebar">
-      <a href="#/" className="brand" aria-label="ASEEL">
-        <LogoMark size={34} />
-        <Wordmark />
-      </a>
-      <nav aria-label="Main">
+    <aside className="sidebar" style={{ paddingLeft: 0, paddingRight: 0 }}>
+      {/* قسم الهيدر الجانبي مع دمج لون الخلفية تلقائياً */}
+      <div style={{ padding: '0.5rem 1.25rem 0' }}>
+        <a 
+          href="#/" 
+          className="brand" 
+          aria-label="ASEEL" 
+          style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'flex-start', 
+            gap: '10px' 
+          }}
+        >
+          <img 
+            src={isDark ? '/logo-dark.png' : '/logo-light.png'} 
+            alt="ASEEL Logo" 
+            style={{ 
+              width: '88px', 
+              height: '88px', 
+              objectFit: 'contain',
+              mixBlendMode: isDark ? 'screen' : 'multiply', 
+              display: 'block'
+            }} 
+          />
+          <Wordmark />
+        </a>
+      </div>
+
+      {/* شريط السدو */}
+      <div style={{ width: '100%', margin: '0.75rem 0' }}>
+        <SaduBand height={14} className="w-full block" />
+      </div>
+
+      {/* قائمة التنقل */}
+      <nav aria-label="Main" style={{ padding: '0 1.25rem' }}>
         {NAV.map(({ to, key, icon: Icon }) => (
           <a key={to} href={`#${to}`} className={clsx('nav-link', isActive(to, parts[0]) && 'is-active')} aria-current={isActive(to, parts[0]) ? 'page' : undefined}>
             <Icon size={19} aria-hidden="true" />
@@ -50,22 +81,38 @@ export function Sidebar() {
           </a>
         ))}
       </nav>
-      <div className="sidebar-foot">
+
+      <div className="sidebar-foot" style={{ padding: '0 1.25rem' }}>
         <ApiPill />
         <p className="small">{t('side.promise')}</p>
       </div>
-      <SaduBand height={12} className="sidebar-band" />
+
+      {/* شريط السدو السفلي */}
+      <div style={{ width: '100%', marginTop: 'auto' }}>
+        <SaduBand height={12} className="sidebar-band w-full block" />
+      </div>
     </aside>
   );
 }
 
 export function TopBar({ children }: { children?: ReactNode }) {
-  const { t, lang, setSettings, setPaletteOpen } = useApp();
-  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const { t, lang, setSettings, setPaletteOpen, theme } = useApp();
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || theme === 'dark';
+
   return (
     <header className="topbar">
-      <a href="#/" className="brand brand-mobile" aria-label="ASEEL">
-        <LogoMark size={28} />
+      <a href="#/" className="brand brand-mobile" aria-label="ASEEL" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <img 
+          src={isDark ? '/logo-dark.png' : '/logo-light.png'} 
+          alt="ASEEL Logo" 
+          style={{ 
+            width: '36px', 
+            height: '36px', 
+            objectFit: 'contain',
+            mixBlendMode: isDark ? 'screen' : 'multiply',
+            display: 'block'
+          }} 
+        />
         <Wordmark />
       </a>
       <button className="search-trigger" onClick={() => setPaletteOpen(true)} aria-label={t('search.open')}>
@@ -82,11 +129,15 @@ export function TopBar({ children }: { children?: ReactNode }) {
         </button>
         <button
           className="icon-btn"
-          onClick={() => setSettings({ theme: dark ? 'light' : 'dark' })}
+          onClick={() => {
+            const nextTheme = isDark ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            setSettings({ theme: nextTheme });
+          }}
           aria-label={t('settings.theme')}
           title={t('settings.theme')}
         >
-          {dark ? <Sun size={19} /> : <Moon size={19} />}
+          {isDark ? <Sun size={19} /> : <Moon size={19} />}
         </button>
       </div>
     </header>
