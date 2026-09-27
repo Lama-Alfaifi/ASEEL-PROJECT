@@ -11,6 +11,7 @@ from agents.response import generate_response
 from utils.monitoring import start_timer, record_run
 from memory.conversation_memory import ConversationMemory
 from translation.layer import detect_and_translate_to_english, translate_from_english
+from utils.region_override import GENERAL, normalize_region_override
 
 def route_after_validation(state: AseelState) -> str:
     confidence = state.get("confidence_score", 0.0)
@@ -60,12 +61,21 @@ def ask(
     query: str,
     conversation_context: str = "",
     memory: ConversationMemory | None = None,
+    user_location: dict | None = None,
+    region_override: str | None = None,
 ) -> dict:
 
     start_time = start_timer()
 
     if memory is None:
         memory = ConversationMemory()
+
+    # Explicit UI region (incl. "General"). None = Auto.
+    region_override = normalize_region_override(region_override)
+
+    if region_override:
+        # An explicit choice always beats the detected location.
+        user_location = None
 
     try:
         # ------------------------------------------------------------
@@ -95,10 +105,14 @@ def ask(
                 f"{conversation_context}"
             )
 
+
         result = workflow.invoke(
             {
                 "query": english_query,
                 "conversation_context": combined_context,
+                "user_location": user_location,
+                "region_override": region_override,
+                "language": detected_language,
                 "attempts": 0,
             }
         )
@@ -136,6 +150,13 @@ def ask(
             ),
             "language": detected_language,
         }
+
+        if region_override == GENERAL:
+            # "General" is a one-off scope choice, not a place. Don't let it
+            # overwrite the remembered city/region, so switching back to Auto
+            # (or to a follow-up) still works from the real remembered location.
+            memory_fields.pop("city", None)
+            memory_fields.pop("region", None)
 
         memory.update_context(memory_fields)
 
@@ -338,4 +359,3 @@ def ask(
 #         )
 
 #         raise
-

@@ -1,0 +1,113 @@
+/* ASEEL design tokens
+   Palette is drawn from Saudi material culture: the flag's palm green, Sadu wool
+   (rust, indigo, ivory) and the gold of a dallah. */
+
+:root {
+  --font-ui: 'IBM Plex Sans Arabic', 'Segoe UI', system-ui, -apple-system, 'Noto Sans Arabic', sans-serif;
+  --font-display: 'Reem Kufi Variable', 'IBM Plex Sans Arabic', 'Segoe UI', system-ui, sans-serif;
+
+  --radius-xl: 22px;
+  --radius-lg: 16px;
+  --radius-md: 11px;
+  --radius-sm: 7px;
+
+  --sidebar-w: 248px;
+  --topbar-h: 62px;
+  --content-max: 1240px;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: clamp(2.2rem, 1.4rem + 2.6vw, 3.5rem);
+}
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #eff2ea;
+  --surface: #fafbf6;
+  --surface-2: #e5eadf;
+  --surface-3: #d9e0d1;
+  --ink: #14231c;
+  --ink-2: #48594f;
+  --ink-3: #6f7f75;
+  --line: #d0d8c7;
+  --line-strong: #b5c0aa;
+
+  --brand: #0a6b3d;
+  --brand-ink: #ffffff;
+  --brand-deep: #06382a;
+  --brand-soft: #d6e8da;
+  --gold: #c99a2e;
+  --gold-soft: #f1e4bd;
+  --rust: #a8452f;
+  --indigo: #2f3f8f;
+
+  --sadu-ground: #06382a;
+  --side-bg: #06382a;
+  --side-ink: #e9f0e3;
+  --side-ink-2: #a9c2b4;
+  --side-active: rgba(255, 255, 255, 0.1);
+
+  --good: #0a6b3d;
+  --warn: #9a6a12;
+  --warn-bg: #f6e9c6;
+  --bad: #a3321f;
+  --bad-bg: #f6ddd6;
+
+  --r-central: #b98722;
+  --r-west: #17788a;
+  --r-east: #2f3f8f;
+  --r-south: #2f8548;
+  --r-north: #a8452f;
+  --r-general: #6a7a70;
+
+  --shadow-float: 0 18px 50px -12px rgba(6, 40, 28, 0.35);
+  --focus: #0a6b3d;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b1512;
+  --surface: #121f1a;
+  --surface-2: #182a23;
+  --surface-3: #21372e;
+  --ink: #e8efe4;
+  --ink-2: #a5b7ac;
+  --ink-3: #7f9388;
+  --line: #24382f;
+  --line-strong: #35503f;
+
+  --brand: #46c283;
+  --brand-ink: #062a1c;
+  --brand-deep: #06382a;
+  --brand-soft: #16402f;
+  --gold: #e0b34d;
+  --gold-soft: #3a3116;
+  --rust: #d9694f;
+  --indigo: #7f8fe0;
+
+  --sadu-ground: #0b1512;
+  --side-bg: #08110e;
+  --side-ink: #e8efe4;
+  --side-ink-2: #8fa598;
+  --side-active: rgba(255, 255, 255, 0.07);
+
+  --good: #46c283;
+  --warn: #e0b34d;
+  --warn-bg: #33290f;
+  --bad: #ef8a75;
+  --bad-bg: #3a1c16;
+
+  --r-central: #c99a30;
+  --r-west: #2596ab;
+  --r-east: #5262c0;
+  --r-south: #3ea55d;
+  --r-north: #c65a42;
+  --r-general: #7f9388;
+
+  --shadow-float: 0 18px 50px -10px rgba(0, 0, 0, 0.7);
+  --focus: #46c283;
+}

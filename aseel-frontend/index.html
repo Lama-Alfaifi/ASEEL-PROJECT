@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#06382a" />
+    <meta name="description" content="ASEEL – verified Saudi cultural etiquette and heritage guidance." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>ASEEL – Saudi culture, from verified sources</title>
+    <script>
+      // Apply saved theme/language before first paint to avoid a flash.
+      try {
+        var s = JSON.parse(localStorage.getItem('aseel.v1.settings') || '{}');
+        var d = document.documentElement;
+        var theme = s.theme || 'system';
+        if (theme === 'system') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        d.setAttribute('data-theme', theme);
+        if (s.lang === 'ar') { d.lang = 'ar'; d.dir = 'rtl'; }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
