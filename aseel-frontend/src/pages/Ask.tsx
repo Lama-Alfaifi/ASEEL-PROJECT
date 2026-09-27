@@ -1,4 +1,4 @@
-import { ArrowUp, MessageSquare, Plus, Trash2 } from 'lucide-react';
+import { ArrowUp, MessageSquare, Plus, Trash2, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnswerCard } from '../components/AnswerCard';
 import { LocationPrompt } from '../components/LocationPrompt';
@@ -9,6 +9,7 @@ import { REGIONS, SAMPLE_QUESTIONS, TOPICS, normalizeRegion, regionName, topicNa
 import { navigate, useRoute } from '../lib/router';
 import type { Message, RegionOrGeneral, Thread } from '../lib/types';
 import { clsx, timeAgo, truncate } from '../lib/utils';
+import { DEFAULT_API_BASE, submitFeedback } from '../lib/api';
 import { useApp } from '../state/store';
 
 /** Region most represented in an answer's evidence (ignores "General"). */
@@ -35,12 +36,20 @@ export default function Ask({ threadId }: { threadId?: string }) {
 
   const [draft, setDraft] = useState('');
   const [region, setRegion] = useState<RegionOrGeneral | null>(null);
+
+  const [feedbackOpen, setFeedbackOpen] = useState<string | null>(null);
+  const [feedbackType, setFeedbackType] = useState<string | null>(null);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [feedbackSent, setFeedbackSent] = useState<string | null>(null);
+  const [feedbackSending, setFeedbackSending] = useState(false);
+
   const endRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
 
   /* /ask?q=…&region=… prefills the composer (used by "Ask about this" on sources and the Explore map) */
   const qParam = params.get('q');
   const regionParam = params.get('region');
+
   useEffect(() => {
     if (qParam) setDraft(qParam);
     if (regionParam) setRegion(normalizeRegion(regionParam));
@@ -63,9 +72,40 @@ export default function Ask({ threadId }: { threadId?: string }) {
   const submit = async (text = draft, opts?: { region?: RegionOrGeneral | null }) => {
     const value = text.trim();
     if (!value || busy) return;
-    const id = await send(value, { threadId: thread?.id, region: opts && 'region' in opts ? opts.region : region });
+
+    const id = await send(value, {
+      threadId: thread?.id,
+      region: opts && 'region' in opts ? opts.region : region,
+    });
+
     setDraft('');
+
     if (id && id !== thread?.id) navigate(`/ask/${id}`);
+  };
+
+  const sendFeedback = async (m: Message) => {
+    if (!feedbackType || feedbackSending) return;
+
+    setFeedbackSending(true);
+
+    try {
+      await submitFeedback(DEFAULT_API_BASE, {
+        type: feedbackType,
+        message: feedbackMessage.trim() || feedbackType,
+        region: m.regionHint ?? null,
+        original_query: m.query ?? null,
+        original_answer: m.content,
+      });
+
+      setFeedbackSent(m.id);
+      setFeedbackOpen(null);
+      setFeedbackMessage('');
+      setFeedbackType(null);
+    } catch (error) {
+      console.error('Feedback submission failed:', error);
+    } finally {
+      setFeedbackSending(false);
+    }
   };
 
   const lastAssistant = useMemo(
@@ -76,46 +116,81 @@ export default function Ask({ threadId }: { threadId?: string }) {
   /* "Ask next": three topics tailored to the region of the last answer */
   const followUps = useMemo(() => {
     if (!lastAssistant?.result || lastAssistant.result.status !== 'grounded') return [];
+
     const r = dominantRegion(lastAssistant) ?? 'general';
     const start = hash(lastAssistant.id) % TOPICS.length;
-    return [0, 3, 6].map((o) => TOPICS[(start + o) % TOPICS.length]).map((tp) => ({ tp, r }));
+
+    return [0, 3, 6]
+      .map((o) => TOPICS[(start + o) % TOPICS.length])
+      .map((tp) => ({ tp, r }));
   }, [lastAssistant]);
 
   return (
     <div className="page ask">
       <aside className="threads" aria-label={t('ask.history')}>
-        <button className="btn btn-block" onClick={() => { setDraft(''); navigate('/ask'); }}>
+        <button
+          className="btn btn-block"
+          onClick={() => {
+            setDraft('');
+            navigate('/ask');
+          }}
+        >
           <Plus size={17} aria-hidden="true" /> {t('ask.new')}
         </button>
+
         <ul>
           {threads.map((th) => (
             <li key={th.id} className={clsx(th.id === threadId && 'is-active')}>
               <a href={`#/ask/${th.id}`}>
-                <span className="thread-title" dir="auto">{truncate(th.title, 48)}</span>
-                <span className="muted small">{timeAgo(th.updatedAt, lang)}</span>
+                <span className="thread-title" dir="auto">
+                  {truncate(th.title, 48)}
+                </span>
+                <span className="muted small">
+                  {timeAgo(th.updatedAt, lang)}
+                </span>
               </a>
+
               <button
                 className="icon-btn icon-btn-sm"
                 aria-label={t('action.delete')}
-                onClick={() => { deleteThread(th.id); if (th.id === threadId) navigate('/ask'); }}
+                onClick={() => {
+                  deleteThread(th.id);
+                  if (th.id === threadId) navigate('/ask');
+                }}
               >
                 <Trash2 size={15} />
               </button>
             </li>
           ))}
-          {threads.length === 0 && <li className="muted small threads-empty">{t('ask.noHistory')}</li>}
+
+          {threads.length === 0 && (
+            <li className="muted small threads-empty">
+              {t('ask.noHistory')}
+            </li>
+          )}
         </ul>
       </aside>
 
       <section className="chat">
         <LocationPrompt />
+
         <div className="chat-scroll">
           {!thread ? (
             <div className="chat-empty">
-              <EmptyState title={t('ask.emptyTitle')}>{t('ask.emptyBody')}</EmptyState>
+              <EmptyState title={t('ask.emptyTitle')}>
+                {t('ask.emptyBody')}
+              </EmptyState>
+
               <div className="prompt-grid">
                 {SAMPLE_QUESTIONS.map((p) => (
-                  <button key={p} className="prompt" dir="ltr" onClick={() => void submit(p, { region: null })}>{p}</button>
+                  <button
+                    key={p}
+                    className="prompt"
+                    dir="ltr"
+                    onClick={() => void submit(p, { region: null })}
+                  >
+                    {p}
+                  </button>
                 ))}
               </div>
             </div>
@@ -124,12 +199,20 @@ export default function Ask({ threadId }: { threadId?: string }) {
               {thread.messages.map((m) =>
                 m.role === 'user' ? (
                   <div key={m.id} className="msg msg-user">
-                    <div className="bubble" dir="auto">{m.content}</div>
-                    {m.regionHint && m.regionHint !== 'general' && <RegionTag region={m.regionHint} />}
+                    <div className="bubble" dir="auto">
+                      {m.content}
+                    </div>
+
+                    {m.regionHint && m.regionHint !== 'general' && (
+                      <RegionTag region={m.regionHint} />
+                    )}
                   </div>
                 ) : m.error ? (
                   <div key={m.id} className="msg">
-                    <ErrorNotice error={m.error} onRetry={() => retry(thread.id, m.id)} />
+                    <ErrorNotice
+                      error={m.error}
+                      onRetry={() => retry(thread.id, m.id)}
+                    />
                   </div>
                 ) : (
                   <div key={m.id} className="msg msg-assistant">
@@ -140,70 +223,197 @@ export default function Ask({ threadId }: { threadId?: string }) {
                       status={m.result?.status ?? 'fallback'}
                       confidence={m.result?.confidence ?? 0}
                       sources={m.result?.sources ?? []}
-                      onAsk={(q) => { setDraft(q); taRef.current?.focus(); }}
+                      onAsk={(q) => {
+                        setDraft(q);
+                        taRef.current?.focus();
+                      }}
                     />
+
+                    {/* Feedback */}
+                    {feedbackSent === m.id ? (
+                      <div className="feedback-success">
+                        Thank you for your feedback.
+                      </div>
+                    ) : (
+                      <div className="feedback">
+                        <span className="muted small">
+                          Was this answer helpful?
+                        </span>
+
+                        <div className="feedback-actions">
+                          <button
+                            type="button"
+                            className={clsx(
+                              'btn btn-quiet btn-sm',
+                              feedbackType === 'helpful' && 'is-on',
+                            )}
+                            onClick={() => {
+                              setFeedbackType('helpful');
+                              setFeedbackOpen(m.id);
+                            }}
+                          >
+                            <ThumbsUp size={14} />
+                            Helpful
+                          </button>
+
+                          <button
+                            type="button"
+                            className={clsx(
+                              'btn btn-quiet btn-sm',
+                              feedbackType === 'needs_improvement' && 'is-on',
+                            )}
+                            onClick={() => {
+                              setFeedbackType('needs_improvement');
+                              setFeedbackOpen(m.id);
+                            }}
+                          >
+                            <ThumbsDown size={14} />
+                            Needs improvement
+                          </button>
+                        </div>
+
+                        {feedbackOpen === m.id && (
+                          <div className="feedback-form">
+                            <textarea
+                              value={feedbackMessage}
+                              onChange={(e) =>
+                                setFeedbackMessage(e.target.value)
+                              }
+                              placeholder="Tell us what could be improved..."
+                              rows={3}
+                              dir="auto"
+                            />
+
+                            <button
+                              type="button"
+                              className="btn btn-primary btn-sm"
+                              disabled={feedbackSending}
+                              onClick={() => void sendFeedback(m)}
+                            >
+                              {feedbackSending
+                                ? 'Sending...'
+                                : 'Send feedback'}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ),
               )}
+
               {busy && (
                 <div className="msg msg-assistant">
-                  <PipelineLoader onCancel={() => thread && cancel(thread.id)} />
+                  <PipelineLoader
+                    onCancel={() => thread && cancel(thread.id)}
+                  />
                 </div>
               )}
-              {!busy && followUps.length > 0 && thread.messages[thread.messages.length - 1]?.role === 'assistant' && (
-                <div className="followups">
-                  <span className="muted small">{t('ask.next')}</span>
-                  <div className="chips">
-                    {followUps.map(({ tp, r }) => {
-                      const Icon = tp.icon;
-                      return (
-                        <button key={tp.id} className="chip chip-btn" onClick={() => void submit(tp.query(r), { region: null })}>
-                          <Icon size={14} aria-hidden="true" />
-                          {topicName(tp, lang)}
-                          {r !== 'general' && <span className="muted">· {regionName(r, lang)}</span>}
-                        </button>
-                      );
-                    })}
+
+              {!busy &&
+                followUps.length > 0 &&
+                thread.messages[thread.messages.length - 1]?.role ===
+                  'assistant' && (
+                  <div className="followups">
+                    <span className="muted small">{t('ask.next')}</span>
+
+                    <div className="chips">
+                      {followUps.map(({ tp, r }) => {
+                        const Icon = tp.icon;
+
+                        return (
+                          <button
+                            key={tp.id}
+                            className="chip chip-btn"
+                            onClick={() =>
+                              void submit(tp.query(r), { region: null })
+                            }
+                          >
+                            <Icon size={14} aria-hidden="true" />
+                            {topicName(tp, lang)}
+
+                            {r !== 'general' && (
+                              <span className="muted">
+                                · {regionName(r, lang)}
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+
               <div ref={endRef} className="chat-end" />
             </div>
           )}
         </div>
 
-        <form className="composer" onSubmit={(e) => { e.preventDefault(); void submit(); }}>
-          <div className="region-pick" role="radiogroup" aria-label={t('ask.regionHint')}>
+        <form
+          className="composer"
+          onSubmit={(e) => {
+            e.preventDefault();
+            void submit();
+          }}
+        >
+          <div
+            className="region-pick"
+            role="radiogroup"
+            aria-label={t('ask.regionHint')}
+          >
             <span className="muted small">{t('ask.region')}</span>
-            {[null, ...REGIONS.map((r) => r.id), 'general' as const].map((r) => (
-              <button
-                key={r ?? 'auto'}
-                type="button"
-                role="radio"
-                aria-checked={region === r}
-                className={clsx('chip chip-btn', region === r && 'is-on')}
-                onClick={() => setRegion(r)}
-              >
-                {r === null ? t('ask.auto') : regionName(r, lang)}
-              </button>
-            ))}
+
+            {[null, ...REGIONS.map((r) => r.id), 'general' as const].map(
+              (r) => (
+                <button
+                  key={r ?? 'auto'}
+                  type="button"
+                  role="radio"
+                  aria-checked={region === r}
+                  className={clsx(
+                    'chip chip-btn',
+                    region === r && 'is-on',
+                  )}
+                  onClick={() => setRegion(r)}
+                >
+                  {r === null ? t('ask.auto') : regionName(r, lang)}
+                </button>
+              ),
+            )}
+
             {(userLoc.city || userLoc.region) && (
               <span className="muted small loc-chip">
-                📍 {[userLoc.city?.replace(/\s+City$/i, ''), userLoc.region ? regionName(userLoc.region, lang) : null]
+                📍{' '}
+                {[
+                  userLoc.city?.replace(/\s+City$/i, ''),
+                  userLoc.region
+                    ? regionName(userLoc.region, lang)
+                    : null,
+                ]
                   .filter(Boolean)
                   .join(' · ')}
               </span>
             )}
           </div>
+
           <div className="composer-box">
-            <MessageSquare size={18} aria-hidden="true" className="composer-icon" />
+            <MessageSquare
+              size={18}
+              aria-hidden="true"
+              className="composer-icon"
+            />
+
             <textarea
               ref={taRef}
               rows={1}
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
+                if (
+                  e.key === 'Enter' &&
+                  !e.shiftKey &&
+                  !e.nativeEvent.isComposing
+                ) {
                   e.preventDefault();
                   void submit();
                 }
@@ -212,7 +422,13 @@ export default function Ask({ threadId }: { threadId?: string }) {
               aria-label={t('home.placeholder')}
               dir="auto"
             />
-            <button className="send" type="submit" disabled={!draft.trim() || busy} aria-label={t('action.send')}>
+
+            <button
+              className="send"
+              type="submit"
+              disabled={!draft.trim() || busy}
+              aria-label={t('action.send')}
+            >
               <ArrowUp size={19} />
             </button>
           </div>

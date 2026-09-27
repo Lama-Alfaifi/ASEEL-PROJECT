@@ -166,3 +166,82 @@ export async function pingApi(baseUrl: string): Promise<PingResult> {
     window.clearTimeout(timer);
   }
 }
+
+export async function submitFeedback(
+  baseUrl: string,
+  data: {
+    type: string;
+    message: string;
+    city?: string | null;
+    region?: string | null;
+    category?: string | null;
+    original_query?: string | null;
+    original_answer?: string | null;
+  },
+) {
+  const res = await fetch(`${normalizeBase(baseUrl)}/feedback`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new ApiError('http', `Server responded with ${res.status}`, res.status);
+  }
+
+  return res.json();
+}
+
+export async function getFeedback(baseUrl: string, status?: string) {
+  const query = status && status !== 'all'
+    ? `?status=${encodeURIComponent(status)}`
+    : '';
+
+  const res = await fetch(
+    `${normalizeBase(baseUrl)}/feedback${query}`,
+    {
+      headers: {
+        Accept: 'application/json',
+      },
+    },
+  );
+
+  if (!res.ok) {
+    throw new ApiError(
+      'http',
+      `Server responded with ${res.status}`,
+      res.status,
+    );
+  }
+
+  return res.json();
+}
+
+export async function updateFeedbackStatus(
+  baseUrl: string,
+  feedbackId: string,
+  action: 'approve' | 'reject',
+) {
+  const res = await fetch(
+    `${normalizeBase(baseUrl)}/feedback/${feedbackId}/${action}`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+    },
+  );
+
+  if (!res.ok) {
+    throw new ApiError(
+      'http',
+      `Server responded with ${res.status}`,
+      res.status,
+    );
+  }
+
+  return res.json();
+}

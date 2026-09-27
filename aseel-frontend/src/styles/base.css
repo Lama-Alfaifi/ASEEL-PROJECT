@@ -137,7 +137,7 @@ main { flex: 1; outline: none; }
 }
 .chip-quiet { border-color: var(--line); background: transparent; color: var(--ink-2); }
 .chip-btn:hover { background: var(--surface-2); }
-.chip-btn.is-on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.chip-btn.is-on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); box-shadow: 0 0 0 2px var(--brand); font-weight: 700; }
 .chip-btn.is-on .muted { color: inherit; opacity: 0.8; }
 .chip .dot, .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--edge, var(--r-general)); display: inline-block; flex-shrink: 0; }
 .chip-btn.is-on .dot { box-shadow: 0 0 0 2px var(--brand-ink); }

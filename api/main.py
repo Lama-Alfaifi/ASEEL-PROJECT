@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import uuid
-
+from fastapi import FastAPI, HTTPException
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
@@ -16,13 +16,8 @@ from config.settings import ROOT_DIR
 from utils.region_geography import load_regions
 from utils.user_location import normalize_user_location, resolve_coordinates
 
-from utils.feedback_store import (
-    save_feedback,
-    list_feedback,
-    get_feedback,
-    set_status,
-)
-
+from utils.feedback_store import save_feedback, list_feedback, get_feedback
+from utils.feedback_service import approve_and_publish, reject as reject_feedback_flow
 
 
 app = FastAPI(
@@ -215,75 +210,19 @@ def get_all_feedback(status: str | None = None):
 
 @app.post("/feedback/{feedback_id}/approve")
 def approve_feedback(feedback_id: str):
-    record = set_status(feedback_id, "approved")
-    return record if record else {"error": "not found"}
+    result = approve_and_publish(feedback_id)
+
+    if result["status"] == "not_found":
+        raise HTTPException(status_code=404, detail=result["message"])
+
+    return result
 
 
 @app.post("/feedback/{feedback_id}/reject")
 def reject_feedback(feedback_id: str):
-    record = set_status(feedback_id, "rejected")
-    return record if record else {"error": "not found"}
+    result = reject_feedback_flow(feedback_id)
 
-# Serves the static frontend at http://localhost:8000/ui/
-app.mount(
-    "/ui",
-    StaticFiles(directory=str(ROOT_DIR / "web"), html=True),
-    name="ui",
-)
+    if result["status"] == "not_found":
+        raise HTTPException(status_code=404, detail=result["message"])
 
-
-
-
-
-
-
-
-
-
-# from __future__ import annotations
-
-# from fastapi import FastAPI
-# from pydantic import BaseModel
-
-# from workflow.graph import ask
-
-
-# app = FastAPI(
-#     title="ASEEL API",
-#     description="Saudi cultural etiquette guidance API",
-#     version="1.0.0",
-# )
-
-
-# class ChatRequest(BaseModel):
-#     message: str
-#     conversation_context: str = ""
-
-
-# class ChatResponse(BaseModel):
-#     answer: str
-#     status: str
-#     confidence_score: float
-#     sources: list[dict]
-
-
-# @app.get("/")
-# def root():
-#     return {
-#         "message": "ASEEL API is running"
-#     }
-
-
-# @app.post("/chat", response_model=ChatResponse)
-# def chat(request: ChatRequest):
-#     result = ask(
-#         request.message,
-#         request.conversation_context,
-#     )
-
-#     return {
-#         "answer": result.get("answer", ""),
-#         "status": result.get("status", "fallback"),
-#         "confidence_score": result.get("confidence_score", 0.0),
-#         "sources": result.get("sources", []),
-#     }
+    return result

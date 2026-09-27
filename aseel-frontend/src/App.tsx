@@ -9,6 +9,7 @@ import Plan from './pages/Plan';
 import Saved from './pages/Saved';
 import Settings from './pages/Settings';
 import { useApp } from './state/store';
+import Feedback from './pages/Feedback';
 
 export default function App() {
   const { parts, pathname } = useRoute();
@@ -36,6 +37,7 @@ export default function App() {
     case 'plan': page = <Plan />; break;
     case 'saved': page = <Saved />; break;
     case 'settings': page = <Settings />; break;
+    case 'feedback': page = <Feedback />; break;
     default: page = <Home />;
   }
 

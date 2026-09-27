@@ -137,6 +137,37 @@ class CulturalVectorStore:
             ],
         )
 
+
+    def upsert_records(self, records: list[KnowledgeRecord]) -> None:
+        """
+        Add or update records WITHOUT touching any existing data.
+
+        Unlike replace(), this never calls delete_collection() — it's safe
+        to call at any time, on any number of records, without risking the
+        existing knowledge base. This is the ONLY method approved
+        human-reviewed feedback may use to reach ChromaDB.
+
+        replace() stays reserved exclusively for scripts/build_index.py's
+        full rebuild from the regional CSVs — the feedback pipeline must
+        never call replace().
+        """
+        if not records:
+            return
+
+        self.collection.upsert(
+            ids=[r.id for r in records],
+            documents=[r.text for r in records],
+            metadatas=[
+                r.metadata
+                | {
+                    "question": r.question,
+                    "answer": r.answer,
+                    "choices": r.choices,
+                }
+                for r in records
+            ],
+        )
+
     def search(
         self,
         query: str,

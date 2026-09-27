@@ -9,16 +9,22 @@ const en = {
   'nav.sources': 'Sources',
   'nav.saved': 'Saved',
   'nav.settings': 'Settings',
+
   'side.promise': "Answers come only from ASEEL's regional knowledge base.",
+
   'search.open': 'Search or ask',
   'search.placeholder': 'Search or ask ASEEL…',
+
   'api.online': 'API online',
+  'api.recheck': 'Recheck',
   'api.offline': 'API offline',
   'api.checking': 'Checking API…',
+
   'map.label': 'Map of Saudi Arabia by ASEEL region',
-    'home.title': 'Your Smart Guide to Saudi Culture & Traditions',
-    'home.sub': 'ASEEL answers only from its regional knowledge base, checks the evidence, and shows you exactly where each answer comes from.',
-    'home.placeholder': 'Ask about a visit, a meal, an occasion or a regional custom…',
+
+  'home.title': 'Your Smart Guide to Saudi Culture & Traditions',
+  'home.sub': 'ASEEL answers only from its regional knowledge base, checks the evidence, and shows you exactly where each answer comes from.',
+  'home.placeholder': 'Ask about a visit, a meal, an occasion or a regional custom…',
   'home.placeholderShort': 'Ask about a custom, a meal or an occasion…',
   'home.ask': 'Ask ASEEL',
   'home.try': 'Try asking',
@@ -30,6 +36,7 @@ const en = {
   'home.recent': 'Recent conversations',
   'home.noChats': 'No conversations yet.',
   'home.noSaved': 'Nothing saved yet.',
+
   'pipe.understand': 'Understand',
   'pipe.retrieve': 'Retrieve',
   'pipe.validate': 'Validate',
@@ -56,12 +63,14 @@ const en = {
   'trust.strong': 'strong evidence',
   'trust.fair': 'passed validation',
   'trust.low': 'below the validation threshold',
+
   'answer.empty': 'No answer text was returned.',
   'answer.drawnFrom': 'Evidence from',
   'answer.evidence': 'Evidence ({n})',
   'answer.noEvidence': 'No evidence returned',
   'answer.evidenceNote': 'These knowledge-base entries passed validation and were given to the answer writer.',
   'answer.evidenceNoteWeak': "These entries were found, but they didn't give enough confidence to write an answer.",
+
   'fallback.title': 'To get a better answer',
   'fallback.tip1': 'Name a region or city, such as the South or Jeddah.',
   'fallback.tip2': 'Say the occasion and your role, for example a guest at a wedding.',
@@ -76,6 +85,7 @@ const en = {
   'action.send': 'Send',
   'action.refresh': 'Ask again',
   'action.apply': 'Apply changes',
+
   'toast.saved': 'Saved',
   'toast.removed': 'Removed from saved',
   'toast.copied': 'Copied',
@@ -223,13 +233,17 @@ const ar: Record<TKey, string> = {
   'nav.sources': 'المصادر',
   'nav.saved': 'المحفوظات',
   'nav.settings': 'الإعدادات',
+
   'side.promise': 'تأتي الإجابات من قاعدة المعرفة الإقليمية لأصيل فقط.',
+
   'search.open': 'بحث أو سؤال',
   'search.placeholder': 'ابحث أو اسأل أصيل…',
+
   'api.online': 'الخادم متصل',
+  'api.recheck': 'أعد فحص الاتصال',
   'api.offline': 'الخادم غير متصل',
   'api.checking': 'جارٍ فحص الاتصال…',
-  'api.recheck': 'أعد فحص الاتصال',
+
   'map.label': 'خريطة السعودية حسب مناطق أصيل',
 
   'home.title': 'العادات السعودية، مشروحة من مصادر موثوقة',
@@ -246,6 +260,7 @@ const ar: Record<TKey, string> = {
   'home.recent': 'المحادثات الأخيرة',
   'home.noChats': 'لا توجد محادثات بعد.',
   'home.noSaved': 'لا يوجد شيء محفوظ بعد.',
+
   'pipe.understand': 'الفهم',
   'pipe.retrieve': 'الاسترجاع',
   'pipe.validate': 'التحقق',
@@ -272,12 +287,14 @@ const ar: Record<TKey, string> = {
   'trust.strong': 'أدلة قوية',
   'trust.fair': 'اجتازت التحقق',
   'trust.low': 'أقل من حد التحقق',
+
   'answer.empty': 'لم يُرجَع نص للإجابة.',
   'answer.drawnFrom': 'الأدلة من',
   'answer.evidence': 'الأدلة ({n})',
   'answer.noEvidence': 'لا توجد أدلة',
   'answer.evidenceNote': 'اجتازت هذه المدخلات التحقق وقُدّمت لكاتب الإجابة.',
   'answer.evidenceNoteWeak': 'وُجدت هذه المدخلات لكنها لم تمنح ثقة كافية لكتابة إجابة.',
+
   'fallback.title': 'للحصول على إجابة أفضل',
   'fallback.tip1': 'اذكر منطقة أو مدينة، مثل الجنوب أو جدة.',
   'fallback.tip2': 'اذكر المناسبة ودورك، مثل ضيف في حفل زفاف.',
@@ -292,6 +309,7 @@ const ar: Record<TKey, string> = {
   'action.send': 'إرسال',
   'action.refresh': 'اسأل مجدداً',
   'action.apply': 'تطبيق',
+
   'toast.saved': 'تم الحفظ',
   'toast.removed': 'أُزيل من المحفوظات',
   'toast.copied': 'تم النسخ',
@@ -430,8 +448,18 @@ const ar: Record<TKey, string> = {
 
 const dictionaries: Record<Lang, Record<TKey, string>> = { en, ar };
 
-export function translate(lang: Lang, key: TKey, vars?: Record<string, string | number>): string {
+export function translate(
+  lang: Lang,
+  key: TKey,
+  vars?: Record<string, string | number>,
+): string {
   let s: string = dictionaries[lang][key] ?? en[key] ?? key;
-  if (vars) for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(String(v));
+
+  if (vars) {
+    for (const [k, v] of Object.entries(vars)) {
+      s = s.split(`{${k}}`).join(String(v));
+    }
+  }
+
   return s;
 }

@@ -251,3 +251,9 @@ details > summary { cursor: pointer; color: var(--brand); }
   .search-trigger span { display: none; }
   .topbar-actions { margin-inline-start: 0; }
 }
+
+.feedback { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.feedback-actions { display: flex; gap: 8px; }
+.feedback-form { display: flex; flex-direction: column; gap: 8px; max-width: 500px; }
+.feedback-form textarea { width: 100%; min-height: 70px; resize: vertical; }
+.feedback-success { margin-top: 10px; font-size: 13px; opacity: 0.75; }
