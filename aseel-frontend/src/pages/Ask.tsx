@@ -1,11 +1,25 @@
-import { ArrowUp, MessageSquare, Plus, Trash2, ThumbsUp, ThumbsDown } from 'lucide-react';
+import {
+  ArrowUp,
+  MessageSquare,
+  Plus,
+  Trash2,
+  ThumbsUp,
+  ThumbsDown,
+} from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnswerCard } from '../components/AnswerCard';
 import { LocationPrompt } from '../components/LocationPrompt';
 import { PipelineLoader } from '../components/PipelineLoader';
 import { EmptyState, ErrorNotice } from '../components/States';
 import { RegionTag } from '../components/Trust';
-import { REGIONS, SAMPLE_QUESTIONS, TOPICS, normalizeRegion, regionName, topicName } from '../lib/regions';
+import {
+  REGIONS,
+  SAMPLE_QUESTIONS,
+  TOPICS,
+  normalizeRegion,
+  regionName,
+  topicName,
+} from '../lib/regions';
 import { navigate, useRoute } from '../lib/router';
 import type { Message, RegionOrGeneral, Thread } from '../lib/types';
 import { clsx, timeAgo, truncate } from '../lib/utils';
@@ -15,23 +29,47 @@ import { useApp } from '../state/store';
 /** Region most represented in an answer's evidence (ignores "General"). */
 function dominantRegion(m: Message): RegionOrGeneral | null {
   const counts = new Map<RegionOrGeneral, number>();
+
   m.result?.sources.forEach((s) => {
     const r = normalizeRegion(s.region);
-    if (r !== 'general') counts.set(r, (counts.get(r) ?? 0) + 1);
+
+    if (r !== 'general') {
+      counts.set(r, (counts.get(r) ?? 0) + 1);
+    }
   });
-  return [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+
+  return (
+    [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
+  );
 }
 
 function hash(s: string) {
   let h = 0;
-  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+
+  for (let i = 0; i < s.length; i++) {
+    h = (h * 31 + s.charCodeAt(i)) | 0;
+  }
+
   return Math.abs(h);
 }
 
 export default function Ask({ threadId }: { threadId?: string }) {
-  const { t, lang, threads, pending, send, retry, cancel, deleteThread, location: userLoc } = useApp();
+  const {
+    t,
+    lang,
+    threads,
+    pending,
+    send,
+    retry,
+    cancel,
+    deleteThread,
+    location: userLoc,
+  } = useApp();
+
   const { params } = useRoute();
+
   const thread: Thread | undefined = threads.find((x) => x.id === threadId);
+
   const busy = threadId ? pending[threadId] != null : false;
 
   const [draft, setDraft] = useState('');
@@ -40,37 +78,54 @@ export default function Ask({ threadId }: { threadId?: string }) {
   const [feedbackOpen, setFeedbackOpen] = useState<string | null>(null);
   const [feedbackType, setFeedbackType] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [feedbackRegion, setFeedbackRegion] =
+    useState<RegionOrGeneral | null>(null);
   const [feedbackSent, setFeedbackSent] = useState<string | null>(null);
   const [feedbackSending, setFeedbackSending] = useState(false);
 
   const endRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
 
-  /* /ask?q=…&region=… prefills the composer (used by "Ask about this" on sources and the Explore map) */
+  /* /ask?q=…&region=… prefills the composer */
   const qParam = params.get('q');
   const regionParam = params.get('region');
 
   useEffect(() => {
     if (qParam) setDraft(qParam);
-    if (regionParam) setRegion(normalizeRegion(regionParam));
-    if (qParam || regionParam) taRef.current?.focus();
+
+    if (regionParam) {
+      setRegion(normalizeRegion(regionParam));
+    }
+
+    if (qParam || regionParam) {
+      taRef.current?.focus();
+    }
   }, [qParam, regionParam]);
 
   /* keep the newest message in view */
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    endRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
   }, [thread?.messages.length, busy]);
 
   /* grow the textarea with its content */
   useEffect(() => {
     const el = taRef.current;
+
     if (!el) return;
+
     el.style.height = 'auto';
     el.style.height = `${Math.min(el.scrollHeight, 180)}px`;
   }, [draft]);
 
-  const submit = async (text = draft, opts?: { region?: RegionOrGeneral | null }) => {
+  const submit = async (
+    text = draft,
+    opts?: { region?: RegionOrGeneral | null },
+  ) => {
     const value = text.trim();
+
     if (!value || busy) return;
 
     const id = await send(value, {
@@ -80,11 +135,13 @@ export default function Ask({ threadId }: { threadId?: string }) {
 
     setDraft('');
 
-    if (id && id !== thread?.id) navigate(`/ask/${id}`);
+    if (id && id !== thread?.id) {
+      navigate(`/ask/${id}`);
+    }
   };
 
   const sendFeedback = async (m: Message) => {
-    if (!feedbackType || feedbackSending) return;
+    if (!feedbackType || feedbackSending || !feedbackRegion) return;
 
     setFeedbackSending(true);
 
@@ -92,7 +149,7 @@ export default function Ask({ threadId }: { threadId?: string }) {
       await submitFeedback(DEFAULT_API_BASE, {
         type: feedbackType,
         message: feedbackMessage.trim() || feedbackType,
-        region: m.regionHint ?? null,
+        region: feedbackRegion,
         original_query: m.query ?? null,
         original_answer: m.content,
       });
@@ -101,6 +158,7 @@ export default function Ask({ threadId }: { threadId?: string }) {
       setFeedbackOpen(null);
       setFeedbackMessage('');
       setFeedbackType(null);
+      setFeedbackRegion(null);
     } catch (error) {
       console.error('Feedback submission failed:', error);
     } finally {
@@ -109,13 +167,21 @@ export default function Ask({ threadId }: { threadId?: string }) {
   };
 
   const lastAssistant = useMemo(
-    () => [...(thread?.messages ?? [])].reverse().find((m) => m.role === 'assistant' && m.result),
+    () =>
+      [...(thread?.messages ?? [])]
+        .reverse()
+        .find((m) => m.role === 'assistant' && m.result),
     [thread],
   );
 
   /* "Ask next": three topics tailored to the region of the last answer */
   const followUps = useMemo(() => {
-    if (!lastAssistant?.result || lastAssistant.result.status !== 'grounded') return [];
+    if (
+      !lastAssistant?.result ||
+      lastAssistant.result.status !== 'grounded'
+    ) {
+      return [];
+    }
 
     const r = dominantRegion(lastAssistant) ?? 'general';
     const start = hash(lastAssistant.id) % TOPICS.length;
@@ -140,11 +206,15 @@ export default function Ask({ threadId }: { threadId?: string }) {
 
         <ul>
           {threads.map((th) => (
-            <li key={th.id} className={clsx(th.id === threadId && 'is-active')}>
+            <li
+              key={th.id}
+              className={clsx(th.id === threadId && 'is-active')}
+            >
               <a href={`#/ask/${th.id}`}>
                 <span className="thread-title" dir="auto">
                   {truncate(th.title, 48)}
                 </span>
+
                 <span className="muted small">
                   {timeAgo(th.updatedAt, lang)}
                 </span>
@@ -155,7 +225,10 @@ export default function Ask({ threadId }: { threadId?: string }) {
                 aria-label={t('action.delete')}
                 onClick={() => {
                   deleteThread(th.id);
-                  if (th.id === threadId) navigate('/ask');
+
+                  if (th.id === threadId) {
+                    navigate('/ask');
+                  }
                 }}
               >
                 <Trash2 size={15} />
@@ -274,6 +347,30 @@ export default function Ask({ threadId }: { threadId?: string }) {
 
                         {feedbackOpen === m.id && (
                           <div className="feedback-form">
+                            <select
+                              value={feedbackRegion ?? ''}
+                              onChange={(e) =>
+                                setFeedbackRegion(
+                                  e.target.value
+                                    ? (e.target.value as RegionOrGeneral)
+                                    : null,
+                                )
+                              }
+                              aria-label="Select region"
+                            >
+                              <option value="">Select region</option>
+
+                              <option value="general">
+                                {regionName('general', lang)}
+                              </option>
+
+                              {REGIONS.map((r) => (
+                                <option key={r.id} value={r.id}>
+                                  {regionName(r.id, lang)}
+                                </option>
+                              ))}
+                            </select>
+
                             <textarea
                               value={feedbackMessage}
                               onChange={(e) =>
@@ -287,7 +384,9 @@ export default function Ask({ threadId }: { threadId?: string }) {
                             <button
                               type="button"
                               className="btn btn-primary btn-sm"
-                              disabled={feedbackSending}
+                              disabled={
+                                feedbackSending || !feedbackRegion
+                              }
                               onClick={() => void sendFeedback(m)}
                             >
                               {feedbackSending
@@ -376,7 +475,9 @@ export default function Ask({ threadId }: { threadId?: string }) {
                   )}
                   onClick={() => setRegion(r)}
                 >
-                  {r === null ? t('ask.auto') : regionName(r, lang)}
+                  {r === null
+                    ? t('ask.auto')
+                    : regionName(r, lang)}
                 </button>
               ),
             )}

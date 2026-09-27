@@ -6,6 +6,7 @@ import {
   updateFeedbackStatus,
 } from '../lib/api';
 import { clsx } from '../lib/utils';
+import { useApp } from '../state/store';
 
 type FeedbackItem = {
   id: string;
@@ -19,25 +20,10 @@ type FeedbackItem = {
   original_answer: string | null;
   status: string;
   validation: unknown;
+  knowledge_base_status?: 'added' | 'failed' | 'skipped_duplicate' | null;
+  knowledge_base_id?: string | null;
+  approved_at?: string | null;
 };
-
-const FILTERS = [
-  { value: 'all', label: 'All' },
-  { value: 'pending', label: 'Pending' },
-  { value: 'needs_review', label: 'Needs Review' },
-  { value: 'approved', label: 'Approved' },
-  { value: 'rejected', label: 'Rejected' },
-];
-
-function formatDate(value: string) {
-  const date = new Date(value);
-
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
-
-  return date.toLocaleString();
-}
 
 function formatType(type: string) {
   return type
@@ -52,7 +38,56 @@ function getStatusClass(status: string) {
   return 'status-pending';
 }
 
+function kbStatusLabel(
+  item: FeedbackItem,
+  t: (key: any, vars?: Record<string, string | number>) => string,
+): { text: string; tone: 'good' | 'bad' | 'neutral' } | null {
+  if (item.status !== 'approved' || !item.knowledge_base_status) return null;
+
+  switch (item.knowledge_base_status) {
+    case 'added':
+      return { text: t('feedback.kbAdded'), tone: 'good' };
+    case 'failed':
+      return { text: t('feedback.kbFailed'), tone: 'bad' };
+    case 'skipped_duplicate':
+      return { text: t('feedback.kbDuplicate'), tone: 'neutral' };
+    default:
+      return null;
+  }
+}
+
 export default function Feedback() {
+  const { t, lang } = useApp();
+
+  const FILTERS = [
+    { value: 'all', label: t('feedback.filterAll') },
+    { value: 'pending', label: t('feedback.filterPending') },
+    { value: 'needs_review', label: t('feedback.filterNeedsReview') },
+    { value: 'approved', label: t('feedback.filterApproved') },
+    { value: 'rejected', label: t('feedback.filterRejected') },
+  ];
+
+  const STATUS_LABELS: Record<string, string> = {
+    pending: t('feedback.statusPending'),
+    needs_review: t('feedback.statusNeedsReview'),
+    approved: t('feedback.statusApproved'),
+    rejected: t('feedback.statusRejected'),
+  };
+
+  function statusLabel(status: string) {
+    return STATUS_LABELS[status] ?? formatType(status);
+  }
+
+  function formatDate(value: string) {
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return value;
+    }
+
+    return date.toLocaleString(lang === 'ar' ? 'ar' : 'en');
+  }
+
   const [items, setItems] = useState<FeedbackItem[]>([]);
   const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
@@ -69,7 +104,7 @@ export default function Feedback() {
       setItems(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error(err);
-      setError('Could not load feedback.');
+      setError(t('feedback.loadError'));
     } finally {
       setLoading(false);
     }
@@ -77,6 +112,7 @@ export default function Feedback() {
 
   useEffect(() => {
     void loadFeedback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   async function handleStatus(
@@ -96,7 +132,7 @@ export default function Feedback() {
       await loadFeedback();
     } catch (err) {
       console.error(err);
-      setError('Could not update feedback.');
+      setError(t('feedback.updateError'));
     } finally {
       setUpdating(null);
     }
@@ -236,6 +272,21 @@ export default function Feedback() {
         .status-rejected {
           background: #f1dada;
           color: #9a3434;
+        }
+
+        .kb-status-good {
+          background: #dcebdd;
+          color: #28613b;
+        }
+
+        .kb-status-bad {
+          background: #f1dada;
+          color: #9a3434;
+        }
+
+        .kb-status-neutral {
+          background: #eee6d8;
+          color: #6b5a3a;
         }
 
         .feedback-date {
@@ -440,10 +491,8 @@ export default function Feedback() {
       <div className="page-head">
         <div>
           <p className="eyebrow">ASEEL</p>
-          <h1>Feedback</h1>
-          <p className="muted">
-            Review user feedback and manage improvement requests.
-          </p>
+          <h1>{t('feedback.title')}</h1>
+          <p className="muted">{t('feedback.subtitle')}</p>
         </div>
 
         <button
@@ -453,7 +502,7 @@ export default function Feedback() {
           disabled={loading}
         >
           <RefreshCw size={16} />
-          Refresh
+          {t('feedback.refresh')}
         </button>
       </div>
 
@@ -481,11 +530,11 @@ export default function Feedback() {
 
       {loading ? (
         <div className="feedback-empty">
-          Loading feedback...
+          {t('feedback.loading')}
         </div>
       ) : items.length === 0 ? (
         <div className="feedback-empty">
-          No feedback found.
+          {t('feedback.empty')}
         </div>
       ) : (
         <div className="feedback-list">
@@ -494,6 +543,7 @@ export default function Feedback() {
             const canReview =
               item.status === 'pending' ||
               item.status === 'needs_review';
+            const kb = kbStatusLabel(item, t);
 
             return (
               <article
@@ -518,8 +568,19 @@ export default function Feedback() {
                           getStatusClass(item.status),
                         )}
                       >
-                        {formatType(item.status)}
+                        {statusLabel(item.status)}
                       </span>
+
+                      {kb && (
+                        <span
+                          className={clsx(
+                            'feedback-status',
+                            `kb-status-${kb.tone}`,
+                          )}
+                        >
+                          {kb.text}
+                        </span>
+                      )}
                     </div>
 
                     <span className="feedback-date">
@@ -527,12 +588,12 @@ export default function Feedback() {
                     </span>
                   </div>
 
-                  <div className="feedback-preview">
-                    {item.message || 'No message provided.'}
+                  <div className="feedback-preview" dir="auto">
+                    {item.message || t('feedback.noMessage')}
                   </div>
 
                   {item.original_query && (
-                    <div className="feedback-question-preview">
+                    <div className="feedback-question-preview" dir="auto">
                       {item.original_query}
                     </div>
                   )}
@@ -544,7 +605,7 @@ export default function Feedback() {
                     )}
                   >
                     <span>
-                      {isOpen ? 'Hide details' : 'View details'}
+                      {isOpen ? t('feedback.hideDetails') : t('feedback.viewDetails')}
                     </span>
                     <ChevronDown size={15} />
                   </div>
@@ -555,9 +616,9 @@ export default function Feedback() {
                     {item.original_query && (
                       <div className="feedback-section">
                         <div className="feedback-label">
-                          Original question
+                          {t('feedback.originalQuestion')}
                         </div>
-                        <div className="feedback-content">
+                        <div className="feedback-content" dir="auto">
                           {item.original_query}
                         </div>
                       </div>
@@ -566,9 +627,9 @@ export default function Feedback() {
                     {item.original_answer && (
                       <div className="feedback-section">
                         <div className="feedback-label">
-                          ASEEL answer
+                          {t('feedback.aseelAnswer')}
                         </div>
-                        <div className="feedback-content">
+                        <div className="feedback-content" dir="auto">
                           {item.original_answer}
                         </div>
                       </div>
@@ -576,10 +637,10 @@ export default function Feedback() {
 
                     <div className="feedback-section">
                       <div className="feedback-label">
-                        User feedback
+                        {t('feedback.userFeedback')}
                       </div>
-                      <div className="feedback-content">
-                        {item.message || 'No message provided.'}
+                      <div className="feedback-content" dir="auto">
+                        {item.message || t('feedback.noMessage')}
                       </div>
                     </div>
 
@@ -588,17 +649,15 @@ export default function Feedback() {
                       item.category) && (
                       <div className="feedback-meta">
                         {item.city && (
-                          <span>City: {item.city}</span>
+                          <span>{t('feedback.city', { value: item.city })}</span>
                         )}
 
                         {item.region && (
-                          <span>Region: {item.region}</span>
+                          <span>{t('feedback.region', { value: item.region })}</span>
                         )}
 
                         {item.category && (
-                          <span>
-                            Category: {item.category}
-                          </span>
+                          <span>{t('feedback.category', { value: item.category })}</span>
                         )}
                       </div>
                     )}
@@ -620,7 +679,7 @@ export default function Feedback() {
                       }}
                     >
                       <Check size={16} />
-                      Approve
+                      {t('feedback.approve')}
                     </button>
 
                     <button
@@ -636,7 +695,7 @@ export default function Feedback() {
                       }}
                     >
                       <X size={16} />
-                      Reject
+                      {t('feedback.reject')}
                     </button>
                   </div>
                 )}

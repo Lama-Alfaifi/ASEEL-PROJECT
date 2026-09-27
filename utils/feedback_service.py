@@ -74,6 +74,7 @@ def approve_and_publish(feedback_id: str) -> dict:
 
     Returns {success, status, knowledge_base_updated, message}.
     """
+    print(f"DEBUG: approve_and_publish called with {feedback_id}")
     record = get_feedback(feedback_id)
 
     if record is None:
@@ -86,6 +87,8 @@ def approve_and_publish(feedback_id: str) -> dict:
 
     message = record.get("message", "") or ""
     region = CulturalVectorStore.normalize_region(record.get("region"))
+    print(f"DEBUG: message={message!r}")
+    print(f"DEBUG: region={region!r}")
 
     # 1. Deterministic content gate.
     if _looks_like_junk(message):
@@ -105,6 +108,7 @@ def approve_and_publish(feedback_id: str) -> dict:
         )
 
     # 3. Duplicate check — semantic, reusing the existing search() method.
+    print("DEBUG: before duplicate check")
     if _duplicate_match(message, region):
         update_feedback(
             feedback_id,
@@ -131,6 +135,7 @@ def approve_and_publish(feedback_id: str) -> dict:
     # Deterministic id from the feedback_id itself: re-approving the same
     # feedback twice upserts the same document rather than duplicating it.
     kb_id = str(uuid5(NAMESPACE_URL, f"feedback:{feedback_id}"))
+    print("DEBUG: creating KnowledgeRecord")
 
     kb_record = KnowledgeRecord(
         id=kb_id,
@@ -144,9 +149,11 @@ def approve_and_publish(feedback_id: str) -> dict:
     )
 
     # 5. Upsert only — never touches the existing 541 records.
+    print("DEBUG: before Chroma upsert")
     try:
         _store.upsert_records([kb_record])
     except Exception as exc:
+        print(f"FEEDBACK KB ERROR: {exc!r}")
         return _mark_failed(
             feedback_id,
             f"Approved, but updating the knowledge base failed: {exc}",

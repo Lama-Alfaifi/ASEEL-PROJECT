@@ -1,8 +1,8 @@
 import { ArrowRight, Bookmark, Compass, MessageSquare, Search, ShieldCheck, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SaduBand } from '../components/Brand';
 import { SaudiMap } from '../components/SaudiMap';
-import { SAMPLE_QUESTIONS, TOPICS, topicHint, topicName } from '../lib/regions';
+import { TOPICS, topicHint, topicName } from '../lib/regions';
 import { navigate } from '../lib/router';
 import { timeAgo, truncate } from '../lib/utils';
 import { useApp } from '../state/store';
@@ -15,8 +15,15 @@ const HOW = [
 ] as const;
 
 export default function Home() {
-  const { t, lang, send, threads, saved } = useApp();
+  const { t, lang, send, threads, saved, location, allowLocation } = useApp();
   const [q, setQ] = useState('');
+  const detectedRegion = location.region ?? 'general';
+
+  useEffect(() => {
+    if (location.permission === 'unknown') {
+      void allowLocation();
+    }
+  }, [location.permission, allowLocation]);
 
   const ask = async (text: string) => {
     const id = await send(text);
@@ -48,9 +55,20 @@ export default function Home() {
           <div className="try">
             <span className="muted small">{t('home.try')}</span>
             <div className="chips">
-              {SAMPLE_QUESTIONS.slice(0, 4).map((p) => (
-                <button key={p} className="chip chip-btn" dir="ltr" onClick={() => void ask(p)}>{p}</button>
-              ))}
+              {TOPICS.slice(0, 4).map((topic) => {
+                const question = topic.query(detectedRegion);
+
+                return (
+                  <button
+                    key={topic.id}
+                    className="chip chip-btn"
+                    dir="ltr"
+                    onClick={() => void ask(question)}
+                  >
+                    {question}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

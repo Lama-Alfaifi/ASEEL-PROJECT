@@ -11,6 +11,7 @@ import Settings from './pages/Settings';
 import { useApp } from './state/store';
 import Feedback from './pages/Feedback';
 
+
 export default function App() {
   const { parts, pathname } = useRoute();
   const { setPaletteOpen, paletteOpen, t } = useApp();
@@ -32,14 +33,33 @@ export default function App() {
 
   let page;
   switch (parts[0]) {
-    case 'ask': page = <Ask key={parts[1] ?? 'new'} threadId={parts[1]} />; break;
-    case 'explore': page = <Explore regionParam={parts[1]} />; break;
-    case 'plan': page = <Plan />; break;
-    case 'saved': page = <Saved />; break;
-    case 'settings': page = <Settings />; break;
-    case 'feedback': page = <Feedback />; break;
-    default: page = <Home />;
-  }
+  case 'ask':
+    page = <Ask key={parts[1] ?? 'new'} threadId={parts[1]} />;
+    break;
+
+  case 'explore':
+    page = <Explore regionParam={parts[1]} />;
+    break;
+
+  case 'plan':
+    page = <Plan />;
+    break;
+
+  case 'saved':
+    page = <Saved />;
+    break;
+
+  case 'settings':
+    page = <Settings />;
+    break;
+
+  case 'feedback':
+    page = <Feedback />;
+    break;
+
+  default:
+    page = <Home />;
+}
 
   return (
     <div className="app">

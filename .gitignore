@@ -11,3 +11,9 @@ data/raw/*
 !data/raw/GENERAL.csv
 !data/raw/EAST.csv
 !data/raw/CENTERAL.csv
+# Frontend build output
+aseel-frontend/dist/
+
+# Runtime data
+data/feedback.jsonl
+data/monitoring.jsonl
