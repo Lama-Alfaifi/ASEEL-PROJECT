@@ -1,97 +1,221 @@
-Question,Choices,Answer,Question Type,Domain,Category
-What is the most common dish in South Saudi Arabia?,–,"Areeka, Mashghoutha, Raksh dish, Khameer, Lahoh, Haneeth, Aseedah",Open-ended,Common,Food
-What is the most common sweet in South Saudi Arabia?,–,"Marsa (Jazan), Dates",Open-ended,Common,Food
-What is the common traditional street food in South Saudi Arabia?,–,"Tanoor Bread, Barbary Fig (Prickly Pear), Corn, Tea",Open-ended,Common,Food
-What is the most common breakfast dish in South Saudi Arabia?,–,"Areeka, Tanoor Bread, Ghee, Honey",Open-ended,Common,Food
-What is the common traditional drink in South Saudi Arabia?,–,"Coffee, Qishr (Coffee Husk Drink)",Open-ended,Common,Food
-What is the traditional clothing for men in South Saudi Arabia?,–,"Mofraj, Izar (also called Ma’awiz, Maqtab, Fouta, or Musanaf) — a lower-body wrap garment worn by men",Open-ended,Common,Clothes
-What is the traditional clothing for women in South Saudi Arabia?,–,Thobe Asiri,Open-ended,Common,Clothes
-What is the traditional breakfast dish during Eid Al-Fitr in South Saudi Arabia?,–,"Wheat with Ghee and Honey, Mashghoutha, Areeka, Marsa, and Salted Fish",Open-ended,Common,Celebration
-What are the common traditional dances in South Saudi Arabia?,–,"Gazwai, Ardah Janoubiyah, La’b Shahri, Khatwah Janoubiyah, Dammah",Open-ended,Common,Celebration
-What is the common traditional music in South Saudi Arabia?,–,Al-Damma,Open-ended,Common,Entertainment
-What is the common traditional craft in South Saudi Arabia?,–,"Wood Dish Crafting (Sihaf), Al-Qatt Al-Asiri Art, Aromatic Plant Decoration (garlands, headbands, bouquets), Land Plowing Tools (Sabt)",Open-ended,Common,Crafts and Work
-What is the name of the items the bride buys for her wedding in South Saudi Arabia?,–,Marwah (traditional bridal set),Open-ended,Common,Dating
-What is the average amount of dowry presented to the wife in Saudi Arabia?,–,"40,000 SAR",Open-ended,Common,Dating
-What is the name of the traditional butter dish served in South Saudi Arabia?,–,Radifah,Open-ended,Specialized,Food
-"What is a popular dish known in the southern region of Saudi Arabia, served hot with honey, ghee, and dates?",–,Mashghoutha,Open-ended,Specialized,Food
-In which regions of Saudi Arabia is the traditional dish “Haneeth” popular?,–,Southern Region,Open-ended,Specialized,Food
-What is the name of the traditional food served to guests in the afternoon in South Saudi Arabia?,–,Wasel,Open-ended,Specialized,Food
-What is the traditional oven or pot used for baking in South Saudi Arabia?,–,Tannour,Open-ended,Specialized,Food
-In which region of Saudi Arabia is “Al-Maghsh” considered a traditional dish?,–,Jazan,Open-ended,Specialized,Food
-What is the name of the traditional clothes in Tehama in South Saudi Arabia?,–,Wizra,Open-ended,Specialized,Clothes
-What are the most common greeting phrases in Al-Baha?,–,"“Marhaban Heel… Ad Al-Seel” (Welcome countless times, like the floodwaters)",Open-ended,Specialized,Languages and Communication
-What is the name of the traditional folklore performed at weddings and for greeting guests from different tribes in South Saudi Arabia?,–,Medgal,Open-ended,Specialized,Dating
-“Beit Al-Esha” is a traditional architectural style. Which region in Saudi Arabia is known for this style?,–,Jazan,Open-ended,Specialized,Crafts and Work
-"In which area is the “vegetative style” architecture, known as “Al-Ishash,” commonly found in the Asir region due to its ease of construction?",–,Tihama,Open-ended,Specialized,Crafts and Work
-In which region of Saudi Arabia is juniper wood (“Arar”) traditionally used in architecture?,–,"Baha, Asir, South",Open-ended,Specialized,Crafts and Work
-"What does the guest room consist of in Jazan, Saudi Arabia?",–,Beds,Open-ended,Specialized,Crafts and Work
-In which region of Saudi Arabia do traditional sitting rooms (majalis) include a stone fireplace used for cooking and preparing coffee in front of guests?,–,Asir,Open-ended,Specialized,Crafts and Work
-The “Sword Dance” is a traditional folk dance in Saudi Arabia associated with which region?,–,Jazan,Open-ended,Specialized,Entertainment
-"What is the form of singing performed individually in South Saudi Arabia, relying on creative embellishments, often during travels?",–,Tarq,Open-ended,Specialized,Entertainment
-The “Del’a Dance” is a traditional dance in Saudi Arabia associated with which region?,–,Southern Region,Open-ended,Specialized,Entertainment
-The “Janbiya Dance” is a traditional folk dance popular in which region of Saudi Arabia?,–,"Jazan, South",Open-ended,Specialized,Entertainment
-In which region of Saudi Arabia is the “Al-Azawi Dance” primarily performed?,–,Jazan,Open-ended,Specialized,Entertainment
-Is it acceptable in South Saudi Arabia for the host to ask the guest about his updates before serving coffee?,–,Not acceptable,Open-ended,Specialized,Languages and Communication
-"What is the name given to the artist who paints Al-Qatt Al-Asiri, the traditional Asiri wall art?",–,Al-Qattatah,Open-ended,Specialized,Crafts and Work
-What is the most expensive part of a traditional Saudi Janbiya (dagger) that determines its price?,–,Hilt,Open-ended,Specialized,Crafts and Work
-What material is traditionally used to make the “Janbiya” dagger in Najran?,–,Iron,Open-ended,Specialized,Crafts and Work
-"What describes “Al-Qatt Al-Asiri,” a traditional art form in the Asir region?",–,A women’s art of decoration and engraving,Open-ended,Specialized,Crafts and Work
-What is the most common traditional craft in Najran city?,–,Dagger making,Open-ended,Specialized,Crafts and Work
-What is the most common dish in South Saudi Arabia?,A. Hanini B. Jareesh C. Mansaf D. Areeka,Areeka,MCQ (one correct),Common,Food
-What is the most popular sweet in South Saudi Arabia?,A. Kleija B. Marsa C. Luqaimat D. Kunafa,Marsa,MCQ (one correct),Common,Food
-What is the most common traditional street food in South Saudi Arabia?,A. Tanoor Bread B. Areeka C. Mutabbaq D. Shawarma,Tanoor Bread,MCQ (one correct),Common,Food
-What is the most common breakfast dish in South Saudi Arabia?,A. Saleeq B. Areeka C. Ful Medames D. Samboosa,Areeka,MCQ (one correct),Common,Food
-What is the most common traditional drink in South Saudi Arabia?,A. Mango Juice B. Rose Latte C. Qishr D. Almond Coffee,Qishr,MCQ (one correct),Common,Food
-What is the traditional clothing for men in South Saudi Arabia?,A. Al-Mirwaden B. Al-Thobe and Al-Sudairi C. Al-Dishdasha D. Al-Mufraj,Al-Mufraj,MCQ (one correct),Common,Clothes
-What is the traditional clothing for women in South Saudi Arabia?,A. Dara’aah B. Thobe Asiri C. Short Skirt D. Al-Mufraj,Thobe Asiri,MCQ (one correct),Common,Clothes
-What is the traditional breakfast dish during Eid Al-Fitr in South Saudi Arabia?,A. Jareesh and Qursan B. Areeka with Ghee C. Mashghoutha D. Kleija,Areeka with Ghee,MCQ (one correct),Common,Celebration
-What are the common traditional dances in South Saudi Arabia?,A. Al-Samri B. Al-Qazoui C. Al-Dabka D. Al-Tarouq,Al-Qazoui,MCQ (one correct),Common,Celebration
-What is the common traditional music in South Saudi Arabia?,A. Al-Samri B. Al-Mawal C. Al-Damma D. Al-Aghani Al-Bahriya,Al-Damma,MCQ (one correct),Common,Entertainment
-What is the common traditional craft in South Saudi Arabia?,A. Sadu Weaving B. Al-Mawal C. Al-Qatt Painting D. Palm Weaving,Al-Qatt Painting,MCQ (one correct),Common,Crafts and Work
-What is the name of the items the bride buys for her wedding in South Saudi Arabia?,A. Shabka B. Dabsh C. Gold D. Mirwah,Mirwah,MCQ (one correct),Common,Dating
-What is the average amount of dowry presented to the wife in South Saudi Arabia?,"A. 30,000–40,000 SAR B. 40,000–60,000 SAR C. 50,000–70,000 SAR D. 60,000–100,000 SAR","40,000–60,000 SAR",MCQ (one correct),Common,Dating
-In which region of Saudi Arabia is “Al-Maghsh” considered a traditional dish?,A. Jazan B. Medina C. Mecca D. Tabuk,A. Jazan,MCQ (one correct),Specialized,Food
-“Al-Mashghoutha” is a traditional Saudi dish. Which region is known for preparing it?,A. Asir B. Jazan C. Mecca D. Tabuk,A. Asir,MCQ (one correct),Specialized,Food
-In which regions of Saudi Arabia is the traditional dish “Haneeth” popular?,A. Southwestern Saudi Arabia B. Eastern Saudi Arabia C. Northeastern Saudi Arabia D. Western Saudi Arabia,A. Southwestern Saudi Arabia,MCQ (one correct),Specialized,Food
-“Al-Haneeth” is a dish famous in which region of Saudi Arabia?,A. Asir B. Jazan C. Mecca D. Medina,A. Asir,MCQ (one correct),Specialized,Food
-What is the name of the traditional butter dish served in South Saudi Arabia?,A. Radifah B. Hanini C. Haneeth D. Mandi,A. Radifah,MCQ (one correct),Specialized,Food
-In which region of Saudi Arabia is juniper wood (“Arar”) traditionally used in architecture?,A. Al-Baha B. Asir C. Najran D. Jazan,A. Al-Baha B. Asir,MCQ (multiple correct),Specialized,Crafts and Work
-What is the most expensive part of a traditional Saudi Janbiya (dagger) that determines its price?,A. Hilt B. Belt C. Blade D. Sheath,A. Hilt,MCQ (one correct),Specialized,Crafts and Work
-What is the most common traditional craft in Najran city?,A. Making traditional white weapons B. Pottery making C. Weaving and carpet making D. Wall decoration craftsmanship,A. Making traditional white weapons,MCQ (one correct),Specialized,Crafts and Work
-What material is traditionally used to make the “Janbiya” dagger in Najran?,A. Copper B. Silver C. Iron D. Platinum,C. Iron,MCQ (one correct),Specialized,Crafts and Work
-"What is the name given to the artist who paints Al-Qatt Al-Asiri, the traditional Asiri wall art?",A. Al-Qattatah B. Al-Musaqqifah C. Al-Nassajah D. Al-Rassamah,A. Al-Qattatah,MCQ (one correct),Specialized,Crafts and Work
-"What describes “Al-Qatt Al-Asiri,” a traditional art form in the Asir region?",A. A women’s art of decoration and engraving B. A type of weaving practiced by men C. A culinary tradition unique to the region D. A performance art involving storytelling,A. A women’s art of decoration and engraving,MCQ (one correct),Specialized,Crafts and Work
-What are the most common greeting phrases in Al-Baha?,A. Marhaban Heel… ‘Ad Al-Seel B. Ya Hala C. Ahlan wa Sahlan D. Haywah,A. Marhaban Heel… ‘Ad Al-Seel,MCQ (one correct),Specialized,Languages and Communication
-“Beit Al-Esha” is a traditional architectural style. Which region in Saudi Arabia is known for this style?,A. Jazan B. Asir C. Mecca D. Medina,A. Jazan,MCQ (one correct),Specialized,Crafts and Work
-In which region of Saudi Arabia do traditional sitting rooms (majalis) include a stone fireplace used for cooking and preparing coffee in front of guests?,A. Asir B. Najran C. Jazan D. Riyadh,A. Asir,MCQ (one correct),Specialized,Crafts and Work
-"In which area is the “vegetative style” architecture, known as “Al-Ishash,” commonly found in the Asir region due to its ease of construction?",A. Najran B. Abha C. Tihama D. Jazan,C. Tihama,MCQ (one correct),Specialized,Crafts and Work
-The “Del’a Dance” is a traditional dance in Saudi Arabia. It is associated with which region?,A. Southern Region B. Eastern Region C. Western Region D. Northern Region,A. Southern Region,MCQ (one correct),Specialized,Entertainment
-"What is the form of singing performed individually, relying on creative embellishments, and usually performed during travels in South Saudi Arabia?",A. Tarq B. Mawal C. Zamil D. Shila,A. Tarq,MCQ (one correct),Specialized,Entertainment
-The “Sword Dance” is a traditional folk dance in Saudi Arabia associated with the people of which region?,A. Riyadh B. Asir C. Tabuk D. Jazan,D. Jazan,MCQ (one correct),Specialized,Entertainment
-The “Janabi Dance” is a traditional folk dance popular in which region of Saudi Arabia?,A. Tabuk B. Najran C. Riyadh D. Jazan,D. Jazan,MCQ (one correct),Specialized,Entertainment
-In which region of Saudi Arabia is the “Al-Azawi Dance” primarily performed?,A. Najran B. Jazan C. Al-Baha D. Asir,B. Jazan,MCQ (one correct),Specialized,Entertainment
-What is the name of the traditional food served to guests in the afternoon in South Saudi Arabia?,A. Wasl B. Ghada C. Brunch D. Coffee,A. Wasl,MCQ (one correct),Specialized,Food
-What is the traditional oven or pot used for baking in South Saudi Arabia?,A. Mahnadh B. Mifah C. Furn D. Saj,B. Mifah,MCQ (one correct),Specialized,Food
-What is the name of the traditional folklore for weddings and greeting guests from different tribes in South Saudi Arabia?,A. Medgal B. Arduh C. Dahha D. Samri,A. Medgal,MCQ (one correct),Specialized,Dating
-"What does the guest room consist of in Jazan, Saudi Arabia?",A. Floor Cushions B. Beds C. Wooden Seats D. Sofas,B. Beds,MCQ (one correct),Specialized,Crafts and Work
-Is it acceptable in South Saudi Arabia for the host to ask the guest about his updates before serving coffee?,A. Acceptable B. Not Acceptable C. Depends on the guest D. Only in formal gatherings,B. Not Acceptable,MCQ (one correct),Specialized,Languages and Communication
-What is correct about Al-Masoub and Al-Areeqa?,A. Al-Masoub is more urban and modern than Al-Areeqa. B. Al-Areeqa is more rural and traditional than Al-Masoub. C. Both are equally modern dishes. D. Neither has cultural significance in Saudi cuisine.,A and B,MCQ (multiple correct),Specialized,Food
-What are the other names for “Al-Mashghootha” in Saudi culture?,A. Al-Aseeda B. Al-Laheeda C. Al-Haneeni D. Al-Jareesh,A and B,MCQ (multiple correct),Specialized,Food
-What are the distinctive features of traditional jewelry from the southern region of Saudi Arabia?,A. Large size B. Minimal use of gemstones C. Heavy gold decoration D. Intricate gemstone inlays,A and B,MCQ (multiple correct),Specialized,Crafts and Work
-Which of the following are traditional crafts known in the Al-Baha region?,A. Tar production B. Sesame oil production C. Heritage clothing making D. Fishing,"A, B, and C",MCQ (multiple correct),Specialized,Crafts and Work
-Which of the following are traditional crafts known in the Asir region?,A. Making traditional white weapons B. Pottery making C. Weaving and carpet making D. Palm-frond crafts (Khoos),"A, C, and D",MCQ (multiple correct),Specialized,Crafts and Work
-"Traditional Saudi Arabian daggers, known as “Janabi,” come in various forms. Which of the following are considered authentic Saudi types?",A. Umm Fasous B. Al-Mashtaf C. Al-Saif D. Bow,A and B,MCQ (multiple correct),Specialized,Crafts and Work
-In which region of Saudi Arabia is “Al-Mukammam” considered a traditional women’s garment?,A. Najran B. Mecca C. Hail D. Tabuk,A. Najran,MCQ (one correct),Specialized,Clothes
-The “Zamil” is an ancient folk singing art traditionally known in which regions of Saudi Arabia?,A. Riyadh B. Asir C. Al-Jouf D. Najran,B and D,MCQ (multiple correct),Specialized,Entertainment
-The “Southern Ardah” is a traditional dance performed in which regions of southwestern Saudi Arabia?,A. Najran B. Asir C. Al-Baha D. Jazan,"A, B, C, and D (All)",MCQ (multiple correct),Specialized,Entertainment
-What is the “Al-Azawi Dance” known for?,"A. A traditional folk dance performed individually, in pairs, or in groups B. High energy and flexibility in movements C. Usage of Janabi (daggers) in harmony with rhythms and chants D. A dance specific to occasions like weddings and festivals","A, B, and C",MCQ (multiple correct),Specialized,Entertainment
-What is Mifa bread in the Asir region?,–,"Mifa bread is a traditional bread from the Asir region made from wheat and baked in a traditional oven or tannour.",Open-ended,Common,Food
-What is Marsa in the Jazan region?,–,"Marsa is a traditional dish from the Jazan region made from crumbled bread mixed with bananas, ghee, and honey or sugar.",Open-ended,Common,Food
-What is Al-Maghsh in the Jazan region?,–,"Al-Maghsh is a traditional dish from the Jazan region consisting of meat and vegetables such as potatoes, okra, tomatoes, and zucchini, cooked in a stone pot called a Maghsh.",Open-ended,Specialized,Food
-What is Al-Mukashshan fish in the Jazan region?,–,"Al-Mukashshan is a traditional dish from the Jazan region made from fish seasoned with spices and vegetables and grilled over charcoal.",Open-ended,Specialized,Food
-What is Al-Mufalt in the Jazan region?,–,"Al-Mufalt is a traditional dish from the Jazan region made from millet or corn with milk, ghee, and sugar, and it has sweet and sour varieties.",Open-ended,Specialized,Food
-What is Raksh in the Najran region?,–,"Raksh is a traditional dish from the Najran region made from pieces of wheat bread soaked in broth and served with meat.",Open-ended,Specialized,Food
-What is Al-Wafd in the Najran region?,–,"Al-Wafd is a traditional dish from the Najran region made from crumbled wheat bread shaped into balls and served with broth.",Open-ended,Specialized,Food
-What is Al-Hamisa in the Najran region?,–,"Al-Hamisa is a traditional Najran dish made by cooking small pieces of meat and fat together, and it is served with rice or baked goods.",Open-ended,Specialized,Food
-What is Al-Qa'noun in the Najran region?,–,"Al-Qa'noun is a traditional bread from the Najran region made from wheat and also known by names such as Al-Mujammar or Al-Qurs.",Open-ended,Specialized,Food
+Question,Choices,Answer,Question Type,Difficulty,Category
+"What traditional dishes are associated with Southern Saudi Arabia?","–","Traditional dishes associated with Southern Saudi Arabia include Areeka, Mashghoutha, Haneeth, Aseedah, and other regional dishes.","Open-ended","Common","Food"
+"Which of the following is a traditional dish associated with Southern Saudi Arabia?","A. Areeka B. Jareesh C. Kabsa D. Saleeg","A. Areeka","MCQ (one correct)","Common","Food"
+"What traditional sweet is associated with Jazan and the southern region?","–","Marsa is a traditional sweet dish associated particularly with Jazan and the southern region.","Open-ended","Common","Food"
+"Which traditional sweet is particularly associated with Jazan?","A. Marsa B. Maamoul C. Basbousa D. Kunafa","A. Marsa","MCQ (one correct)","Common","Food"
+"What are some traditional foods served in Southern Saudi Arabia?","–","Traditional foods include dishes such as Areeka, Mashghoutha, Haneeth, Aseedah, and regional breads and porridges.","Open-ended","Common","Food"
+"Which dish is traditionally associated with breakfast in parts of Southern Saudi Arabia?","A. Areeka B. Jareesh C. Kabsa D. Mutabbaq","A. Areeka","MCQ (one correct)","Common","Food"
+"What traditional drinks are associated with Southern Saudi Arabia?","–","Arabic coffee and Qishr are traditional drinks associated with communities in Southern Saudi Arabia.","Open-ended","Common","Drinks"
+"Which traditional drink is made using dried coffee husks?","A. Qishr B. Sahlab C. Jallab D. Laban","A. Qishr","MCQ (one correct)","Common","Drinks"
+"What traditional women's dress is strongly associated with Asir?","–","The Thobe Asiri is a traditional women's garment associated with the Asir region.","Open-ended","Common","Clothes"
+"Which traditional women's garment is associated with Asir?","A. Thobe Asiri B. Bisht C. Ghutra D. Sherwal","A. Thobe Asiri","MCQ (one correct)","Common","Clothes"
+"What traditional men's garments are associated with parts of Southern Saudi Arabia?","–","Traditional men's clothing in the southern region includes garments such as the izar or musannaf in some southern and coastal communities.","Open-ended","Common","Clothes"
+"What is Al-Musannaf in southern Saudi traditional clothing?","–","Al-Musannaf refers to a traditional wraparound lower garment associated with parts of southern Saudi Arabia.","Open-ended","Specialized","Clothes"
+"Which garment is traditionally worn around the waist in parts of southern Saudi Arabia?","A. Al-Izar / Al-Musannaf B. Al-Bisht C. Al-Ghutra D. Al-Eqal","A. Al-Izar / Al-Musannaf","MCQ (one correct)","Common","Clothes"
+"What is Al-Qatt Al-Asiri?","–","Al-Qatt Al-Asiri is a traditional Asiri art form involving geometric and symbolic decoration of interior walls, particularly guest rooms. It was traditionally practiced by women and was inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2017.","Open-ended","Common","Crafts and Work"
+"In which Saudi region did Al-Qatt Al-Asiri develop as a traditional interior wall art?","A. Asir B. Eastern Province C. Qassim D. Tabuk","A. Asir","MCQ (one correct)","Common","Crafts and Work"
+"What is the traditional role of Al-Qatt Al-Asiri in the home?","–","Al-Qatt Al-Asiri is traditionally used to decorate interior walls, especially rooms used to receive guests.","Open-ended","Common","Crafts and Work"
+"Who traditionally practiced Al-Qatt Al-Asiri?","A. Women in Asir communities B. Sailors only C. Horse breeders only D. Fishermen only","A. Women in Asir communities","MCQ (one correct)","Common","Crafts and Work"
+"What materials are associated with traditional Al-Qatt Al-Asiri colors?","–","Traditional Al-Qatt uses locally available natural materials for pigments, with gypsum commonly forming the white base.","Open-ended","Specialized","Crafts and Work"
+"Which of the following are documented motifs associated with Al-Qatt Al-Asiri?","A. Al-Banat B. Al-Rukun C. Al-Mahareeb D. Baroque scrolls","A. Al-Banat, B. Al-Rukun, and C. Al-Mahareeb","MCQ (multiple correct)","Specialized","Crafts and Work"
+"What does Al-Banat refer to in Al-Qatt Al-Asiri?","–","Al-Banat is one of the geometric or symbolic forms used in Al-Qatt Al-Asiri designs.","Open-ended","Specialized","Crafts and Work"
+"What does Al-Rukun refer to in Al-Qatt Al-Asiri?","–","Al-Rukun refers to triangular geometric forms used in Al-Qatt Al-Asiri designs.","Open-ended","Specialized","Crafts and Work"
+"What does Al-Mahareeb refer to in Al-Qatt Al-Asiri?","–","Al-Mahareeb is a motif used in Al-Qatt Al-Asiri that represents prayer-niche forms.","Open-ended","Specialized","Crafts and Work"
+"What is Khawlani coffee?","–","Khawlani coffee is a traditional coffee cultivated in southwestern Saudi Arabia. Knowledge and practices related to cultivating Khawlani coffee beans were inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2022.","Open-ended","Common","Food"
+"Which Saudi region is strongly associated with the cultivation of Khawlani coffee?","A. Jazan B. Al-Ahsa C. Qassim D. Tabuk","A. Jazan","MCQ (one correct)","Common","Food"
+"How is Khawlani coffee traditionally cultivated in southwestern Saudi Arabia?","–","Khawlani coffee is cultivated on agricultural terraces in mountainous areas, with knowledge and practices passed between generations.","Open-ended","Specialized","Agriculture"
+"What is Areeka?","–","Areeka is a traditional southern Saudi dish prepared from bread or dough and commonly served with ingredients such as dates, ghee, or honey.","Open-ended","Common","Food"
+"What is Haneeth?","–","Haneeth is a traditional meat dish associated with southwestern Saudi Arabia, prepared by slow cooking meat using traditional methods.","Open-ended","Common","Food"
+"What is Mashghoutha?","–","Mashghoutha is a traditional dish associated with Southern Saudi Arabia and is prepared in different local styles.","Open-ended","Common","Food"
+"What is Al-Daghabees?","–","Al-Daghabees is a traditional dish associated with Al-Baha, prepared from dough and served with a savory broth or accompanying ingredients.","Open-ended","Specialized","Food"
+"Which traditional dish is associated with Al-Baha?","A. Al-Daghabees B. Jareesh C. Saleeg D. Mutabbaq","A. Al-Daghabees","MCQ (one correct)","Specialized","Food"
+"What is Gahwa Qishr?","–","Gahwa Qishr is a traditional hot drink prepared from dried coffee husks and commonly flavored with spices such as ginger.","Open-ended","Common","Drinks"
+"Which ingredient is the main base of Qishr?","A. Dried coffee husks B. Fresh milk C. Black tea leaves D. Barley","A. Dried coffee husks","MCQ (one correct)","Common","Drinks"
+"What is Al-Khatwah Al-Janoubiyah?","–","Al-Khatwah is a traditional southern folk dance associated particularly with Asir, characterized by coordinated rhythmic steps and poetic performance.","Open-ended","Common","Entertainment"
+"Which traditional dance is associated with Asir and is characterized by measured coordinated steps?","A. Al-Khatwah B. Al-Samri C. Al-Liwa D. Al-Mizmar","A. Al-Khatwah","MCQ (one correct)","Common","Entertainment"
+"What is Al-Dammah?","–","Al-Dammah is a traditional southern performance involving coordinated movement, rhythm, and poetry, and is associated with parts of southwestern Saudi Arabia.","Open-ended","Specialized","Entertainment"
+"What is Al-Zamil in Najran heritage?","–","Al-Zamil is a traditional Najrani form of collective poetic chanting used in social and tribal contexts.","Open-ended","Specialized","Entertainment"
+"Which region is particularly associated with Al-Zamil?","A. Najran B. Makkah C. Tabuk D. Al-Qassim","A. Najran","MCQ (one correct)","Specialized","Entertainment"
+"What is Al-Raha in traditional southern domestic life?","–","Al-Raha is a traditional hand-operated millstone used to grind grains such as wheat or sorghum.","Open-ended","Common","Crafts and Work"
+"Which traditional tool was used to grind grains by hand?","A. Al-Raha B. Al-Miqass C. Al-Mahjan D. Al-Qirbah","A. Al-Raha","MCQ (one correct)","Common","Crafts and Work"
+"What is Al-Qirbah?","–","Al-Qirbah is a traditional water container made from animal skin and historically used to store and transport water.","Open-ended","Common","Crafts and Work"
+"Which traditional container was made from animal skin for storing or carrying water?","A. Al-Qirbah B. Al-Madahan C. Al-Sihaf D. Al-Mikhbaza","A. Al-Qirbah","MCQ (one correct)","Common","Crafts and Work"
+"What traditional building material is strongly associated with stone houses in Aseer?","–","Stone from the mountains of Aseer is a major traditional building material used in the region's stone houses.","Open-ended","Common","Architecture"
+"Which material is commonly used in traditional stone houses in Aseer?","A. Mountain stone B. Steel only C. Glass only D. Plastic panels","A. Mountain stone","MCQ (one correct)","Common","Architecture"
+"What is characteristic of traditional stone houses in Aseer?","–","Traditional stone houses in Aseer commonly use stone in their construction and reflect the mountainous environment of the region.","Open-ended","Common","Architecture"
+"How many floors can some traditional stone houses in Aseer have?","A. Up to five floors B. Only one floor C. Exactly ten floors D. More than twenty floors","A. Up to five floors","MCQ (one correct)","Specialized","Architecture"
+"What traditional material can be combined with stone in Aseer buildings?","–","Clay and wood are among the traditional materials used together with stone in some Aseer buildings.","Open-ended","Common","Architecture"
+"What are the main traditional architectural styles found in Aseer?","–","Traditional architecture in Aseer includes mud, stone, mud-and-stone, and plant-based styles that vary according to the local environment.","Open-ended","Specialized","Architecture"
+"Which architectural style is associated with the Tihama plain in Aseer?","A. Plant-based style B. Pure marble style C. Steel-frame style D. Glass style","A. Plant-based style","MCQ (one correct)","Specialized","Architecture"
+"What is Al-Ishash in traditional Aseer architecture?","–","Al-Ishash is a plant-based architectural style found in the Tihama plain of Aseer.","Open-ended","Specialized","Architecture"
+"What is Rijal Heritage Village?","–","Rijal Heritage Village is a historic village in Rijal Alma Governorate in Aseer Province, known for its closely built stone buildings and heritage architecture.","Open-ended","Common","Heritage Sites"
+"Where is Rijal Heritage Village located?","A. Rijal Alma Governorate in Aseer B. Al-Ahsa Governorate C. Jeddah Governorate D. Tabuk Governorate","A. Rijal Alma Governorate in Aseer","MCQ (one correct)","Common","Heritage Sites"
+"What material is prominent in the buildings of Rijal Heritage Village?","–","Stone is prominent in the closely built traditional buildings of Rijal Heritage Village.","Open-ended","Common","Heritage Sites"
+"What decorative art can be found on interior walls in Rijal Heritage Village?","A. Al-Qatt Al-Asiri B. Al-Sadu C. Al-Khous D. Al-Qatt Al-Bahraini","A. Al-Qatt Al-Asiri","MCQ (one correct)","Common","Heritage Sites"
+"How old is Rijal Heritage Village approximately?","A. About 900 years B. About 50 years C. About 100 years D. About 20 years","A. About 900 years","Specialized","Heritage Sites"
+"How are the buildings of Rijal Heritage Village arranged?","–","The buildings are closely built together and form a distinctive traditional stone settlement.","Open-ended","Specialized","Heritage Sites"
+"What is Al-Muftaha Historical Village?","–","Al-Muftaha Historical Village is a heritage area in Abha known for its traditional buildings and cultural character.","Open-ended","Common","Heritage Sites"
+"Where is Al-Muftaha Historical Village located?","A. Abha B. Jazan C. Najran D. Bisha","A. Abha","MCQ (one correct)","Common","Heritage Sites"
+"What traditional art decorates many traditional interiors in Aseer?","–","Al-Qatt Al-Asiri is a traditional decorative art used on interior walls in Aseer homes and heritage buildings.","Open-ended","Common","Crafts and Work"
+"Which UNESCO-recognized cultural element is associated with Aseer?","A. Al-Qatt Al-Asiri B. Al-Sadu C. Al-Majlis only D. Al-Ardah Najdiyah","A. Al-Qatt Al-Asiri","MCQ (one correct)","Common","Crafts and Work"
+"What type of patterns are commonly found in Al-Qatt Al-Asiri?","–","Al-Qatt Al-Asiri uses geometric and symbolic patterns in the decoration of interior walls.","Open-ended","Common","Crafts and Work"
+"Where is Al-Qatt Al-Asiri traditionally applied?","A. Interior walls B. Vehicle engines C. Fishing boats only D. Road signs","A. Interior walls","MCQ (one correct)","Common","Crafts and Work"
+"What is the Southern Ardah?","–","The Southern Ardah is a traditional performance associated particularly with Aseer and Al-Bahah in southwestern Saudi Arabia.","Open-ended","Common","Entertainment"
+"Which regions are particularly associated with the Southern Ardah?","A. Aseer and Al-Bahah B. Eastern Province only C. Tabuk only D. Qassim only","A. Aseer and Al-Bahah","MCQ (one correct)","Common","Entertainment"
+"How are performers traditionally arranged in the Southern Ardah?","–","Performers traditionally stand in two opposing rows during the Southern Ardah.","Open-ended","Common","Entertainment"
+"What role does the poet have in the Southern Ardah?","–","A poet traditionally stands between the two rows and recites parts of the poetic verse during the performance.","Open-ended","Specialized","Entertainment"
+"What accompanies the movement of performers in the Southern Ardah?","A. Drum rhythms and chanting B. Piano music only C. Silent movement D. Recorded electronic music only","A. Drum rhythms and chanting","MCQ (one correct)","Common","Entertainment"
+"What traditional objects may performers carry during the Southern Ardah?","–","Traditional performances may include rifles, swords, or jambiyas as part of the display.","Open-ended","Specialized","Entertainment"
+"What is Al-Qazou'i?","–","Al-Qazou'i is a traditional folk performance shared by several southern Saudi communities, including parts of Aseer and Najran.","Open-ended","Specialized","Entertainment"
+"Which southern regions are associated with Al-Qazou'i?","A. Aseer and Najran B. Makkah only C. Eastern Province only D. Tabuk only","A. Aseer and Najran","MCQ (one correct)","Specialized","Entertainment"
+"What type of performance is Al-Qazou'i historically associated with?","–","Al-Qazou'i is historically associated with martial and collective performance traditions.","Open-ended","Specialized","Entertainment"
+"What role does poetry play in Al-Qazou'i?","–","Al-Qazou'i performances include collective chanting of traditional poetry and may involve poetic exchanges.","Open-ended","Specialized","Entertainment"
+"What is Al-Azzawi?","–","Al-Azzawi is a traditional folk dance associated with southern Saudi Arabia, particularly Jazan and surrounding communities.","Open-ended","Specialized","Entertainment"
+"Which Saudi region is particularly associated with Al-Azzawi?","A. Jazan B. Qassim C. Tabuk D. Al-Ahsa","A. Jazan","MCQ (one correct)","Specialized","Entertainment"
+"How can Al-Azzawi be performed?","A. Individually, in pairs, or collectively B. Only by one person C. Only by children D. Only without music","A. Individually, in pairs, or collectively","Specialized","Entertainment"
+"What is a common feature of traditional southern folk performances?","–","Traditional southern performances often combine rhythmic movement, poetry, chanting, and percussion.","Open-ended","Common","Entertainment"
+"What role does poetry have in southern Saudi folk traditions?","–","Poetry is an important element in several southern folk performances and may be used for chanting, praise, storytelling, or poetic exchange.","Open-ended","Common","Entertainment"
+"Which instrument commonly provides rhythm in traditional southern performances?","A. Drum B. Piano C. Violin only D. Electronic keyboard only","A. Drum","MCQ (one correct)","Common","Entertainment"
+"What is a traditional feature of many southern Saudi cultural performances?","–","Group participation and coordinated rhythmic movement are common features of several southern Saudi traditional performances.","Open-ended","Common","Entertainment"
+"Which activity may accompany traditional southern dances?","A. Chanting poetry B. Ice skating C. Opera singing only D. Ballet only","A. Chanting poetry","MCQ (one correct)","Common","Entertainment"
+"Where are traditional southern performances commonly presented today?","–","They may be presented at weddings, celebrations, festivals, national occasions, and other cultural events.","Open-ended","Common","Entertainment"
+"Why are traditional southern dances important to cultural heritage?","–","They preserve forms of poetry, music, movement, and collective cultural expression passed between generations.","Open-ended","Common","Entertainment"
+"What agricultural product is strongly associated with Jazan and southwestern Saudi Arabia?","–","Coffee is an important agricultural product associated with the southwestern highlands, including Jazan.","Open-ended","Common","Agriculture"
+"Which crop is traditionally cultivated in the mountainous areas of Jazan?","A. Khawlani coffee B. Wheat only C. Cotton only D. Rice only","A. Khawlani coffee","MCQ (one correct)","Common","Agriculture"
+"What is a traditional feature of coffee cultivation in southwestern Saudi Arabia?","–","Coffee cultivation in the southwestern highlands uses agricultural terraces in mountainous areas.","Open-ended","Specialized","Agriculture"
+"How is knowledge about Khawlani coffee cultivation transmitted?","A. Through generations B. Only through imported manuals C. Only through machines D. It is not transmitted","A. Through generations","Common","Agriculture"
+"What is one traditional agricultural feature of the southwestern highlands?","–","Terraced agriculture is an important feature of farming in mountainous areas of southwestern Saudi Arabia.","Open-ended","Common","Agriculture"
+"Why are agricultural terraces useful in mountainous areas?","–","Terraces create cultivable areas on mountain slopes and help support traditional agriculture in highland environments.","Open-ended","Specialized","Agriculture"
+"Which region is known for Khawlani coffee cultivation in Saudi Arabia?","A. Jazan and other southwestern areas B. Northern Borders only C. Qassim only D. Eastern Province only","A. Jazan and other southwestern areas","MCQ (one correct)","Common","Agriculture"
+"What is a traditional hand-operated millstone used for grinding grains called?","–","Al-Raha is a traditional hand-operated millstone used to grind grains.","Open-ended","Common","Crafts and Work"
+"What grains can traditionally be ground using Al-Raha?","A. Wheat or sorghum B. Coffee beans only C. Dates only D. Sesame oil","A. Wheat or sorghum","Specialized","Crafts and Work"
+"What is a traditional Qirbah used for?","–","A Qirbah is a traditional container made from animal skin that was used to store or transport water.","Open-ended","Common","Crafts and Work"
+"Which traditional object was used to carry or store water?","A. Qirbah B. Raha C. Qatt D. Ardah","A. Qirbah","Common","Crafts and Work"
+"What natural materials were traditionally important in southern Saudi homes?","–","Stone, clay, wood, and plant materials were among the traditional materials used in different southern architectural environments.","Open-ended","Common","Architecture"
+"Which materials are associated with traditional Aseer architecture?","A. Stone and clay B. Steel and plastic only C. Glass only D. Concrete only","A. Stone and clay","Common","Architecture"
+"How does geography influence traditional architecture in Aseer?","–","Traditional architectural styles in Aseer vary according to local geography, climate, available materials, and the needs of communities.","Open-ended","Common","Architecture"
+"What is one characteristic of traditional Aseer architecture?","A. It adapts to local environmental conditions B. It uses only imported materials C. It is identical throughout the region D. It avoids natural materials","A. It adapts to local environmental conditions","Common","Architecture"
+"What is a heritage village in southern Saudi Arabia?","–","A heritage village preserves examples of traditional buildings, cultural practices, crafts, or historical features of a local community.","Open-ended","Common","Heritage Sites"
+"Which city is the administrative capital of Aseer Province?","A. Abha B. Jazan C. Najran D. Al-Bahah","A. Abha","Common","Geography"
+"Where is Aseer Province located?","A. Southwestern Saudi Arabia B. Northern Saudi Arabia C. Eastern Saudi Arabia D. Central Saudi Arabia only","A. Southwestern Saudi Arabia","Common","Geography"
+"Which city is an important cultural and historical center in Aseer?","A. Abha B. Dammam C. Hail D. Al-Hofuf","A. Abha","Common","Heritage Sites"
+"Why is southern Saudi heritage culturally diverse?","–","The southern region includes different environments and communities, resulting in diverse traditions in food, clothing, architecture, agriculture, crafts, poetry, and performance.","Open-ended","Common","Culture"
+"What traditional sweet dish is associated with Jazan Province?","–","Al-Marsah is a traditional sweet dish associated with Jazan Province, prepared from whole-wheat bread mixed with bananas, ghee, and honey or sugar.","Open-ended","Common","Food"
+"Which traditional Jazan dish is made by mixing crumbled whole-wheat bread with bananas?","A. Al-Marsah B. Jareesh C. Saleeg D. Kabsa","A. Al-Marsah","MCQ (one correct)","Common","Food"
+"What ingredients are traditionally used in Al-Marsah?","–","Al-Marsah can include whole-wheat bread, bananas, ghee, and honey or sugar.","Open-ended","Common","Food"
+"What is Al-Mahshosh?","–","Al-Mahshosh is a traditional food associated with Jazan Province and is among the region's documented traditional dishes.","Open-ended","Specialized","Food"
+"What type of foods are traditionally associated with coastal Jazan?","A. Fish and seafood B. Only wheat dishes C. Only dairy products D. Only dates","A. Fish and seafood","Common","Food"
+"What foods are associated with mountainous areas of Jazan?","–","Traditional foods in mountainous Jazan include foods based on meat, honey, and ghee.","Open-ended","Common","Food"
+"What foods are associated with the plains of Jazan?","–","Traditional foods in the plains of Jazan include foods based on grains and vegetables.","Open-ended","Common","Food"
+"What is Al-Mughash?","–","Al-Mughash is a traditional stone cooking vessel in Jazan used for preparing foods such as meat and fish.","Open-ended","Specialized","Crafts and Work"
+"Which traditional vessel is used for cooking meat and fish in Jazan?","A. Al-Mughash B. Al-Qirbah C. Al-Raha D. Al-Jabna","A. Al-Mughash","MCQ (one correct)","Specialized","Crafts and Work"
+"What is Al-Haisiyah in Jazan traditional cooking?","–","Al-Haisiyah is a round clay vessel with a wide top and narrower bottom used for serving certain traditional foods.","Open-ended","Specialized","Crafts and Work"
+"What is Al-Jabna in Jazan heritage?","–","Al-Jabna is a traditional clay coffee pot used in Jazan.","Open-ended","Specialized","Crafts and Work"
+"Which traditional Jazan object is a clay coffee pot?","A. Al-Jabna B. Al-Mughash C. Al-Qirbah D. Al-Raha","A. Al-Jabna","MCQ (one correct)","Specialized","Crafts and Work"
+"What is traditional pottery used for in Jazan?","–","Traditional pottery in Jazan has been used to make cooking, eating, drinking, and water-storage vessels.","Open-ended","Common","Crafts and Work"
+"What material is traditionally used in Jazan pottery?","A. Red clay B. Steel only C. Glass only D. Aluminum only","A. Red clay","Common","Crafts and Work"
+"What is Al-Qadah in Jazan handicrafts?","–","Al-Qadah is a traditional Jazan chair made as part of the region's handicraft traditions.","Open-ended","Specialized","Crafts and Work"
+"Which handicraft is associated with traditional Jazan furniture?","A. Al-Qadah chairs B. Plastic furniture only C. Marble tables only D. Metal safes","A. Al-Qadah chairs","Specialized","Crafts and Work"
+"What traditional crafts are practiced in Jazan?","–","Traditional crafts in Jazan include pottery, weaving, jewelry making, leather tanning, palm-frond products, perfume and incense making, and stone carving.","Open-ended","Common","Crafts and Work"
+"Which of the following is a traditional handicraft associated with Jazan?","A. Pottery B. Ice sculpture C. Glass blowing only D. Snow carving","A. Pottery","Common","Crafts and Work"
+"What traditional plant-based products are associated with handicrafts in Jazan?","–","Palm-frond products are among the traditional handicrafts practiced in Jazan.","Open-ended","Common","Crafts and Work"
+"Which material is traditionally used for some handicrafts in Jazan?","A. Palm fronds B. Snow C. Plastic only D. Fiberglass only","A. Palm fronds","Common","Crafts and Work"
+"What is Al-Asha in traditional Jazan architecture?","–","Al-Asha is a traditional single-story structure common in the plains and along valley edges of Jazan.","Open-ended","Common","Architecture"
+"What shape does a traditional Al-Asha house have from the outside?","A. Conical B. Square tower C. Dome only D. Pyramid","A. Conical","Common","Architecture"
+"What is the traditional floor plan of Al-Asha?","A. Circular B. Triangular C. Hexagonal D. Irregular only","A. Circular","Specialized","Architecture"
+"Why does Al-Asha have two perpendicular entrances?","–","The two perpendicular entrances help improve air circulation inside the traditional structure.","Open-ended","Specialized","Architecture"
+"What materials are used in traditional Al-Asha construction?","–","Traditional Al-Asha structures use parts of trees and plants, with the lower section commonly coated with mud and gypsum.","Open-ended","Specialized","Architecture"
+"What is the traditional purpose of Al-Asha?","A. Receiving guests and sleeping B. Storing weapons only C. Farming only D. Fishing only","A. Receiving guests and sleeping","Common","Architecture"
+"What is Al-Arish in traditional Jazan architecture?","–","Al-Arish is a shaded structure associated with traditional Jazan homes and may be used for household or kitchen-related activities.","Open-ended","Specialized","Architecture"
+"What is Banayah in traditional Jazan homes?","–","Banayah is a traditional clay kitchen building associated with Al-Asha houses and contains cooking stoves known as tannour.","Open-ended","Specialized","Architecture"
+"Where is Al-Asha particularly found in Jazan?","A. Plains and valley edges B. Mountain peaks only C. Islands only D. Desert dunes only","A. Plains and valley edges","Common","Architecture"
+"What is characteristic of traditional architecture in Jazan's mountainous areas?","–","Traditional mountain settlements in Jazan can include buildings constructed at higher elevations and homes arranged on or near agricultural terraces.","Open-ended","Common","Architecture"
+"What is distinctive about traditional buildings in Fayfa?","–","Fayfa is known for traditional cylindrical stone houses as part of its mountainous architectural heritage.","Open-ended","Common","Architecture"
+"Which Saudi area is known for cylindrical traditional stone houses?","A. Fayfa B. Al-Ahsa C. Qassim D. Tabuk","A. Fayfa","Common","Architecture"
+"How does traditional Jazan architecture respond to the environment?","–","Traditional Jazan architecture adapts building forms and materials to local terrain, climate, available resources, and community needs.","Open-ended","Common","Architecture"
+"What are the three broad traditional architectural environments in Jazan?","A. Coastal plains, Tihama valleys, and mountainous areas B. Desert, tundra, and rainforest C. Islands, glaciers, and deserts D. Urban centers only","A. Coastal plains, Tihama valleys, and mountainous areas","Specialized","Architecture"
+"What is characteristic of some traditional buildings in Tihama valleys?","–","Traditional buildings in Tihama valleys can include one-story stone houses using local stone, red brick, wood, gypsum, and clay.","Open-ended","Specialized","Architecture"
+"Why are some traditional Jazan houses built with thick walls and small windows?","–","These features help traditional buildings respond to local climatic conditions.","Open-ended","Specialized","Architecture"
+"What are agricultural terraces in the mountains of Jazan used for?","–","Agricultural terraces provide cultivable areas on mountain slopes and are part of the traditional agricultural landscape.","Open-ended","Common","Agriculture"
+"Which Jazan mountain area is associated with traditional buildings located on agricultural terraces?","A. Fayfa Mountains B. Farasan Islands C. Jazan coast only D. Tihama coast only","A. Fayfa Mountains","Specialized","Architecture"
+"What is one reason traditional Jazan architecture differs between areas?","–","Differences in terrain, climate, natural resources, and social conditions contribute to variation in traditional Jazan architecture.","Open-ended","Common","Architecture"
+"What is Jazan Heritage Village?","–","Jazan Heritage Village is a cultural heritage site that presents aspects of the traditional lifestyle and heritage of Jazan.","Open-ended","Common","Heritage Sites"
+"Where is Jazan Heritage Village located?","A. Jazan City B. Abha C. Najran D. Fayfa","A. Jazan City","Common","Heritage Sites"
+"What types of traditional houses are represented at Jazan Heritage Village?","A. Tuhami, mountainous, and Farasani houses B. European houses only C. Modern glass towers only D. Desert tents only","A. Tuhami, mountainous, and Farasani houses","Specialized","Heritage Sites"
+"What traditional objects can be displayed at Jazan Heritage Village?","–","Traditional objects include items such as the Maifa, Jibna, and clay cups.","Open-ended","Specialized","Heritage Sites"
+"What is the purpose of Jazan Heritage Village?","–","It presents aspects of Jazan's cultural heritage, traditional lifestyle, crafts, and historical practices.","Open-ended","Common","Heritage Sites"
+"Where is Al-Qassar Heritage Village located?","A. Farasan Island B. Abha C. Fayfa D. Najran","A. Farasan Island","Common","Heritage Sites"
+"What is Al-Qassar Heritage Village known for?","–","Al-Qassar Heritage Village on Farasan Island is known for its heritage buildings, palm trees, old trees, and historical character.","Open-ended","Common","Heritage Sites"
+"What materials were used in traditional buildings in Al-Qassar?","A. Stone and palm fronds B. Steel and glass only C. Concrete only D. Plastic panels","A. Stone and palm fronds","Common","Architecture"
+"Why did Al-Qassar become an important settlement on Farasan Island?","–","Its moderate climate, palm trees, mature vegetation, and availability of fresh water supported settlement and agriculture.","Open-ended","Specialized","Heritage Sites"
+"What is Farasan known for in southern Saudi heritage?","–","Farasan is known for its island heritage, traditional settlements, historical sites, and maritime cultural environment.","Open-ended","Common","Heritage Sites"
+"Which province includes the Farasan Islands?","A. Jazan Province B. Aseer Province C. Al-Bahah Province D. Najran Province","A. Jazan Province","Common","Geography"
+"What traditional resources were adapted for construction in Jazan?","–","Local natural resources such as stone, clay, wood, plants, and palm materials were adapted for traditional construction.","Open-ended","Common","Architecture"
+"How did traditional Jazan communities adapt their homes to local environments?","–","They adapted building materials, layouts, openings, and construction methods to local terrain and climate.","Open-ended","Common","Architecture"
+"What traditional house type is associated with the Tuhama plains of Jazan?","A. Al-Asha B. Stone castle only C. High-rise apartment D. Palace tower","A. Al-Asha","Common","Architecture"
+"What type of settlement can be found in mountainous Jazan?","A. Compact or scattered settlements adapted to mountainous terrain B. Floating houses only C. Underground cities only D. Modern skyscrapers only","A. Compact or scattered settlements adapted to mountainous terrain","Specialized","Architecture"
+"What is a traditional feature of Jazan's coastal heritage?","–","Coastal Jazan heritage reflects the area's relationship with fishing, seafood, trade, and the Red Sea environment.","Open-ended","Common","Culture"
+"What traditional food sources are associated with coastal Jazan?","A. Fish and seafood B. Mountain honey only C. Wheat only D. Dates only","A. Fish and seafood","Common","Food"
+"How does Jazan's geography affect its traditional food?","–","The diversity of coastal, mountainous, and plain environments contributes to different local food ingredients and dishes.","Open-ended","Common","Food"
+"Why is Jazan cultural heritage diverse?","–","Jazan combines coastal, island, plain, valley, and mountainous environments, each contributing to distinctive cultural practices and material traditions.","Open-ended","Common","Culture"
+"What is Khameer bread?","–","Khameer is a traditional bread made from ground red or white corn and is associated with Jazan and Aseer.","Open-ended","Common","Food"
+"Which grain is traditionally used to make Khameer bread?","A. Corn B. Rice C. Barley only D. Oats only","A. Corn","Common","Food"
+"What is another local name for Khameer bread?","A. Al-Aish B. Al-Raha C. Al-Qatt D. Al-Arish","A. Al-Aish","Specialized","Food"
+"How is traditional Khameer dough prepared?","–","The ground corn flour is kneaded and fermented using some previously prepared dough before being left overnight.","Open-ended","Specialized","Food"
+"What is a traditional oven used to bake Khameer?","A. Mifa B. Tannour al-Sham C. Electric toaster only D. Clay pan only","A. Mifa","Specialized","Food"
+"What is Mifa?","–","Mifa is a traditional oven used for baking local bread such as Khameer in parts of southwestern Saudi Arabia.","Open-ended","Specialized","Food"
+"What is Khameer commonly served with?","A. Meat, fish, or vegetable dishes B. Ice cream only C. Chocolate only D. Fruit juice only","A. Meat, fish, or vegetable dishes","Common","Food"
+"What is Fatat al-Khameer?","–","Fatat al-Khameer is prepared from fermented corn bread and can be served with broth, meat, ghee, and other ingredients.","Open-ended","Specialized","Food"
+"What traditional Jazan dish is associated with Eid al-Adha?","A. Al-Mahshosh B. Saleeg C. Jareesh D. Mutabbaq","A. Al-Mahshosh","Common","Food"
+"What is Al-Mahshosh made from?","–","Al-Mahshosh is traditionally made from meat and fat, particularly meat and fat from sacrificial animals.","Open-ended","Common","Food"
+"How is Al-Mahshosh traditionally preserved?","–","The cooked meat and fat can be stored after preparation as a preserved traditional food.","Open-ended","Specialized","Food"
+"What is Mafalet?","–","Mafalet is a traditional Jazan dish made from dough and is associated with traditional meals in the region.","Open-ended","Specialized","Food"
+"Which dish is traditionally associated with Suhur in Jazan?","A. Mafalet B. Kabsa C. Jareesh D. Saleeg","A. Mafalet","Specialized","Food"
+"What is Aseeda in Jazan cuisine?","–","Aseeda is a traditional dish prepared from flour cooked in hot water, with ghee and sugar or honey added.","Open-ended","Common","Food"
+"Which ingredient is traditionally added to the center of Jazan Aseeda?","A. Ghee B. Tomato sauce C. Cheese only D. Olive oil only","A. Ghee","Common","Food"
+"What is Haisiyah?","–","Haisiyah is a round clay vessel with a wide top and narrower bottom used for serving traditional dishes in Jazan.","Open-ended","Specialized","Crafts and Work"
+"Which traditional vessel has a wide top and narrower bottom in Jazan cuisine?","A. Haisiyah B. Qirbah C. Raha D. Mifa","A. Haisiyah","Specialized","Crafts and Work"
+"What is Al-Jabna in Jazan traditional culture?","–","Al-Jabna is an old traditional coffee pot made from terracotta.","Open-ended","Specialized","Crafts and Work"
+"What material is traditionally used to make Al-Jabna?","A. Terracotta B. Steel only C. Glass only D. Aluminum only","A. Terracotta","Specialized","Crafts and Work"
+"What is Al-Sahfa?","–","Al-Sahfa is a traditional wooden drinking vessel associated with Jazan's traditional utensils.","Open-ended","Specialized","Crafts and Work"
+"What is the Harid fish?","–","Harid, also called parrotfish, is a reef fish found around the Farasan Islands in the Red Sea.","Open-ended","Common","Food"
+"What type of fish is Harid?","A. Parrotfish B. Tuna C. Salmon D. Sardine","A. Parrotfish","Common","Food"
+"Where is the Harid fish particularly associated with a traditional festival?","A. Farasan Islands B. Abha C. Najran D. Fayfa","A. Farasan Islands","Common","Culture"
+"What is the Harid Tourism Festival?","–","The Harid Tourism Festival is a heritage festival held on the shores of the Farasan Islands in Jazan Province.","Open-ended","Common","Festivals"
+"When is the Harid Tourism Festival traditionally held?","A. Around late March and early April B. In December only C. In July only D. In January only","A. Around late March and early April","Specialized","Festivals"
+"What activity is associated with the Harid Tourism Festival?","–","The festival includes traditional activities connected with catching Harid fish on the shores of the Farasan Islands.","Open-ended","Common","Festivals"
+"Why is Harid important in Farasan heritage?","–","Harid fishing is connected with the traditional maritime culture and heritage of the Farasan Islands.","Open-ended","Common","Culture"
+"What environmental setting surrounds the Farasan Islands?","A. Red Sea B. Arabian Gulf C. Mediterranean Sea D. Arabian Desert only","A. Red Sea","Common","Geography"
+"What is distinctive about Farasan's traditional heritage?","–","Farasan heritage reflects island life, maritime activities, traditional settlements, and the natural environment of the Red Sea.","Open-ended","Common","Culture"
+"What is Al-Qassar?","–","Al-Qassar is a heritage village on Farasan Island in Jazan Province known for its traditional buildings and palm trees.","Open-ended","Common","Heritage Sites"
+"What materials were used in traditional buildings at Al-Qassar?","A. Stone and palm fronds B. Steel and glass only C. Concrete only D. Plastic only","A. Stone and palm fronds","Common","Architecture"
+"What natural resource helped support settlement at Al-Qassar?","A. Fresh groundwater B. Snow C. Mountain glaciers D. Large rivers","A. Fresh groundwater","Specialized","Geography"
+"What type of vegetation is prominent around Al-Qassar?","A. Palm trees B. Pine forests C. Cedar forests D. Bamboo forests","A. Palm trees","Common","Geography"
+"What is traditional architecture in Farasan influenced by?","–","Farasani architecture is influenced by the island environment, locally available materials, climate, and traditional ways of life.","Open-ended","Common","Architecture"
+"Which province do the Farasan Islands belong to?","A. Jazan Province B. Aseer Province C. Najran Province D. Al-Bahah Province","A. Jazan Province","Common","Geography"
+"Which sea is directly associated with Farasan's maritime heritage?","A. Red Sea B. Arabian Gulf C. Mediterranean Sea D. Caspian Sea","A. Red Sea","Common","Geography"
+"What traditional economic activities are associated with Farasan?","–","Traditional Farasani life has been connected with fishing, maritime activities, trade, and agriculture.","Open-ended","Common","Culture"
+"What does the island environment contribute to Farasan cuisine?","–","The island environment contributes seafood and fish to the traditional food culture of Farasan.","Open-ended","Common","Food"
+"How does geography shape southern Saudi food traditions?","–","Coastal communities have greater access to fish and seafood, while mountainous and plain areas use different locally available products.","Open-ended","Common","Food"
+"What is one example of a coastal food tradition in Jazan?","A. Fish dishes B. Wheat porridge only C. Date syrup only D. Dairy products only","A. Fish dishes","Common","Food"
+"What is Al-Khutwa?","–","Al-Khutwa is a traditional folk dance associated particularly with Aseer Province and is performed with rhythmic footsteps.","Open-ended","Common","Entertainment"
+"What other names are used for Al-Khutwa?","A. Al-Khutwa al-Aseeriya and Al-Khutwa al-Janubiya B. Al-Ardah al-Najdiya only C. Al-Samri only D. Al-Liwa only","A. Al-Khutwa al-Aseeriya and Al-Khutwa al-Janubiya","Specialized","Entertainment"
+"What movement gives Al-Khutwa its name?","–","The performance uses rhythmic stepping, including a step forward followed by movement backward.","Open-ended","Specialized","Entertainment"
+"What accompanies Al-Khutwa performances?","A. Poetry, drums, and rhythmic footsteps B. Piano only C. Silent movement D. Electronic music only","A. Poetry, drums, and rhythmic footsteps","Common","Entertainment"
+"Which Saudi province is particularly associated with Al-Khutwa?","A. Aseer B. Eastern Province C. Qassim D. Tabuk","A. Aseer","Common","Entertainment"
+"What is the traditional Aseeri house generally shaped like?","A. Tower-shaped B. Dome-shaped only C. Flat tent only D. Circular hut only","A. Tower-shaped","Common","Architecture"
+"What happens to the walls of many traditional Aseeri houses as they rise?","–","The walls of many traditional Aseeri houses lean inward as their thickness increases.","Specialized","Architecture"
+"What were some traditional Aseeri houses used for besides living?","–","Some traditional Aseeri houses also served defensive purposes, farm monitoring, and agricultural storage.","Open-ended","Specialized","Architecture"
+"What is commonly found on the ground floor of a traditional Aseeri house?","A. Storage rooms B. Guest bedrooms only C. Open swimming pools D. Shops only","A. Storage rooms","Specialized","Architecture"
+"What are upper floors of traditional Aseeri houses commonly used for?","–","Upper floors can be used by family members and guests.","Open-ended","Common","Architecture"
+"Do traditional Aseeri houses usually have a central courtyard?","A. No, they generally lack a central courtyard B. Yes, every house has one C. Only underground courtyards D. Only roof courtyards","A. No, they generally lack a central courtyard","Specialized","Architecture"
+"What may be located beside a traditional Aseeri house?","A. A yard for livestock B. A large swimming pool C. A railway station D. A harbor","A. A yard for livestock","Specialized","Architecture"
+"What environmental factors influenced Aseeri house designs?","–","Building materials, topography, climate, and social and economic factors influenced traditional Aseeri house designs.","Open-ended","Common","Architecture"
+"Why were some traditional Aseeri houses strongly built?","–","Some were built with strong and fortified forms because they could also serve defensive purposes.","Open-ended","Specialized","Architecture"
+"What decorative elements can appear on traditional Aseeri houses?","A. Decorated doors and windows B. Neon signs only C. Glass skyscraper facades D. Metal billboards","A. Decorated doors and windows","Common","Architecture"
+"What is one function of agricultural storage rooms in traditional Aseeri houses?","–","They were used to store agricultural crops produced by local communities.","Open-ended","Specialized","Architecture"
+"How does traditional Aseeri architecture reflect local geography?","–","The architecture adapts its construction, materials, and forms to the mountainous environment of Aseer.","Open-ended","Common","Architecture"
+"Which traditional art is used to decorate interior walls in Aseer?","A. Al-Qatt Al-Asiri B. Al-Sadu C. Al-Khous D. Al-Mizmar","A. Al-Qatt Al-Asiri","Common","Crafts and Work"
+"What type of designs are characteristic of Al-Qatt Al-Asiri?","A. Geometric and symbolic designs B. Photorealistic portraits only C. Metal sculptures only D. Calligraphy only","A. Geometric and symbolic designs","Common","Crafts and Work"
+"Why is Al-Qatt Al-Asiri important to Aseer heritage?","–","It represents a traditional form of interior wall decoration passed through generations and associated with Aseeri cultural identity.","Open-ended","Common","Culture"
 

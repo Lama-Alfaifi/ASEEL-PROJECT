@@ -61,6 +61,7 @@ REGION_ALIASES = {
     ),
 
     "North": (
+        
         "north",
         "northern",
         "northern region",
@@ -68,8 +69,12 @@ REGION_ALIASES = {
         "northern saudi arabia",
         "tabuk",
         "al jawf",
+        "al-jouf",
+        "al jouf",
+        "jouf",
         "hail",
         "ha'il",
+
     ),
 
     "General": (
