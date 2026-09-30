@@ -8,7 +8,7 @@ def filter_by_metadata(
     region: str | None,
     category: str | None = None,
 ) -> list[dict]:
-    """Apply deterministic region/category filtering after semantic search."""
+    """Apply deterministic region filtering and optional category preference."""
 
     filtered = records
 
@@ -25,6 +25,9 @@ def filter_by_metadata(
             )
         ]
 
+    # Category is only a preference.
+    # Do not remove semantically relevant General/Unspecified evidence
+    # when the category classifier is uncertain or overly broad.
     if category:
         category_matches = [
             record
@@ -33,6 +36,12 @@ def filter_by_metadata(
         ]
 
         if category_matches:
-            filtered = category_matches
+            non_matches = [
+                record
+                for record in filtered
+                if record.get("category") != category
+            ]
+
+            filtered = category_matches + non_matches
 
     return filtered

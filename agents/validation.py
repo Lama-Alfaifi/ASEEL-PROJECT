@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-
+#from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from pydantic import BaseModel, Field
@@ -50,7 +50,7 @@ def validate_evidence_tool(
         ensure_ascii=False,
     )
 
-
+#validation_model = ChatOpenAI(model=OPENAI_MODEL_TOOL, temperature=0)
 validation_agent = create_agent(
     model=OPENAI_MODEL_TOOL,
     tools=[validate_evidence_tool],

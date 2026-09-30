@@ -17,3 +17,4 @@ aseel-frontend/dist/
 # Runtime data
 data/feedback.jsonl
 data/monitoring.jsonl
+data/chroma_db/

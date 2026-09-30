@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-
+from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 
 from agents.state import AseelState
@@ -16,6 +16,7 @@ from utils.user_location import (
     normalize_user_location,
 )
 
+understanding_model = ChatOpenAI(model=OPENAI_MODEL_UNDERSTANDING, temperature=0)
 
 understanding_agent = create_agent(
     model=OPENAI_MODEL_UNDERSTANDING,

@@ -71,6 +71,8 @@ class CulturalVectorStore:
         "central area": "Central",
         "riyadh": "Central",
         "najd": "Central",
+
+        "general": "General",
     }
 
     def __init__(

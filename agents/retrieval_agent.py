@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+#from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 from agents.state import AseelState
 from config.settings import OPENAI_MODEL_TOOL
@@ -9,7 +10,7 @@ from utils.region_override import normalize_region_override
 from retrieval.vector_store import CulturalVectorStore
 import json
 
-
+#retrieval_model = ChatOpenAI(model=OPENAI_MODEL_TOOL, temperature=0)
 retrieval_agent = create_agent(
     model=OPENAI_MODEL_TOOL,
     tools=[search_cultural_knowledge],
@@ -126,6 +127,7 @@ def _region_used_by_agent(messages) -> str | None:
 
 def retrieve_knowledge(state: AseelState) -> dict:
     query = state["retrieval_query"]
+
     # An explicit UI selection (including "General") is authoritative.
     region = (
         normalize_region_override(state.get("region_override"))
@@ -134,58 +136,29 @@ def retrieve_knowledge(state: AseelState) -> dict:
     )
     category = state.get("category")
 
-    agent_input = f"""
-User query: {query}
-Region: {region}
-Category: {category or "Not specified"}
+    # Use deterministic vector search directly.
+    # The LLM should not decide or rewrite the retrieval query.
+    try:
+        search_result = search_cultural_knowledge.invoke(
+            {"query": query, "region": region}
+        )
+        payload = json.loads(search_result)
+        records = payload.get("results", [])
+    except (json.JSONDecodeError, TypeError):
+        records = []
 
-Use the search_cultural_knowledge tool.
+    # Remove duplicate knowledge records.
+    unique_records = []
+    seen_questions = set()
 
-IMPORTANT:
-- Use the User query EXACTLY as the search query.
-- Do not rewrite or summarize the query.
-- Pass the region exactly as provided.
-- Search the knowledge base once.
-- Return the retrieved evidence.
-"""
+    for record in records:
+        question_key = record.get("question", "").strip().lower()
 
-    result = retrieval_agent.invoke(
-        {
-            "messages": [
-                {"role": "user", "content": agent_input}
-            ]
-        }
-    )
+        if question_key not in seen_questions:
+            seen_questions.add(question_key)
+            unique_records.append(record)
 
-    messages = result.get("messages", [])
-
-    records = []
-
-    for message in messages:
-        if getattr(message, "type", None) == "tool":
-            try:
-                tool_data = json.loads(message.content)
-                records.extend(tool_data.get("results", []))
-            except (json.JSONDecodeError, TypeError):
-                continue
-
-    # Region matching must never depend on the LLM. If the agent dropped or
-    # changed the region argument (e.g. searched without "General"), redo the
-    # search deterministically with the region the workflow resolved.
-    expected_region = CulturalVectorStore.normalize_region(region)
-    used_region = _region_used_by_agent(messages)
-
-    if expected_region and (
-        used_region is None
-        or CulturalVectorStore.normalize_region(used_region) != expected_region
-    ):
-        try:
-            payload = json.loads(
-                search_cultural_knowledge.invoke({"query": query, "region": region})
-            )
-            records = payload.get("results", [])
-        except (json.JSONDecodeError, TypeError):
-            pass
+    records = unique_records
 
     filtered_records = filter_by_metadata(
         records,
