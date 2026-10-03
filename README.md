@@ -1,255 +1,588 @@
+أكيد، هذا كامل كـ`README.md` جاهز للنسخ:
+
+````markdown
 # ASEEL (أصيل) 🌴 — Agentic AI System for Saudi Cultural Guidance
- 
-ASEEL is an agentic AI system that answers questions about Saudi cultural
-etiquette, customs, and regional traditions — grounded strictly in a
-curated, region-tagged knowledge base. If the evidence isn't there or isn't
-strong enough, ASEEL says so instead of guessing.
- 
+
+ASEEL is an agentic AI system for answering questions about Saudi cultural etiquette, customs, and regional traditions.
+
+It uses a curated, region-tagged knowledge base with a Retrieval-Augmented Generation (RAG) pipeline. When relevant evidence is not retrieved with sufficient confidence, ASEEL can fall back instead of generating an unsupported answer.
+
 ## Features
- 
-- **Four-agent pipeline** (Understanding → Retrieval → Validation →
-  Response), orchestrated with LangGraph. Each agent has one job; only the
-  Response agent ever writes user-facing text.
-- **Retrieval-Augmented Generation**: answers are built only from evidence
-  retrieved from ChromaDB and scored against a confidence threshold — below
-  it, ASEEL refuses rather than fabricating an answer.
-- **Multilingual support**: a translation layer wraps the pipeline
-  (language detection + translate in → English → translate the final
-  answer back), verified end-to-end for English, Arabic, French, Chinese,
-  Urdu, and Indonesian.
-- **Conversation memory**: session-based, server-side context so follow-up
-  questions ("What about women?") correctly inherit the city, region, and
-  topic from earlier turns.
-- **Regional awareness**: city → administrative region → planning region
-  resolution, backed by a real Saudi location dataset and GeoJSON region
-  boundaries for map display. A city is used for routing only — never
-  treated as proof a custom is city-specific.
-- **Human-in-the-loop feedback**: users can flag an answer; a reviewer
-  dashboard lets a human approve or reject it. Only approved feedback is
-  converted into a knowledge-base record and upserted into ChromaDB —
-  no automated process publishes anything on its own.
-- **Deterministic tools where it matters**: region resolution, evidence
-  validation, and metadata filtering are plain Python, not LLM judgment —
-  kept reproducible and cheap.
-- **Model tiering**: lightweight models handle tool/control agents
-  (retrieval, validation); the strongest available model is reserved for
-  the response the user actually reads and for translation.
-- **Evaluation**: DeepEval (Answer Relevancy, Faithfulness) across
-  grounded, fallback, multi-turn, and multilingual test cases, plus unit
-  tests for every deterministic component.
-- **Monitoring**: every run is logged (latency, confidence, region,
-  status, failure pattern) and exposed via `/metrics`; LangSmith tracing
-  is optional.
-- **REST API + web frontend**: FastAPI backend, React + TypeScript +
-  Vite frontend with bilingual (EN/AR) UI, an interactive region map, and
-  a command palette.
-- **Docker-ready** for containerized deployment.
+
+- **Multi-agent workflow** — Four specialized agents: Understanding → Retrieval → Validation → Response, orchestrated with LangGraph.
+- **Retrieval-Augmented Generation (RAG)** — Retrieves relevant evidence from ChromaDB and applies a configurable relevance threshold before generating an answer.
+- **Confidence-based fallback** — When retrieved evidence does not meet the configured relevance threshold, ASEEL can fall back instead of answering from unsupported information.
+- **Multilingual support** — Translates non-English queries into English for retrieval and translates the final response back into the user's language.
+- **Conversation memory** — Maintains session-based context for follow-up questions.
+- **Regional awareness** — Resolves locations into Saudi regional context and uses region metadata during retrieval.
+- **Human-in-the-loop feedback** — User feedback is reviewed by a human before approved information can be added to the knowledge base.
+- **Deterministic tools** — Uses deterministic Python logic for selected tasks such as region resolution and validation.
+- **Model tiering** — Different model configurations can be used for tools, understanding, response generation, and translation.
+- **Evaluation** — Includes retrieval and hard-query evaluation pipelines.
+- **Monitoring** — Records runtime information such as latency, confidence, region, and processing status.
+- **REST API** — Backend implemented with FastAPI.
+- **Web interface** — React + TypeScript + Vite frontend with Arabic/English support and interactive features.
+- **Docker support** — Includes Docker configuration for containerized execution.
+
+---
+
 ## Architecture
- 
+
+```text
+                         User
+                           │
+                           ▼
+              ┌─────────────────────────┐
+              │   React / Vite Frontend │
+              └────────────┬────────────┘
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │    FastAPI API  │
+                  └────────┬────────┘
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │ Translation     │
+                  │ Layer           │
+                  └────────┬────────┘
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │    LangGraph    │
+                  │    Workflow     │
+                  └────────┬────────┘
+                           │
+          ┌────────────────┼────────────────┐
+          ▼                ▼                ▼
+   Understanding      Retrieval        Validation
+                           │                │
+                           ▼                │
+                    ┌────────────┐          │
+                    │  ChromaDB  │          │
+                    └─────┬──────┘          │
+                          │                 │
+                          └────────┬────────┘
+                                   ▼
+                            ┌────────────┐
+                            │  Response  │
+                            └─────┬──────┘
+                                  │
+                                  ▼
+                            Final Answer
+````
+
+### Feedback Loop
+
+```text
+User Feedback
+      │
+      ▼
+Pending Feedback
+      │
+      ▼
+Human Review
+   ┌──┴──┐
+   │     │
+Approve Reject
+   │     │
+   │     └──► No knowledge-base update
+   │
+   ▼
+Validation
+   │
+   ▼
+Duplicate Check
+   │
+   ▼
+Knowledge Record
+   │
+   ▼
+ChromaDB
 ```
-User ──► Frontend (aseel-frontend, React + Vite)
-              │
-              ▼
-        FastAPI (api/main.py)
-              │
-              ▼
-   Translation layer (translation/)  ← detect + translate in/out
-              │
-              ▼
-   LangGraph Workflow (workflow/graph.py)
-     ├── Understanding  (agents/understanding.py)
-     ├── Retrieval      (agents/retrieval_agent.py)
-     ├── Validation     (agents/validation.py)
-     └── Response       (agents/response.py)
-              │
-     ┌────────┴─────────┐
-     ▼                   ▼
-Tools (tools/)      Retrieval (retrieval/)
- region resolution,  ChromaDB + sentence-transformers
- evidence validation,
- metadata filtering
-              │
-              ▼
-   Memory (memory/) · Monitoring (utils/monitoring.py)
-   Feedback → Human Review → Knowledge Base (utils/feedback_service.py)
-              │
-              ▼
-        LLM (OpenAI via LangChain)
+
+Only approved feedback can proceed through the knowledge-base update process.
+
+---
+
+## Knowledge Base
+
+ASEEL currently includes **1,851 records** across six datasets:
+
+| Dataset   |   Records |
+| --------- | --------: |
+| Central   |       252 |
+| East      |       343 |
+| General   |       399 |
+| North     |       338 |
+| South     |       219 |
+| West      |       300 |
+| **Total** | **1,851** |
+
+The datasets are stored under:
+
+```text
+data/raw/
 ```
- 
+
+---
+
+## How the Pipeline Works
+
+### 1. Understanding
+
+The Understanding agent interprets the user's request and prepares it for the downstream workflow.
+
+For non-English input, the translation layer can translate the query into English before retrieval.
+
+### 2. Retrieval
+
+The Retrieval agent searches the ChromaDB knowledge base for relevant records.
+
+ASEEL uses:
+
+* ChromaDB
+* Sentence Transformers
+* `all-MiniLM-L6-v2`
+* Configurable `TOP_K`
+* Configurable minimum relevance threshold
+
+The current default configuration retrieves the top **5** results with a minimum relevance threshold of **0.33**.
+
+### 3. Validation
+
+The Validation agent checks the retrieved evidence before the final response is generated.
+
+This provides an additional step for checking whether the retrieved information is suitable for answering the user's question.
+
+### 4. Response
+
+The Response agent generates the user-facing answer using the validated context.
+
+For multilingual requests, the final answer can then be translated back into the user's original language.
+
+---
+
+## Regional Awareness
+
+ASEEL uses location information as part of its retrieval and routing process.
+
+The system can resolve a city into a broader Saudi regional context and use region metadata during retrieval.
+
+A city is used for routing and regional context; it is not automatically treated as proof that a cultural practice is specific to that city.
+
+The project also includes GeoJSON region data for map-related functionality.
+
+---
+
+## Human-in-the-Loop Feedback
+
+ASEEL includes a feedback workflow designed to keep user-submitted information under human review.
+
+The process is:
+
+1. User submits feedback.
+2. Feedback is stored as pending.
+3. A human reviewer approves or rejects it.
+4. Approved feedback goes through validation checks.
+5. Duplicate content is checked.
+6. Valid approved feedback is converted into a knowledge record.
+7. The record can then be added to ChromaDB.
+8. Rejected feedback does not update the knowledge base.
+
+---
+
+## Evaluation
+
+ASEEL includes retrieval and hard-query evaluation pipelines.
+
+### Retrieval Evaluation
+
+The Top-5 relevance analysis contains **1,851 questions**.
+
+Results:
+
+| Metric                   |     Result |
+| ------------------------ | ---------: |
+| Mean Top-1 relevance     | **0.8572** |
+| Mean Top-5 relevance     | **0.6692** |
+| Top-1 relevance ≥ 0.33   |   **100%** |
+| All Top-5 results ≥ 0.33 | **99.73%** |
+
+A separate retrieval benchmark contains **374 evaluation queries**:
+
+| Retrieval configuration |      Hit@5 |
+| ----------------------- | ---------: |
+| Old style               | **96.79%** |
+| New Pass 1              | **99.73%** |
+| New Full                | **99.73%** |
+
+These metrics describe retrieval performance on the included evaluation datasets and should not be interpreted as general accuracy across all possible user questions.
+
+### Hard-Query Evaluation
+
+The hard-query results contain **119 evaluated cases**.
+
+For the main strict Pass 1 configuration:
+
+* **106** cases retrieved the expected result at rank 1.
+* **113** cases retrieved the expected result within the top 5.
+* **3** cases did not produce a rank.
+
+For the lenient Pass 1 configuration:
+
+* **107** cases retrieved the expected result at rank 1.
+* **116** cases retrieved the expected result within the top 5.
+* **1** case did not produce a rank.
+
+Additional hard-query evaluation results are available in:
+
+```text
+data/eval/hard_results.csv
+```
+
+---
+
+## Monitoring
+
+ASEEL records runtime information that can be used to inspect system behavior, including:
+
+* Latency
+* Retrieval confidence
+* Region
+* Processing status
+* Failure patterns
+
+Optional LangSmith tracing is also supported.
+
+---
+
 ## Project Structure
- 
-| Path | Description |
-|---|---|
-| `agents/` | The four agents (understanding, retrieval, validation, response) and shared state |
-| `api/` | FastAPI application — `/chat`, `/feedback`, `/metrics`, `/regions-*`, `/locate` |
-| `aseel-frontend/` | React + TypeScript + Vite web frontend |
-| `config/` | Application settings, including the per-agent model tiers |
-| `data/` | Regional CSVs (`data/raw/`), location lookup, region GeoJSON, feedback log, monitoring log |
-| `memory/` | Per-session conversation memory |
-| `prompts/` | Shared prompt text (e.g. the response agent's grounding rules) |
-| `retrieval/` | Ingestion, `KnowledgeRecord` schema, and the ChromaDB-backed vector store |
-| `scripts/` | `build_index.py` and offline retrieval-quality analysis scripts |
-| `tests/` | Unit tests and the DeepEval-based quality suite |
-| `tools/` | Deterministic tools the agents call (region resolution, evidence validation, metadata filtering, location lookup) |
-| `translation/` | The inbound/outbound translation layer |
-| `utils/` | Monitoring, feedback storage/service, region-to-map-region mapping |
-| `workflow/` | The LangGraph graph definition and the `ask()` entry point |
-| `data/regions.geojson` | Saudi administrative region boundaries, used by the interactive map |
-| `Dockerfile` | Container build file |
-| `requirements.txt` | Python dependencies |
- 
+
+```text
+ASEEL-PROJECT/
+│
+├── agents/
+│
+├── api/
+│   └── main.py
+│
+├── aseel-frontend/
+│
+├── config/
+│   └── settings.py
+│
+├── data/
+│   ├── raw/
+│   ├── eval/
+│   └── ...
+│
+├── memory/
+│
+├── prompts/
+│
+├── retrieval/
+│
+├── scripts/
+│
+├── tests/
+│
+├── tools/
+│
+├── translation/
+│
+├── utils/
+│
+├── workflow/
+│
+├── Dockerfile
+├── requirements.txt
+└── README.md
+```
+
+---
+
 ## Tech Stack
- 
-- **Backend**: Python, FastAPI, Uvicorn
-- **Agent orchestration**: LangChain, LangGraph
-- **LLM**: OpenAI (via `langchain-openai`), tiered by agent role
-- **Vector store**: ChromaDB
-- **Embeddings**: sentence-transformers (`all-MiniLM-L6-v2`)
-- **Frontend**: React, TypeScript, Vite
-- **Validation**: Pydantic
-- **Evaluation**: DeepEval, pytest
-- **Deployment**: Docker
-## Getting Started
- 
-### Prerequisites
- 
-- Python 3.11+
-- An OpenAI API key
-- Node.js 18+ (for the frontend)
-- Docker (optional)
-### 1. Clone the repository
- 
-```bash
-git clone https://github.com/fatimacoding/ASEEL-Agentic-AI.git
-cd ASEEL-Agentic-AI
-```
- 
-### 2. Set up the backend
- 
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
- 
-### 3. Configure environment variables
- 
-Create a `.env` file in the project root:
- 
-```dotenv
+
+### Backend
+
+* Python
+* FastAPI
+* Uvicorn
+* Pydantic
+
+### Agentic AI
+
+* LangChain
+* LangGraph
+* OpenAI models
+
+### Retrieval
+
+* ChromaDB
+* Sentence Transformers
+* `all-MiniLM-L6-v2`
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+
+### Evaluation & Testing
+
+* DeepEval
+* pytest
+
+### Observability
+
+* LangSmith
+* Runtime monitoring
+
+### Deployment
+
+* Docker
+
+---
+
+## Configuration
+
+ASEEL reads configuration from a `.env` file.
+
+Example:
+
+```env
 OPENAI_API_KEY=your_api_key_here
- 
-# Optional overrides — defaults are already tuned per agent role
-ASEEL_MODEL_TOOL=gpt-5.4-nano          # retrieval + validation (control agents)
-ASEEL_MODEL_UNDERSTANDING=gpt-5.4-mini # query understanding + translation (inbound)
-ASEEL_MODEL_RESPONSE=gpt-5.4           # user-facing answer
-ASEEL_MODEL_TRANSLATION=gpt-5.4        # final-answer translation (outbound)
- 
+
+ASEEL_MODEL_TOOL=gpt-5.4-nano
+ASEEL_MODEL_UNDERSTANDING=gpt-5.4-mini
+ASEEL_MODEL_RESPONSE=gpt-5.4
+ASEEL_MODEL_TRANSLATION=gpt-5.4
+
 ASEEL_COLLECTION=aseel_cultural_knowledge
 ASEEL_TOP_K=5
 ASEEL_MIN_RELEVANCE=0.33
- 
-# Optional: LangSmith tracing
+
 LANGSMITH_API_KEY=
 LANGSMITH_TRACING=false
 ```
- 
-### 4. Build the knowledge base
- 
-Loads every CSV in `data/raw/` and indexes it into ChromaDB:
- 
+
+The model names above correspond to the defaults defined in `config/settings.py`.
+
+**Do not commit your `.env` file or API keys to the repository.**
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+* Python 3.11+
+* Node.js 18+
+* OpenAI API key
+* Docker (optional)
+
+### 1. Clone the repository
+
 ```bash
+git clone https://github.com/Lama-Alfaifi/ASEEL-PROJECT.git
+cd ASEEL-PROJECT
+```
+
+### 2. Create a Python virtual environment
+
+On Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install backend dependencies
+
+```powershell
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in the project root:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+Additional configuration can be added using the variables shown in the Configuration section.
+
+### 5. Build the knowledge index
+
+```powershell
 python -m scripts.build_index
 ```
- 
-Re-run this whenever the source CSVs change. It replaces the collection
-built from `data/raw/` — it does **not** touch records added later through
-the approved-feedback pipeline, which uses a separate, additive upsert.
- 
-### 5. Run the API
- 
-```bash
+
+### 6. Run the API
+
+```powershell
 uvicorn api.main:app --reload --port 8000
 ```
- 
-The API is available at `http://localhost:8000`, with interactive docs at
-`http://localhost:8000/docs`.
- 
-> If `pytest`/module imports complain about missing packages, run from the
-> project root and prefer `python -m pytest` — an empty `conftest.py` at
-> the root also fixes this permanently.
- 
-### 6. Run the frontend
- 
-**Development** (Vite dev server, proxies `/api` to FastAPI):
- 
-```bash
+
+### 7. Run the frontend
+
+Navigate to the frontend directory:
+
+```powershell
 cd aseel-frontend
 npm install
 npm run dev
 ```
- 
-**Production-style** (single origin, no CORS needed):
- 
-```bash
-cd aseel-frontend
-npm install && npm run build
-cd ..
-python aseel-frontend/serve_ui.py   # serves the built frontend + API at :8000
+
+---
+
+## Running the Frontend and API Together
+
+ASEEL also includes a Python UI server:
+
+```powershell
+python aseel-frontend/serve_ui.py
 ```
- 
-### Docker
- 
-```bash
+
+The server is configured to run on:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## Docker
+
+ASEEL includes a `Dockerfile` for containerized execution.
+
+Build the image:
+
+```powershell
 docker build -t aseel .
+```
+
+Run the container:
+
+```powershell
 docker run -p 8000:8000 --env-file .env aseel
 ```
- 
-## Testing & Evaluation
- 
-Run the full test suite:
- 
-```bash
+
+Make sure the required environment variables are available before starting the container.
+
+---
+
+## Testing
+
+Run the test suite:
+
+```powershell
 python -m pytest tests/ -v
 ```
- 
-Run the DeepEval-based quality suite (LLM calls — slower, costs API
-credits):
- 
-```bash
+
+For output-quality tests:
+
+```powershell
 python -m pytest tests/test_output_quality.py -v -s
 ```
- 
-## Feedback → Knowledge Base Loop
- 
-1. A user flags an answer from the chat UI (`POST /feedback`), stored as
-   `status: pending` in `data/feedback.jsonl`.
-2. A human reviewer opens the Feedback dashboard, reads the flagged
-   message alongside the original question and answer, and clicks
-   **Approve** or **Reject**.
-3. On **Approve**, `utils/feedback_service.py` runs a deterministic
-   content check, resolves a region, checks for near-duplicates against
-   the existing knowledge base, converts the feedback into the same
-   `KnowledgeRecord` schema used everywhere else, and **upserts** it into
-   ChromaDB — the original ~550 curated records are never touched or
-   rebuilt.
-4. The feedback item is updated with `knowledge_base_status`
-   (`added` / `skipped_duplicate` / `failed`) so the reviewer always knows
-   what actually happened, not just that a button was clicked.
-5. **Reject** marks the item `status: rejected` and changes nothing in
-   ChromaDB. No automated process ever approves feedback — a human decides.
+
+Evaluation datasets and results are available under:
+
+```text
+data/eval/
+```
+
+Supporting evaluation scripts are located under:
+
+```text
+scripts/
+```
+
+---
+
 ## Example Questions
- 
-- "What is the proper etiquette when visiting a Saudi home?"
-- "How is Arabic coffee traditionally served?"
-- "What traditional clothing is common for men in Dammam?"
-- "ما هو اللباس التقليدي للرجال في الدمام؟"
-- "Quels vêtements traditionnels les hommes portent-ils à Djeddah?"
-## Roadmap
- 
-- [ ] Expand the cultural knowledge base across all regions
-- [ ] Add voice input and output
-- [ ] Add more evaluation benchmarks and languages
-- [ ] Authenticate the feedback review dashboard
- 
+
+```text
+What should I consider when visiting a Saudi family for the first time?
+
+What are some traditional hospitality customs in Saudi Arabia?
+
+What should guests consider when attending a Saudi cultural gathering?
+
+What are appropriate clothing considerations for a cultural visit?
+
+What customs are associated with a specific Saudi region?
+```
+
+ASEEL is designed to ground its responses in retrieved knowledge rather than relying only on the model's general knowledge.
+
+---
+
+## Key Design Principles
+
+### Grounded Responses
+
+ASEEL prioritizes retrieved evidence when generating answers.
+
+### Controlled Uncertainty
+
+When retrieved evidence does not meet the configured relevance threshold, the system can fall back rather than present unsupported information as fact.
+
+### Human Oversight
+
+User feedback does not directly modify the knowledge base. Approved updates go through a human review process.
+
+### Deterministic Where Possible
+
+Selected tasks such as region resolution and validation use deterministic logic where an LLM is not necessary.
+
+### Modular Agent Design
+
+Each agent has a defined responsibility, making the workflow easier to test and modify.
+
+---
+
+## Project Status
+
+ASEEL was developed as a final project during the **Saudi Digital Academy (SDA) Agentic AI Engineering program**.
+
+The project combines:
+
+* Multi-agent orchestration
+* LangGraph
+* RAG
+* Vector search
+* Multilingual processing
+* Validation
+* Human-in-the-loop feedback
+* Retrieval evaluation
+* Monitoring
+* FastAPI
+* React
+* Docker
+
+---
+
+## Future Improvements
+
+Potential future improvements include:
+
+* Expanding and continuously reviewing the cultural knowledge base
+* Improving retrieval evaluation coverage
+* Adding more multilingual evaluation
+* Expanding monitoring and observability
+* Improving the feedback-review interface
+* Adding additional safeguards for ambiguous cultural questions
+* Further optimizing retrieval and model usage
+
+---
+
+## License
+
+This project is provided for educational and portfolio purposes.
+
+```
+```
