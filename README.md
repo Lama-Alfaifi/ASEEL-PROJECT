@@ -1,5 +1,3 @@
-أكيد، هذا كامل كـ`README.md` جاهز للنسخ:
-
 ````markdown
 # ASEEL (أصيل) 🌴 — Agentic AI System for Saudi Cultural Guidance
 
@@ -582,7 +580,7 @@ Potential future improvements include:
 
 ## License
 
-This project is provided for educational and portfolio purposes.
+No open-source license has been specified for this project.
 
 ```
 ```
