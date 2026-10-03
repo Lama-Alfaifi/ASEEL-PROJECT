@@ -17,6 +17,7 @@ REGION_MAP = {
     "NORTH.csv": "North",
     "SOUTH.csv": "South",
     "WEST.csv": "West",
+    "GENERAL.csv": "General",
 }
 
 

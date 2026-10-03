@@ -18,3 +18,10 @@ aseel-frontend/dist/
 data/feedback.jsonl
 data/monitoring.jsonl
 data/chroma_db/
+
+# DeepEval runtime/cache
+.deepeval/*
+!.deepeval/.gitkeep
+
+# DeepEval runtime/cache
+.deepeval/

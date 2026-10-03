@@ -1,128 +1,157 @@
 from __future__ import annotations
 
-#from langchain_openai import ChatOpenAI
-from langchain.agents import create_agent
+import json
+import logging
+
+from langchain_openai import ChatOpenAI
+from pydantic import BaseModel, Field
+
 from agents.state import AseelState
 from config.settings import OPENAI_MODEL_TOOL
 from tools.cultural_search import search_cultural_knowledge
 from tools.metadata_filter import filter_by_metadata
 from utils.region_override import normalize_region_override
-from retrieval.vector_store import CulturalVectorStore
-import json
 
-#retrieval_model = ChatOpenAI(model=OPENAI_MODEL_TOOL, temperature=0)
-retrieval_agent = create_agent(
-    model=OPENAI_MODEL_TOOL,
-    tools=[search_cultural_knowledge],
-    system_prompt = """
-You are ASEEL's Retrieval Agent, responsible for finding the most relevant
-and reliable Saudi cultural knowledge from the provided knowledge base.
+log = logging.getLogger(__name__)
 
-Your goal is NOT to answer the user's question.
-Your goal is to retrieve the best supporting evidence for downstream validation
-and response generation.
+MAX_RESULTS = 5
+MAX_PLANNED_QUERIES = 3
 
-RETRIEVAL WORKFLOW:
+# ---------------------------------------------------------------------------
+# Design
+#
+# Pass 1 (attempts == 0): deterministic vector search over the rewritten
+#   query and the user's original wording, merged. Cheap, fast, and the
+#   region filter is applied inside the store, never by an LLM.
+#
+# Pass 2 (attempts > 0, i.e. validation found the evidence too weak):
+#   an LLM *diagnoses* why the first search failed and plans 1-3 new queries
+#   (alternative spellings, a generic descriptor for unfamiliar terms, or a
+#   split of a compound question). Each query is searched, and the results
+#   are merged with the evidence from pass 1.
+#
+# The LLM only ever decides WHAT TO SEARCH FOR. It never sees or edits the
+# evidence, and the region filter stays inside CulturalVectorStore.search(),
+# so a bad plan can at worst retrieve nothing - never cross-region evidence.
+# ---------------------------------------------------------------------------
 
-1. Understand the Query
-- Identify the user's main intent, topic, situation, and cultural context.
-- Identify any explicit location such as city, governorate, administrative region,
-  or planning region.
-- Identify relevant entities such as occasion, relationship, role, generation,
-  or social context when present.
-- Preserve the original meaning of the user's question.
 
-2. Location Awareness
-- If a city or location is provided, prioritize evidence associated with that
-  location or its corresponding region.
-- Do not assume that a practice from one Saudi region applies to another region.
-- If the query specifies a city, use city-specific evidence when available.
-- If city-specific evidence is unavailable, broader regional evidence may be
-  retrieved only when it is relevant.
-- General Saudi evidence may be used when the records explicitly indicate
-  general/nationwide scope.
-- Never silently replace the user's requested location with another location.
+class QueryPlan(BaseModel):
+    diagnosis: str = Field(
+        description="One short sentence: why the previous retrieval was weak."
+    )
+    queries: list[str] = Field(
+        description="1 to 3 alternative search queries, each meaningfully different."
+    )
 
-3. Search Strategy
-- ALWAYS use the search_cultural_knowledge tool to retrieve evidence.
-- Search using the user's actual intent, not just individual keywords.
-- Prefer specific, semantically relevant records over broad or loosely related
-  records.
-- When the query contains a city, region, occasion, or specific cultural topic,
-  ensure these concepts are represented in the search.
-- Retrieve multiple relevant records when necessary to provide sufficient
-  evidence.
-- Do not retrieve records merely because they share a few keywords with the
-  query.
 
-4. Relevance
-- Prioritize evidence that directly answers the user's question.
-- Reject obviously unrelated results conceptually, even if they contain similar
-  words.
-- Prefer evidence with matching topic, location, and context.
-- Do not treat keyword overlap as sufficient relevance.
+PLANNER_PROMPT = """
+You are ASEEL's Retrieval Planner. A semantic search over a Saudi cultural
+knowledge base returned weak evidence. Write better SEARCH QUERIES.
 
-5. Evidence Quality
-- Prefer specific and informative records over vague records.
-- Prefer records whose geographic scope matches the user's requested location.
-- If multiple records support the same point, retain the strongest relevant
-  evidence.
-- If retrieved records conflict, return the conflicting evidence rather than
-  deciding which claim is true.
-
-6. Grounding
-- NEVER invent, infer, complete, or paraphrase a cultural fact that is not
-  supported by retrieved evidence.
-- Do not use the model's general knowledge to fill missing information.
-- Do not assume that a culturally plausible answer is a correct answer.
-
-7. Insufficient Evidence
-- If the search does not provide relevant evidence, clearly indicate that
-  sufficient evidence was not found.
-- Do not manufacture an answer from weak or unrelated records.
-- Distinguish between relevant evidence that is limited and evidence that is
-  completely unavailable.
-
-8. Output
-Return the retrieved evidence in a structured and concise form.
-For each result, preserve:
-- the relevant cultural information
-- geographic scope when available
-- source or record metadata when available
-- relevance information when available
-
-Do NOT generate the final user-facing answer.
-Do NOT provide cultural recommendations based on your own knowledge.
-The downstream validation and response agents will determine whether the
-retrieved evidence is sufficient and how it should be presented.
-
-FINAL CHECK:
-Before returning the results, ask:
-- Does this evidence actually address the user's question?
-- Does the geographic scope match the requested location?
-- Am I relying only on retrieved records?
-- Did I avoid unrelated evidence?
-- Is there enough evidence for downstream validation?
-
-If the answer to these checks is no, return the relevant evidence that was found
-and clearly indicate the limitation.
-
-Return evidence for downstream processing, not a final answer.
+Rules:
+- You only write search queries. Do NOT answer the question and do NOT state
+  cultural facts.
+- Keep the user's intent and keep any city/region exactly as in the original
+  query. Never introduce a different location.
+- If the question contains an unfamiliar or transliterated Arabic term, keep
+  its original spelling, add plausible alternative transliterations, and add
+  a generic descriptor as a search hint (e.g. "traditional dish", "traditional
+  garment", "heritage site").
+- If the question has two parts, write one focused query per part.
+- Use the retrieved titles to see what was found and aim at what is missing.
+- Write plain natural-language queries of at most 12 words. No quotation
+  marks, no parentheses, and no lists of guesses inside one query: use one
+  concrete descriptor per query and put different guesses in different queries.
+- Return 1-3 queries. No duplicates.
 """
-)
+
+_planner = None
 
 
-def _region_used_by_agent(messages) -> str | None:
-    """Region argument the agent actually passed to the search tool.
+def _get_planner():
+    global _planner
+    if _planner is None:
+        _planner = ChatOpenAI(
+            model=OPENAI_MODEL_TOOL,
+            temperature=0,
+        ).with_structured_output(QueryPlan)
+    return _planner
 
-    None means the agent never called the tool.
-    """
-    for message in messages:
-        for call in getattr(message, "tool_calls", None) or []:
-            if call.get("name") == "search_cultural_knowledge":
-                return (call.get("args") or {}).get("region") or ""
 
-    return None
+def plan_queries(state: AseelState) -> list[str]:
+    """LLM-planned follow-up queries. Returns [] on any failure."""
+    previous = state.get("retrieval_query") or state.get("query", "")
+
+    found = [
+        f"- ({r.get('relevance', 0):.2f}) {r.get('question', '')}"
+        for r in (state.get("retrieved") or state.get("raw_semantic_results") or [])[:3]
+    ]
+
+    user = (
+        f"Original question: {state.get('query', '')}\n"
+        f"Previous search query: {previous}\n"
+        f"Region: {state.get('region') or 'not specified'}\n"
+        f"Category: {state.get('category') or 'not specified'}\n"
+        f"Why validation failed: {state.get('validation_reason') or 'low relevance'}\n"
+        "Best records found so far:\n"
+        f"{chr(10).join(found) if found else '- none'}"
+    )
+
+    try:
+        plan = _get_planner().invoke(
+            [("system", PLANNER_PROMPT), ("human", user)]
+        )
+    except Exception as exc:  # network, schema, quota ... fail safe
+        log.warning("Retrieval planner failed: %r", exc)
+        return []
+
+    log.info("Retrieval plan: %s | %s", plan.diagnosis, plan.queries)
+
+    queries, seen = [], {previous.strip().lower()}
+
+    for q in plan.queries:
+        q = (q or "").strip()
+        if q and q.lower() not in seen:
+            seen.add(q.lower())
+            queries.append(q)
+
+    return queries[:MAX_PLANNED_QUERIES]
+
+
+def _search(query: str, region: str) -> list[dict]:
+    try:
+        payload = json.loads(
+            search_cultural_knowledge.invoke({"query": query, "region": region})
+        )
+        return payload.get("results", [])
+    except (json.JSONDecodeError, TypeError):
+        return []
+
+
+def _merge(result_lists: list[list[dict]]) -> list[dict]:
+    """Deduplicate by question text, keeping the best relevance for each."""
+    best: dict[str, dict] = {}
+
+    for records in result_lists:
+        for record in records:
+            key = (record.get("question") or "").strip().lower()
+
+            if not key:
+                continue
+
+            current = best.get(key)
+
+            if current is None or (record.get("relevance") or 0) > (
+                current.get("relevance") or 0
+            ):
+                best[key] = record
+
+    return sorted(
+        best.values(),
+        key=lambda r: r.get("relevance") or 0,
+        reverse=True,
+    )
 
 
 def retrieve_knowledge(state: AseelState) -> dict:
@@ -134,31 +163,29 @@ def retrieve_knowledge(state: AseelState) -> dict:
         or state.get("region")
         or ""
     )
-    category = state.get("category")
 
-    # Use deterministic vector search directly.
-    # The LLM should not decide or rewrite the retrieval query.
-    try:
-        search_result = search_cultural_knowledge.invoke(
-            {"query": query, "region": region}
-        )
-        payload = json.loads(search_result)
-        records = payload.get("results", [])
-    except (json.JSONDecodeError, TypeError):
-        records = []
+    if state.get("attempts", 0) == 0:
+        # Search the rewritten query AND the user's original wording. The
+        # rewrite often appends region text ("... in the South region of
+        # Saudi Arabia"), which can drag generic region-trivia records above
+        # the exact match. The region filter already lives in the store, so
+        # the bare question is always worth searching too (embedding only,
+        # no LLM call).
+        queries = [query]
+        original = (state.get("query") or "").strip()
 
-    # Remove duplicate knowledge records.
-    unique_records = []
-    seen_questions = set()
+        if original and original.lower() != query.strip().lower():
+            queries.append(original)
 
-    for record in records:
-        question_key = record.get("question", "").strip().lower()
+        result_lists = [_search(q, region) for q in queries]
+    else:
+        # Keep what pass 1 found, then add the LLM-planned searches.
+        result_lists = [state.get("raw_semantic_results") or []]
 
-        if question_key not in seen_questions:
-            seen_questions.add(question_key)
-            unique_records.append(record)
+        for planned in plan_queries(state):
+            result_lists.append(_search(planned, region))
 
-    records = unique_records
+    records = _merge(result_lists)[:MAX_RESULTS]
 
     filtered_records = filter_by_metadata(
         records,
