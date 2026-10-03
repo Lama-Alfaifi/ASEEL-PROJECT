@@ -1,4 +1,4 @@
-````markdown
+
 # ASEEL (أصيل) 🌴 — Agentic AI System for Saudi Cultural Guidance
 
 ASEEL is an agentic AI system for answering questions about Saudi cultural etiquette, customs, and regional traditions.
